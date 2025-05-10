@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Prompts BD IA</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h4 {
+            border-bottom-style: dashed;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .button-secondary {
+            background-color: #6c757d;
+        }
+        .button-secondary:hover {
+            background-color: #545b62;
+        }
+        .step-section {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .page-generation-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        #toast-notification {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s, visibility 0.5s;
+        }
+        #toast-notification.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Générateur de Prompts pour Bandes Dessinées IA</h1>
+
+        <div class="step-section">
+            <h2>Paramètres de la Bande Dessinée</h2>
+            <label for="presetSelect">Choisir un preset :</label>
+            <select id="presetSelect">
+                <option value="">-- Manuel --</option>
+                </select>
+            <label for="nomBd">Nom de la série de BD :</label>
+            <input type="text" id="nomBd" value="Mon Gag">
+            <label for="totalPages">Pages au total (base) :</label>
+            <input type="number" id="totalPages" value="2">
+            <label for="pageVariation">Variation de pages (+/-) :</label>
+            <input type="number" id="pageVariation" value="0">
+            <label for="panelsPerPage">Cases par page (moyenne) :</label>
+            <input type="number" id="panelsPerPage" value="6">
+            <label for="bubblesPerPage">Bulles par page (moyenne) :</label>
+            <input type="number" id="bubblesPerPage" value="5">
+            <label for="wordsPerPage">Mots par page (moyenne) :</label>
+            <input type="number" id="wordsPerPage" value="30">
+            <label for="yellowBlocksPerPage">Bloc de texte jaune par page (moyenne) :</label>
+            <input type="number" id="yellowBlocksPerPage" value="0">
+        </div>
+
+        <div class="step-section">
+            <h2>Étape 1 : Définition de l'Album/Histoire/Gag</h2>
+            <button id="generateStep1Prompt">Générer Prompt Étape 1</button>
+            <label for="step1PromptOutput">Prompt pour l'IA (Étape 1) :</label>
+            <textarea id="step1PromptOutput" readonly></textarea>
+            <button id="copyStep1Prompt" class="button-secondary">Copier Prompt Étape 1</button>
+            <label for="step1AiResponse">Coller le résultat de l'IA (Titre, Résumé, Personnages, Ton) :</label>
+            <textarea id="step1AiResponse"></textarea>
+        </div>
+
+        <div class="step-section">
+            <h2>Étape 2 : Structure des Pages</h2>
+            <button id="generateStep2Prompt">Générer Prompt Étape 2</button>
+            <label for="step2PromptOutput">Prompt pour l'IA (Étape 2) :</label>
+            <textarea id="step2PromptOutput" readonly></textarea>
+            <button id="copyStep2Prompt" class="button-secondary">Copier Prompt Étape 2</button>
+            <label for="step2AiResponse">Coller le résultat de l'IA (Descriptions sommaires de chaque page) :</label>
+            <textarea id="step2AiResponse"></textarea>
+        </div>
+
+        <div class="step-section">
+            <h2>Étape 3 : Génération Détaillée des Pages</h2>
+            <button id="setupStep3Fields">Préparer les champs pour l'Étape 3</button>
+            <div id="step3PagePromptsContainer">
+                </div>
+        </div>
+
+        <div class="step-section">
+            <h2>Étape 4 : Compilation Finale</h2>
+            <button id="compileAllContent">Compiler Tout le Contenu</button>
+            <label for="finalCompilationOutput">Compilation Finale :</label>
+            <textarea id="finalCompilationOutput" readonly style="min-height: 300px;"></textarea>
+            <button id="copyFinalCompilation" class="button-secondary">Copier la Compilation</button>
+        </div>
+    </div>
+
+    <div id="toast-notification"></div>
+
+    <script>
+        const presets = {
+            asterix:        { nomBd: "Astérix",                             totalPages: 42, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 116, yellowBlocksPerPage: 1 },
+            dragonball:     { nomBd: "Dragon Ball (Goku enfant - Arc ~100p.)", totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, // MIS À JOUR
+            dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte - Arc ~100p.)",totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 }, // MIS À JOUR
+            iznogoud:       { nomBd: "Iznogoud (1 histoire)",               totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
+            petitspirougag: { nomBd: "Le Petit Spirou (gag)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
+            petitspirouhist:{ nomBd: "Le Petit Spirou (hist. 6p.)",         totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
+            quickflupke:    { nomBd: "Quick et Flupke (gag)",               totalPages: 2,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 5,  wordsPerPage: 30,  yellowBlocksPerPage: 0 },
+            schtroumpfs:    { nomBd: "Les Schtroumpfs (1 histoire)",        totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
+            spirou:         { nomBd: "Spirou et Fantasio",                  totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
+            tintin:         { nomBd: "Tintin",                              totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 }
+        };
+
+        const presetSelect = document.getElementById('presetSelect');
+        const nomBdInput = document.getElementById('nomBd');
+        const totalPagesInput = document.getElementById('totalPages');
+        const pageVariationInput = document.getElementById('pageVariation');
+        const panelsPerPageInput = document.getElementById('panelsPerPage');
+        const bubblesPerPageInput = document.getElementById('bubblesPerPage');
+        const wordsPerPageInput = document.getElementById('wordsPerPage');
+        const yellowBlocksPerPageInput = document.getElementById('yellowBlocksPerPage');
+
+        const generateStep1PromptBtn = document.getElementById('generateStep1Prompt');
+        const step1PromptOutput = document.getElementById('step1PromptOutput');
+        const copyStep1PromptBtn = document.getElementById('copyStep1Prompt');
+        const step1AiResponse = document.getElementById('step1AiResponse');
+
+        const generateStep2PromptBtn = document.getElementById('generateStep2Prompt');
+        const step2PromptOutput = document.getElementById('step2PromptOutput');
+        const copyStep2PromptBtn = document.getElementById('copyStep2Prompt');
+        const step2AiResponse = document.getElementById('step2AiResponse');
+        
+        const setupStep3FieldsBtn = document.getElementById('setupStep3Fields');
+        const step3PagePromptsContainer = document.getElementById('step3PagePromptsContainer');
+
+        const compileAllContentBtn = document.getElementById('compileAllContent');
+        const finalCompilationOutput = document.getElementById('finalCompilationOutput');
+        const copyFinalCompilationBtn = document.getElementById('copyFinalCompilation');
+
+        const toastNotification = document.getElementById('toast-notification');
+        let toastTimeout;
+
+        function setDefaultParameters() {
+            nomBdInput.value = "Mon Gag"; 
+            totalPagesInput.value = 2; 
+            pageVariationInput.value = 0; 
+            panelsPerPageInput.value = 6;
+            bubblesPerPageInput.value = 5;
+            wordsPerPageInput.value = 30;
+            yellowBlocksPerPageInput.value = 0;
+        }
+
+        function populatePresetDropdown() {
+            const sortedPresets = Object.entries(presets)
+                .map(([key, value]) => ({
+                    key: key,
+                    displayName: value.nomBd 
+                }))
+                .sort((a, b) => a.displayName.localeCompare(b.displayName, 'fr', { sensitivity: 'base' }));
+
+            sortedPresets.forEach(presetInfo => {
+                const option = document.createElement('option');
+                option.value = presetInfo.key;
+                option.textContent = presetInfo.displayName;
+                presetSelect.appendChild(option);
+            });
+        }
+        
+        presetSelect.addEventListener('change', function() {
+            const selectedPresetKey = this.value;
+            const selectedPreset = presets[selectedPresetKey];
+            if (selectedPreset) {
+                nomBdInput.value = selectedPreset.nomBd;
+                totalPagesInput.value = selectedPreset.totalPages;
+                pageVariationInput.value = selectedPreset.pageVariation; 
+                panelsPerPageInput.value = selectedPreset.panelsPerPage;
+                bubblesPerPageInput.value = selectedPreset.bubblesPerPage;
+                wordsPerPageInput.value = selectedPreset.wordsPerPage;
+                yellowBlocksPerPageInput.value = selectedPreset.yellowBlocksPerPage;
+            } else {
+                setDefaultParameters();
+            }
+            totalPagesInput.dispatchEvent(new Event('change'));
+        });
+        
+        totalPagesInput.addEventListener('change', function() {
+            if (document.getElementById('step3PagePromptsContainer').innerHTML.trim() !== "") {
+                 showToastNotification("Le nombre de pages de base a changé. Re-générez les champs de l'Étape 3 si nécessaire.");
+            }
+        });
+
+        function showToastNotification(message) {
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastNotification.textContent = message;
+            toastNotification.className = "show";
+            toastTimeout = setTimeout(() => { 
+                toastNotification.className = toastNotification.className.replace("show", ""); 
+            }, 3000);
+        }
+
+        function copyToClipboard(elementIdOrText, isText = false) {
+            let textToCopy;
+            if (isText) {
+                textToCopy = elementIdOrText;
+                 if (!textToCopy) { showToastNotification("Rien à copier !"); return; }
+            } else {
+                const textarea = document.getElementById(elementIdOrText);
+                if (!textarea || !textarea.value) { showToastNotification("Rien à copier !"); return; }
+                textToCopy = textarea.value;
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+            }
+            try {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                     showToastNotification('Contenu copié dans le presse-papiers !');
+                }, () => { document.execCommand('copy'); showToastNotification('Contenu copié (fallback) !'); });
+            } catch (err) {
+                try { document.execCommand('copy'); showToastNotification('Contenu copié (execCommand fallback) !');}
+                catch (e) { showToastNotification('La copie a échoué. Veuillez copier manuellement.'); }
+            }
+        }
+        
+        generateStep1PromptBtn.addEventListener('click', function() {
+            const nomDeLaBd = nomBdInput.value.trim() || "[Nom de la BD à définir]";
+            const currentTotalPages = parseInt(totalPagesInput.value, 10); // Pour aider à déterminer le type d'oeuvre
+            let typeOeuvre = "d'un album"; 
+
+            if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; }
+            else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "d'une histoire courte"; } 
+            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; }
+            else if (nomDeLaBd.toLowerCase().includes("dragon ball")) { 
+                if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) { // Si "arc" dans le nom ou beaucoup de pages
+                    typeOeuvre = "d'un arc narratif (type manga)";
+                } else {
+                    typeOeuvre = "d'un chapitre (type manga)"; // Fallback pour DB si pas clairement un arc
+                }
+            }
+
+            step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-3 phrases pour une oeuvre courte, potentiellement plus pour un arc narratif)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante mais respecter le thème de l'univers de ${nomDeLaBd}.`;
+        });
+        copyStep1PromptBtn.addEventListener('click', () => copyToClipboard('step1PromptOutput'));
+
+        generateStep2PromptBtn.addEventListener('click', function() {
+            const titreEtDescription = step1AiResponse.value.trim();
+            if (!titreEtDescription) { showToastNotification("Veuillez d'abord coller le résultat de l'IA de l'Étape 1."); return; }
+            
+            const currentNomBd = nomBdInput.value;
+            const totalPages = parseInt(totalPagesInput.value, 10);
+            const variation = parseInt(pageVariationInput.value, 10);
+            let pageCountDescription = "";
+
+            if (isNaN(totalPages) || totalPages <=0) { showToastNotification("Nombre de pages de base invalide."); return; }
+            if (isNaN(variation) || variation < 0) { showToastNotification("Variation de page invalide."); return; }
+
+            if (variation === 0) {
+                pageCountDescription = `${totalPages} page${totalPages > 1 ? 's' : ''} au total (nombre fixe).`;
+            } else {
+                const minPages = Math.max(1, totalPages - variation);
+                const maxPages = totalPages + variation;
+                pageCountDescription = `Environ ${totalPages} page${totalPages > 1 ? 's' : ''} au total. Le nombre de pages final peut varier de ${minPages} à ${maxPages} pages.`;
+            }
+
+            let endingDescription = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
+            if (currentNomBd.toLowerCase().includes("gag") || totalPages <= 2) { 
+                endingDescription = `une "punch line" – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+            }
+
+            const panelsAvg = panelsPerPageInput.value;
+            const bubblesAvg = bubblesPerPageInput.value;
+            const wordsAvg = wordsPerPageInput.value;
+            const yellowBlocksAvg = yellowBlocksPerPageInput.value;
+
+            const prompt = `Considérant cette oeuvre (album/histoire/gag/chapitre manga/arc manga) suivante:
+--- DÉBUT TITRE ET DESCRIPTION ---
+${titreEtDescription}
+--- FIN TITRE ET DESCRIPTION ---
+
+Générez-moi une description sommaire de chaque page (courte description d'un maximum 3 lignes par page).
+${pageCountDescription}
+Nombre de cases par page en moyenne, peut varier : ${panelsAvg}.
+Nombre de bulles par page en moyenne (peut varier) : ${bubblesAvg}.
+Nombre de mots par page en moyenne (peut varier) : ${wordsAvg}.
+Nombre de blocs de texte (narratif/explicatif) par page en moyenne (peut varier) : ${yellowBlocksAvg}. (Pour manga, cela peut inclure des textes narratifs hors bulles. Si 0, cela signifie probablement un gag muet ou sans narration textuelle).
+
+Chaque page (si plusieurs pages) doit avoir un effet intriguant à la fin pour inciter le lecteur à lire la prochaine et cette mini-intrigue sera résolue à la prochaine page (sauf si c'est un gag en une page ou la fin d'un arc). La dernière page doit terminer par ${endingDescription}
+Pour chaque page, spécifiez le nombre de cases, de bulles, le nombre de mots par page, et le nombre de blocs de texte.
+Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des cases pour les scènes d'action.`;
+            step2PromptOutput.value = prompt;
+        });
+        copyStep2PromptBtn.addEventListener('click', () => copyToClipboard('step2PromptOutput'));
+
+        setupStep3FieldsBtn.addEventListener('click', function() {
+            const totalPages = parseInt(totalPagesInput.value, 10); 
+            if (isNaN(totalPages) || totalPages <= 0) { showToastNotification("Veuillez entrer un nombre de pages (base) valide."); return; }
+            step3PagePromptsContainer.innerHTML = ''; 
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBlock = document.createElement('div');
+                pageBlock.classList.add('page-generation-block');
+                pageBlock.innerHTML = `
+                    <h4>Page ${i}</h4>
+                    <button id="generateStep3PagePrompt_${i}" data-page="${i}">Générer Prompt Page ${i}</button>
+                    <label for="step3PagePromptOutput_${i}">Prompt pour l'IA (Page ${i}) :</label>
+                    <textarea id="step3PagePromptOutput_${i}" readonly></textarea>
+                    <button id="copyStep3PagePrompt_${i}" class="button-secondary" data-page="${i}">Copier Prompt Page ${i}</button>
+                    <label for="pageAiDetailedResponse_${i}">Coller la description DÉTAILLÉE de la page ${i} (utilisée pour réf. page suivante & compilation) :</label>
+                    <textarea id="pageAiDetailedResponse_${i}"></textarea> 
+                `;
+                step3PagePromptsContainer.appendChild(pageBlock);
+                document.getElementById(`generateStep3PagePrompt_${i}`).addEventListener('click', handleGenerateStep3PagePrompt);
+                document.getElementById(`copyStep3PagePrompt_${i}`).addEventListener('click', handleCopyStep3PagePrompt);
+            }
+            if (totalPages > 0) { showToastNotification(`${totalPages} ensemble(s) de champs pour l'Étape 3 ont été générés.`); }
+        });
+
+        function handleGenerateStep3PagePrompt(event) {
+            const pageNum = parseInt(event.target.dataset.page, 10);
+            const titreEtDescriptionBD = step1AiResponse.value.trim();
+            const descriptionDeChaquePage = step2AiResponse.value.trim(); 
+            if (!titreEtDescriptionBD) { showToastNotification("Veuillez coller le résultat de l'IA de l'Étape 1."); return; }
+            if (!descriptionDeChaquePage) { showToastNotification("Veuillez coller le résultat de l'IA de l'Étape 2."); return; }
+            
+            let prevPageDescriptionRef = "";
+            if (pageNum > 1) {
+                const prevPageTextarea = document.getElementById(`pageAiDetailedResponse_${pageNum - 1}`); 
+                if (prevPageTextarea && prevPageTextarea.value.trim() !== "") {
+                    prevPageDescriptionRef = `\nVoici la description détaillée de la page précédente comme référence :\n--- DÉBUT DESCRIPTION PAGE PRÉCÉDENTE ---\n"${prevPageTextarea.value.trim()}"\n--- FIN DESCRIPTION PAGE PRÉCÉDENTE ---`;
+                } else { showToastNotification(`Info: La description détaillée de la page ${pageNum - 1} n'a pas été fournie pour référence.`); }
+            }
+
+            const currentNomBd = nomBdInput.value;
+            const totalPagesForGagCheck = parseInt(totalPagesInput.value, 10);
+            let endingDescriptionDetail = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
+            if (currentNomBd.toLowerCase().includes("gag") || totalPagesForGagCheck <= 2) {
+                endingDescriptionDetail = `une "punch line" mémorable – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+            }
+            
+            const prompt = `Considérant cette oeuvre (album/histoire/gag/chapitre manga/arc manga) suivante:
+--- DÉBUT TITRE ET DESCRIPTION BD ---
+${titreEtDescriptionBD}
+--- FIN TITRE ET DESCRIPTION BD ---
+
+Et la description sommaire de chaque page (générée à l'étape précédente):
+--- DÉBUT DESCRIPTION SOMMAIRE DES PAGES ---
+${descriptionDeChaquePage}
+--- FIN DESCRIPTION SOMMAIRE DES PAGES ---
+
+Générez-moi la description détaillée de la page ${pageNum}.${prevPageDescriptionRef}
+La description détaillée doit contenir chaque case de la page avec les dialogues (sauf si c'est un gag muet où les descriptions indiqueront 0 bulles/mots) et une description schématique simple des dessins. Pour un manga, veuillez inclure des suggestions d'onomatopées (effets sonores) pertinentes et décrire le dynamisme attendu des cases, surtout pour les scènes d'action.
+La description détaillée doit pouvoir servir de prompt pour un générateur d'images par intelligence artificielle.
+Assurez-vous de respecter le ton, le style, les personnages définis et la structure de la page (nombre de cases, etc.) qui ont été établis précédemment pour cette oeuvre.
+Si la description sommaire des pages (issue de l'étape 2) indique un effet intriguant pour cette page ${pageNum} (et si ce n'est pas la dernière page de l'oeuvre et qu'elle a plusieurs pages), assurez-vous que la description détaillée de la page se termine par cet effet.
+Si c'est la dernière page de l'oeuvre (selon les descriptions de l'étape 2), assurez ${endingDescriptionDetail}`;
+            document.getElementById(`step3PagePromptOutput_${pageNum}`).value = prompt;
+        }
+
+        function handleCopyStep3PagePrompt(event) {
+            const pageNum = event.target.dataset.page;
+            copyToClipboard(`step3PagePromptOutput_${pageNum}`);
+        }
+
+        compileAllContentBtn.addEventListener('click', function() {
+            let fullCompilation = [];
+            const totalPages = parseInt(totalPagesInput.value, 10); 
+            const etape1Content = step1AiResponse.value.trim();
+            if (etape1Content) { fullCompilation.push("=== ÉTAPE 1 : DÉFINITION DE L'OEUVRE ==="); fullCompilation.push(etape1Content);
+            } else { showToastNotification("Contenu de l'Étape 1 manquant pour la compilation."); }
+
+            const etape2Content = step2AiResponse.value.trim();
+            if (etape2Content) { fullCompilation.push("\n\n=== ÉTAPE 2 : STRUCTURE DES PAGES (DESCRIPTIONS SOMMAIRES) ==="); fullCompilation.push(etape2Content);
+            } else { showToastNotification("Contenu de l'Étape 2 manquant pour la compilation."); }
+            
+            if (!isNaN(totalPages) && totalPages > 0) {
+                let allPagesDetailCollectedOrMarked = true; 
+                let step3Content = [];
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageDetailTextarea = document.getElementById(`pageAiDetailedResponse_${i}`);
+                    if (pageDetailTextarea) { 
+                        if (pageDetailTextarea.value.trim()) {
+                            step3Content.push(`\n--- PAGE ${i} ---`); step3Content.push(pageDetailTextarea.value.trim());
+                        } else {
+                            step3Content.push(`\n--- PAGE ${i} ---`); step3Content.push("[Description détaillée pour cette page non fournie]");
+                            allPagesDetailCollectedOrMarked = false; 
+                        }
+                    }
+                }
+                if (step3Content.length > 0){ fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES ==="); fullCompilation.push(step3Content.join("\n")); 
+                } else if (totalPages > 0) { 
+                     fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES ===");
+                     fullCompilation.push("[Aucune description détaillée de page n'a été fournie pour les " + totalPages + " page(s) de base.]");
+                }
+                 if (!allPagesDetailCollectedOrMarked && step3Content.length > 0) { 
+                    showToastNotification("Certaines descriptions détaillées de page de l'Étape 3 sont manquantes.");
+                }
+            } else { showToastNotification("Nombre de pages (base) non défini ou invalide pour compiler l'Étape 3."); }
+            
+            finalCompilationOutput.value = fullCompilation.join("\n"); 
+            if(fullCompilation.length > 0 && (etape1Content || etape2Content || (!isNaN(totalPages) && totalPages > 0) ) ) {
+                showToastNotification("Compilation terminée !");
+            } else { showToastNotification("Rien à compiler pour le moment."); }
+        });
+
+        copyFinalCompilationBtn.addEventListener('click', () => {
+            if (finalCompilationOutput.value.trim() === "") { showToastNotification("Rien à copier, la compilation est vide."); return; }
+            copyToClipboard('finalCompilationOutput');
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            populatePresetDropdown();
+            setDefaultParameters(); 
+        });
+
+    </script>
+</body>
+</html>
