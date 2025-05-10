@@ -25,6 +25,10 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
         }
+        h3.mode-title { /* Style spécifique pour les titres de mode */
+            border-bottom-style: dashed;
+            color: #0056b3;
+        }
         h4 {
             border-bottom-style: dashed;
             padding-bottom: 5px;
@@ -67,7 +71,7 @@
         .button-secondary:hover {
             background-color: #545b62;
         }
-        .step-section {
+        .step-section, .mode-section { /* mode-section pour le nouveau mode */
             background-color: #e9ecef;
             padding: 15px;
             border-radius: 5px;
@@ -81,35 +85,29 @@
             background-color: #f9f9f9;
         }
         #toast-notification {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 4px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 30px;
-            font-size: 17px;
-            opacity: 0;
+            visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center;
+            border-radius: 4px; padding: 16px; position: fixed; z-index: 1000; left: 50%;
+            transform: translateX(-50%); bottom: 30px; font-size: 17px; opacity: 0;
             transition: opacity 0.5s, bottom 0.5s, visibility 0.5s;
         }
-        #toast-notification.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
-        }
+        #toast-notification.show { visibility: visible; opacity: 1; bottom: 50px; }
+        .hidden { display: none !important; }
+        .mode-selector { margin-bottom: 20px; padding: 10px; background-color: #ddeeff; border-radius: 5px;}
+        .mode-selector label { margin-right: 15px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Générateur de Prompts pour Bandes Dessinées IA</h1>
 
-        <div class="step-section">
-            <h2>Paramètres de la Bande Dessinée</h2>
+        <div class="mode-selector">
+            <h3>Choisir le mode de génération :</h3>
+            <label><input type="radio" name="generationMode" value="stepByStep" checked> Mode par Étapes</label>
+            <label><input type="radio" name="generationMode" value="singlePrompt"> Mode Prompt Unique</label>
+        </div>
+
+        <div class="step-section" id="parametersSection">
+            <h2>Paramètres de la Bande Dessinée (Communs aux deux modes)</h2>
             <label for="presetSelect">Choisir un preset :</label>
             <select id="presetSelect">
                 <option value="">-- Manuel --</option>
@@ -126,62 +124,86 @@
             <input type="number" id="bubblesPerPage" value="5">
             <label for="wordsPerPage">Mots par page (moyenne) :</label>
             <input type="number" id="wordsPerPage" value="30">
-            <label for="yellowBlocksPerPage">Bloc de texte jaune par page (moyenne) :</label>
+            <label for="yellowBlocksPerPage">Bloc de texte narratif par page (moyenne) :</label>
             <input type="number" id="yellowBlocksPerPage" value="0">
         </div>
 
-        <div class="step-section">
-            <h2>Étape 1 : Définition de l'Album/Histoire/Gag</h2>
-            <button id="generateStep1Prompt">Générer Prompt Étape 1</button>
-            <label for="step1PromptOutput">Prompt pour l'IA (Étape 1) :</label>
-            <textarea id="step1PromptOutput" readonly></textarea>
-            <button id="copyStep1Prompt" class="button-secondary">Copier Prompt Étape 1</button>
-            <label for="step1AiResponse">Coller le résultat de l'IA (Titre, Résumé, Personnages, Ton) :</label>
-            <textarea id="step1AiResponse"></textarea>
+        <div id="stepByStepModeSections">
+            <h3 class="mode-title">Mode par Étapes</h3>
+            <div class="step-section">
+                <h2>Étape 1 : Définition de l'Album/Histoire/Gag</h2>
+                <button id="generateStep1Prompt">Générer Prompt Étape 1</button>
+                <label for="step1PromptOutput">Prompt pour l'IA (Étape 1) :</label>
+                <textarea id="step1PromptOutput" readonly></textarea>
+                <button id="copyStep1Prompt" class="button-secondary">Copier Prompt Étape 1</button>
+                <label for="step1AiResponse">Coller le résultat de l'IA (Titre, Résumé, Personnages, Ton) :</label>
+                <textarea id="step1AiResponse"></textarea>
+            </div>
+
+            <div class="step-section">
+                <h2>Étape 2 : Structure des Pages</h2>
+                <button id="generateStep2Prompt">Générer Prompt Étape 2</button>
+                <label for="step2PromptOutput">Prompt pour l'IA (Étape 2) :</label>
+                <textarea id="step2PromptOutput" readonly></textarea>
+                <button id="copyStep2Prompt" class="button-secondary">Copier Prompt Étape 2</button>
+                <label for="step2AiResponse">Coller le résultat de l'IA (Descriptions sommaires de chaque page) :</label>
+                <textarea id="step2AiResponse"></textarea>
+            </div>
+
+            <div class="step-section">
+                <h2>Étape 3 : Génération Détaillée des Pages</h2>
+                <button id="setupStep3Fields">Préparer les champs pour l'Étape 3</button>
+                <div id="step3PagePromptsContainer"></div>
+            </div>
+
+            <div class="step-section">
+                <h2>Étape 4 : Compilation Finale</h2>
+                <button id="compileAllContent">Compiler Tout le Contenu</button>
+                <label for="finalCompilationOutput">Compilation Finale :</label>
+                <textarea id="finalCompilationOutput" readonly style="min-height: 300px;"></textarea>
+                <button id="copyFinalCompilation" class="button-secondary">Copier la Compilation</button>
+            </div>
         </div>
 
-        <div class="step-section">
-            <h2>Étape 2 : Structure des Pages</h2>
-            <button id="generateStep2Prompt">Générer Prompt Étape 2</button>
-            <label for="step2PromptOutput">Prompt pour l'IA (Étape 2) :</label>
-            <textarea id="step2PromptOutput" readonly></textarea>
-            <button id="copyStep2Prompt" class="button-secondary">Copier Prompt Étape 2</button>
-            <label for="step2AiResponse">Coller le résultat de l'IA (Descriptions sommaires de chaque page) :</label>
-            <textarea id="step2AiResponse"></textarea>
+        <div id="singlePromptModeSection" class="mode-section hidden">
+            <h3 class="mode-title">Mode Prompt Unique</h3>
+            <p>Ce mode génère un seul prompt demandant à l'IA de produire l'intégralité du contenu (définition, résumés de pages, détails de chaque case pour toutes les pages). Attention, cela peut générer un prompt et une réponse très longs, potentiellement au-delà des capacités de certains modèles d'IA pour les œuvres longues.</p>
+            <button id="generateSingleGlobalPrompt">Générer Prompt Unique Global</button>
+            <label for="singleGlobalPromptOutput">Prompt Unique Global pour l'IA :</label>
+            <textarea id="singleGlobalPromptOutput" readonly style="min-height: 200px;"></textarea>
+            <button id="copySingleGlobalPrompt" class="button-secondary">Copier Prompt Unique Global</button>
         </div>
 
-        <div class="step-section">
-            <h2>Étape 3 : Génération Détaillée des Pages</h2>
-            <button id="setupStep3Fields">Préparer les champs pour l'Étape 3</button>
-            <div id="step3PagePromptsContainer">
-                </div>
-        </div>
-
-        <div class="step-section">
-            <h2>Étape 4 : Compilation Finale</h2>
-            <button id="compileAllContent">Compiler Tout le Contenu</button>
-            <label for="finalCompilationOutput">Compilation Finale :</label>
-            <textarea id="finalCompilationOutput" readonly style="min-height: 300px;"></textarea>
-            <button id="copyFinalCompilation" class="button-secondary">Copier la Compilation</button>
-        </div>
     </div>
 
     <div id="toast-notification"></div>
 
     <script>
         const presets = {
-            asterix:        { nomBd: "Astérix",                             totalPages: 42, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 116, yellowBlocksPerPage: 1 },
-            dragonball:     { nomBd: "Dragon Ball (Goku enfant - Arc ~100p.)", totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, // MIS À JOUR
-            dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte - Arc ~100p.)",totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 }, // MIS À JOUR
-            iznogoud:       { nomBd: "Iznogoud (1 histoire)",               totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
-            petitspirougag: { nomBd: "Le Petit Spirou (gag)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
-            petitspirouhist:{ nomBd: "Le Petit Spirou (hist. 6p.)",         totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
-            quickflupke:    { nomBd: "Quick et Flupke (gag)",               totalPages: 2,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 5,  wordsPerPage: 30,  yellowBlocksPerPage: 0 },
-            schtroumpfs:    { nomBd: "Les Schtroumpfs (1 histoire)",        totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
-            spirou:         { nomBd: "Spirou et Fantasio",                  totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
-            tintin:         { nomBd: "Tintin",                              totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 }
+            achiletalon:    { nomBd: "Achille Talon (gag 2p.)",                totalPages: 2,  pageVariation: 0,  panelsPerPage: 12, bubblesPerPage: 18, wordsPerPage: 220, yellowBlocksPerPage: 1 },
+            asterix:        { nomBd: "Astérix",                                totalPages: 42, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 116, yellowBlocksPerPage: 1 },
+            blakemortimer:  { nomBd: "Blake et Mortimer",                      totalPages: 56, pageVariation: 2,  panelsPerPage: 10, bubblesPerPage: 12, wordsPerPage: 280, yellowBlocksPerPage: 2 },
+            bouleetbill:    { nomBd: "Boule et Bill (gag 1p.)",                totalPages: 1,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 6,  wordsPerPage: 45,  yellowBlocksPerPage: 0 },
+            dragonball:     { nomBd: "Dragon Ball (Goku enfant - Arc ~100p.)",  totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
+            dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte - Arc ~100p.)",totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 },
+            garfield:       { nomBd: "Garfield (gag-strip)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 3,  bubblesPerPage: 3,  wordsPerPage: 20,  yellowBlocksPerPage: 0 }, 
+            gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag 1p.)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
+            iznogoud:       { nomBd: "Iznogoud (1 histoire)",                  totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
+            jozettejocko:   { nomBd: "Jo, Zette et Jocko",                     totalPages: 52, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 12, wordsPerPage: 130, yellowBlocksPerPage: 1 },
+            luckyluke:      { nomBd: "Lucky Luke",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 120, yellowBlocksPerPage: 1 },
+            marsupilami:    { nomBd: "Marsupilami (aventure)",                 totalPages: 46, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
+            peanuts:        { nomBd: "Peanuts (gag-strip)",                    totalPages: 1,  pageVariation: 0,  panelsPerPage: 4,  bubblesPerPage: 4,  wordsPerPage: 30,  yellowBlocksPerPage: 0 }, 
+            philemon:       { nomBd: "Philémon (aventure onirique)",           totalPages: 44, pageVariation: 2,  panelsPerPage: 7,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
+            petitspirougag: { nomBd: "Le Petit Spirou (gag)",                  totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
+            petitspirouhist:{ nomBd: "Le Petit Spirou (hist. 6p.)",            totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
+            quickflupke:    { nomBd: "Quick et Flupke (gag)",                  totalPages: 2,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 5,  wordsPerPage: 30,  yellowBlocksPerPage: 0 },
+            schtroumpfs:    { nomBd: "Les Schtroumpfs (1 histoire)",           totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
+            spirou:         { nomBd: "Spirou et Fantasio",                     totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
+            tintin:         { nomBd: "Tintin",                                 totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 },
+            yokotsuno:      { nomBd: "Yoko Tsuno",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 130, yellowBlocksPerPage: 1 }
         };
 
+        // DOM Elements (inchangés)
         const presetSelect = document.getElementById('presetSelect');
         const nomBdInput = document.getElementById('nomBd');
         const totalPagesInput = document.getElementById('totalPages');
@@ -207,9 +229,33 @@
         const compileAllContentBtn = document.getElementById('compileAllContent');
         const finalCompilationOutput = document.getElementById('finalCompilationOutput');
         const copyFinalCompilationBtn = document.getElementById('copyFinalCompilation');
-
+        
         const toastNotification = document.getElementById('toast-notification');
         let toastTimeout;
+
+        // Mode Management
+        const modeRadios = document.querySelectorAll('input[name="generationMode"]');
+        const stepByStepModeSections = document.getElementById('stepByStepModeSections');
+        const singlePromptModeSection = document.getElementById('singlePromptModeSection');
+        const generateSingleGlobalPromptBtn = document.getElementById('generateSingleGlobalPrompt');
+        const singleGlobalPromptOutput = document.getElementById('singleGlobalPromptOutput');
+        const copySingleGlobalPromptBtn = document.getElementById('copySingleGlobalPrompt');
+
+        function switchMode(mode) {
+            if (mode === 'stepByStep') {
+                stepByStepModeSections.classList.remove('hidden');
+                singlePromptModeSection.classList.add('hidden');
+            } else if (mode === 'singlePrompt') {
+                stepByStepModeSections.classList.add('hidden');
+                singlePromptModeSection.classList.remove('hidden');
+            }
+        }
+
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                switchMode(this.value);
+            });
+        });
 
         function setDefaultParameters() {
             nomBdInput.value = "Mon Gag"; 
@@ -223,11 +269,12 @@
 
         function populatePresetDropdown() {
             const sortedPresets = Object.entries(presets)
-                .map(([key, value]) => ({
-                    key: key,
-                    displayName: value.nomBd 
-                }))
+                .map(([key, value]) => ({ key: key, displayName: value.nomBd }))
                 .sort((a, b) => a.displayName.localeCompare(b.displayName, 'fr', { sensitivity: 'base' }));
+
+            while (presetSelect.options.length > 1) {
+                presetSelect.remove(1);
+            }
 
             sortedPresets.forEach(presetInfo => {
                 const option = document.createElement('option');
@@ -293,21 +340,20 @@
         
         generateStep1PromptBtn.addEventListener('click', function() {
             const nomDeLaBd = nomBdInput.value.trim() || "[Nom de la BD à définir]";
-            const currentTotalPages = parseInt(totalPagesInput.value, 10); // Pour aider à déterminer le type d'oeuvre
+            const currentTotalPages = parseInt(totalPagesInput.value, 10);
             let typeOeuvre = "d'un album"; 
 
-            if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; }
+            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag") && currentTotalPages <=2) ) { typeOeuvre = "d'un gag (format strip)"; }
+            else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; }
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "d'une histoire courte"; } 
             else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; }
+            else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "d'une aventure"; }
             else if (nomDeLaBd.toLowerCase().includes("dragon ball")) { 
-                if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) { // Si "arc" dans le nom ou beaucoup de pages
+                if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) {
                     typeOeuvre = "d'un arc narratif (type manga)";
-                } else {
-                    typeOeuvre = "d'un chapitre (type manga)"; // Fallback pour DB si pas clairement un arc
-                }
+                } else { typeOeuvre = "d'un chapitre (type manga)"; }
             }
-
-            step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-3 phrases pour une oeuvre courte, potentiellement plus pour un arc narratif)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante mais respecter le thème de l'univers de ${nomDeLaBd}.`;
+            step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-2 phrases pour un gag ou strip, 3-5 pour une histoire courte, potentiellement plus pour un arc narratif ou une aventure complète)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante mais respecter le thème de l'univers de ${nomDeLaBd}.`;
         });
         copyStep1PromptBtn.addEventListener('click', () => copyToClipboard('step1PromptOutput'));
 
@@ -324,11 +370,11 @@
             if (isNaN(variation) || variation < 0) { showToastNotification("Variation de page invalide."); return; }
 
             if (variation === 0) {
-                pageCountDescription = `${totalPages} page${totalPages > 1 ? 's' : ''} au total (nombre fixe).`;
+                pageCountDescription = `${totalPages} page${totalPages > 1 ? 's' : ''} (ou strip${totalPages > 1 ? 's' : ''}) au total (nombre fixe).`;
             } else {
                 const minPages = Math.max(1, totalPages - variation);
                 const maxPages = totalPages + variation;
-                pageCountDescription = `Environ ${totalPages} page${totalPages > 1 ? 's' : ''} au total. Le nombre de pages final peut varier de ${minPages} à ${maxPages} pages.`;
+                pageCountDescription = `Environ ${totalPages} page${totalPages > 1 ? 's' : ''} (ou strip${totalPages > 1 ? 's' : ''}) au total. Le nombre final peut varier de ${minPages} à ${maxPages}.`;
             }
 
             let endingDescription = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
@@ -341,20 +387,20 @@
             const wordsAvg = wordsPerPageInput.value;
             const yellowBlocksAvg = yellowBlocksPerPageInput.value;
 
-            const prompt = `Considérant cette oeuvre (album/histoire/gag/chapitre manga/arc manga) suivante:
+            const prompt = `Considérant cette oeuvre (album/histoire/gag/strip/chapitre manga/arc manga/aventure) suivante:
 --- DÉBUT TITRE ET DESCRIPTION ---
 ${titreEtDescription}
 --- FIN TITRE ET DESCRIPTION ---
 
-Générez-moi une description sommaire de chaque page (courte description d'un maximum 3 lignes par page).
+Générez-moi une description sommaire de chaque page/strip (courte description d'un maximum 3 lignes par page/strip).
 ${pageCountDescription}
-Nombre de cases par page en moyenne, peut varier : ${panelsAvg}.
-Nombre de bulles par page en moyenne (peut varier) : ${bubblesAvg}.
-Nombre de mots par page en moyenne (peut varier) : ${wordsAvg}.
-Nombre de blocs de texte (narratif/explicatif) par page en moyenne (peut varier) : ${yellowBlocksAvg}. (Pour manga, cela peut inclure des textes narratifs hors bulles. Si 0, cela signifie probablement un gag muet ou sans narration textuelle).
+Nombre de cases par page/strip en moyenne, peut varier : ${panelsAvg}.
+Nombre de bulles par page/strip en moyenne (peut varier) : ${bubblesAvg}.
+Nombre de mots par page/strip en moyenne (peut varier) : ${wordsAvg}.
+Nombre de blocs de texte (narratif/explicatif) par page/strip en moyenne (peut varier) : ${yellowBlocksAvg}. (Si 0, cela signifie sans narration textuelle).
 
-Chaque page (si plusieurs pages) doit avoir un effet intriguant à la fin pour inciter le lecteur à lire la prochaine et cette mini-intrigue sera résolue à la prochaine page (sauf si c'est un gag en une page ou la fin d'un arc). La dernière page doit terminer par ${endingDescription}
-Pour chaque page, spécifiez le nombre de cases, de bulles, le nombre de mots par page, et le nombre de blocs de texte.
+Chaque page/strip (si plusieurs) doit avoir un effet intriguant à la fin pour inciter le lecteur à lire la prochaine (si applicable) et cette mini-intrigue sera résolue ensuite. La dernière page/strip doit terminer par ${endingDescription}
+Pour chaque page/strip, spécifiez le nombre de cases, de bulles, le nombre de mots, et le nombre de blocs de texte.
 Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des cases pour les scènes d'action.`;
             step2PromptOutput.value = prompt;
         });
@@ -368,12 +414,12 @@ Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des c
                 const pageBlock = document.createElement('div');
                 pageBlock.classList.add('page-generation-block');
                 pageBlock.innerHTML = `
-                    <h4>Page ${i}</h4>
-                    <button id="generateStep3PagePrompt_${i}" data-page="${i}">Générer Prompt Page ${i}</button>
-                    <label for="step3PagePromptOutput_${i}">Prompt pour l'IA (Page ${i}) :</label>
+                    <h4>Page/Strip ${i}</h4>
+                    <button id="generateStep3PagePrompt_${i}" data-page="${i}">Générer Prompt Page/Strip ${i}</button>
+                    <label for="step3PagePromptOutput_${i}">Prompt pour l'IA (Page/Strip ${i}) :</label>
                     <textarea id="step3PagePromptOutput_${i}" readonly></textarea>
-                    <button id="copyStep3PagePrompt_${i}" class="button-secondary" data-page="${i}">Copier Prompt Page ${i}</button>
-                    <label for="pageAiDetailedResponse_${i}">Coller la description DÉTAILLÉE de la page ${i} (utilisée pour réf. page suivante & compilation) :</label>
+                    <button id="copyStep3PagePrompt_${i}" class="button-secondary" data-page="${i}">Copier Prompt Page/Strip ${i}</button>
+                    <label for="pageAiDetailedResponse_${i}">Coller la description DÉTAILLÉE de la page/strip ${i} (utilisée pour réf. suivante & compilation) :</label>
                     <textarea id="pageAiDetailedResponse_${i}"></textarea> 
                 `;
                 step3PagePromptsContainer.appendChild(pageBlock);
@@ -394,8 +440,8 @@ Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des c
             if (pageNum > 1) {
                 const prevPageTextarea = document.getElementById(`pageAiDetailedResponse_${pageNum - 1}`); 
                 if (prevPageTextarea && prevPageTextarea.value.trim() !== "") {
-                    prevPageDescriptionRef = `\nVoici la description détaillée de la page précédente comme référence :\n--- DÉBUT DESCRIPTION PAGE PRÉCÉDENTE ---\n"${prevPageTextarea.value.trim()}"\n--- FIN DESCRIPTION PAGE PRÉCÉDENTE ---`;
-                } else { showToastNotification(`Info: La description détaillée de la page ${pageNum - 1} n'a pas été fournie pour référence.`); }
+                    prevPageDescriptionRef = `\nVoici la description détaillée de la page/strip précédente comme référence :\n--- DÉBUT DESCRIPTION PAGE/STRIP PRÉCÉDENTE ---\n"${prevPageTextarea.value.trim()}"\n--- FIN DESCRIPTION PAGE/STRIP PRÉCÉDENTE ---`;
+                } else { showToastNotification(`Info: La description détaillée de la page/strip ${pageNum - 1} n'a pas été fournie pour référence.`); }
             }
 
             const currentNomBd = nomBdInput.value;
@@ -405,22 +451,22 @@ Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des c
                 endingDescriptionDetail = `une "punch line" mémorable – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
             }
             
-            const prompt = `Considérant cette oeuvre (album/histoire/gag/chapitre manga/arc manga) suivante:
+            const prompt = `Considérant cette oeuvre (album/histoire/gag/strip/chapitre manga/arc manga/aventure) suivante:
 --- DÉBUT TITRE ET DESCRIPTION BD ---
 ${titreEtDescriptionBD}
 --- FIN TITRE ET DESCRIPTION BD ---
 
-Et la description sommaire de chaque page (générée à l'étape précédente):
---- DÉBUT DESCRIPTION SOMMAIRE DES PAGES ---
+Et la description sommaire de chaque page/strip (générée à l'étape précédente):
+--- DÉBUT DESCRIPTION SOMMAIRE DES PAGES/STRIPS ---
 ${descriptionDeChaquePage}
---- FIN DESCRIPTION SOMMAIRE DES PAGES ---
+--- FIN DESCRIPTION SOMMAIRE DES PAGES/STRIPS ---
 
-Générez-moi la description détaillée de la page ${pageNum}.${prevPageDescriptionRef}
-La description détaillée doit contenir chaque case de la page avec les dialogues (sauf si c'est un gag muet où les descriptions indiqueront 0 bulles/mots) et une description schématique simple des dessins. Pour un manga, veuillez inclure des suggestions d'onomatopées (effets sonores) pertinentes et décrire le dynamisme attendu des cases, surtout pour les scènes d'action.
+Générez-moi la description détaillée de la page/strip ${pageNum}.${prevPageDescriptionRef}
+La description détaillée doit contenir chaque case de la page/strip avec les dialogues (sauf si c'est un gag muet où les descriptions indiqueront 0 bulles/mots) et une description schématique simple des dessins. Pour un manga, veuillez inclure des suggestions d'onomatopées (effets sonores) pertinentes et décrire le dynamisme attendu des cases, surtout pour les scènes d'action.
 La description détaillée doit pouvoir servir de prompt pour un générateur d'images par intelligence artificielle.
-Assurez-vous de respecter le ton, le style, les personnages définis et la structure de la page (nombre de cases, etc.) qui ont été établis précédemment pour cette oeuvre.
-Si la description sommaire des pages (issue de l'étape 2) indique un effet intriguant pour cette page ${pageNum} (et si ce n'est pas la dernière page de l'oeuvre et qu'elle a plusieurs pages), assurez-vous que la description détaillée de la page se termine par cet effet.
-Si c'est la dernière page de l'oeuvre (selon les descriptions de l'étape 2), assurez ${endingDescriptionDetail}`;
+Assurez-vous de respecter le ton, le style, les personnages définis et la structure de la page/strip (nombre de cases, etc.) qui ont été établis précédemment pour cette oeuvre.
+Si la description sommaire des pages/strips (issue de l'étape 2) indique un effet intriguant pour cette page/strip ${pageNum} (et si ce n'est pas la dernière page/strip de l'oeuvre et qu'elle a plusieurs pages/strips), assurez-vous que la description détaillée de la page/strip se termine par cet effet.
+Si c'est la dernière page/strip de l'oeuvre (selon les descriptions de l'étape 2), assurez ${endingDescriptionDetail}`;
             document.getElementById(`step3PagePromptOutput_${pageNum}`).value = prompt;
         }
 
@@ -437,7 +483,7 @@ Si c'est la dernière page de l'oeuvre (selon les descriptions de l'étape 2), a
             } else { showToastNotification("Contenu de l'Étape 1 manquant pour la compilation."); }
 
             const etape2Content = step2AiResponse.value.trim();
-            if (etape2Content) { fullCompilation.push("\n\n=== ÉTAPE 2 : STRUCTURE DES PAGES (DESCRIPTIONS SOMMAIRES) ==="); fullCompilation.push(etape2Content);
+            if (etape2Content) { fullCompilation.push("\n\n=== ÉTAPE 2 : STRUCTURE DES PAGES/STRIPS (DESCRIPTIONS SOMMAIRES) ==="); fullCompilation.push(etape2Content);
             } else { showToastNotification("Contenu de l'Étape 2 manquant pour la compilation."); }
             
             if (!isNaN(totalPages) && totalPages > 0) {
@@ -447,20 +493,20 @@ Si c'est la dernière page de l'oeuvre (selon les descriptions de l'étape 2), a
                     const pageDetailTextarea = document.getElementById(`pageAiDetailedResponse_${i}`);
                     if (pageDetailTextarea) { 
                         if (pageDetailTextarea.value.trim()) {
-                            step3Content.push(`\n--- PAGE ${i} ---`); step3Content.push(pageDetailTextarea.value.trim());
+                            step3Content.push(`\n--- PAGE/STRIP ${i} ---`); step3Content.push(pageDetailTextarea.value.trim());
                         } else {
-                            step3Content.push(`\n--- PAGE ${i} ---`); step3Content.push("[Description détaillée pour cette page non fournie]");
+                            step3Content.push(`\n--- PAGE/STRIP ${i} ---`); step3Content.push("[Description détaillée pour cette page/strip non fournie]");
                             allPagesDetailCollectedOrMarked = false; 
                         }
                     }
                 }
-                if (step3Content.length > 0){ fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES ==="); fullCompilation.push(step3Content.join("\n")); 
+                if (step3Content.length > 0){ fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES/STRIPS ==="); fullCompilation.push(step3Content.join("\n")); 
                 } else if (totalPages > 0) { 
-                     fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES ===");
-                     fullCompilation.push("[Aucune description détaillée de page n'a été fournie pour les " + totalPages + " page(s) de base.]");
+                     fullCompilation.push("\n\n=== ÉTAPE 3 : DESCRIPTIONS DÉTAILLÉES DES PAGES/STRIPS ===");
+                     fullCompilation.push("[Aucune description détaillée de page/strip n'a été fournie pour les " + totalPages + " page(s)/strip(s) de base.]");
                 }
                  if (!allPagesDetailCollectedOrMarked && step3Content.length > 0) { 
-                    showToastNotification("Certaines descriptions détaillées de page de l'Étape 3 sont manquantes.");
+                    showToastNotification("Certaines descriptions détaillées de page/strip de l'Étape 3 sont manquantes.");
                 }
             } else { showToastNotification("Nombre de pages (base) non défini ou invalide pour compiler l'Étape 3."); }
             
@@ -469,15 +515,139 @@ Si c'est la dernière page de l'oeuvre (selon les descriptions de l'étape 2), a
                 showToastNotification("Compilation terminée !");
             } else { showToastNotification("Rien à compiler pour le moment."); }
         });
-
         copyFinalCompilationBtn.addEventListener('click', () => {
             if (finalCompilationOutput.value.trim() === "") { showToastNotification("Rien à copier, la compilation est vide."); return; }
             copyToClipboard('finalCompilationOutput');
         });
         
+        generateSingleGlobalPromptBtn.addEventListener('click', function() {
+            const nomDeLaBd = nomBdInput.value.trim() || "[À DÉFINIR PAR L'IA]";
+            const totalPages = parseInt(totalPagesInput.value, 10);
+            const variation = parseInt(pageVariationInput.value, 10);
+            const panelsPerPage = panelsPerPageInput.value;
+            const bubblesPerPage = bubblesPerPageInput.value;
+            const wordsPerPage = wordsPerPageInput.value;
+            const yellowBlocksPerPage = yellowBlocksPerPageInput.value;
+
+            if (isNaN(totalPages) || totalPages <= 0) {
+                showToastNotification("Veuillez définir un nombre de pages (base) valide pour le prompt unique.");
+                return;
+            }
+
+            let typeOeuvre = "un album";
+            let unitName = "page";
+            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag") && totalPages <=2 && nomDeLaBd.toLowerCase().includes("quick et flupke"))) { // Plus spécifique pour Q&F et Garfield/Peanuts
+                 typeOeuvre = "un gag (format strip)"; unitName="strip"; 
+            } else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "un gag"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "une histoire courte"; unitName="page"; } 
+            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "une histoire"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "une aventure"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("dragon ball")) { 
+                if (nomDeLaBd.toLowerCase().includes("arc") || totalPages > 50) {
+                    typeOeuvre = "un arc narratif (type manga)"; unitName="page";
+                } else { typeOeuvre = "un chapitre (type manga)"; unitName="page"; }
+            }
+
+
+            let pageCountDetails = "";
+            if (variation === 0) {
+                pageCountDetails = `${totalPages} ${unitName}${totalPages > 1 ? 's' : ''} (nombre fixe).`;
+            } else {
+                const minPages = Math.max(1, totalPages - variation);
+                const maxPages = totalPages + variation;
+                pageCountDetails = `environ ${totalPages} ${unitName}${totalPages > 1 ? 's' : ''}, pouvant varier de ${minPages} à ${maxPages}.`;
+            }
+
+            let endingType = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
+            if (nomDeLaBd.toLowerCase().includes("gag") || totalPages <= 2) {
+                endingType = `une "punch line" – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+            }
+            
+            let mangaSpecifics = "";
+            if (nomDeLaBd.toLowerCase().includes("dragon ball")) { 
+                mangaSpecifics = "\n    - Pour un manga, inclure des suggestions d'onomatopées (effets sonores) et décrire le dynamisme des cases, surtout pour l'action.";
+            }
+
+            const globalPrompt = `
+Vous êtes un assistant expert en création de scénarios et de storyboards pour bandes dessinées.
+Votre tâche est de générer une oeuvre complète de type "${typeOeuvre}" dans l'univers de "${nomDeLaBd}".
+
+PARAMÈTRES GÉNÉRAUX DE L'OEUVRE FOURNIS À TITRE INDICATIF (L'IA PEUT LES AJUSTER LÉGÈREMENT SI NÉCESSAIRE POUR LA COHÉRENCE) :
+- Longueur de base attendue : ${totalPages} ${unitName}${totalPages > 1 ? 's' : ''}.
+- Variation autorisée : +/- ${variation} ${unitName}${totalPages > 1 ? 's' : ''}. (Le nombre total de ${unitName}s de l'oeuvre générée doit se situer dans cette fourchette).
+- Cases par ${unitName} (moyenne indicative) : ${panelsPerPage}
+- Bulles par ${unitName} (moyenne indicative) : ${bubblesPerPage}
+- Mots par ${unitName} (moyenne indicative) : ${wordsPerPage}
+- Blocs narratifs/explicatifs par ${unitName} (moyenne indicative) : ${yellowBlocksPerPage}
+
+VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE DÉTAILLÉE CI-DESSOUS :
+
+### PARTIE A : DÉFINITION GLOBALE DE L'OEUVRE
+
+1.  **TITRE DE L'OEUVRE :**
+    [Proposez un titre original et adapté]
+
+2.  **RÉSUMÉ DE L'INTRIGUE PRINCIPALE :**
+    (1-2 phrases pour un gag/strip, 3-5 pour une histoire courte, potentiellement plus pour un arc narratif ou une aventure complète. Décrivez le concept central, les enjeux et la direction générale de l'intrigue.)
+
+3.  **PERSONNAGES IMPORTANTS :**
+    (Listez les personnages clés de cette oeuvre spécifique, y compris les nouveaux si pertinent, et décrivez brièvement leur rôle ou leur objectif dans cette intrigue.)
+
+4.  **TON ET STYLE :**
+    (Décrivez le ton général (humoristique, aventureux, dramatique, etc.) et le style graphique/narratif à adopter pour cette oeuvre, en respectant l'univers de "${nomDeLaBd}".)
+
+5.  **ORIGINALITÉ ET RESPECT DE L'UNIVERS :**
+    L'oeuvre générée doit être une création originale, évitant de reproduire trop fidèlement des oeuvres existantes, tout en restant cohérente avec l'esprit, les thèmes et les personnages de l'univers de "${nomDeLaBd}".
+
+### PARTIE B : STRUCTURE DÉTAILLÉE ET RÉSUMÉS DES ${unitName.toUpperCase()}S
+
+1.  **NOMBRE TOTAL DE ${unitName.toUpperCase()}S EFFECTIVEMENT UTILISÉES DANS VOTRE GÉNÉRATION :**
+    [Indiquez ici le nombre exact de ${unitName}s que vous allez décrire ci-dessous, en respectant la variation autorisée autour de ${totalPages} ${unitName}s.]
+
+2.  **POUR CHAQUE ${unitName.toUpperCase()}** (du/de la ${unitName} 1 au/à la ${unitName} [Nombre total de ${unitName}s utilisées]) :
+
+    **${unitName.charAt(0).toUpperCase() + unitName.slice(1)} [Numéro]**
+    * **Résumé Sommaire :** (1-3 lignes maximum. Décrivez l'action principale et le contenu essentiel. Assurez un effet intriguant à la fin (sauf la dernière, ou pour un gag en une seule unité) qui donne envie de lire la suite, et dont la mini-intrigue sera résolue ensuite.)
+    * **Spécifications pour CETTE UNITÉ (${unitName.toUpperCase()}) :**
+        * Nombre de cases prévues : [Nombre exact]
+        * Nombre de bulles prévues (approximatif) : [Nombre]
+        * Nombre de mots prévus (approximatif) : [Nombre]
+        * Nombre de blocs narratifs/explicatifs prévus : [Nombre]
+
+    *(Rappel : La dernière unité (${unitName}) doit se terminer par ${endingType})*
+
+### PARTIE C : DESCRIPTION DÉTAILLÉE DE CHAQUE ${unitName.toUpperCase()} ET DE CHAQUE CASE
+
+**POUR CHAQUE ${unitName.toUpperCase()}** (décrite dans la PARTIE B, du/de la ${unitName} 1 au/à la ${unitName} [Nombre total de ${unitName}s utilisées]) :
+
+**-------------------- DÉBUT ${unitName.toUpperCase()} [Numéro] --------------------**
+*(Rappel du Résumé Sommaire ici)*
+*(Rappel des Spécifications ici : [X] cases, [Y] bulles, [Z] mots, [W] blocs narratifs)*
+
+**POUR CHAQUE CASE** (de 1 au nombre de cases défini pour CETTE UNITÉ (${unitName.toUpperCase()})) :
+
+**Case [Numéro de la case] :**
+* **Description Visuelle :** (Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
+* **Dialogues/Texte :** (Texte exact des bulles, pensées, ou blocs narratifs DANS cette case. Si muet, indiquer "Aucun dialogue".)
+
+**-------------------- FIN ${unitName.toUpperCase()} [Numéro] --------------------**
+
+NOTES IMPORTANTES POUR VOTRE GÉNÉRATION :
+-   **Cohérence et Continuité :** Assurez une parfaite continuité narrative, logique et visuelle.
+-   **Respect des Instructions :** Suivez scrupuleusement le ton, le style, les personnages de l'univers "${nomDeLaBd}", ainsi que les paramètres généraux et les spécifications définies.
+-   **Clarté pour Générateur d'Images :** La "Description Visuelle" doit être un prompt efficace pour un générateur d'images IA.
+-   **Format de Sortie :** Veuillez utiliser la structure de titres et listes pour faciliter la lecture.
+`;
+            singleGlobalPromptOutput.value = globalPrompt.trim();
+            showToastNotification("Prompt unique global généré !");
+        });
+
+        copySingleGlobalPromptBtn.addEventListener('click', () => copyToClipboard('singleGlobalPromptOutput'));
+        
         document.addEventListener('DOMContentLoaded', function() {
             populatePresetDropdown();
             setDefaultParameters(); 
+            switchMode('stepByStep'); 
         });
 
     </script>
