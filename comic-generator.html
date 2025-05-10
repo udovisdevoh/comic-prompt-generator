@@ -93,7 +93,7 @@
         #toast-notification.show { visibility: visible; opacity: 1; bottom: 50px; }
         .hidden { display: none !important; }
         .mode-selector { margin-bottom: 20px; padding: 10px; background-color: #ddeeff; border-radius: 5px;}
-        .mode-selector label { margin-right: 15px; }
+        .mode-selector label { margin-right: 10px; }
     </style>
 </head>
 <body>
@@ -103,28 +103,29 @@
         <div class="mode-selector">
             <h3>Choisir le mode de génération :</h3>
             <label><input type="radio" name="generationMode" value="stepByStep" checked> Mode par Étapes</label>
-            <label><input type="radio" name="generationMode" value="singlePrompt"> Mode Prompt Unique</label>
+            <label><input type="radio" name="generationMode" value="singlePrompt"> Mode Prompt Unique (Texte)</label>
+            <label><input type="radio" name="generationMode" value="storyboard"> Mode Storyboard (HTML/SVG)</label>
         </div>
 
         <div class="step-section" id="parametersSection">
-            <h2>Paramètres de la Bande Dessinée (Communs aux deux modes)</h2>
+            <h2>Paramètres de la Bande Dessinée (Communs à tous les modes)</h2>
             <label for="presetSelect">Choisir un preset :</label>
             <select id="presetSelect">
                 <option value="">-- Manuel --</option>
                 </select>
             <label for="nomBd">Nom de la série de BD :</label>
             <input type="text" id="nomBd" value="Mon Gag">
-            <label for="totalPages">Pages au total (base) :</label>
+            <label for="totalPages">Pages/Strips au total (base) :</label>
             <input type="number" id="totalPages" value="2">
-            <label for="pageVariation">Variation de pages (+/-) :</label>
+            <label for="pageVariation">Variation de pages/strips (+/-) :</label>
             <input type="number" id="pageVariation" value="0">
-            <label for="panelsPerPage">Cases par page (moyenne) :</label>
+            <label for="panelsPerPage">Cases par page/strip (moyenne) :</label>
             <input type="number" id="panelsPerPage" value="6">
-            <label for="bubblesPerPage">Bulles par page (moyenne) :</label>
+            <label for="bubblesPerPage">Bulles par page/strip (moyenne) :</label>
             <input type="number" id="bubblesPerPage" value="5">
-            <label for="wordsPerPage">Mots par page (moyenne) :</label>
+            <label for="wordsPerPage">Mots par page/strip (moyenne) :</label>
             <input type="number" id="wordsPerPage" value="30">
-            <label for="yellowBlocksPerPage">Bloc de texte narratif par page (moyenne) :</label>
+            <label for="yellowBlocksPerPage">Bloc de texte narratif par page/strip (moyenne) :</label>
             <input type="number" id="yellowBlocksPerPage" value="0">
         </div>
 
@@ -141,23 +142,23 @@
             </div>
 
             <div class="step-section">
-                <h2>Étape 2 : Structure des Pages</h2>
+                <h2>Étape 2 : Structure des Pages/Strips</h2>
                 <button id="generateStep2Prompt">Générer Prompt Étape 2</button>
                 <label for="step2PromptOutput">Prompt pour l'IA (Étape 2) :</label>
                 <textarea id="step2PromptOutput" readonly></textarea>
                 <button id="copyStep2Prompt" class="button-secondary">Copier Prompt Étape 2</button>
-                <label for="step2AiResponse">Coller le résultat de l'IA (Descriptions sommaires de chaque page) :</label>
+                <label for="step2AiResponse">Coller le résultat de l'IA (Descriptions sommaires) :</label>
                 <textarea id="step2AiResponse"></textarea>
             </div>
 
             <div class="step-section">
-                <h2>Étape 3 : Génération Détaillée des Pages</h2>
+                <h2>Étape 3 : Génération Détaillée des Pages/Strips</h2>
                 <button id="setupStep3Fields">Préparer les champs pour l'Étape 3</button>
                 <div id="step3PagePromptsContainer"></div>
             </div>
 
             <div class="step-section">
-                <h2>Étape 4 : Compilation Finale</h2>
+                <h2>Étape 4 : Compilation Finale (Texte)</h2>
                 <button id="compileAllContent">Compiler Tout le Contenu</button>
                 <label for="finalCompilationOutput">Compilation Finale :</label>
                 <textarea id="finalCompilationOutput" readonly style="min-height: 300px;"></textarea>
@@ -166,12 +167,26 @@
         </div>
 
         <div id="singlePromptModeSection" class="mode-section hidden">
-            <h3 class="mode-title">Mode Prompt Unique</h3>
-            <p>Ce mode génère un seul prompt demandant à l'IA de produire l'intégralité du contenu (définition, résumés de pages, détails de chaque case pour toutes les pages). Attention, cela peut générer un prompt et une réponse très longs, potentiellement au-delà des capacités de certains modèles d'IA pour les œuvres longues.</p>
-            <button id="generateSingleGlobalPrompt">Générer Prompt Unique Global</button>
+            <h3 class="mode-title">Mode Prompt Unique (Sortie Texte)</h3>
+            <p>Ce mode génère un seul prompt demandant à l'IA de produire l'intégralité du contenu textuel (définition, résumés, détails de chaque case pour toutes les pages/strips). Attention, cela peut générer un prompt et une réponse très longs.</p>
+            <button id="generateSingleGlobalPrompt">Générer Prompt Unique Global (Texte)</button>
             <label for="singleGlobalPromptOutput">Prompt Unique Global pour l'IA :</label>
             <textarea id="singleGlobalPromptOutput" readonly style="min-height: 200px;"></textarea>
             <button id="copySingleGlobalPrompt" class="button-secondary">Copier Prompt Unique Global</button>
+        </div>
+
+        <div id="storyboardModeSection" class="mode-section hidden">
+            <h3 class="mode-title">Mode Storyboard (Sortie HTML/SVG)</h3>
+            <p>Ce mode génère un prompt unique demandant à l'IA de produire un storyboard complet au format HTML avec des dessins SVG schématiques. La qualité des SVG dépendra fortement des capacités de l'IA. Le résultat peut être très long.</p>
+            <button id="generateStoryboardGlobalPrompt">Générer Prompt Storyboard Global</button>
+            <label for="storyboardGlobalPromptOutput">Prompt Storyboard Global pour l'IA :</label>
+            <textarea id="storyboardGlobalPromptOutput" readonly style="min-height: 200px;"></textarea>
+            <button id="copyStoryboardGlobalPrompt" class="button-secondary">Copier Prompt Storyboard</button>
+            
+            <hr style="margin: 20px 0;">
+            <label for="storyboardAiOutputHtml">Coller le code HTML/SVG généré par l'IA ici :</label>
+            <textarea id="storyboardAiOutputHtml" style="min-height: 250px; font-family: monospace;"></textarea>
+            <button id="previewStoryboardBtn">Prévisualiser le Storyboard</button>
         </div>
 
     </div>
@@ -179,18 +194,18 @@
     <div id="toast-notification"></div>
 
     <script>
-        const presets = {
+        const presets = { // Assurez-vous que cet objet est à jour avec tous vos presets
             achiletalon:    { nomBd: "Achille Talon (gag 2p.)",                totalPages: 2,  pageVariation: 0,  panelsPerPage: 12, bubblesPerPage: 18, wordsPerPage: 220, yellowBlocksPerPage: 1 },
             asterix:        { nomBd: "Astérix",                                totalPages: 42, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 116, yellowBlocksPerPage: 1 },
-            astroboy:       { nomBd: "Astro Boy (chapitre aventure)",          totalPages: 24, pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, // MANGA
-            attackontitan:  { nomBd: "Attack on Titan (chapitre)",             totalPages: 40, pageVariation: 5,  panelsPerPage: 5,  bubblesPerPage: 6,  wordsPerPage: 70,  yellowBlocksPerPage: 1 }, // MANGA
-            berserk:        { nomBd: "Berserk (chapitre)",                     totalPages: 22, pageVariation: 4,  panelsPerPage: 5,  bubblesPerPage: 5,  wordsPerPage: 60,  yellowBlocksPerPage: 1 }, // MANGA
+            astroboy:       { nomBd: "Astro Boy (chapitre aventure)",          totalPages: 24, pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, 
+            attackontitan:  { nomBd: "Attack on Titan (chapitre)",             totalPages: 40, pageVariation: 5,  panelsPerPage: 5,  bubblesPerPage: 6,  wordsPerPage: 70,  yellowBlocksPerPage: 1 }, 
+            berserk:        { nomBd: "Berserk (chapitre)",                     totalPages: 22, pageVariation: 4,  panelsPerPage: 5,  bubblesPerPage: 5,  wordsPerPage: 60,  yellowBlocksPerPage: 1 }, 
             blakemortimer:  { nomBd: "Blake et Mortimer",                      totalPages: 56, pageVariation: 2,  panelsPerPage: 10, bubblesPerPage: 12, wordsPerPage: 280, yellowBlocksPerPage: 2 },
             bouleetbill:    { nomBd: "Boule et Bill (gag 1p.)",                totalPages: 1,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 6,  wordsPerPage: 45,  yellowBlocksPerPage: 0 },
-            deathnote:      { nomBd: "Death Note (chapitre)",                  totalPages: 19, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 9,  wordsPerPage: 110, yellowBlocksPerPage: 1 }, // MANGA
+            deathnote:      { nomBd: "Death Note (chapitre)",                  totalPages: 19, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 9,  wordsPerPage: 110, yellowBlocksPerPage: 1 }, 
             dragonball:     { nomBd: "Dragon Ball (Goku enfant - Arc ~100p.)",  totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
             dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte - Arc ~100p.)",totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 },
-            drslump:        { nomBd: "Dr. Slump (chapitre gag)",               totalPages: 14, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, // MANGA
+            drslump:        { nomBd: "Dr. Slump (chapitre gag)",               totalPages: 14, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
             garfield:       { nomBd: "Garfield (gag-strip)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 3,  bubblesPerPage: 3,  wordsPerPage: 20,  yellowBlocksPerPage: 0 }, 
             gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag 1p.)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
             iznogoud:       { nomBd: "Iznogoud (1 histoire)",                  totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
@@ -198,8 +213,8 @@
             jozettejocko:   { nomBd: "Jo, Zette et Jocko",                     totalPages: 52, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 12, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             luckyluke:      { nomBd: "Lucky Luke",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 120, yellowBlocksPerPage: 1 },
             marsupilami:    { nomBd: "Marsupilami (aventure)",                 totalPages: 46, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
-            naruto:         { nomBd: "Naruto (chapitre)",                      totalPages: 18, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, // MANGA
-            onepiece:       { nomBd: "One Piece (chapitre)",                   totalPages: 17, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, // MANGA
+            naruto:         { nomBd: "Naruto (chapitre)",                      totalPages: 18, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, 
+            onepiece:       { nomBd: "One Piece (chapitre)",                   totalPages: 17, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
             oumpahpah:      { nomBd: "Oumpah-Pah (1 histoire)",                totalPages: 30, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
             peanuts:        { nomBd: "Peanuts (gag-strip)",                    totalPages: 1,  pageVariation: 0,  panelsPerPage: 4,  bubblesPerPage: 4,  wordsPerPage: 30,  yellowBlocksPerPage: 0 }, 
             philemon:       { nomBd: "Philémon (aventure onirique)",           totalPages: 44, pageVariation: 2,  panelsPerPage: 7,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
@@ -210,13 +225,12 @@
             schtroumpfs:    { nomBd: "Les Schtroumpfs (1 histoire)",           totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
             simpsonquebec:  { nomBd: "Les Simpson (BD québécoise)",            totalPages: 22, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 110, yellowBlocksPerPage: 1 },
             spirou:         { nomBd: "Spirou et Fantasio",                     totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
-            spyxfamily:     { nomBd: "Spy x Family (chapitre/mission)",        totalPages: 25, pageVariation: 5,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, // MANGA
+            spyxfamily:     { nomBd: "Spy x Family (chapitre/mission)",        totalPages: 25, pageVariation: 5,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
             tintin:         { nomBd: "Tintin",                                 totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 },
             yakari:         { nomBd: "Yakari (aventure jeunesse)",             totalPages: 44, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
             yokotsuno:      { nomBd: "Yoko Tsuno",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 130, yellowBlocksPerPage: 1 }
         };
 
-        // DOM Elements (inchangés)
         const presetSelect = document.getElementById('presetSelect');
         const nomBdInput = document.getElementById('nomBd');
         const totalPagesInput = document.getElementById('totalPages');
@@ -246,21 +260,33 @@
         const toastNotification = document.getElementById('toast-notification');
         let toastTimeout;
 
-        // Mode Management
         const modeRadios = document.querySelectorAll('input[name="generationMode"]');
         const stepByStepModeSections = document.getElementById('stepByStepModeSections');
         const singlePromptModeSection = document.getElementById('singlePromptModeSection');
+        const storyboardModeSection = document.getElementById('storyboardModeSection'); 
+
         const generateSingleGlobalPromptBtn = document.getElementById('generateSingleGlobalPrompt');
         const singleGlobalPromptOutput = document.getElementById('singleGlobalPromptOutput');
         const copySingleGlobalPromptBtn = document.getElementById('copySingleGlobalPrompt');
 
+        const generateStoryboardGlobalPromptBtn = document.getElementById('generateStoryboardGlobalPrompt'); 
+        const storyboardGlobalPromptOutput = document.getElementById('storyboardGlobalPromptOutput'); 
+        const copyStoryboardGlobalPromptBtn = document.getElementById('copyStoryboardGlobalPrompt'); 
+        const storyboardAiOutputHtml = document.getElementById('storyboardAiOutputHtml'); 
+        const previewStoryboardBtn = document.getElementById('previewStoryboardBtn'); 
+
+
         function switchMode(mode) {
+            stepByStepModeSections.classList.add('hidden');
+            singlePromptModeSection.classList.add('hidden');
+            storyboardModeSection.classList.add('hidden');
+
             if (mode === 'stepByStep') {
                 stepByStepModeSections.classList.remove('hidden');
-                singlePromptModeSection.classList.add('hidden');
             } else if (mode === 'singlePrompt') {
-                stepByStepModeSections.classList.add('hidden');
                 singlePromptModeSection.classList.remove('hidden');
+            } else if (mode === 'storyboard') {
+                storyboardModeSection.classList.remove('hidden');
             }
         }
 
@@ -359,10 +385,10 @@
             if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && currentTotalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "d'un gag (format strip)"; }
             else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; } 
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "d'une histoire courte"; } 
-            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; } // Catche "Oumpah-Pah (1 histoire)"
-            else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "d'une aventure jeunesse"; } // Pour Yakari
+            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; } 
+            else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "d'une aventure jeunesse"; }
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "d'une aventure"; }
-            else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "d'une bande dessinée (style américain, adaptation québécoise)"; } // Pour Simpsons/Pierrafeu
+            else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "d'une bande dessinée (style américain, adaptation québécoise)"; } 
             else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) {
                     typeOeuvre = "d'un arc narratif (type manga)";
@@ -552,6 +578,7 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             copyToClipboard('finalCompilationOutput');
         });
         
+        // --- Logique pour Mode Prompt Unique (Texte) ---
         generateSingleGlobalPromptBtn.addEventListener('click', function() {
             const nomDeLaBd = nomBdInput.value.trim() || "[À DÉFINIR PAR L'IA]";
             const totalPages = parseInt(totalPagesInput.value, 10);
@@ -575,14 +602,13 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "une aventure jeunesse"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "une aventure"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "une bande dessinée (style américain, adaptation québécoise)"; unitName="page"; }
-             else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
+            else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(totalPages) && totalPages > 50)) {
                     typeOeuvre = "un arc narratif (type manga)"; unitName="page";
                 } else {
                     typeOeuvre = "un chapitre (type manga)"; unitName="page";
                 }
             }
-
 
             let pageCountDetails = "";
             if (variation === 0) {
@@ -599,7 +625,7 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             }
             
             let mangaSpecifics = "";
-             if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy"].some(m => nomDeLaBd.toLowerCase().includes(m.replace(/\s/g, '')))) { // Check for manga titles too
+            if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy", "dragon ball", "dragon ball z"].some(m => nomDeLaBd.toLowerCase().includes(m.replace(/\s/g, '')))) { 
                 mangaSpecifics = "\n    - Pour un manga, inclure des suggestions d'onomatopées (effets sonores) et décrire le dynamisme des cases, surtout pour l'action.";
             }
 
@@ -607,13 +633,13 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
 Vous êtes un assistant expert en création de scénarios et de storyboards pour bandes dessinées.
 Votre tâche est de générer une oeuvre complète de type "${typeOeuvre}" dans l'univers de "${nomDeLaBd}".
 
-PARAMÈTRES GÉNÉRAUX DE L'OEUVRE FOURNIS À TITRE INDICATIF (L'IA PEUT LES AJUSTER LÉGÈREMENT SI NÉCESSAIRE POUR LA COHÉRENCE) :
+PARAMÈTRES GÉNÉRAUX DE L'OEUVRE FOURNIS À TITRE INDICATIF (L'IA DEVRA DÉFINIR LES SPÉCIFICITÉS PAR ${unitName.toUpperCase()} DANS LA PARTIE B ET S'Y TENIR) :
 - Longueur de base attendue : ${totalPages} ${unitName}${totalPages > 1 ? 's' : ''}.
 - Variation autorisée : +/- ${variation} ${unitName}${totalPages > 1 ? 's' : ''}. (Le nombre total de ${unitName}s de l'oeuvre générée doit se situer dans cette fourchette).
-- Cases par ${unitName} (moyenne indicative) : ${panelsPerPage}
-- Bulles par ${unitName} (moyenne indicative) : ${bubblesPerPage}
-- Mots par ${unitName} (moyenne indicative) : ${wordsPerPage}
-- Blocs narratifs/explicatifs par ${unitName} (moyenne indicative) : ${yellowBlocksPerPage}
+- Cases par ${unitName} (moyenne indicative globale) : ${panelsPerPage}
+- Bulles par ${unitName} (moyenne indicative globale) : ${bubblesPerPage}
+- Mots par ${unitName} (moyenne indicative globale) : ${wordsPerPage}
+- Blocs narratifs/explicatifs par ${unitName} (moyenne indicative globale) : ${yellowBlocksPerPage}
 
 VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE DÉTAILLÉE CI-DESSOUS :
 
@@ -643,7 +669,7 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 
     **${unitName.charAt(0).toUpperCase() + unitName.slice(1)} [Numéro]**
     * **Résumé Sommaire :** (1-3 lignes maximum. Décrivez l'action principale et le contenu essentiel. Assurez un effet intriguant à la fin (sauf la dernière, ou pour un gag en une seule unité) qui donne envie de lire la suite, et dont la mini-intrigue sera résolue ensuite.)
-    * **Spécifications pour CETTE UNITÉ (${unitName.toUpperCase()}) :**
+    * **Spécifications pour CETTE UNITÉ (${unitName.toUpperCase()}) :** (Ces valeurs doivent être respectées dans la PARTIE C)
         * Nombre de cases prévues : [Nombre exact]
         * Nombre de bulles prévues (approximatif) : [Nombre]
         * Nombre de mots prévus (approximatif) : [Nombre]
@@ -656,10 +682,9 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 **POUR CHAQUE ${unitName.toUpperCase()}** (décrite dans la PARTIE B, du/de la ${unitName} 1 au/à la ${unitName} [Nombre total de ${unitName}s utilisées]) :
 
 **-------------------- DÉBUT ${unitName.toUpperCase()} [Numéro] --------------------**
-*(Rappel du Résumé Sommaire ici)*
-*(Rappel des Spécifications ici : [X] cases, [Y] bulles, [Z] mots, [W] blocs narratifs)*
+*(Rappel du Résumé Sommaire de la ${unitName.toUpperCase()} [Numéro] ici)*
 
-**POUR CHAQUE CASE** (de 1 au nombre de cases défini pour CETTE UNITÉ (${unitName.toUpperCase()})) :
+**POUR CHAQUE CASE** (de 1 au nombre de cases défini pour CETTE UNITÉ (${unitName.toUpperCase()}) DANS LA PARTIE B) :
 
 **Case [Numéro de la case] :**
 * **Description Visuelle :** (Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
@@ -669,15 +694,178 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 
 NOTES IMPORTANTES POUR VOTRE GÉNÉRATION :
 -   **Cohérence et Continuité :** Assurez une parfaite continuité narrative, logique et visuelle.
--   **Respect des Instructions :** Suivez scrupuleusement le ton, le style, les personnages de l'univers "${nomDeLaBd}", ainsi que les paramètres généraux et les spécifications définies.
--   **Clarté pour Générateur d'Images :** La "Description Visuelle" doit être un prompt efficace pour un générateur d'images IA.
--   **Format de Sortie :** Veuillez utiliser la structure de titres et listes pour faciliter la lecture.
+-   **Respect des Instructions :** Suivez scrupuleusement le ton, le style, les personnages de l'univers "${nomDeLaBd}", ainsi que les paramètres généraux (moyennes indicatives globales) ET SURTOUT les spécifications (nombre de cases, bulles, mots, blocs narratifs) que VOUS AVEZ DÉFINIES pour chaque ${unitName} dans la PARTIE B lors de la génération de la PARTIE C.
+-   **Clarté pour Générateur d'Images :** La "Description Visuelle" de chaque case doit être formulée de manière à pouvoir servir de prompt efficace pour un générateur d'images par IA.
+-   **Format de Sortie :** Veuillez utiliser la structure de titres et listes (comme "### PARTIE A", "1. TITRE", "**${unitName.charAt(0).toUpperCase() + unitName.slice(1)} [X]**", "**Case [Y] :**") pour faciliter la lecture de votre réponse.
+
+INSTRUCTION IMPORTANTE CONCERNANT LA LONGUEUR DE LA RÉPONSE POUR LA PARTIE C :
+La description détaillée de toutes les ${unitName}s (PARTIE C) peut s'avérer très longue, en particulier pour les œuvres comptant de nombreuses ${unitName}s.
+Si vous ne parvenez pas à générer l'intégralité de la PARTIE C en une seule réponse en raison de limitations de longueur :
+1.  Veuillez générer autant de ${unitName}s complètes que possible dans votre réponse actuelle.
+2.  À la fin de votre réponse, veuillez indiquer clairement jusqu'à quelle ${unitName} vous avez fourni la description détaillée (par exemple : "Description détaillée fournie jusqu'à la ${unitName} X sur Y.").
+3.  Soyez prêt à continuer la génération des ${unitName}s suivantes si l'utilisateur vous envoie simplement le message : "Continuez". Vous reprendrez alors exactement où vous vous êtes arrêté.
 `;
             singleGlobalPromptOutput.value = globalPrompt.trim();
             showToastNotification("Prompt unique global généré !");
         });
-
         copySingleGlobalPromptBtn.addEventListener('click', () => copyToClipboard('singleGlobalPromptOutput'));
+        
+        // --- Logique pour Mode Storyboard (HTML/SVG) ---
+        generateStoryboardGlobalPromptBtn.addEventListener('click', function() {
+            const nomDeLaBd = nomBdInput.value.trim() || "[À DÉFINIR PAR L'IA]";
+            const totalPages = parseInt(totalPagesInput.value, 10);
+            const variation = parseInt(pageVariationInput.value, 10);
+            const panelsPerPage = panelsPerPageInput.value;
+            const bubblesPerPage = bubblesPerPageInput.value;
+            const wordsPerPage = wordsPerPageInput.value;
+            const yellowBlocksPerPage = yellowBlocksPerPageInput.value;
+
+            if (isNaN(totalPages) || totalPages <= 0) {
+                showToastNotification("Veuillez définir un nombre de pages (base) valide pour le prompt storyboard.");
+                return;
+            }
+
+            let typeOeuvre = "un album";
+            let unitName = "page";
+            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "un gag (format strip)"; unitName="strip"; }
+            else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "un gag"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "une histoire courte"; unitName="page"; } 
+            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "une histoire"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "une aventure jeunesse"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "une aventure"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "une bande dessinée (style américain, adaptation québécoise)"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
+                 if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(totalPages) && totalPages > 50)) {
+                    typeOeuvre = "un arc narratif (type manga)"; unitName="page";
+                } else {
+                    typeOeuvre = "un chapitre (type manga)"; unitName="page";
+                }
+            }
+
+            let pageCountDetails = "";
+            if (variation === 0) {
+                pageCountDetails = `${totalPages} ${unitName}${totalPages > 1 ? 's' : ''} (nombre fixe).`;
+            } else {
+                const minPages = Math.max(1, totalPages - variation);
+                const maxPages = totalPages + variation;
+                pageCountDetails = `environ ${totalPages} ${unitName}${totalPages > 1 ? 's' : ''}, pouvant varier de ${minPages} à ${maxPages}.`;
+            }
+
+            let endingType = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
+            if (nomDeLaBd.toLowerCase().includes("gag") || totalPages <= 2) {
+                endingType = `une "punch line" – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+            }
+            
+            let mangaSpecificsStoryboard = "";
+             if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy", "dragon ball", "dragon ball z"].some(m => nomDeLaBd.toLowerCase().includes(m.replace(/\s/g, '')))) { 
+                mangaSpecificsStoryboard = "Pour un manga, pensez aux onomatopées SVG (peut être du texte stylisé) et à la dynamique des cases.";
+            }
+
+            const storyboardPrompt = `
+Vous êtes un assistant expert en création de scénarios et de storyboards VISUELS pour bandes dessinées, capable de générer du code HTML et SVG.
+Votre tâche est de générer une oeuvre complète sous forme de storyboard HTML/SVG, de type "${typeOeuvre}" dans l'univers de "${nomDeLaBd}".
+
+PARAMÈTRES GÉNÉRAUX DE L'OEUVRE (FOURNIS À TITRE INDICATIF) :
+- Longueur de base attendue : ${totalPages} ${unitName}${totalPages > 1 ? 's' : ''}.
+- Variation autorisée : +/- ${variation} ${unitName}${totalPages > 1 ? 's' : ''}.
+- Cases par ${unitName} (moyenne indicative globale) : ${panelsPerPage}
+- Bulles par ${unitName} (moyenne indicative globale) : ${bubblesPerPage} (chaque bulle compte pour une)
+- Mots par ${unitName} (moyenne indicative globale) : ${wordsPerPage}
+- Blocs narratifs par ${unitName} (moyenne indicative globale) : ${yellowBlocksPerPage} (chaque bloc compte pour un)
+
+INSTRUCTIONS GÉNÉRALES POUR LE STORYBOARD HTML/SVG :
+- Le résultat final doit être un document HTML5 valide et complet.
+- Chaque "${unitName}" (page ou strip de la BD) doit être un <div class="comic-page"> et commencer par un titre H5 contenant son résumé (1 phrase).
+- Chaque case à l'intérieur d'une ${unitName} doit être un <div class="panel-container"> contenant :
+    - Un titre H6 avec le résumé de la case (1 phrase).
+    - Un élément <svg class="panel-svg"> pour le dessin schématique de la case.
+- Utilisez des formes SVG SIMPLES et standard : <rect>, <circle>, <line>, <ellipse>, <polygon>, <path>. PAS de <image> ou de liens externes.
+- Le texte (dialogues, narration) doit être inclus dans des éléments <text> SVG, positionnés de manière appropriée.
+- Pour les bulles de dialogue : dessinez une forme simple (ex: ellipse ou rectangle aux coins arrondis avec une petite pointe) avec <path> ou <polygon>, et placez le <text> à l'intérieur.
+- Pour les blocs narratifs : dessinez un <rect> et placez le <text> à l'intérieur.
+- Dimensions suggérées pour une case SVG (attribut viewBox) : "0 0 300 200" (largeur 300, hauteur 200). Adaptez si besoin.
+- Couleurs : Utilisez du noir pour les traits et le texte, fond blanc pour les bulles et cases par défaut. Vous pouvez utiliser des couleurs simples pour les personnages ou fonds si cela sert la clarté (ex: fill="blue").
+- Personnages : Représentez-les schématiquement (tête = cercle, corps = rectangle/lignes). Indiquez les personnages clés par leur nom près de leur représentation ou dans le résumé de case.
+- Positionnement : Les éléments SVG (personnages, objets, bulles) doivent être positionnés dans la case en utilisant des coordonnées (x, y, cx, cy, etc.) pour refléter l'action et la composition.
+
+VEUILLEZ FOURNIR LE STORYBOARD HTML/SVG COMPLET SUIVANT CETTE STRUCTURE :
+
+**INSTRUCTION CRUCIALE POUR CETTE PARTIE C (GÉNÉRATION DU CODE HTML/SVG) :**
+Vous allez maintenant générer le code source HTML et SVG complet du storyboard.
+Ce code doit commencer IMPÉRATIVEMENT par \`<!DOCTYPE html>\`... et être du **CODE HTML et SVG BRUT, LITTÉRAL et VALIDE.**
+**N'ÉCHAPPEZ SURTOUT PAS les caractères HTML** : utilisez \`<\` et non \`&lt;\`, utilisez \`>\` et non \`&gt;\`. Les guillemets dans les attributs HTML doivent être des guillemets normaux (\`"\`). Le caractère \`&\` ne doit être échappé en \`&amp;\` que s'il fait partie du contenu textuel et ne commence pas une entité HTML.
+Votre réponse pour cette partie C doit être un bloc de code unique, directement copiable et enregistrable en tant que fichier \`.html\` fonctionnel.
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard: [Titre de l'oeuvre que vous avez défini en PARTIE A]</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
+        .comic-page { border: 2px solid #999; margin-bottom: 25px; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; } /* Pour aligner les cases */
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33% - 10px); /* Env. 3 cases par ligne, ajuste si besoin */ box-sizing: border-box; min-width: 250px; /* Empêche les cases d'être trop petites */ }
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+    </style>
+</head>
+<body>
+    <h1>Storyboard : [Titre de l'oeuvre que vous avez défini en PARTIE A]</h1>
+    <div class="comic-page" id="[${unitName}]-[Numéro_de_la_${unitName}]">
+        <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} [Numéro_de_la_${unitName}] : [Résumé Sommaire de cette ${unitName} que vous avez défini (implicitement ou explicitement en PARTIE B)]</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="[${unitName}]-[Numéro_de_la_${unitName}]-panel-[Numéro_de_case]">
+                <h6>Case [Numéro_de_case] : [Résumé en 1 ligne de cette case spécifique]</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    [Générez ici le contenu SVG pour CETTE case : personnages schématiques (cercles, lignes), objets clés, arrière-plans simples (lignes, rectangles), bulles de dialogue (<path> et <text>), blocs narratifs (<rect> et <text>). Soyez précis avec les coordonnées (x, y, etc.) et les dimensions pour la mise en page. ${mangaSpecificsStoryboard}]
+                </svg>
+            </div>
+            </div>
+    </div>
+    </body>
+</html>
+
+INSTRUCTION IMPORTANTE CONCERNANT LA LONGUEUR DE LA RÉPONSE POUR LA PARTIE C :
+La description détaillée et le code SVG pour toutes les ${unitName}s (PARTIE C) peuvent s'avérer très longs, en particulier pour les œuvres comptant de nombreuses ${unitName}s.
+Si vous ne parvenez pas à générer l'intégralité du storyboard HTML/SVG en une seule réponse en raison de limitations de longueur :
+1.  Veuillez générer autant de ${unitName}s complètes que possible dans votre réponse actuelle, en respectant la structure HTML.
+2.  À la fin de votre réponse, veuillez indiquer clairement jusqu'à quelle ${unitName} vous avez fourni le code (par exemple : "Code HTML/SVG fourni jusqu'à la ${unitName} X sur Y.").
+3.  Soyez prêt à continuer la génération du code pour les ${unitName}s suivantes si l'utilisateur envoie simplement le message : "Continuez". Vous reprendrez alors exactement où vous vous êtes arrêté, en continuant la structure HTML (pas besoin de répéter le <head> ou les styles globaux, juste le contenu des <div class="comic-page"> suivants).
+`;
+            storyboardGlobalPromptOutput.value = storyboardPrompt.trim();
+            showToastNotification("Prompt Storyboard Global généré !");
+        });
+
+        copyStoryboardGlobalPromptBtn.addEventListener('click', () => copyToClipboard('storyboardGlobalPromptOutput'));
+
+        previewStoryboardBtn.addEventListener('click', function() {
+            const htmlContent = storyboardAiOutputHtml.value;
+            if (htmlContent.trim() === "") {
+                showToastNotification("Aucun contenu HTML/SVG à prévisualiser.");
+                return;
+            }
+            const previewWindow = window.open('', '_blank');
+            if (previewWindow) {
+                try {
+                    previewWindow.document.open();
+                    previewWindow.document.write(htmlContent);
+                    previewWindow.document.close();
+                } catch (e) {
+                    showToastNotification("Erreur lors de l'écriture du contenu dans la fenêtre de prévisualisation.");
+                    console.error("Erreur de prévisualisation :", e);
+                    previewWindow.close();
+                }
+            } else {
+                showToastNotification("Impossible d'ouvrir la fenêtre de prévisualisation. Vérifiez les bloqueurs de pop-up.");
+            }
+        });
         
         document.addEventListener('DOMContentLoaded', function() {
             populatePresetDropdown();
