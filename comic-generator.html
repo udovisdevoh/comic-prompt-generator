@@ -194,21 +194,25 @@
             garfield:       { nomBd: "Garfield (gag-strip)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 3,  bubblesPerPage: 3,  wordsPerPage: 20,  yellowBlocksPerPage: 0 }, 
             gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag 1p.)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
             iznogoud:       { nomBd: "Iznogoud (1 histoire)",                  totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
-            joebarteam:     { nomBd: "Joe Bar Team (gag 1p.)",                 totalPages: 1,  pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 8,  wordsPerPage: 80,  yellowBlocksPerPage: 0 }, // PRESET AJOUTÉ
+            joebarteam:     { nomBd: "Joe Bar Team (gag 1p.)",                 totalPages: 1,  pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 8,  wordsPerPage: 80,  yellowBlocksPerPage: 0 },
             jozettejocko:   { nomBd: "Jo, Zette et Jocko",                     totalPages: 52, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 12, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             luckyluke:      { nomBd: "Lucky Luke",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 120, yellowBlocksPerPage: 1 },
             marsupilami:    { nomBd: "Marsupilami (aventure)",                 totalPages: 46, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
             naruto:         { nomBd: "Naruto (chapitre)",                      totalPages: 18, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, // MANGA
             onepiece:       { nomBd: "One Piece (chapitre)",                   totalPages: 17, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, // MANGA
+            oumpahpah:      { nomBd: "Oumpah-Pah (1 histoire)",                totalPages: 30, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
             peanuts:        { nomBd: "Peanuts (gag-strip)",                    totalPages: 1,  pageVariation: 0,  panelsPerPage: 4,  bubblesPerPage: 4,  wordsPerPage: 30,  yellowBlocksPerPage: 0 }, 
             philemon:       { nomBd: "Philémon (aventure onirique)",           totalPages: 44, pageVariation: 2,  panelsPerPage: 7,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
+            pierrafeuquebec:{ nomBd: "Les Pierrafeu (BD québécoise)",          totalPages: 12, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
             petitspirougag: { nomBd: "Le Petit Spirou (gag)",                  totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
             petitspirouhist:{ nomBd: "Le Petit Spirou (hist. 6p.)",            totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
             quickflupke:    { nomBd: "Quick et Flupke (gag)",                  totalPages: 2,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 5,  wordsPerPage: 30,  yellowBlocksPerPage: 0 },
             schtroumpfs:    { nomBd: "Les Schtroumpfs (1 histoire)",           totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
+            simpsonquebec:  { nomBd: "Les Simpson (BD québécoise)",            totalPages: 22, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 110, yellowBlocksPerPage: 1 },
             spirou:         { nomBd: "Spirou et Fantasio",                     totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             spyxfamily:     { nomBd: "Spy x Family (chapitre/mission)",        totalPages: 25, pageVariation: 5,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, // MANGA
             tintin:         { nomBd: "Tintin",                                 totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 },
+            yakari:         { nomBd: "Yakari (aventure jeunesse)",             totalPages: 44, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
             yokotsuno:      { nomBd: "Yoko Tsuno",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 130, yellowBlocksPerPage: 1 }
         };
 
@@ -355,8 +359,10 @@
             if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && currentTotalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "d'un gag (format strip)"; }
             else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; } 
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "d'une histoire courte"; } 
-            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; }
+            else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; } // Catche "Oumpah-Pah (1 histoire)"
+            else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "d'une aventure jeunesse"; } // Pour Yakari
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "d'une aventure"; }
+            else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "d'une bande dessinée (style américain, adaptation québécoise)"; } // Pour Simpsons/Pierrafeu
             else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) {
                     typeOeuvre = "d'un arc narratif (type manga)";
@@ -566,7 +572,9 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "un gag"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "une histoire courte"; unitName="page"; } 
             else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "une histoire"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("aventure jeunesse")) { typeOeuvre = "une aventure jeunesse"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "une aventure"; unitName="page"; }
+            else if (nomDeLaBd.toLowerCase().includes("(bd québécoise)")) { typeOeuvre = "une bande dessinée (style américain, adaptation québécoise)"; unitName="page"; }
              else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(totalPages) && totalPages > 50)) {
                     typeOeuvre = "un arc narratif (type manga)"; unitName="page";
@@ -591,7 +599,7 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             }
             
             let mangaSpecifics = "";
-             if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy"].some(m => nomDeLaBd.toLowerCase().includes(m))) {
+             if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy"].some(m => nomDeLaBd.toLowerCase().includes(m.replace(/\s/g, '')))) { // Check for manga titles too
                 mangaSpecifics = "\n    - Pour un manga, inclure des suggestions d'onomatopées (effets sonores) et décrire le dynamisme des cases, surtout pour l'action.";
             }
 
