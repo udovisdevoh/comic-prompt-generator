@@ -194,6 +194,7 @@
             garfield:       { nomBd: "Garfield (gag-strip)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 3,  bubblesPerPage: 3,  wordsPerPage: 20,  yellowBlocksPerPage: 0 }, 
             gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag 1p.)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
             iznogoud:       { nomBd: "Iznogoud (1 histoire)",                  totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
+            joebarteam:     { nomBd: "Joe Bar Team (gag 1p.)",                 totalPages: 1,  pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 8,  wordsPerPage: 80,  yellowBlocksPerPage: 0 }, // PRESET AJOUTÉ
             jozettejocko:   { nomBd: "Jo, Zette et Jocko",                     totalPages: 52, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 12, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             luckyluke:      { nomBd: "Lucky Luke",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 120, yellowBlocksPerPage: 1 },
             marsupilami:    { nomBd: "Marsupilami (aventure)",                 totalPages: 46, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
@@ -351,12 +352,12 @@
             const currentTotalPages = parseInt(totalPagesInput.value, 10);
             let typeOeuvre = "d'un album"; 
 
-            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag") && currentTotalPages <=2 && !nomDeLaBd.toLowerCase().includes("petit spirou") && !nomDeLaBd.toLowerCase().includes("achille talon")  ) ) { typeOeuvre = "d'un gag (format strip)"; }
-            else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; } // Achille Talon (gag 2p.), Petit Spirou (gag)
+            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && currentTotalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "d'un gag (format strip)"; }
+            else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; } 
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "d'une histoire courte"; } 
             else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "d'une histoire"; }
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "d'une aventure"; }
-            else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { // Manga générique
+            else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(currentTotalPages) && currentTotalPages > 50)) {
                     typeOeuvre = "d'un arc narratif (type manga)";
                 } else {
@@ -375,7 +376,7 @@
             const totalPages = parseInt(totalPagesInput.value, 10);
             const variation = parseInt(pageVariationInput.value, 10);
             let pageCountDescription = "";
-            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag") && totalPages <=2 && !currentNomBd.toLowerCase().includes("petit spirou") && !currentNomBd.toLowerCase().includes("achille talon")  )) ? "strip" : "page";
+            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !currentNomBd.toLowerCase().includes("petit spirou")) ) ? "strip" : "page";
 
 
             if (isNaN(totalPages) || totalPages <=0) { showToastNotification("Nombre de pages de base invalide."); return; }
@@ -421,7 +422,8 @@ Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des c
         setupStep3FieldsBtn.addEventListener('click', function() {
             const totalPages = parseInt(totalPagesInput.value, 10);
             const currentNomBd = nomBdInput.value;
-            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag") && totalPages <=2 && !currentNomBd.toLowerCase().includes("petit spirou") && !currentNomBd.toLowerCase().includes("achille talon")  )) ? "Strip" : "Page";
+            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !currentNomBd.toLowerCase().includes("petit spirou")) ) ? "Strip" : "Page";
+
 
             if (isNaN(totalPages) || totalPages <= 0) { showToastNotification("Veuillez entrer un nombre de pages (base) valide."); return; }
             step3PagePromptsContainer.innerHTML = ''; 
@@ -450,7 +452,7 @@ Pour un manga, n'oubliez pas de penser aux onomatopées et à la dynamique des c
             const descriptionDeChaquePage = step2AiResponse.value.trim(); 
             const currentNomBdForUnit = nomBdInput.value;
             const totalPagesForUnit = parseInt(totalPagesInput.value, 10);
-            let unitName = (currentNomBdForUnit.toLowerCase().includes("gag-strip") || (currentNomBdForUnit.toLowerCase().includes("gag") && totalPagesForUnit <=2 && !currentNomBdForUnit.toLowerCase().includes("petit spirou") && !currentNomBdForUnit.toLowerCase().includes("achille talon")  )) ? "strip" : "page";
+            let unitName = (currentNomBdForUnit.toLowerCase().includes("gag-strip") || (currentNomBdForUnit.toLowerCase().includes("gag 1p.") && totalPagesForUnit === 1 && !currentNomBdForUnit.toLowerCase().includes("petit spirou")) ) ? "strip" : "page";
 
 
             if (!titreEtDescriptionBD) { showToastNotification("Veuillez coller le résultat de l'IA de l'Étape 1."); return; }
@@ -499,7 +501,7 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             let fullCompilation = [];
             const totalPages = parseInt(totalPagesInput.value, 10); 
             const currentNomBd = nomBdInput.value;
-            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag") && totalPages <=2 && !currentNomBd.toLowerCase().includes("petit spirou") && !currentNomBd.toLowerCase().includes("achille talon")  )) ? "STRIP" : "PAGE";
+            let unitName = (currentNomBd.toLowerCase().includes("gag-strip") || (currentNomBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !currentNomBd.toLowerCase().includes("petit spirou")) ) ? "STRIP" : "PAGE";
 
 
             const etape1Content = step1AiResponse.value.trim();
@@ -560,12 +562,12 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
 
             let typeOeuvre = "un album";
             let unitName = "page";
-            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag") && totalPages <=2 && !nomDeLaBd.toLowerCase().includes("petit spirou") && !nomDeLaBd.toLowerCase().includes("achille talon")  )) { typeOeuvre = "un gag (format strip)"; unitName="strip"; }
+            if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "un gag (format strip)"; unitName="strip"; }
             else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "un gag"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("hist.")) { typeOeuvre = "une histoire courte"; unitName="page"; } 
             else if (nomDeLaBd.toLowerCase().includes("histoire")) { typeOeuvre = "une histoire"; unitName="page"; }
             else if (nomDeLaBd.toLowerCase().includes("aventure")) { typeOeuvre = "une aventure"; unitName="page"; }
-            else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { // Manga générique
+             else if (nomDeLaBd.toLowerCase().includes("(chapitre") || nomDeLaBd.toLowerCase().includes("(arc")) { 
                  if (nomDeLaBd.toLowerCase().includes("arc") || (!isNaN(totalPages) && totalPages > 50)) {
                     typeOeuvre = "un arc narratif (type manga)"; unitName="page";
                 } else {
