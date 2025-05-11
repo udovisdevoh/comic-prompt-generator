@@ -192,15 +192,16 @@
             <label for="singleBlockAiTextOutput">Coller la réponse textuelle complète de l'IA ici :</label>
             <textarea id="singleBlockAiTextOutput" style="min-height: 250px;"></textarea>
             
-            <div id="monoblocStoryboardConversionSection" class="storyboard-page-section"> <h4>Conversion en Storyboard de la Sortie Monobloc</h4>
-                 <p class="warning-text"><strong>Attention :</strong> Convertir une sortie monobloc de nombreuses pages/strips en storyboard peut générer un prompt de conversion très long et une sortie HTML/SVG extrêmement volumineuse. L'IA pourrait avoir des difficultés à tout traiter ou tronquer le résultat.</p>
+            <div id="monoblocStoryboardConversionSection" class="storyboard-page-section">
+                 <h4>Conversion en Storyboard de la Sortie Monobloc</h4>
+                 <p class="warning-text"><strong>Attention :</strong> Convertir une sortie monobloc de nombreuses pages/strips en storyboard peut générer un prompt de conversion très long et une sortie HTML/SVG extrêmement volumineuse. L'IA pourrait avoir des difficultés à tout traiter ou tronquer le résultat. Cette fonction est optimisée pour une sortie monobloc décrivant UNE SEULE page/strip.</p>
                  <button id="generateMonoblocToStoryboardPromptBtn" class="button-tertiary">Générer Prompt Storyboard (depuis sortie monobloc)</button>
                  <label for="monoblocToStoryboardConversionPromptOutput">Prompt Storyboard (depuis sortie monobloc) :</label>
                  <textarea id="monoblocToStoryboardConversionPromptOutput" readonly></textarea>
                  <button id="copyMonoblocToStoryboardConversionPromptBtn" class="button-secondary">Copier Prompt Storyboard</button>
-                 <label for="monoblocStoryboardAiHtmlOutput">Coller le code HTML/SVG du storyboard complet ici :</label>
+                 <label for="monoblocStoryboardAiHtmlOutput">Coller le code HTML/SVG du storyboard ici :</label>
                  <textarea id="monoblocStoryboardAiHtmlOutput" style="font-family: monospace;"></textarea>
-                 </div>
+            </div>
         </div>
     </div>
 
@@ -282,17 +283,15 @@
         const copySingleBlockTextPromptBtn = document.getElementById('copySingleBlockTextPrompt');
         const singleBlockAiTextOutput = document.getElementById('singleBlockAiTextOutput');
         
-        const monoblocStoryboardConversionSection = document.getElementById('monoblocStoryboardConversionSection'); // Section pour monobloc storyboard
-        const generateMonoblocToStoryboardPromptBtn = document.getElementById('generateMonoblocToStoryboardPromptBtn'); // Renamed button
-        const monoblocToStoryboardConversionPromptOutput = document.getElementById('monoblocToStoryboardConversionPromptOutput'); // Renamed textarea
-        const copyMonoblocToStoryboardConversionPromptBtn = document.getElementById('copyMonoblocToStoryboardConversionPromptBtn'); // Renamed button
-        const monoblocStoryboardAiHtmlOutput = document.getElementById('monoblocStoryboardAiHtmlOutput'); // Renamed textarea
-
+        const monoblocStoryboardConversionSection = document.getElementById('monoblocStoryboardConversionSection'); 
+        const generateMonoblocToStoryboardPromptBtn = document.getElementById('generateMonoblocToStoryboardPromptBtn'); 
+        const monoblocToStoryboardConversionPromptOutput = document.getElementById('monoblocToStoryboardConversionPromptOutput'); 
+        const copyMonoblocToStoryboardConversionPromptBtn = document.getElementById('copyMonoblocToStoryboardConversionPromptBtn');
+        const monoblocStoryboardAiHtmlOutput = document.getElementById('monoblocStoryboardAiHtmlOutput'); 
 
         function switchMode(mode) {
             stepByStepModeContainer.classList.add('hidden');
             singleBlockTextModeContainer.classList.add('hidden');
-
             if (mode === 'stepByStep') {
                 stepByStepModeContainer.classList.remove('hidden');
             } else if (mode === 'singleBlock') {
@@ -317,6 +316,7 @@
         }
 
         function populatePresetDropdown() {
+            console.log("Populating dropdown. Presets object:", presets);
             const sortedPresets = Object.entries(presets)
                 .map(([key, value]) => ({ key: key, displayName: value.nomBd }))
                 .sort((a, b) => a.displayName.localeCompare(b.displayName, 'fr', { sensitivity: 'base' }));
@@ -331,9 +331,11 @@
                 option.textContent = presetInfo.displayName;
                 presetSelect.appendChild(option);
             });
+            console.log("Dropdown populated. Options count:", presetSelect.options.length);
         }
         
         presetSelect.addEventListener('change', function() {
+            console.log("Preset changed to:", this.value);
             const selectedPresetKey = this.value;
             const selectedPreset = presets[selectedPresetKey];
             if (selectedPreset) {
@@ -561,10 +563,12 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             showToastNotification(`Prompt pour texte détaillé de la ${unitName} ${pageNum} généré.`);
         }
 
-        function handleGenerateStoryboardPromptForPage(event, sourceTextareaId, pageNumForStoryboard) {
-            const pageNum = pageNumForStoryboard || parseInt(event.target.dataset.page, 10);
-            const detailedTextForPage = document.getElementById(sourceTextareaId || `pageAiDetailedResponse_${pageNum}`).value.trim();
-            const step1Info = step1AiResponse.value.trim();
+        function handleGenerateStoryboardPromptForPage(event, sourceTextareaIdForMonobloc, pageNumForMonoblocStoryboard) { 
+            const pageNum = pageNumForMonoblocStoryboard || parseInt(event.target.dataset.page, 10);
+            const isMonoblocConversion = !!pageNumForMonoblocStoryboard;
+
+            const detailedTextForPage = document.getElementById(sourceTextareaIdForMonobloc || `pageAiDetailedResponse_${pageNum}`).value.trim();
+            const step1Info = step1AiResponse.value.trim(); // Toujours utiliser step1AiResponse pour le titre global
 
             if (!detailedTextForPage) {
                 showToastNotification(`Veuillez d'abord fournir la description textuelle détaillée pour la ${getUnitName()} ${pageNum}.`);
@@ -577,23 +581,22 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             let typeOeuvre = getTypeOeuvre();
             let mangaSpecificsForStoryboard = getMangaSpecifics();
             
-            const titleFromStep1 = step1Info.match(/TITRE DE L'OEUVRE\s*:\s*([^\n]+)/i);
-            const extractedTitle = titleFromStep1 && titleFromStep1[1] ? titleFromStep1[1].trim() : nomDeLaBd;
-
+            const titleFromStep1Match = step1Info.match(/TITRE DE L'OEUVRE\s*:\s*([^\n]+)/i);
+            const extractedTitle = titleFromStep1Match && titleFromStep1Match[1] ? titleFromStep1Match[1].trim() : nomDeLaBd;
 
             const storyboardPrompt = `
 Vous êtes un assistant expert en création de storyboards VISUELS pour bandes dessinées au format HTML et SVG, à partir de descriptions textuelles détaillées.
 
-TÂCHE : Convertir la description détaillée de ${pageNumForStoryboard ? `la ${unitName} unique (considérée comme ${unitName} 1)` : `la ${unitName} NUMÉRO ${pageNum}`} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour cette SEULE ${unitName}.
+TÂCHE : Convertir ${isMonoblocConversion ? `la description textuelle complète de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous, qui décrit UNE SEULE ${unitName},` : `la description détaillée de la ${unitName} NUMÉRO ${pageNum} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous`} en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour cette SEULE ${unitName}.
 
-${ pageNumForStoryboard ? 
-`DESCRIPTION COMPLÈTE DE L'OEUVRE (1 ${unitName.toUpperCase()}) À CONVERTIR (contient Titre, Résumé global, Personnages, Ton, et la description détaillée de cette unique ${unitName}) :` : 
-`INFORMATIONS GÉNÉRALES SUR L'OEUVRE (issues de l'Étape 1, pour contexte et titre) :`}
+${isMonoblocConversion ? 
+`DESCRIPTION COMPLÈTE DE L'OEUVRE (1 ${unitName.toUpperCase()}) À CONVERTIR (contient Titre global, Résumé global, Personnages, Ton, et la description détaillée de cette unique ${unitName}) :` : 
+`INFORMATIONS GÉNÉRALES SUR L'OEUVRE (issues de l'Étape 1 du processus par étapes, pour contexte et titre global) :`}
 --- DÉBUT INFO OEUVRE ---
-${pageNumForStoryboard ? detailedTextForPage : (step1Info || "[Informations de l'Étape 1 non fournies pour le titre global]")} 
+${isMonoblocConversion ? detailedTextForPage : (step1Info || `TITRE DE L'OEUVRE : ${nomDeLaBd}\n[Autres informations de l'Étape 1 non fournies]`)} 
 --- FIN INFO OEUVRE ---
 
-${ pageNumForStoryboard ? '' : 
+${isMonoblocConversion ? '' : 
 `DESCRIPTION DÉTAILLÉE DE LA ${unitName.toUpperCase()} ${pageNum} À CONVERTIR :
 --- DÉBUT DESCRIPTION ${unitName.toUpperCase()} ${pageNum} ---
 ${detailedTextForPage}
@@ -605,28 +608,28 @@ PARAMÈTRES GÉNÉRAUX DE L'OEUVRE (pour contexte, la description détaillée es
 
 INSTRUCTIONS POUR LA GÉNÉRATION DU DOCUMENT HTML/SVG DE CETTE ${unitName.toUpperCase()} UNIQUE :
 1.  **Format de Sortie :** Un document HTML5 valide et complet, commençant par \`<!DOCTYPE html>\` et se terminant par \`</html>\`.
-2.  **Extraction d'Informations Clés (à partir de la description textuelle fournie pour l'oeuvre complète ou cette page spécifique) :**
-    * Extrayez ou déduisez le **TITRE GÉNÉRAL DE L'OEUVRE**. Utilisez "${extractedTitle}" comme base si aucun titre plus spécifique n'est trouvé dans la description fournie.
-    * Synthétisez un **Résumé Sommaire de CETTE ${unitName} ${pageNum}** (1 phrase) à partir de sa description détaillée.
-    * Déterminez le **Nombre de cases** pour CETTE ${unitName} ${pageNum} en analysant sa description détaillée.
+2.  **Extraction d'Informations Clés :**
+    * Depuis les "INFORMATIONS GÉNÉRALES SUR L'OEUVRE" (si mode par étapes) ou la "DESCRIPTION COMPLÈTE DE L'OEUVRE" (si mode monobloc pour 1 ${unitName}), extrayez le **TITRE GÉNÉRAL DE L'OEUVRE**. Si absent, utilisez "${extractedTitle}".
+    * Depuis la description détaillée spécifique à CETTE ${unitName} ${pageNum}, synthétisez un **Résumé Sommaire de la ${unitName}** (1 phrase courte, dense, sans articles superflus).
+    * Déterminez le **Nombre de cases** pour cette ${unitName} en analysant sa description détaillée (PARTIE C de la source).
 3.  **Structure du Document HTML :**
-    * Balise \`<head>\` avec \`<title>Storyboard - [TITRE DE L'OEUVRE] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</title>\` et les styles CSS.
+    * \`<head>\` avec \`<title>Storyboard - [TITRE DE L'OEUVRE] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</title>\` et les styles CSS.
     * \`<body>\` avec \`<h1>[TITRE DE L'OEUVRE] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</h1>\`.
     * UN SEUL \`<div class="comic-page" id="page_${pageNum}_storyboard_content">\`.
     * Dans ce div, le résumé de la ${unitName} (\`<h5>\`) et une \`<div class="panel-grid">\`.
 4.  **Structure par Case :**
     * Chaque case décrite devient un \`<div class="panel-container">\`.
-    * Titre \`<h6>\` pour chaque case: "Case [Numéro] : [Résumé 1 phrase de la case]".
+    * Titre \`<h6>\` : "Case [Numéro] : [Résumé 1 phrase EXTRÊMEMENT DENSE de la case, sans articles superflus]".
     * Élément \`<svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">\`.
 5.  **Contenu SVG Schématique :**
     * INTERPRÉTEZ la "Description Visuelle" et "Dialogues/Texte" de chaque case.
     * Formes SVG SIMPLES. Personnages schématiques.
-    * Dialogues/Narration dans bulles/rectangles SVG, chacun avec un sous-élément SVG \`<title>texte COMPLET du dialogue/narration</title>\` pour tooltip.
+    * Dialogues/Narration dans bulles/rectangles SVG, chacun avec un sous-élément SVG \`<title>texte COMPLET du dialogue/narration</title>\` pour tooltip (apparaîtra au survol, le délai est géré par le navigateur).
     * Positionnement logique.
     * ${mangaSpecificsForStoryboard}
-6.  **Code Source Brut :** N'ÉCHAPPEZ PAS les caractères HTML.
+6.  **Code Source Brut :** N'ÉCHAPPEZ PAS les caractères HTML (\`<\`, \`>\`).
 
-UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE (en remplaçant les placeholders et en générant le contenu SVG) :
+UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE :
 \`\`\`html
 <!DOCTYPE html>
 <html lang="fr">
@@ -653,10 +656,10 @@ UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE 
     <h1>[TITRE DE L'OEUVRE EXTRAIT] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</h1>
     
     <div class="comic-page" id="page_${pageNum}_storyboard_content">
-        <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum} : [Synthétisez ici un résumé en 1 phrase de la ${unitName} à partir de la description fournie]</h5>
+        <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum} : [Résumé EXTRÊMEMENT DENSE de cette ${unitName}]</h5>
         <div class="panel-grid">
             <div class="panel-container" id="page_${pageNum}_panel_[Numéro_de_case]">
-                <h6>Case [Numéro_de_case] : [Résumé en 1 ligne de cette case spécifique]</h6>
+                <h6>Case [Numéro_de_case] : [Résumé EXTRÊMEMENT DENSE de cette case]</h6>
                 <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
                     [Générez ici le contenu SVG pour CETTE case. Pour chaque bulle de dialogue ou bloc narratif, incluez un élément <title>texte complet</title> à l'intérieur du groupe <g> de la bulle/bloc, AVANT le <path> et le <text>.]
                     ${mangaSpecificsForStoryboard}
@@ -668,7 +671,7 @@ UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE 
 </html>
 \`\`\`
 `;
-            const outputTextareaId = pageNumForStoryboard ? `singlePageStoryboardConversionPromptOutput` : `storyboardPromptOutput_page_${pageNum}`;
+            const outputTextareaId = isMonoblocConversion ? `monoblocToStoryboardConversionPromptOutput` : `storyboardPromptOutput_page_${pageNum}`;
             document.getElementById(outputTextareaId).value = storyboardPrompt.trim();
             showToastNotification(`Prompt Storyboard pour ${unitName} ${pageNum} généré.`);
         }
@@ -830,11 +833,17 @@ Si vous ne parvenez pas à générer l'intégralité de la PARTIE C en une seule
         copySingleBlockTextPromptBtn.addEventListener('click', () => copyToClipboard('singleBlockTextPromptOutput'));
         
         generateMonoblocToStoryboardPromptBtn.addEventListener('click', function() {
-            // Utiliser la fonction existante, mais passer l'ID du textarea source du mode monobloc
-            // et indiquer que c'est pour la "page" 1 (car on traite le bloc entier comme une seule unité pour ce prompt)
+            const singleBlockText = singleBlockAiTextOutput.value.trim();
+            if (!singleBlockText) {
+                showToastNotification("Veuillez d'abord coller la sortie textuelle complète du Mode Monobloc.");
+                return;
+            }
+            // La logique de la fonction handleGenerateStoryboardPromptForPage est réutilisée.
+            // Le troisième argument '1' indique que nous traitons la sortie monobloc comme une "page 1" pour ce prompt.
+            // La fonction extraira les infos nécessaires du singleBlockText.
             handleGenerateStoryboardPromptForPage(null, 'singleBlockAiTextOutput', 1); 
         });
-        copyMonoblocToStoryboardConversionPromptBtn.addEventListener('click', () => copyToClipboard('singlePageStoryboardConversionPromptOutput'));
+        copyMonoblocToStoryboardConversionPromptBtn.addEventListener('click', () => copyToClipboard('monoblocToStoryboardConversionPromptOutput'));
         
         document.addEventListener('DOMContentLoaded', function() {
             populatePresetDropdown(); 
