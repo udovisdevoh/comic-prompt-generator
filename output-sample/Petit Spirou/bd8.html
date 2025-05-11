@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Silence, on klaxonne ! - Page 1</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 800px; margin: 0 auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 250px; max-width: 300px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+        /* Character styles */
+        .character { stroke: black; stroke-width: 1.5; fill: none; }
+        .character-head { fill: #FFDBAC; /* Skin tone */ }
+        .character-body { fill: #B0C4DE; /* Clothes */ }
+        .agent-15-kepi { fill: #4682B4; /* Kepi color */ }
+        .quick-hair { fill: #A0522D; }
+        .flupke-hair { fill: #D2691E; }
+        .klaxon-chrome { fill: #C0C0C0; stroke: black; stroke-width:1; }
+        .klaxon-poire { fill: #333333; }
+    </style>
+</head>
+<body>
+    <h1>Silence, on klaxonne ! - Page 1</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Observant Agent 15 peiner avec son sifflet, Quick a l'idée de le remplacer par un klaxon de vélo.</h5>
+        <div class="panel-grid">
+            
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Case 1 : Agent 15 siffle faiblement; Quick et Flupke observent narquois.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g class="character" id="agent15_c1">
+                        <rect x="130" y="80" width="40" height="70" class="character-body" fill="#4682B4"/>
+                        <circle cx="150" cy="60" r="20" class="character-head" fill="#F08080"/> <circle cx="135" cy="60" r="10" fill="#FFC0CB"/> <circle cx="165" cy="60" r="10" fill="#FFC0CB"/> <rect x="145" y="45" width="10" height="5" fill="grey"/> <circle cx="150" cy="30" r="2" fill="black"/> <circle cx="160" cy="25" r="1.5" fill="black"/> </g>
+                    <rect x="10" y="120" width="60" height="30" fill="#ADD8E6" stroke="black"/>
+                    <rect x="230" y="110" width="50" height="25" fill="#LIGHTGREEN" stroke="black"/>
+                    <g class="character" id="quick_c1">
+                        <rect x="50" y="120" width="20" height="40" class="character-body" fill="blue"/>
+                        <circle cx="60" cy="110" r="10" class="character-head"/>
+                    </g>
+                    <g class="character" id="flupke_c1">
+                        <rect x="80" y="125" width="20" height="35" class="character-body" fill="green"/>
+                        <circle cx="90" cy="115" r="10" class="character-head"/>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_agent15_c1">
+                        <title>Pffft... Pffft...</title>
+                        <path class="speech-bubble-path" d="M 170,30 Q 180,20 190,30 Q 200,40 190,50 Q 180,60 170,50 Q 160,40 170,30 Z M 190,50 Q 185,55 180,60"/> <text x="180" y="40" class="speech-bubble-text">Pffft...</text>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_quick_c1">
+                        <title>Il va s'étouffer, not' Agent !</title>
+                        <path class="speech-bubble-path" d="M 30,80 C 20,80 10,70 10,60 C 10,50 20,40 30,40 L 100,40 C 110,40 120,50 120,60 C 120,70 110,80 100,80 Z M 70,80 L 65,90 L 60,80 Z"/>
+                        <text x="65" y="60" class="speech-bubble-text" style="font-size:8px;">Il va s'étouffer!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Case 2 : Quick a idée (ampoule); Flupke interrogateur; Agent 15 frustré.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g class="character" id="quick_c2">
+                        <rect x="70" y="100" width="30" height="60" class="character-body" fill="blue"/>
+                        <circle cx="85" cy="85" r="15" class="character-head"/>
+                        <path d="M 85,40 Q 80,30 85,20 Q 90,30 85,40 M 83,40 L 87,40 M 80,45 L 90,45 M 83,48 L 87,48 Z" stroke="gold" stroke-width="2" fill="yellow"/>
+                         <line x1="85" y1="68" x2="85" y2="50" stroke="black" stroke-dasharray="2,2"/>
+                    </g>
+                    <g class="character" id="flupke_c2">
+                        <rect x="130" y="105" width="30" height="55" class="character-body" fill="green"/>
+                        <circle cx="145" cy="90" r="15" class="character-head"/>
+                        <text x="145" y="70" font-size="20">?</text> </g>
+                    <g class="character" id="agent15_c2_bg">
+                        <rect x="220" y="90" width="25" height="50" class="character-body" fill="#4682B4"/>
+                        <circle cx="232" cy="80" r="10" class="character-head"/>
+                        <line x1="210" y1="70" x2="225" y2="85" stroke="black"/> <line x1="240" y1="85" x2="255" y2="70" stroke="black"/> </g>
+                     <g class="speech-bubble-group" id="bubble_flupke_c2">
+                        <title>Quoi donc, Quick ?</title>
+                        <path class="speech-bubble-path" d="M 160,50 C 150,50 140,40 140,30 C 140,20 150,10 160,10 L 230,10 C 240,10 250,20 250,30 C 250,40 240,50 230,50 Z M 170,50 L 165,60 L 160,50 Z"/>
+                        <text x="195" y="30" class="speech-bubble-text">Quoi donc, Quick?</text>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_quick_c2">
+                        <title>J'ai une idée... géniale !</title>
+                        <path class="speech-bubble-path" d="M 30,60 C 20,60 10,50 10,40 C 10,30 20,20 30,20 L 100,20 C 110,20 120,30 120,40 C 120,50 110,60 100,60 Z M 70,60 L 75,70 L 80,60 Z"/>
+                        <text x="65" y="40" class="speech-bubble-text">Idée géniale!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Case 3 : Mains Quick sortent klaxon de poche; Flupke admire.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="100" cy="100" rx="30" ry="15" fill="#FFDBAC" transform="rotate(-30 100 100)"/>
+                    <ellipse cx="130" cy="110" rx="30" ry="15" fill="#FFDBAC" transform="rotate(-10 130 110)"/>
+                    <g id="klaxon_c3">
+                        <path d="M 120,80 C 150,70 180,90 190,120 L 170,125 C 165,100 140,80 120,80 Z" class="klaxon-chrome"/>
+                        <circle cx="110" cy="75" r="20" class="klaxon-poire"/>
+                    </g>
+                    <g class="character" id="flupke_c3_head">
+                        <circle cx="220" cy="130" r="25" class="character-head"/>
+                        <circle cx="210" cy="125" r="3" fill="black"/> <path d="M 205,140 Q 220,150 235,140" stroke="black" fill="none"/> </g>
+                    <g class="speech-bubble-group" id="bubble_flupke_c3">
+                        <title>Ouah ! Ça, c'est du tonnerre !</title>
+                        <path class="speech-bubble-path" d="M 180,30 C 170,30 160,20 160,10 C 160,0 170,-10 180,-10 L 270,-10 C 280,-10 290,0 290,10 C 290,20 280,30 270,30 Z M 230,30 L 225,45 L 220,30 Z" transform="translate(0, 20)"/>
+                        <text x="225" y="20" class="speech-bubble-text">Ouah! Du tonnerre!</text>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_quick_c3">
+                        <title>Justement !</title>
+                        <path class="speech-bubble-path" d="M 50,150 C 40,150 30,140 30,130 C 30,120 40,110 50,110 L 120,110 C 130,110 140,120 140,130 C 140,140 130,150 120,150 Z M 85,150 L 90,160 L 95,150 Z"/>
+                        <text x="85" y="130" class="speech-bubble-text">Justement!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Case 4 : Agent 15 de dos; Quick échange sifflet et klaxon; Flupke guet.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g class="character" id="agent15_c4">
+                        <rect x="100" y="50" width="60" height="100" class="character-body" fill="#4682B4"/>
+                        <circle cx="130" cy="40" r="20" class="character-head" fill="#FFDBAC"/>
+                        <rect x="120" y="20" width="20" height="10" class="agent-15-kepi"/> <rect x="95" y="60" width="10" height="15" fill="grey"/> </g>
+                    <g id="cyclist_c4">
+                        <circle cx="200" cy="120" r="10" fill="#FFDBAC"/>
+                        <rect x="195" y="130" width="10" height="30" fill="brown"/>
+                        <circle cx="190" cy="165" r="10" stroke="black" fill="none"/>
+                        <circle cx="210" cy="165" r="10" stroke="black" fill="none"/>
+                    </g>
+                    <g class="character" id="quick_c4">
+                        <rect x="70" y="130" width="40" height="20" class="character-body" fill="blue" transform="rotate(10 70 130)"/>
+                        <circle cx="105" cy="125" r="10" class="character-head"/>
+                        <circle cx="100" cy="80" r="5" class="klaxon-poire"/>
+                        <path d="M 100,80 C 105,75 110,75 115,80" class="klaxon-chrome" stroke-width="2"/>
+                    </g>
+                    <g class="character" id="flupke_c4">
+                        <rect x="30" y="120" width="20" height="40" class="character-body" fill="green"/>
+                        <circle cx="40" cy="110" r="10" class="character-head"/>
+                         <circle cx="37" cy="108" r="2" fill="black"/> </g>
+                    <g class="speech-bubble-group" id="bubble_flupke_c4">
+                        <title>Vite, Quick, vite !</title>
+                        <path class="speech-bubble-path" d="M 10,80 C 0,80 -10,70 -10,60 C -10,50 0,40 10,40 L 70,40 C 80,40 90,50 90,60 C 90,70 80,80 70,80 Z M 40,80 L 35,90 L 30,80 Z" transform="translate(10,0)"/>
+                        <text x="40" y="60" class="speech-bubble-text" style="font-size:8px;">Vite, Quick!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Case 5 : Quick et Flupke s'éloignent, se tapent la main; klaxon sur Agent 15.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g class="character" id="quick_c5" transform="translate(50, 80) scale(0.8)">
+                        <rect x="0" y="30" width="25" height="50" class="character-body" fill="blue"/>
+                        <circle cx="12" cy="15" r="12" class="character-head"/>
+                        <line x1="12" y1="15" x2="-10" y2="10" stroke="black"/> <path d="M25,40 L 35,35 L 25,30" fill="#FFDBAC"/> </g>
+                    <g class="character" id="flupke_c5" transform="translate(100, 85) scale(0.8)">
+                        <rect x="0" y="30" width="25" height="50" class="character-body" fill="green"/>
+                        <circle cx="12" cy="15" r="12" class="character-head"/>
+                        <line x1="12" y1="15" x2="-10" y2="10" stroke="black"/> <path d="M-5,40 L -15,35 L -5,30" fill="#FFDBAC"/> </g>
+                    <g class="character" id="agent15_c5_bg" transform="translate(200, 50) scale(0.7)">
+                        <rect x="0" y="30" width="40" height="80" class="character-body" fill="#4682B4"/>
+                        <circle cx="20" cy="15" r="15" class="character-head"/>
+                        <circle cx="0" cy="45" r="8" class="klaxon-poire"/>
+                        <path d="M 0,45 C 10,40 15,40 20,45" class="klaxon-chrome" stroke-width="2"/>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_quick_c5">
+                        <title>Mission accomplie !</title>
+                        <path class="speech-bubble-path" d="M 30,30 C 20,30 10,20 10,10 C 10,0 20,-10 30,-10 L 120,-10 C 130,-10 140,0 140,10 C 140,20 130,30 120,30 Z M 70,30 L 65,40 L 60,30 Z"/>
+                        <text x="75" y="10" class="speech-bubble-text">Mission accomplie!</text>
+                    </g>
+                    <g class="speech-bubble-group" id="bubble_flupke_c5">
+                        <title>Hi hi hi !</title>
+                        <path class="speech-bubble-path" d="M 150,40 C 140,40 130,30 130,20 C 130,10 140,0 150,0 L 200,0 C 210,0 220,10 220,20 C 220,30 210,40 200,40 Z M 175,40 L 170,50 L 165,40 Z"/>
+                        <text x="175" y="20" class="speech-bubble-text">Hi hi hi!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Case 6 : Gros plan Agent 15 déterminé; Quick et Flupke observent cachés.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g class="character" id="agent15_c6">
+                        <rect x="80" y="50" width="140" height="130" class="character-body" fill="#4682B4"/>
+                        <circle cx="150" cy="60" r="40" class="character-head" fill="#FFDBAC"/>
+                        <rect x="130" y="20" width="40" height="15" class="agent-15-kepi"/> <line x1="130" y1="50" x2="145" y2="45" stroke="black" stroke-width="3"/>
+                        <line x1="170" y1="50" x2="155" y2="45" stroke="black" stroke-width="3"/>
+                        <ellipse cx="100" cy="130" rx="25" ry="15" fill="#FFDBAC"/>
+                        <g transform="translate(80,100)">
+                            <circle cx="0" cy="0" r="10" class="klaxon-poire"/>
+                            <path d="M 0,0 C 10,-5 20,-5 30,0" class="klaxon-chrome" stroke-width="3"/>
+                        </g>
+                    </g>
+                    <rect x="240" y="130" width="60" height="70" fill="grey"/> <g class="character" id="quick_flupke_c6_bg">
+                        <circle cx="260" cy="120" r="8" class="character-head"/> <circle cx="280" cy="125" r="8" class="character-head"/> </g>
+                    <g class="speech-bubble-group" id="bubble_agent15_c6">
+                        <title>Ah, coquins de sort ! Celui-là ne va pas me résister !</title>
+                        <path class="speech-bubble-path" d="M 20,160 C 10,160 0,150 0,140 C 0,130 10,120 20,120 L 200,120 C 210,120 220,130 220,140 C 220,150 210,160 200,160 Z M 150,160 L 140,175 L 130,160 Z" transform="translate(20,15)"/>
+                        <text x="110" y="150" class="speech-bubble-text" style="font-size:7px;">Ah, coquins de sort! Celui-là...</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

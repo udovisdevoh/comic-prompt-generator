@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Le Petit Spirou (gag) - Page 1 - Photo Choc !</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 900px; /* Adjusted for 3 panels wide */ margin: 0 auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; text-align: center; font-size: 1.1em; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 15px; /* Increased gap */ justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 30px); /* Adjusted for 3 panels and gap */ box-sizing: border-box; min-width: 260px; /* Adjusted min-width */ max-width: 280px; /* Adjusted max-width */ display: flex; flex-direction: column;}
+        .panel-title { font-size: 0.9em; color: #333; margin-bottom: 5px; font-weight: bold; text-align: center; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 3,2; } /* Dashed for thought */
+        .onomatopoeia-text { font-size: 18px; font-weight: bold; fill: red; text-anchor: middle; dominant-baseline: middle; }
+        .character-spirou-head { fill: #FFDF00; stroke: black; stroke-width: 0.5; } /* Yellow hair */
+        .character-spirou-hat { fill: red; stroke: black; stroke-width: 0.5; }
+        .character-spirou-body { fill: red; stroke: black; stroke-width: 0.5; }
+        .character-mllechiffre-hair { fill: #A0522D; stroke: black; stroke-width: 0.5; } /* Brown hair */
+        .character-mllechiffre-dress { fill: #ADD8E6; stroke: black; stroke-width: 0.5; } /* Light blue dress */
+        .character-vertignasse-hair { fill: #8B4513; stroke: black; stroke-width: 0.5; } /* Saddle brown */
+        .character-vertignasse-body { fill: #228B22; stroke: black; stroke-width: 0.5; } /* Forest green */
+        .character-photographer-body { fill: #808080; stroke: black; stroke-width: 0.5; } /* Grey */
+        .bee-body { fill: #FFD700; stroke: black; stroke-width: 0.5; } /* Gold */
+        .bee-stripe { fill: black; }
+        .bee-wing { fill: #ADD8E6; stroke: black; stroke-width: 0.3; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <h1>Storyboard pour Le Petit Spirou (gag) - Page 1 - Photo Choc !</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Petit Spirou se prépare pour la photo de classe, visant un air de "dur", mais une abeille imprévue transforme sa pose en une grimace de terreur immortalisée par le flash.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6 class="panel-title">Case 1 : Annonce de la photo de classe, Spirou déterminé.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#F0F8FF" stroke="#D3D3D3" stroke-width="1"/>
+                    <line x1="1" y1="150" x2="299" y2="150" stroke="#A0522D" stroke-width="2"/> <rect x="80" y="30" width="140" height="90" fill="#3CB371" stroke="black" stroke-width="1"/> <ellipse cx="60" cy="90" rx="15" ry="18" class="character-mllechiffre-hair"/>
+                    <rect x="50" y="108" width="20" height="40" class="character-mllechiffre-dress"/>
+                    <text x="60" y="80" font-size="8">Mlle C.</text>
+
+                    <rect x="200" y="120" width="30" height="20" fill="#D2B48C" stroke="black" stroke-width="1"/> <ellipse cx="215" cy="100" rx="10" ry="12" class="character-spirou-head"/>
+                    <path d="M205 90 Q215 85 225 90 Z" class="character-spirou-hat"/> <rect x="210" y="112" width="10" height="25" class="character-spirou-body"/>
+                    <circle cx="220" cy="100" r="1.5" fill="black"/> <path d="M225 125 L230 120 L225 115" fill="none" stroke="black" stroke-width="1"/> <path class="speech-bubble-path" d="M80 40 Q130 30 180 40 Q175 60 130 65 Q85 60 80 40 Z M120 65 L100 80"/>
+                    <text class="speech-bubble-text" x="130" y="50" font-size="9">Demain, la photo de classe !</text>
+
+                    <path class="thought-bubble-path" d="M230 60 Q270 50 285 65 Q275 80 245 85 Q235 75 230 60 Z"/>
+                    <circle cx="235" cy="88" r="2" fill="white" stroke="black" stroke-width="0.5"/>
+                    <circle cx="230" cy="92" r="1.5" fill="white" stroke="black" stroke-width="0.5"/>
+                    <text class="speech-bubble-text" x="258" y="70" font-size="9">Cette année, c'est la bonne !</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6 class="panel-title">Case 2 : Spirou s'entraîne devant le miroir.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#FFF8DC" stroke="#D3D3D3" stroke-width="1"/>
+                    <rect x="180" y="40" width="80" height="120" fill="#E0FFFF" stroke="black" stroke-width="1.5"/>
+                    <rect x="185" y="45" width="70" height="110" fill="white" stroke="#B0C4DE" stroke-width="1"/>
+
+                    <ellipse cx="220" cy="88" rx="18" ry="22" class="character-spirou-head"/>
+                    <path d="M208 70 Q220 60 232 70 Z" class="character-spirou-hat"/>
+                    <rect x="210" y="110" width="20" height="40" class="character-spirou-body" style="fill: #FFFFE0;"/> <line x1="215" y1="85" x2="220" y2="88" stroke="black" stroke-width="1.5"/> <line x1="228" y1="85" x2="223" y2="88" stroke="black" stroke-width="1.5"/> <path d="M215 100 Q220 103 225 100" fill="none" stroke="black" stroke-width="1"/> <ellipse cx="100" cy="90" rx="20" ry="24" class="character-spirou-head"/>
+                    <path d="M88 72 Q100 62 112 72 Z" class="character-spirou-hat"/>
+                    <rect x="90" y="114" width="20" height="45" class="character-spirou-body" style="fill: #FFFFE0;"/> <line x1="95" y1="87" x2="100" y2="90" stroke="black" stroke-width="1.5"/>
+                    <line x1="108" y1="87" x2="103" y2="90" stroke="black" stroke-width="1.5"/>
+                    <path d="M95 102 Q100 105 105 102" fill="none" stroke="black" stroke-width="1"/>
+
+                    <path class="speech-bubble-path" d="M30 30 Q80 20 130 30 Q125 50 80 55 Q35 50 30 30 Z M80 55 L90 75"/>
+                    <text class="speech-bubble-text" x="80" y="40">Grrr... Le Caïd !</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6 class="panel-title">Case 3 : Spirou explique sa stratégie à Vertignasse.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#90EE90" stroke="#D3D3D3" stroke-width="1"/>
+                    <line x1="1" y1="170" x2="299" y2="170" stroke="#A0522D" stroke-width="2"/> <ellipse cx="80" cy="110" rx="18" ry="20" class="character-spirou-head"/>
+                    <path d="M70 95 Q80 88 90 95 Z" class="character-spirou-hat"/>
+                    <rect x="73" y="130" width="14" height="35" class="character-spirou-body"/>
+                    <path d="M73 135 Q80 125 87 135" fill="none" stroke="black" stroke-width="1.5"/> <ellipse cx="200" cy="115" rx="18" ry="20" class="character-vertignasse-hair"/>
+                    <rect x="193" y="135" width="14" height="35" class="character-vertignasse-body"/>
+                    <text x="200" y="105" font-size="8">V.</text>
+                    <line x1="190" y1="140" x2="210" y2="145" stroke="black" stroke-width="1.5"/> <line x1="190" y1="145" x2="210" y2="140" stroke="black" stroke-width="1.5"/>
+
+                    <path class="speech-bubble-path" d="M30 40 Q90 20 150 40 Q140 70 90 80 Q40 70 30 40 Z M100 80 L90 100"/>
+                    <text class="speech-bubble-text" x="90" y="55" style="font-size:8.5px;">Tu vas voir, je vais avoir<tspan x="90" dy="10">une vraie tête de dur !</tspan></text>
+
+                    <path class="speech-bubble-path" d="M150 50 Q200 40 250 50 Q245 70 200 75 Q155 70 150 50 Z M200 75 L200 95"/>
+                    <text class="speech-bubble-text" x="200" y="60">Pfff, cause toujours !</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6 class="panel-title">Case 4 : Dans le couloir, studio photo improvisé.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#FFE4B5" stroke="#D3D3D3" stroke-width="1"/>
+                    <rect x="1" y="170" width="298" height="28" fill="#D2B48C" /> <rect x="100" y="10" width="100" height="160" fill="#D3D3D3" stroke="black" stroke-width="1"/>
+
+                    <rect x="135" y="100" width="30" height="70" class="character-photographer-body"/> <rect x="140" y="80" width="20" height="20" fill="black"/> <circle cx="150" cy="70" r="5" fill="#333"/> <circle cx="50" cy="140" r="10" fill="#B0E0E6"/>
+                    <rect x="45" y="150" width="10" height="20" fill="#B0E0E6"/>
+                    <circle cx="70" cy="140" r="10" fill="#FFB6C1"/>
+                    <rect x="65" y="150" width="10" height="20" fill="#FFB6C1"/>
+
+                    <ellipse cx="240" cy="130" rx="15" ry="18" class="character-spirou-head"/>
+                    <path d="M230 117 Q240 110 250 117 Z" class="character-spirou-hat"/>
+                    <rect x="235" y="148" width="10" height="30" class="character-spirou-body"/>
+                    <text x="240" y="150" font-size="10" fill="black" dominant-baseline="middle" text-anchor="middle">💥</text> <path class="speech-bubble-path" d="M30 20 Q80 10 130 20 Q125 40 80 45 Q35 40 30 20 Z M120 45 L130 60"/>
+                    <text class="speech-bubble-text" x="80" y="30">Au suivant !</text>
+                    <text x="80" y="52" font-size="7">(Photographe HC)</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6 class="panel-title">Case 5 : Spirou pose, le photographe prêt.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#D3D3D3" stroke="#D3D3D3" stroke-width="1"/>
+                    <rect x="120" y="150" width="60" height="20" fill="#A0522D" stroke="black"/>
+                    <line x1="130" y1="170" x2="130" y2="190" stroke="black"/>
+                    <line x1="170" y1="170" x2="170" y2="190" stroke="black"/>
+
+                    <ellipse cx="150" cy="100" rx="25" ry="30" class="character-spirou-head"/>
+                    <path d="M135 78 Q150 65 165 78 Z" class="character-spirou-hat"/>
+                    <rect x="140" y="130" width="20" height="30" class="character-spirou-body"/> <line x1="140" y1="95" x2="148" y2="98" stroke="black" stroke-width="2"/> <line x1="160" y1="95" x2="152" y2="98" stroke="black" stroke-width="2"/> <line x1="145" y1="110" x2="155" y2="110" stroke="black" stroke-width="1.5"/> <circle cx="143" cy="103" r="2" fill="black"/> <circle cx="157" cy="103" r="2" fill="black"/> <rect x="50" y="80" width="30" height="20" fill="black"/> <ellipse cx="65" cy="65" rx="10" ry="12" fill="#C0C0C0"/> <rect x="60" y="77" width="10" height="30" class="character-photographer-body"/>
+
+                    <path class="speech-bubble-path" d="M30 20 Q90 10 150 25 Q140 50 90 55 Q40 50 30 20 Z M80 55 L70 75"/>
+                    <text class="speech-bubble-text" x="90" y="35" font-size="9">Ne bouge plus... Souriez...<tspan x="90" dy="10">ou pas.</tspan></text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6 class="panel-title">Case 6 : Gros plan Spirou, une abeille arrive.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="100" rx="60" ry="70" class="character-spirou-head"/>
+                    <path d="M110 45 Q150 20 190 45 Z" class="character-spirou-hat" transform="scale(1.2) translate(-25, -10)"/>
+                    <line x1="120" y1="85" x2="140" y2="90" stroke="black" stroke-width="3"/> <line x1="180" y1="85" x2="160" y2="90" stroke="black" stroke-width="3"/> <line x1="135" y1="120" x2="165" y2="120" stroke="black" stroke-width="2.5"/> <ellipse cx="130" cy="100" rx="5" ry="3" fill="black"/> <ellipse cx="170" cy="100" rx="5" ry="3" fill="black"/> <animate attributeName="ry" from="3" to="5" dur="0.5s" begin="1s" fill="freeze" restart="whenNotActive" subject="#pupil_d_6"/>
+
+
+                    <ellipse cx="230" cy="110" rx="8" ry="5" class="bee-body"/>
+                    <rect x="227" y="108" width="6" height="1.5" class="bee-stripe"/>
+                    <rect x="227" y="110.5" width="6" height="1.5" class="bee-stripe"/>
+                    <ellipse cx="235" cy="105" rx="5" ry="3" class="bee-wing" transform="rotate(-20 235 105)"/>
+                    <ellipse cx="235" cy="115" rx="5" ry="3" class="bee-wing" transform="rotate(20 235 115)"/>
+                    <line x1="238" y1="110" x2="242" y2="108" stroke="black" stroke-width="0.5"/> <text class="onomatopoeia-text" x="250" y="140" fill="#A0A0A0" font-size="16">BZZZ...</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6 class="panel-title">Case 7 : Abeille proche, Spirou panique.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="100" rx="60" ry="70" class="character-spirou-head" transform="translate(10, 5) rotate(5 150 100)"/> <path d="M110 45 Q150 20 190 45 Z" class="character-spirou-hat" transform="scale(1.2) translate(-15, -5) rotate(5 150 100)"/>
+                    <circle cx="130" cy="95" r="10" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="132" cy="97" r="4" fill="black"/>
+                    <circle cx="170" cy="93" r="10" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="168" cy="95" r="4" fill="black"/>
+                    <ellipse cx="150" cy="130" rx="15" ry="8" fill="#FFC0CB" stroke="black" stroke-width="1"/>
+
+                    <ellipse cx="160" cy="115" rx="10" ry="7" class="bee-body"/> <rect x="157" y="113" width="6" height="1.8" class="bee-stripe"/>
+                    <rect x="157" y="115.8" width="6" height="1.8" class="bee-stripe"/>
+                    <ellipse cx="166" cy="110" rx="7" ry="4" class="bee-wing" transform="rotate(-20 166 110)"/>
+                    <ellipse cx="166" cy="120" rx="7" ry="4" class="bee-wing" transform="rotate(20 166 120)"/>
+                    <path d="M150 110 L158 115" stroke="black" stroke-width="0.5"/> <path class="speech-bubble-path" style="stroke-dasharray: 2,2; fill: #FFFFE0;"
+                          d="M30 30 l20 -10 l10 15 l20 -10 l10 20 l-10 10 l-20 -5 l-15 15 l-10 -20 Z M80 50 L100 80"/>
+                    <text class="speech-bubble-text" x="75" y="45" font-size="18" font-weight="bold">OUPS !</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6 class="panel-title">Case 8 : Flash ! Spirou sursaute.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="white"/>
+                    <polygon points="0,0 300,0 300,200 0,200 0,0" fill="rgba(255,255,0,0.8)"/>
+                    <path d="M50,50 L100,20 L120,70 L180,60 L150,100 L200,150 L130,120 L100,180 L80,110 L20,100 Z" fill="yellow" stroke="orange" stroke-width="3">
+                        <animate attributeName="opacity" values="0;1;0" dur="0.5s" repeatCount="1"/>
+                    </path>
+
+                    <ellipse cx="150" cy="150" rx="25" ry="30" fill="rgba(0,0,0,0.7)" transform="rotate(-30 150 150) translate(0, 20)"/> <path d="M135 128 Q150 115 165 128 Z" fill="rgba(0,0,0,0.7)" transform="rotate(-30 150 150) translate(0,20) scale(0.8)"/> <rect x="140" y="170" width="20" height="30" fill="rgba(0,0,0,0.7)" transform="rotate(-30 150 150) translate(0,20)"/> <rect x="120" y="130" width="60" height="20" fill="rgba(50,50,50,0.5)" transform="translate(0,20)"/> <g transform="translate(230, 50) scale(0.8)">
+                        <ellipse cx="0" cy="0" rx="8" ry="5" class="bee-body"/>
+                        <rect x="-3" y="-2" width="6" height="1.5" class="bee-stripe"/>
+                        <rect x="-3" y="0.5" width="6" height="1.5" class="bee-stripe"/>
+                        <ellipse cx="5" cy="-5" rx="5" ry="3" class="bee-wing" transform="rotate(-20 5 -5)"/>
+                        <ellipse cx="5" cy="5" rx="5" ry="3" class="bee-wing" transform="rotate(20 5 5)"/>
+                    </g>
+
+                    <text class="onomatopoeia-text" x="150" y="100" fill="orange" stroke="red" stroke-width="1" font-size="50">FLASH !</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6 class="panel-title">Case 9 : Mlle Chiffre amusée, Spirou dépité.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="298" height="198" fill="#F5F5F5" stroke="#D3D3D3" stroke-width="1"/>
+
+                    <ellipse cx="70" cy="80" rx="20" ry="24" class="character-mllechiffre-hair"/>
+                    <rect x="60" y="104" width="20" height="50" class="character-mllechiffre-dress"/>
+                    <text x="70" y="70" font-size="8">Mlle C.</text>
+                    <line x1="65" y1="95" x2="75" y2="95" stroke="black" stroke-width="1"/> <path d="M78 78 Q80 76 82 78" stroke="black" stroke-width="1" fill="none"/> <ellipse cx="220" cy="100" rx="18" ry="20" class="character-spirou-head"/>
+                    <path d="M210 85 Q220 78 230 85 Z" class="character-spirou-hat" transform="rotate(10 220 100)"/> <rect x="213" y="120" width="14" height="35" class="character-spirou-body"/>
+                    <path d="M215 110 Q220 113 225 110" fill="none" stroke="black" stroke-width="1"/> <line x1="215" y1="95" x2="218" y2="98" stroke="black"/> <line x1="225" y1="95" x2="222" y2="98" stroke="black"/> <rect x="90" y="80" width="60" height="80" fill="white" stroke="black" stroke-width="1" transform="rotate(-10 120 120)"/>
+                    <text x="120" y="120" font-size="6" text-anchor="middle">(Photo)</text>
+                     <ellipse cx="120" cy="100" rx="15" ry="18" fill="#FFDF00" transform="rotate(-10 120 120)" /> <path d="M110 88 Q120 82 130 88 Z" fill="red" transform="rotate(-10 120 120) scale(0.7) translate(20 25)" /> <circle cx="115" cy="98" r="4" fill="white" stroke="black" stroke-width="0.5" transform="rotate(-10 120 120)"/>
+                    <circle cx="115" cy="98" r="1.5" fill="black" transform="rotate(-10 120 120)"/>
+                    <circle cx="125" cy="98" r="4" fill="white" stroke="black" stroke-width="0.5" transform="rotate(-10 120 120)"/>
+                    <circle cx="125" cy="98" r="1.5" fill="black" transform="rotate(-10 120 120)"/>
+                    <ellipse cx="120" cy="112" rx="7" ry="4" fill="pink" transform="rotate(-10 120 120)"/> <path d="M120 114 Q122 118 118 120" stroke="#ADD8E6" stroke-width="0.5" fill="none" transform="rotate(-10 120 120)"/> <path d="M110 85 L112 80 M120 83 L120 78 M130 85 L128 80" stroke="black" stroke-width="0.5" transform="rotate(-10 120 120)"/> <path class="thought-bubble-path" d="M30 20 Q80 10 130 25 Q120 45 80 50 Q35 40 30 20 Z"/>
+                    <circle cx="85" cy="53" r="2" fill="white" stroke="black" stroke-width="0.5"/>
+                    <circle cx="80" cy="57" r="1.5" fill="white" stroke="black" stroke-width="0.5"/>
+                    <text class="speech-bubble-text" x="80" y="35" font-size="8">Inoubliable, en effet...</text>
+
+                    <path class="speech-bubble-path" d="M180 140 Q220 130 260 145 Q250 165 210 170 Q185 160 180 140 Z M220 130 L220 120"/>
+                    <text class="speech-bubble-text" x="220" y="155" font-size="10">Raté...</text>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Le Schtroumpf Glouton et la Tarte Mystère - Page 1</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 1200px; /* Augmenté pour 3 colonnes */ margin: 0 auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; text-align: center; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 0 0 calc(33.333% - 20px); /* Grille de 3 colonnes */ box-sizing: border-box; min-width: 280px; /* Ajusté */ max-width: 320px; /* Ajusté */ display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; font-weight: bold; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 3/2; /* Ajusté pour mieux correspondre au contenu attendu */ background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 3,2; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #BDB76B; stroke-width: 1; } /* Jaune plus doux */
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; text-anchor: middle; dominant-baseline: middle;}
+        .smurf-body { fill: #87CEFA; stroke: #0000CD; stroke-width: 0.5; }
+        .smurf-hat { fill: white; stroke: black; stroke-width: 0.5; }
+        .smurf-trousers { fill: white; stroke: black; stroke-width: 0.5; }
+        .grand-smurf-hat { fill: red; stroke: black; stroke-width: 0.5; }
+        .grand-smurf-trousers { fill: red; stroke: black; stroke-width: 0.5; }
+        .grand-smurf-beard { fill: white; stroke: #ccc; stroke-width: 0.5; }
+        .onomatopoeia-text { font-size: 14px; font-weight: bold; fill: #FF4500; text-anchor: middle; dominant-baseline: middle; }
+        .pie-crust { fill: #DEB887; stroke: #8B4513; stroke-width: 0.5; }
+        .pie-filling { fill: #483D8B; } /* Myrtille */
+        .bubble-soap { fill: rgba(173, 216, 230, 0.6); stroke: #87CEEB; stroke-width: 1;}
+    </style>
+</head>
+<body>
+    <h1>Le Schtroumpf Glouton et la Tarte Mystère - Page 1</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Schtroumpf Gourmand hume, trouve et dévore une tarte-batterie, puis schtroumpfe des bulles.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Case 1 : Gourmand hume odeur délicieuse, atelier Bricoleur visible.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="130" r="15" class="smurf-body"/>
+                    <path d="M85,120 Q100,90 115,120 Z" class="smurf-hat"/>
+                    <text x="100" y="130" font-size="8px" text-anchor="middle">G</text> <path d="M108,128 L115,125" stroke="black" stroke-width="1"/> <circle cx="105" cy="125" r="1" fill="black"/>
+                    <path d="M120,120 Q130,110 140,120 T160,120" fill="none" stroke="#AAAAAA" stroke-width="2" stroke-dasharray="3,2"/>
+                    <path d="M125,110 Q135,100 145,110 T165,110" fill="none" stroke="#BBBBBB" stroke-width="2" stroke-dasharray="3,2"/>
+                    <text x="140" y="100" font-size="15px">&#x266A;</text>
+                    <text x="155" y="90" font-size="12px">&#x266B;</text>
+                    <rect x="200" y="100" width="80" height="60" fill="#D2B48C" stroke="black"/>
+                    <polygon points="200,100 280,100 240,70" fill="#8B4513" stroke="black"/>
+                    <rect x="230" y="130" width="20" height="30" fill="#A0522D"/> <g class="narrative-box-group">
+                        <title>Au village des Schtroumpfs, une journée comme les autres commençait... ou presque !</title>
+                        <rect x="10" y="10" width="280" height="30" class="narrative-box-path"/>
+                        <text x="150" y="25" class="narrative-text">Au village des Schtroumpfs, une journée comme les autres commençait... ou presque !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Schtroumpf ! Mais qu'est-ce qui schtroumpfe si bon ?</title>
+                        <path d="M140,70 Q130,50 150,40 Q180,30 200,40 Q220,50 200,70 Q180,80 140,70 Z" class="thought-bubble-path"/>
+                        <text x="175" y="55" class="speech-bubble-text" style="font-size:8px;">Schtroumpf ! Mais qu'est-ce qui<tspan x="175" dy="10">schtroumpfe si bon ?</tspan></text>
+                        <circle cx="130" cy="80" r="3" fill="white" stroke="black"/>
+                        <circle cx="120" cy="90" r="2" fill="white" stroke="black"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Case 2 : Gourmand découvre tarte myrtilles sur établi, yeux brillants.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="70" cy="130" r="15" class="smurf-body"/>
+                    <path d="M55,120 Q70,90 85,120 Z" class="smurf-hat"/>
+                    <text x="70" y="130" font-size="8px" text-anchor="middle">G</text>
+                    <circle cx="75" cy="125" r="2" fill="yellow"/> <circle cx="75" cy="125" r="1" fill="black"/>
+                    <text x="80" y="120" font-size="12px" fill="gold">*</text>
+                    <rect x="130" y="140" width="120" height="20" fill="#A0522D" stroke="black"/>
+                    <rect x="140" y="160" width="10" height="30" fill="#8B4513"/> <rect x="220" y="160" width="10" height="30" fill="#8B4513"/>
+                    <ellipse cx="190" cy="130" rx="40" ry="20" class="pie-crust"/>
+                    <ellipse cx="190" cy="128" rx="38" ry="18" class="pie-filling"/>
+                    <circle cx="180" cy="128" r="3" fill="#2F2F8E"/> <circle cx="190" cy="125" r="3" fill="#2F2F8E"/> <circle cx="200" cy="128" r="3" fill="#2F2F8E"/>
+                    <rect x="100" y="60" width="190" height="100" fill="#D2B48C" stroke="black" opacity="0.5"/>
+                    <g class="speech-bubble-group">
+                        <title>Par ma schtroumpfette ! Une tarte ! Et elle a l'air schtroumpfement délicieuse !</title>
+                        <path d="M100,50 C90,30 200,30 190,50 C220,70 160,80 100,50 Z" class="speech-bubble-path"/>
+                        <polygon points="100,55 90,70 80,65" class="speech-bubble-path"/>
+                        <text x="145" y="45" class="speech-bubble-text" style="font-size:7px;">Par ma schtroumpfette ! Une tarte !<tspan x="145" dy="10">Et elle a l'air schtroumpfement</tspan><tspan x="145" dy="10">délicieuse !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Case 3 : Gourmand regarde alentour, air coupable, tarte tentatrice.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="130" r="15" class="smurf-body"/>
+                    <path d="M135,120 Q150,90 165,120 Z" class="smurf-hat"/>
+                    <text x="150" y="130" font-size="8px" text-anchor="middle">G</text>
+                    <circle cx="145" cy="125" r="1" fill="black"/> <circle cx="155" cy="125" r="1" fill="black"/>
+                    <path d="M140,125 L130,125" stroke="black" stroke-width="1" marker-end="url(#arrowhead)"/>
+                    <path d="M160,125 L170,125" stroke="black" stroke-width="1" marker-end="url(#arrowhead)"/>
+                    <defs><marker id="arrowhead" markerWidth="3" markerHeight="3" refX="0" refY="1.5" orient="auto"><polygon points="0 0, 3 1.5, 0 3" /></marker></defs>
+                    <ellipse cx="230" cy="150" rx="30" ry="15" class="pie-crust"/>
+                    <ellipse cx="230" cy="148" rx="28" ry="13" class="pie-filling"/>
+                    <g class="speech-bubble-group">
+                        <title>Personne... Elle doit être pour tout le monde... et surtout pour moi !</title>
+                        <path d="M50,50 C40,30 160,30 150,50 C180,70 120,80 50,50 Z" class="speech-bubble-path" stroke-dasharray="2,2"/>
+                        <polygon points="80,70 90,90 70,80" class="speech-bubble-path" stroke-dasharray="2,2"/>
+                        <text x="100" y="45" class="speech-bubble-text" style="font-size:8px;">Personne... Elle doit être pour<tspan x="100" dy="10">tout le monde... et surtout</tspan><tspan x="100" dy="10">pour moi !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Case 4 : Gros plan Gourmand dévorant tarte, miettes volent.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="120" r="40" class="smurf-body"/> <path d="M110,100 Q150,30 190,100 Z" class="smurf-hat"/>
+                    <circle cx="130" cy="110" r="5" fill="black"/> <circle cx="170" cy="110" r="5" fill="black"/> <path d="M140,140 Q150,150 160,140" fill="none" stroke="black" stroke-width="2"/> <circle cx="100" cy="150" r="10" class="smurf-body"/> <circle cx="200" cy="150" r="10" class="smurf-body"/>
+                    <path d="M110,160 Q150,130 190,160 A30,15 0 0,0 110,160 Z" class="pie-crust"/>
+                    <path d="M115,158 Q150,132 185,158 A28,13 0 0,0 115,158 Z" class="pie-filling"/>
+                    <circle cx="120" cy="170" r="1.5" fill="#A0522D"/><circle cx="180" cy="170" r="1" fill="#A0522D"/>
+                    <circle cx="100" cy="130" r="2" fill="#A0522D"/><circle cx="200" cy="130" r="1.5" fill="#A0522D"/>
+                    <g class="speech-bubble-group">
+                        <title>SCHTROUMPF ! MIAM ! GLOUPS !</title>
+                        <path d="M50,30 L250,30 L230,70 L70,70 Z" fill="none" stroke="none" /> <text x="150" y="50" class="onomatopoeia-text">SCHTROUMPF ! MIAM ! GLOUPS !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Case 5 : Gourmand satisfait, ventre arrondi, reste petite part tarte.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="135" rx="20" ry="25" class="smurf-body"/> <circle cx="150" cy="100" r="15" class="smurf-body"/> <path d="M135,90 Q150,60 165,90 Z" class="smurf-hat"/>
+                    <text x="150" y="135" font-size="8px" text-anchor="middle">G</text>
+                    <path d="M145,105 Q150,108 155,105" fill="none" stroke="black" stroke-width="1"/> <path d="M160,103 L165,100" stroke="black" stroke-width="1"/> <ellipse cx="230" cy="160" rx="15" ry="7" class="pie-crust"/>
+                    <path d="M220,160 A15,7 0 0,1 230,153 L230,160Z" class="pie-filling"/>
+                    <rect x="210" y="165" width="40" height="5" fill="#DDD"/> <g class="speech-bubble-group">
+                        <title>Ahhh ! C'était la meilleure tarte que j'ai jamais schtroumpfée !</title>
+                        <path d="M30,30 C20,10 170,10 160,30 C190,50 130,60 30,30 Z" class="speech-bubble-path"/>
+                        <polygon points="130,55 140,70 130,65" class="speech-bubble-path"/>
+                        <text x="95" y="30" class="speech-bubble-text" style="font-size:7.5px;">Ahhh ! C'était la meilleure tarte<tspan x="95" dy="10">que j'ai jamais schtroumpfée !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Case 6 : Bricoleur sort, catastrophé ; Pâtissier arrive, intrigué.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="70" cy="130" r="15" class="smurf-body"/>
+                    <path d="M55,120 Q70,90 85,120 Z" class="smurf-hat"/>
+                    <text x="70" y="130" font-size="8px" text-anchor="middle">B</text> <rect x="60" y="125" width="5" height="15" fill="#777"/> <circle cx="75" cy="125" r="2" fill="white" stroke="black"/><circle cx="75" cy="125" r="1" fill="black"/> <path d="M0,100 h50 v60 h-50 Z" fill="#D2B48C" stroke="black"/> <rect x="30" y="110" width="20" height="50" fill="#8B4513"/> <rect x="130" y="165" width="40" height="5" fill="#DDD"/>
+                    <path d="M135,163 A15,7 0 0,1 140,158 L140,163Z" fill="#A0522D" opacity="0.5"/> <circle cx="230" cy="130" r="15" class="smurf-body"/>
+                    <path d="M215,120 Q230,80 245,120 Q235,115 225,115 Z" class="smurf-hat"/> <text x="230" y="130" font-size="8px" text-anchor="middle">P</text> <circle cx="225" cy="125" r="1.5" fill="black"/>
+
+                    <g class="speech-bubble-group">
+                        <title>NON ! Ma "Tarte-Batterie Énergétique Expérimentale V.3" !</title>
+                        <path d="M30,30 C20,10 180,10 170,30 C200,50 140,60 30,30 Z" class="speech-bubble-path"/>
+                        <polygon points="80,50 75,65 90,55" class="speech-bubble-path"/>
+                        <text x="100" y="25" class="speech-bubble-text" style="font-size:7px;">NON ! Ma "Tarte-Batterie<tspan x="100" dy="9">Énergétique Expérimentale V.3" !</tspan></text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>Ta quoi ? Je croyais que c'était MOI qui schtroumpfait les tartes ici !</title>
+                        <path d="M180,70 C170,50 290,50 280,70 C310,90 250,100 180,70 Z" class="speech-bubble-path"/>
+                        <polygon points="250,90 240,105 230,95" class="speech-bubble-path"/>
+                        <text x="235" y="75" class="speech-bubble-text" style="font-size:7px;">Ta quoi ? Je croyais que c'était<tspan x="235" dy="9">MOI qui schtroumpfait les tartes ici !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6>Case 7 : Gourmand surpris, verdâtre ; Bricoleur horrifié le pointe.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="130" r="15" fill="#90EE90" stroke="#006400" stroke-width="0.5"/> <path d="M135,120 Q150,90 165,120 Z" class="smurf-hat"/>
+                    <text x="150" y="130" font-size="8px" text-anchor="middle">G</text>
+                    <circle cx="145" cy="125" r="1.5" fill="black"/><circle cx="155" cy="125" r="1.5" fill="black"/> <rect x="160" y="128" width="2" height="1" fill="#A0522D"/> <circle cx="70" cy="130" r="15" class="smurf-body"/>
+                    <path d="M55,120 Q70,90 85,120 Z" class="smurf-hat"/>
+                    <text x="70" y="130" font-size="8px" text-anchor="middle">B</text>
+                    <line x1="85" y1="130" x2="120" y2="130" stroke="black" stroke-width="2"/> <path d="M118,128 L125,130 L118,132 Z" fill="black"/> <ellipse cx="70" cy="123" rx="3" ry="4" fill="white" stroke="black"/><circle cx="70" cy="123" r="1" fill="black"/> <g class="speech-bubble-group">
+                        <title>Tarte-batterie ? Euh... elle avait un drôle de petit goût acidulé, c'est schtroumpf...</title>
+                        <path d="M170,30 C160,10 290,10 280,30 C310,50 250,60 170,30 Z" class="speech-bubble-path"/>
+                        <polygon points="175,50 165,65 170,55" class="speech-bubble-path"/>
+                        <text x="230" y="25" class="speech-bubble-text" style="font-size:7px;">Tarte-batterie ? Euh... elle avait un<tspan x="230" dy="9">drôle de petit goût acidulé, c'est</tspan><tspan x="230" dy="9">schtroumpf...</tspan></text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>Malheureux ! Elle était pleine de jus de salsepareille fermenté et de poudre de pétarade ! Pour ma nouvelle machine à bulles !</title>
+                        <path d="M10,70 C0,50 160,50 150,70 C180,90 120,100 10,70 Z" class="speech-bubble-path"/>
+                        <polygon points="80,90 75,105 90,95" class="speech-bubble-path"/>
+                        <text x="80" y="70" class="speech-bubble-text" style="font-size:6.5px;">Malheureux ! Elle était pleine de jus de<tspan x="80" dy="8">salsepareille fermenté et de poudre de</tspan><tspan x="80" dy="8">pétarade ! Pour ma nouvelle machine</tspan><tspan x="80" dy="8">à bulles !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6>Case 8 : Gourmand ventre tenu, joues gonflées, 1ères bulles ; Gd Schtroumpf arrive.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="135" rx="20" ry="25" fill="#98FB98" stroke="#006400" stroke-width="0.5"/> <circle cx="150" cy="100" r="15" fill="#98FB98" stroke="#006400" stroke-width="0.5"/> <path d="M135,90 Q150,60 165,90 Z" class="smurf-hat"/>
+                    <text x="150" y="135" font-size="8px" text-anchor="middle">G</text>
+                    <ellipse cx="140" cy="100" rx="5" ry="3" fill="#A0FFA0"/> <ellipse cx="160" cy="100" rx="5" ry="3" fill="#A0FFA0"/>
+                    <path d="M135,130 C130,140 135,150 135,150" fill="none" stroke="#006400" stroke-width="2"/>
+                    <path d="M165,130 C170,140 165,150 165,150" fill="none" stroke="#006400" stroke-width="2"/>
+                    <circle cx="165" cy="95" r="5" class="bubble-soap"/> <text x="165" y="97" font-size="6px">plop</text>
+                    <circle cx="175" cy="85" r="3" class="bubble-soap"/>
+
+                    <circle cx="240" cy="130" r="15" class="smurf-body"/>
+                    <path d="M225,120 Q240,90 255,120 Z" class="grand-smurf-hat"/>
+                    <path d="M225,130 Q240,150 255,130 L250 145 L230 145 Z" class="grand-smurf-beard"/>
+                    <rect x="230" y="144" width="20" height="10" class="grand-smurf-trousers"/>
+                    <text x="240" y="130" font-size="8px" text-anchor="middle">GS</text>
+                    <circle cx="235" cy="125" r="1.5" fill="black"/> <g class="speech-bubble-group">
+                        <title>Oups... Je me sens tout chose... SCHTROUMPF... plop... plop...</title>
+                        <path d="M150,40 C120,20 250,20 220,40 C250,60 180,70 150,40 Z" class="speech-bubble-path"/>
+                        <polygon points="160,60 155,75 165,65" class="speech-bubble-path"/>
+                        <text x="185" y="40" class="speech-bubble-text" style="font-size:7px;">Oups... Je me sens tout chose...<tspan x="185" dy="9">SCHTROUMPF... plop... plop...</tspan></text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>Mais que se schtroumpf-t-il encore ici ?</title>
+                        <path d="M200,10 C190,-10 295,-10 285,10 C315,30 255,40 200,10 Z" class="speech-bubble-path"/>
+                        <polygon points="250,30 245,45 255,35" class="speech-bubble-path"/>
+                        <text x="245" y="15" class="speech-bubble-text" style="font-size:7px;">Mais que se schtroumpf-t-il<tspan x="245" dy="9">encore ici ?</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6>Case 9 : Explosion bulles multicolores de Gourmand; réactions variées.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(150, 90) rotate(-10)">
+                        <circle cx="0" cy="0" r="15" fill="#A0FFA0" stroke="#006400"/> <path d="M-15,-10 Q0,-40 15,-10 Z" class="smurf-hat"/>
+                        <ellipse cx="0" cy="20" rx="10" ry="15" fill="#A0FFA0" stroke="#006400"/> </g>
+                    <circle cx="150" cy="90" r="20" fill="rgba(255,105,180,0.6)" stroke="deeppink" class="bubble-soap"/>
+                    <circle cx="120" cy="70" r="15" fill="rgba(144,238,144,0.6)" stroke="green" class="bubble-soap"><text x="120" y="73" font-size="5">S</text></circle>
+                    <circle cx="180" cy="70" r="12" fill="rgba(135,206,250,0.6)" stroke="blue" class="bubble-soap"/>
+                    <circle cx="150" cy="50" r="10" fill="rgba(255,255,0,0.6)" stroke="gold" class="bubble-soap"/>
+                    <circle cx="100" cy="100" r="18" fill="rgba(255,165,0,0.6)" stroke="orange" class="bubble-soap"/>
+                    <circle cx="200" cy="100" r="16" fill="rgba(221,160,221,0.6)" stroke="purple" class="bubble-soap"><text x="200" y="103" font-size="5">S</text></circle>
+                    <circle cx="130" cy="120" r="10" class="bubble-soap"/> <circle cx="170" cy="120" r="8" class="bubble-soap"/>
+                    <circle cx="150" cy="140" r="15" fill="rgba(0,255,255,0.6)" stroke="cyan" class="bubble-soap"/>
+
+                    <g transform="translate(40, 150)">
+                        <circle cx="0" cy="0" r="12" class="smurf-body"/> <path d="M-12,-10 Q0,-30 12,-10 Z" class="smurf-hat"/> <text x="0" y="0" font-size="7px">B</text>
+                        <circle cx="-5" cy="-15" r="4" class="smurf-body"/> <circle cx="5" cy="-15" r="4" class="smurf-body"/> </g>
+                    <g transform="translate(90, 160)">
+                        <circle cx="0" cy="0" r="12" class="smurf-body"/> <path d="M-12,-10 Q0,-35 12,-10 Q5,-12 -5,-12 Z" class="smurf-hat"/> <text x="0" y="0" font-size="7px">P</text>
+                        <path d="M-5, -3 Q0,0 5,-3" fill="none" stroke="black"/> </g>
+                    <g transform="translate(250, 155)">
+                        <circle cx="0" cy="0" r="12" class="smurf-body"/> <path d="M-12,-10 Q0,-30 12,-10 Z" class="grand-smurf-hat"/>
+                        <path d="M-12,0 Q0,15 12,0 L8,10 L-8,10 Z" class="grand-smurf-beard"/> <text x="0" y="0" font-size="7px">GS</text>
+                        <path d="M-3,-5 Q0,-4 3,-5" fill="none" stroke="black"/> <path d="M8, -15 Q10, -20 12,-15" fill="lightblue" stroke="blue"/> </g>
+
+                    <g class="speech-bubble-group">
+                        <title>SCHTROUMPF... PLOP... BLUB... Faut... schtroumpfer... que... c'est... rafraîchissant ! ... PLOP !</title>
+                        <text x="150" y="180" class="speech-bubble-text" style="font-size:6px;">SCHTROUMPF... PLOP... BLUB... Faut...<tspan x="150" dy="7">schtroumpfer... que... c'est... rafraîchissant !</tspan><tspan x="150" dy="7">... PLOP !</tspan></text>
+                    </g>
+                     <g class="speech-bubble-group">
+                         <title>Mon invention fonctionne ! Mais pas comme prévu !</title>
+                        <path d="M5,25 C-5,5 75,5 65,25 C95,45 35,55 5,25 Z" class="speech-bubble-path"/>
+                        <polygon points="30,45 35,60 40,50" class="speech-bubble-path"/>
+                        <text x="35" y="30" class="speech-bubble-text" style="font-size:6px;">Mon invention fonctionne!<tspan x="35" dy="8">Mais pas comme prévu !</tspan></text>
+                    </g>
+                     <g class="speech-bubble-group">
+                         <title>Schtroumpf alors... Au moins, le village sera bien décoré pour la fête de ce soir !</title>
+                        <path d="M200,10 C190,-10 295,-10 285,10 C315,30 255,40 200,10 Z" class="speech-bubble-path"/>
+                        <polygon points="260,30 255,45 265,35" class="speech-bubble-path"/>
+                        <text x="245" y="15" class="speech-bubble-text" style="font-size:6px;">Schtroumpf alors... Au moins, le village<tspan x="245" dy="8">sera bien décoré pour la fête de ce soir !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

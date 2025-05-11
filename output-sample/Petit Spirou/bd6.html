@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - L'Art Subtil du Flocon Parfait - Page 1</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 800px; margin: 0 auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 250px; max-width: 300px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} /* Tooltips are native browser behavior */
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+    </style>
+</head>
+<body>
+    <h1>L'Art Subtil du Flocon Parfait - Page 1</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5>Page 1 : En classe, les élèves s'appliquent à découper des flocons de neige sous l'œil de Mademoiselle Chiffre, jusqu'à l'intervention surprenante de Grand-Papy.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Case 1 : Vue de la classe, Mademoiselle Chiffre observe les enfants concentrés sur leurs découpages.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="130" y="30" width="40" height="70" fill="#FFB6C1" stroke="black"/>
+                    <circle cx="150" cy="20" r="15" fill="#FFE4B5" stroke="black"/>
+                    <rect x="20" y="100" width="50" height="40" fill="#DEB887"/>
+                    <circle cx="45" cy="90" r="10" fill="#FFE4B5"/> <rect x="80" y="100" width="50" height="40" fill="#DEB887"/>
+                    <circle cx="105" cy="90" r="10" fill="#FFE4B5"/> <rect x="140" y="100" width="50" height="40" fill="#DEB887"/>
+                    <circle cx="165" cy="90" r="10" fill="#FFE4B5"/> <rect x="200" y="100" width="50" height="40" fill="#DEB887"/>
+                    <circle cx="225" cy="90" r="10" fill="#FFE4B5"/> <circle cx="30" cy="130" r="3" fill="lightgray"/> <circle cx="90" cy="135" r="2" fill="lightgray"/>
+                    <circle cx="150" cy="130" r="3" fill="lightgray"/> <circle cx="210" cy="135" r="2" fill="lightgray"/>
+                    <g class="speech-bubble-group">
+                        <title>Un peu de calme... enfin !</title>
+                        <path class="speech-bubble-path" d="M 180,20 Q 190,10 200,20 Q 210,30 200,40 Q 190,50 180,40 Q 170,30 180,20 Z"/>
+                        <ellipse cx="175" cy="45" rx="3" ry="2" fill="white" stroke="black"/>
+                        <ellipse cx="170" cy="50" rx="2" ry="1.5" fill="white" stroke="black"/>
+                        <text x="200" y="30" class="speech-bubble-text" font-size="8px">Un peu de calme...</text>
+                        <text x="200" y="38" class="speech-bubble-text" font-size="8px">enfin !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Case 2 : Gros plan sur les mains concentrées du Petit Spirou découpant.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="100" cy="100" rx="30" ry="20" fill="#FFE4B5" stroke="black"/>
+                    <ellipse cx="180" cy="100" rx="30" ry="20" fill="#FFE4B5" stroke="black"/>
+                    <line x1="130" y1="90" x2="150" y2="110" stroke="gray" stroke-width="3"/>
+                    <line x1="130" y1="110" x2="150" y2="90" stroke="gray" stroke-width="3"/>
+                    <circle cx="125" cy="85" r="5" stroke="darkgray" fill="lightgray"/>
+                    <circle cx="125" cy="115" r="5" stroke="darkgray" fill="lightgray"/>
+                    <polygon points="140,70 160,130 120,130" fill="white" stroke="black"/>
+                    <path d="M 200,50 A 30,30 0 0,1 230,80 L 230,50 Z" fill="#FFE4B5" stroke="black"/>
+                    <line x1="225" y1="65" x2="215" y2="70" stroke="black"/> <g class="speech-bubble-group">
+                         <title>Celui-là, il sera parfait !</title>
+                        <path class="speech-bubble-path" d="M 50,30 Q 60,20 100,20 Q 140,20 150,30 Q 160,40 150,50 Q 140,60 100,60 Q 60,60 50,50 Q 40,40 50,30 Z M 80,60 L 70,70 L 90,65 Z"/>
+                        <text x="100" y="40" class="speech-bubble-text">Celui-là, il sera parfait !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Case 3 : Vertignasse fier de son flocon "shuriken".</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="80" width="40" height="70" fill="#90EE90" stroke="black"/>
+                    <circle cx="120" cy="70" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="120" y="75" text-anchor="middle" font-size="15px"> smug </text> <polygon points="180,100 200,80 220,100 200,120" fill="white" stroke="black"/>
+                    <polygon points="180,80 200,100 220,80 200,60" fill="white" stroke="black" transform="rotate(45 200 90)"/>
+                    <g class="speech-bubble-group">
+                        <title>Ha ! Le mien, c'est de l'art ninja !</title>
+                        <path class="speech-bubble-path" d="M 50,30 Q 60,20 130,20 Q 200,20 210,30 Q 220,40 210,50 Q 200,60 130,60 Q 60,60 50,50 Q 40,40 50,30 Z M 100,60 L 90,75 L 110,65 Z"/>
+                        <text x="130" y="40" class="speech-bubble-text">Ha ! Le mien, c'est de l'art ninja !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Case 4 : Cassius dépité devant son "flocon gruyère".</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="80" width="40" height="70" fill="#A0522D" stroke="black"/> <circle cx="120" cy="70" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="120" y="75" text-anchor="middle" font-size="15px">:(</text> <rect x="170" y="80" width="60" height="60" fill="white" stroke="black"/>
+                    <circle cx="185" cy="95" r="5" fill="lightyellow"/> <circle cx="205" cy="105" r="7" fill="lightyellow"/>
+                    <circle cx="190" cy="120" r="4" fill="lightyellow"/> <circle cx="215" cy="90" r="6" fill="lightyellow"/>
+                    <g class="speech-bubble-group">
+                        <title>Euh... C'est de l'art abstrait ?</title>
+                        <path class="speech-bubble-path" d="M 50,30 Q 60,20 130,20 Q 200,20 210,30 Q 220,40 210,50 Q 200,60 130,60 Q 60,60 50,50 Q 40,40 50,30 Z M 100,60 L 90,75 L 110,65 Z"/>
+                        <text x="130" y="35" class="speech-bubble-text">Euh... C'est de l'art</text>
+                        <text x="130" y="45" class="speech-bubble-text">abstrait ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Case 5 : Suzette présente son joli flocon simple à Mademoiselle Chiffre.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="80" width="40" height="70" fill="#FFC0CB" stroke="black"/>
+                    <circle cx="70" cy="70" r="20" fill="#FFE4B5" stroke="black"/>
+                    <circle cx="100" cy="100" r="15" fill="white" stroke="black"/>
+                    <line x1="100" y1="85" x2="100" y2="115" stroke="black"/> <line x1="85" y1="100" x2="115" y2="100" stroke="black"/>
+                    <line x1="89" y1="89" x2="111" y2="111" stroke="black"/> <line x1="89" y1="111" x2="111" y2="89" stroke="black"/>
+                    <rect x="180" y="50" width="50" height="100" fill="#FFB6C1" stroke="black"/>
+                    <circle cx="205" cy="40" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="205" y="45" text-anchor="middle" font-size="15px">^u^</text> <g class="speech-bubble-group">
+                        <title>Et voilà, Mademoiselle !</title>
+                        <path class="speech-bubble-path" d="M 20,30 Q 30,20 70,20 Q 110,20 120,30 Q 130,40 120,50 Q 110,60 70,60 Q 30,60 20,50 Q 10,40 20,30 Z M 60,60 L 50,75 L 70,65 Z"/>
+                        <text x="70" y="40" class="speech-bubble-text">Et voilà, Mademoiselle !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Très joli, Suzette.</title>
+                        <path class="speech-bubble-path" d="M 150,15 Q 160,5 205,5 Q 250,5 260,15 Q 270,25 260,35 Q 250,45 205,45 Q 160,45 150,35 Q 140,25 150,15 Z M 190,45 L 180,60 L 200,50 Z"/>
+                        <text x="205" y="25" class="speech-bubble-text">Très joli, Suzette.</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Case 6 : Grand-Papy apparaît à la porte, Spirou surpris.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="200" y="10" width="80" height="180" fill="#D2B48C" stroke="black"/>
+                    <rect x="205" y="15" width="70" height="170" fill="#F5DEB3" stroke="black"/>
+                    <circle cx="230" cy="60" r="25" fill="#FFEBCD" stroke="black"/> <path d="M 210,40 Q 230,25 250,40" fill="gray" stroke="black"/> <line x1="250" y1="80" x2="260" y2="150" stroke="brown" stroke-width="5"/> <rect x="50" y="100" width="40" height="60" fill="#FF6347" stroke="black"/>
+                    <circle cx="70" cy="90" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="70" y="95" text-anchor="middle" font-size="15px">?</text> <g class="speech-bubble-group">
+                        <title>Spirou ? Prêt pour une bataille de... Oh ! Vous faites des flocons ?</title>
+                        <path class="speech-bubble-path" d="M 20,20 Q 30,10 100,10 Q 170,10 180,20 Q 190,30 180,40 Q 170,50 100,50 Q 30,50 20,40 Q 10,30 20,20 Z M 150,50 L 180,65 L 160,55 Z"/>
+                        <text x="100" y="22" class="speech-bubble-text" font-size="7px">Spirou ? Prêt pour une bataille de...</text>
+                        <text x="100" y="32" class="speech-bubble-text" font-size="7px">Oh ! Vous faites des flocons ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_7">
+                <h6>Case 7 : Grand-Papy s'approche, plie une feuille bizarrement, Mlle Chiffre interloquée.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="80" y="60" width="50" height="90" fill="sandybrown" stroke="black"/>
+                    <circle cx="105" cy="50" r="25" fill="#FFEBCD" stroke="black"/>
+                    <path d="M 85,30 Q 105,15 125,30" fill="gray" stroke="black"/> <polygon points="120,80 140,100 130,120 110,110" fill="white" stroke="black"/>
+                    <rect x="200" y="70" width="40" height="80" fill="#FFB6C1" stroke="black"/>
+                    <circle cx="220" cy="60" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="220" y="65" text-anchor="middle" font-size="15px">O_O</text> <circle cx="40" cy="130" r="15" fill="#FFE4B5"/>
+                    <g class="speech-bubble-group">
+                        <title>Laissez-moi vous montrer la technique ancestrale de la famille ! C'est tout un art !</title>
+                        <path class="speech-bubble-path" d="M 20,10 Q 30,0 100,0 Q 170,0 180,10 Q 190,20 180,30 Q 170,40 100,40 Q 30,40 20,30 Q 10,20 20,10 Z M 80,40 L 70,55 L 90,45 Z"/>
+                        <text x="100" y="12" class="speech-bubble-text" font-size="7px">Laissez-moi vous montrer la technique</text>
+                        <text x="100" y="22" class="speech-bubble-text" font-size="7px">ancestrale de la famille ! C'est tout un art !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_8">
+                <h6>Case 8 : Grand-Papy découpe sauvagement, les enfants regardent ébahis.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="120" y="50" width="60" height="100" fill="sandybrown" stroke="black"/>
+                    <circle cx="150" cy="40" r="25" fill="#FFEBCD" stroke="black"/>
+                    <path d="M 130,20 Q 150,5 170,20" fill="gray" stroke="black"/> <text x="150" y="45" text-anchor="middle" font-size="10px">&gt; concentrated &lt;</text> <line x1="160" y1="80" x2="180" y2="100" stroke="gray" stroke-width="4"/>
+                    <line x1="160" y1="100" x2="180" y2="80" stroke="gray" stroke-width="4"/>
+                    <circle cx="100" cy="70" r="3" fill="white" stroke="black"/> <polygon points="190,60 195,65 190,70" fill="white" stroke="black"/>
+                    <rect x="170" y="110" width="5" height="5" fill="white" stroke="black" transform="rotate(30 172.5 112.5)"/>
+                    <circle cx="40" cy="150" r="10" fill="#FFE4B5"/> <circle cx="40" cy="148" r="3" fill="white"/> <circle cx="40" cy="148" r="1" fill="black"/> <circle cx="70" cy="155" r="10" fill="#FFE4B5"/> <circle cx="70" cy="153" r="3" fill="white"/> <circle cx="70" cy="153" r="1" fill="black"/> <circle cx="100" cy="150" r="10" fill="#FFE4B5"/> <circle cx="100" cy="148" r="3" fill="white"/> <circle cx="100" cy="148" r="1" fill="black"/> <circle cx="130" cy="155" r="10" fill="#FFE4B5"/> <circle cx="130" cy="153" r="3" fill="white"/> <circle cx="130" cy="153" r="1" fill="black"/> <g class="speech-bubble-group">
+                        <title>Un coup par-ci... un coup par-là... Faut que ça respire !</title>
+                        <path class="speech-bubble-path" d="M 180,10 Q 190,0 240,0 Q 290,0 295,10 Q 300,20 295,30 Q 290,40 240,40 Q 190,40 180,30 Q 170,20 180,10 Z M 200,40 L 190,55 L 210,45 Z"/>
+                        <text x="240" y="12" class="speech-bubble-text" font-size="7px">Un coup par-ci... un coup par-là...</text>
+                        <text x="240" y="22" class="speech-bubble-text" font-size="7px">Faut que ça respire !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_9">
+                <h6>Case 9 : PUNCHLINE - Grand-Papy montre un rond avec un trou, Mlle Chiffre et les enfants rient.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="70" width="50" height="80" fill="sandybrown" stroke="black"/>
+                    <circle cx="125" cy="60" r="25" fill="#FFEBCD" stroke="black"/>
+                    <text x="125" y="65" text-anchor="middle" font-size="15px">^.^</text> <circle cx="125" cy="120" r="30" fill="white" stroke="black"/>
+                    <circle cx="125" cy="120" r="3" fill="lightgray" stroke="black"/> <rect x="20" y="80" width="40" height="70" fill="#FFB6C1" stroke="black"/>
+                    <circle cx="40" cy="70" r="20" fill="#FFE4B5" stroke="black"/>
+                    <text x="40" y="75" text-anchor="middle" font-size="10px">XD</text> <rect x="35" y="75" width="10" height="5" fill="#FFE4B5"/> <text x="200" y="100" font-size="12px">Ha Ha!</text> <circle cx="190" cy="95" r="10" fill="#FFE4B5"/> <text x="230" y="120" font-size="12px">Hi Hi!</text> <circle cx="220" cy="115" r="10" fill="#90EE90"/> <text x="200" y="140" font-size="12px">He He!</text> <circle cx="190" cy="135" r="10" fill="#A0522D"/> <g class="speech-bubble-group">
+                        <title>TADAAAM ! Le flocon "minimaliste" ! Moins y'en a, plus c'est beau, pas vrai ?</title>
+                        <path class="speech-bubble-path" d="M 150,10 Q 160,0 225,0 Q 290,0 295,10 Q 300,25 295,40 Q 290,50 225,50 Q 160,50 150,40 Q 140,25 150,10 Z M 160,50 L 150,65 L 170,55 Z"/>
+                        <text x="225" y="15" class="speech-bubble-text" font-size="7px">TADAAAM ! Le flocon "minimaliste" !</text>
+                        <text x="225" y="27" class="speech-bubble-text" font-size="7px">Moins y'en a, plus c'est beau,</text>
+                        <text x="225" y="37" class="speech-bubble-text" font-size="7px">pas vrai ?</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Pfft... Ha ha ! Génial, Grand-Papy !</title>
+                        <path class="speech-bubble-path" d="M 20,150 Q 30,140 80,140 Q 130,140 140,150 Q 150,160 140,170 Q 130,180 80,180 Q 30,180 20,170 Q 10,160 20,150 Z M 60,180 L 50,195 L 70,185 Z"/>
+                        <text x="80" y="160" class="speech-bubble-text">Pfft... Ha ha ! Génial,</text>
+                        <text x="80" y="170" class="speech-bubble-text">Grand-Papy !</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
