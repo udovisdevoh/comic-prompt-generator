@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Menhir Express</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #BDB76B; stroke-width: 1; } /* Adjusted stroke for better visibility */
+        .narrative-text { text-anchor: middle; dominant-baseline: middle; font-size: 9px; font-style: italic; fill: black; }
+        h1 { text-align: center; }
+        h5 { text-align: center; font-size: 1.1em; }
+        h6 { font-weight: normal; font-size: 14px; margin-top: 0; margin-bottom: 5px; background-color: #efefef; padding: 5px; border-radius:3px;}
+        .onomatopoeia {
+            font-size: 24px;
+            font-weight: bold;
+            fill: orange;
+            stroke: black;
+            stroke-width: 1px;
+            text-anchor: middle;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menhir Express (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Obélix présente fièrement son nouveau service de livraison "Menhir Express" à un Astérix dubitatif. Un client, Agecanonix, commande un menhir avec prudence, mais Obélix, enthousiaste, expédie le menhir à une vitesse prodigieuse, lequel surprend violemment une patrouille romaine.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Plan moyen. Le village gaulois en arrière-plan. Obélix, torse bombé, sourit fièrement, un petit menhir posé à côté de lui. Astérix, bras croisés, le regarde avec un air sceptique et un sourcil levé.
+                <br>- Bloc narratif : "Au village gaulois, l'innovation prend parfois des formes... percutantes."
+                <br>- Obélix : "Astérix ! J'ai inventé le 'Menhir Express' ! Livraison ultra-rapide !"
+                <br>- Astérix : "Ultra-rapide, Obélix ? J'espère que c'est prudent..."</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="130" width="50" height="60" fill="#A0522D"/>
+                    <polygon points="10,130 35,100 60,130" fill="#D2B48C"/>
+                    <rect x="70" y="140" width="40" height="50" fill="#A0522D"/>
+                    <polygon points="70,140 90,110 110,140" fill="#D2B48C"/>
+
+                    <rect x="100" y="80" width="60" height="100" fill="#1E90FF" rx="10"/> <circle cx="130" cy="70" r="25" fill="#FFDAB9"/> <path d="M120 60 Q130 50 140 60" stroke="black" fill="none"/> <ellipse cx="120" cy="65" rx="3" ry="5" fill="black"/> <ellipse cx="140" cy="65" rx="3" ry="5" fill="black"/> <path d="M125 80 Q130 85 135 80" stroke="black" fill="none" stroke-width="1"/> <polygon points="80,130 90,100 100,130 95,180 85,180" fill="grey"/>
+
+                    <rect x="200" y="120" width="30" height="60" fill="red" rx="5"/> <circle cx="215" cy="110" r="15" fill="#FFDAB9"/> <path d="M210 100 Q215 90 220 100" stroke="black" fill="none"/> <line x1="210" y1="108" x2="220" y2="108" stroke="black" stroke-width="1"/> <g class="narrative-box-group">
+                        <title>Au village gaulois, l'innovation prend parfois des formes... percutantes.</title>
+                        <rect x="5" y="5" width="140" height="30" class="narrative-box-path" rx="3"/>
+                        <text x="75" y="15" class="narrative-text">Au village gaulois, l'innovation</text>
+                        <text x="75" y="27" class="narrative-text">prend parfois des formes... percutantes.</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Astérix ! J'ai inventé le 'Menhir Express' ! Livraison ultra-rapide !</title>
+                        <path d="M165,30 C155,30 150,35 150,45 Q150,55 160,55 L270,55 Q280,55 280,45 Q280,35 270,30 L165,30 M160,55 L150,75 L170,55" class="speech-bubble-path"/>
+                        <text x="215" y="40" class="speech-bubble-text">Astérix ! J'ai inventé le 'Menhir Express' !</text>
+                        <text x="215" y="50" class="speech-bubble-text">Livraison ultra-rapide !</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Ultra-rapide, Obélix ? J'espère que c'est prudent...</title>
+                        <path d="M180,150 C170,150 165,155 165,165 Q165,175 175,175 L285,175 Q295,175 295,165 Q295,155 285,150 L180,150 M220,150 L215,130 L230,150" class="speech-bubble-path"/>
+                        <text x="230" y="160" class="speech-bubble-text">Ultra-rapide, Obélix ?</text>
+                        <text x="230" y="170" class="speech-bubble-text">J'espère que c'est prudent...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Plan rapproché taille. Agecanonix, appuyé sur sa canne, s'adresse à Obélix (partiellement visible ou hors champ, seul son bras tenant le carnet de commande pourrait être visible). Agecanonix a une expression un peu inquiète.
+                <br>- Agecanonix : "Un petit menhir, Obélix. Mais doucement la livraison, hein ! Pas de folie !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="50" width="100" height="140" fill="#8B4513" rx="10"/> <circle cx="150" cy="40" r="25" fill="#FFDAB9"/> <rect x="145" y="15" width="10" height="10" fill="white"/> <line x1="140" y1="45" x2="160" y2="43" stroke="black" stroke-width="1"/> <ellipse cx="140" cy="35" rx="4" ry="6" fill="black"/> <ellipse cx="160" cy="35" rx="4" ry="6" fill="black"/> <line x1="80" y1="190" x2="100" y2="80" stroke="#A0522D" stroke-width="5"/>
+                    <line x1="70" y1="80" x2="110" y2="80" stroke="#A0522D" stroke-width="5"/>
+
+                    <path d="M250 100 C 260 90, 280 90, 290 100 L 290 150 C 280 160, 260 160, 250 150 Z" fill="#1E90FF"/> <rect x="230" y="110" width="20" height="30" fill="#D2B48C"/> <g class="speech-bubble-group">
+                        <title>Un petit menhir, Obélix. Mais doucement la livraison, hein ! Pas de folie !</title>
+                        <path d="M20,30 C10,30 5,35 5,45 Q5,55 15,55 L150,55 Q160,55 160,45 Q160,35 150,30 L20,30 M130,55 L140,75 L120,55" class="speech-bubble-path"/>
+                        <text x="82.5" y="40" class="speech-bubble-text">Un petit menhir, Obélix. Mais doucement</text>
+                        <text x="82.5" y="50" class="speech-bubble-text">la livraison, hein ! Pas de folie !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Plan moyen de dos d'Obélix. Il est en pleine action, jambes fléchies, muscles bandés, venant de lancer le menhir. Le menhir est visible filant hors de la case vers la droite, avec des lignes de vitesse importantes. Une grosse onomatopée de lancement.
+                <br>- Onomatopée : FFWWOOOOSHHH !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="50" width="100" height="130" fill="#1E90FF" rx="10"/> <circle cx="100" cy="40" r="25" fill="#FFDAB9"/> <path d="M90 20 Q100 10 110 20" stroke="black" fill="none"/> <path d="M40,80 Q20,100 50,120" stroke="#FFDAB9" fill="#FFDAB9" stroke-width="15"/>
+                    <path d="M160,80 Q180,100 150,120" stroke="#FFDAB9" fill="#FFDAB9" stroke-width="15"/>
+                    <rect x="60" y="170" width="30" height="20" fill="#FFDAB9"/>
+                    <rect x="110" y="170" width="30" height="20" fill="#FFDAB9"/>
+
+                    <polygon points="200,80 220,70 210,90 200,90" fill="grey" transform="rotate(15 200 80)">
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="150 -30" dur="0.5s" fill="freeze" />
+                    </polygon>
+                    <line x1="180" y1="85" x2="280" y2="75" stroke="black" stroke-width="2"/>
+                    <line x1="190" y1="95" x2="290" y2="85" stroke="black" stroke-width="2"/>
+                    <line x1="170" y1="75" x2="270" y2="65" stroke="black" stroke-width="2"/>
+
+                    <text x="150" y="150" class="onomatopoeia">FFWWOOOOSHHH!</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Plan large. Le menhir est une petite forme floue traversant le ciel à toute allure au-dessus de la forêt gauloise. Astérix, au premier plan (plus petit), regarde la trajectoire du menhir avec une expression d'effroi comique (une goutte de sueur sur la tempe).
+                <br>- Aucun dialogue.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="100" fill="#87CEEB"/>
+                    <circle cx="50" cy="150" r="40" fill="green"/>
+                    <circle cx="100" cy="160" r="50" fill="darkgreen"/>
+                    <circle cx="150" cy="150" r="45" fill="green"/>
+                    <circle cx="200" cy="160" r="40" fill="darkgreen"/>
+                    <circle cx="250" cy="150" r="50" fill="green"/>
+                    <rect x="0" y="150" width="300" height="50" fill="#228B22"/> <ellipse cx="150" cy="50" rx="15" ry="8" fill="grey">
+                        <animate attributeName="cx" from="50" to="250" dur="1s" repeatCount="1" fill="freeze"/>
+                    </ellipse>
+                    <line x1="130" y1="50" x2="100" y2="50" stroke="white" stroke-width="2">
+                         <animate attributeName="x1" from="30" to="230" dur="1s" repeatCount="1" fill="freeze"/>
+                         <animate attributeName="x2" from="0" to="200" dur="1s" repeatCount="1" fill="freeze"/>
+                    </line>
+
+
+                    <rect x="30" y="140" width="15" height="30" fill="red" rx="3"/> <circle cx="37.5" cy="135" r="7" fill="#FFDAB9"/> <path d="M35 130 Q37.5 125 40 130" stroke="black" fill="none" stroke-width="0.5"/> <path d="M45,130 Q50,133 47,138 Z" fill="#ADD8E6"/>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Plan moyen. Une petite patrouille romaine (un Optione et deux légionnaires) marche tranquillement sur un sentier forestier. L'Optione a l'air détendu et regarde devant lui. Le ciel au-dessus d'eux est encore vide.
+                <br>- Optione Romain : "Enfin une journée paisible ! Aucun Gaulois en vue..."</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,190 Q150,150 300,190" fill="#D2B48C" stroke="grey"/>
+                    <rect x="0" y="0" width="300" height="190" fill="#90EE90"/> <rect x="30" y="50" width="20" height="140" fill="#8B4513"/> <circle cx="40" cy="50" r="30" fill="green"/>
+                    <rect x="250" y="70" width="15" height="120" fill="#8B4513"/> <circle cx="257.5" cy="70" r="25" fill="darkgreen"/>
+
+                    <rect x="130" y="100" width="40" height="80" fill="#C0C0C0" rx="5"/> <circle cx="150" cy="90" r="15" fill="#FFDAB9"/> <rect x="135" y="65" width="30" height="10" fill="#FFD700"/> <line x1="145" y1="95" x2="155" y2="95" stroke="black"/> <rect x="80" y="110" width="35" height="70" fill="#C0C0C0" rx="5"/>
+                    <circle cx="97.5" cy="100" r="12" fill="#FFDAB9"/>
+
+                    <rect x="185" y="110" width="35" height="70" fill="#C0C0C0" rx="5"/>
+                    <circle cx="202.5" cy="100" r="12" fill="#FFDAB9"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Enfin une journée paisible ! Aucun Gaulois en vue...</title>
+                        <path d="M160,30 C150,30 145,35 145,45 Q145,55 155,55 L285,55 Q295,55 295,45 Q295,35 285,30 L160,30 M170,55 L160,75 L180,55" class="speech-bubble-path"/>
+                        <text x="220" y="40" class="speech-bubble-text">Enfin une journée paisible !</text>
+                        <text x="220" y="50" class="speech-bubble-text">Aucun Gaulois en vue...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Plan moyen dynamique et comique. Le menhir vient de s'écraser violemment au sol (petit cratère, fumée), juste devant les pieds des Romains. L'Optione et les deux légionnaires sont projetés en l'air dans des positions désarticulées et ridicules, casques et pilums volant. Leurs yeux sont exorbités de surprise et de peur. Dans un coin supérieur de la case, une petite image d'Obélix (ou une bulle de pensée le montrant) souriant, pouce en l'air.
+                <br>- Un Légionnaire Romain (en vol) : "Par Jupiter ! Des menhirs qui tombent du ciel !"
+                <br>- Obélix (petite incrustation ou bulle de pensée) : "Livré !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="150" width="300" height="50" fill="#D2B48C"/>
+                    <path d="M100,160 Q150,130 200,160 Q170,180 130,180 Z" fill="#A0522D"/> <circle cx="150" cy="140" r="20" fill="lightgrey" opacity="0.7"/>
+                    <circle cx="130" cy="130" r="15" fill="grey" opacity="0.6"/>
+                    <circle cx="170" cy="135" r="18" fill="lightgrey" opacity="0.7"/>
+
+                    <polygon points="140,100 150,70 160,100 155,150 145,150" fill="grey" transform="rotate(15 150 120)"/>
+
+                    <g transform="translate(100, 50) rotate(-30)">
+                        <rect x="0" y="0" width="30" height="50" fill="#C0C0C0" rx="5"/>
+                        <circle cx="15" cy="-10" r="10" fill="#FFDAB9"/>
+                        <text x="15" y="-8" font-size="8">!!!</text>
+                    </g>
+                    <g transform="translate(180, 30) rotate(45)">
+                        <rect x="0" y="0" width="25" height="45" fill="#C0C0C0" rx="5"/>
+                        <circle cx="12.5" cy="-8" r="8" fill="#FFDAB9"/>
+                        <text x="12.5" cy="-6" font-size="8">?!</text>
+                    </g>
+                    <g transform="translate(50, 80) rotate(20)">
+                        <rect x="0" y="0" width="25" height="45" fill="#C0C0C0" rx="5"/>
+                        <circle cx="12.5" cy="-8" r="8" fill="#FFDAB9"/>
+                         <text x="12.5" cy="-6" font-size="8">X_X</text>
+                    </g>
+                    <path d="M80,30 L90,25 L85,20 Z" fill="#FFD700"/> <line x1="220" y1="60" x2="240" y2="40" stroke="grey" stroke-width="3"/> <g class="speech-bubble-group">
+                        <title>Par Jupiter ! Des menhirs qui tombent du ciel !</title>
+                        <path d="M20,10 C10,10 5,15 5,25 Q5,35 15,35 L150,35 Q160,35 160,25 Q160,15 150,10 L20,10 M130,35 L140,55 L120,35" class="speech-bubble-path"/> <text x="82.5" y="20" class="speech-bubble-text">Par Jupiter ! Des menhirs</text>
+                        <text x="82.5" y="30" class="speech-bubble-text">qui tombent du ciel !</text>
+                    </g>
+
+                    <g transform="translate(230,10)">
+                         <ellipse cx="30" cy="20" rx="30" ry="15" class="speech-bubble-path"/>
+                         <text x="30" y="20" class="speech-bubble-text">Livré !</text>
+                         <title>Livré !</title>
+                         <circle cx="30" cy="10" r="3" fill="#FFDAB9"/>
+                         <path d="M28 12 Q30 13 32 12" stroke="black" fill="none" stroke-width="0.5"/>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
