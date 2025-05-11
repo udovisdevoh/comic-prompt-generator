@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Astérix et le Labyrinthe des Songes - Page 1</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; } /* Not used in h6 as per instruction */
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; } /* Adjusted font size */
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1.5; stroke-dasharray: 3,2; }
+        .narrative-box-path { fill: #FFFACD; stroke: #BDB76B; stroke-width: 1.5; } /* Darker Khaki for border */
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; } /* Adjusted font size */
+        h1 { text-align: center; }
+        h5 { text-align: center; font-size: 1em; font-weight: normal;}
+        h6 { font-weight: normal; font-size: 14px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <h1>Astérix et le Labyrinthe des Songes - Page 1</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5>Page 1 : Le village gaulois vit une journée paisible, quoique agitée par la chasse au sanglier d'Obélix. Soudain, une élégante litière portée par des esclaves, précédée d'un homme à l'allure exotique, s'approche du village. Les villageois observent avec curiosité.</h5>
+        <div class="panel-grid">
+            
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Vue d'ensemble ensoleillée du village gaulois, huttes typiques avec toits de chaume, palissade en bois en arrière-plan. Au premier plan, Obélix (corps massif, braies bleues et blanches, torse nu, deux nattes rousses terminées par des petits nœuds) est vu de trois quarts dos, courant avec énergie vers la droite de la case. Devant lui, deux sangliers affolés (poils drus, groins terrifiés) s'enfuient en sortant d'une forêt dense à gauche. Idéfix (petit chien blanc) sautille joyeusement derrière Obélix. Des petites volutes de poussière soulignent la course.
+                <br>- Sanglier 1 : GROIN !
+                <br>- Sanglier 2 : GROIIIIN !!</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="120" width="80" height="80" fill="#228B22" /> <rect x="80" y="100" width="220" height="100" fill="#DEB887" /> <line x1="80" y1="100" x2="300" y2="100" stroke="#A0522D" stroke-width="2"/> <circle cx="120" cy="80" r="20" fill="#D2B48C" /> <polygon points="100,80 140,80 120,50" fill="#8B4513" /> <circle cx="170" cy="85" r="15" fill="#D2B48C" /> <polygon points="155,85 185,85 170,60" fill="#8B4513" /> <rect x="0" y="0" width="300" height="100" fill="#87CEEB" /> <ellipse cx="150" cy="150" rx="30" ry="40" fill="#ADD8E6" /> <rect x="135" y="110" width="30" height="20" fill="#FFDAB9" /> <circle cx="150" cy="100" r="15" fill="#FFDAB9" /> <ellipse cx="140" cy="95" rx="3" ry="8" fill="#FFA500" /> <ellipse cx="160" cy="95" rx="3" ry="8" fill="#FFA500" /> <ellipse cx="230" cy="160" rx="15" ry="10" fill="#A0522D" /> <text x="230" y="160" font-size="6">^^</text> <ellipse cx="260" cy="155" rx="15" ry="10" fill="#A0522D" /> <text x="260" y="155" font-size="6">^^</text> <ellipse cx="120" cy="170" rx="8" ry="6" fill="white" stroke="black" stroke-width="1"/>
+                    
+                    <path d="M 160 180 Q 170 175 180 180 T 200 180" stroke="#BCAAA4" stroke-width="2" fill="none" />
+
+                    <g class="speech-bubble-group">
+                        <title>Sanglier 1 : GROIN !</title>
+                        <path class="speech-bubble-path" d="M 210,130 Q 210,120 220,120 T 240,120 Q 240,130 230,130 T 210,130" />
+                        <text x="225" y="125" class="speech-bubble-text">GROIN !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Sanglier 2 : GROIIIIN !!</title>
+                        <path class="speech-bubble-path" d="M 245,125 Q 245,115 255,115 T 280,115 Q 280,125 270,125 T 245,125" />
+                        <text x="262.5" y="120" class="speech-bubble-text">GROIIIIN !!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Plan moyen sur Astérix (petit, casque ailé, tunique rouge, gourde à la ceinture) appuyé nonchalamment contre le mur de sa hutte, les bras croisés, un petit sourire amusé aux lèvres, regardant hors champ vers la course d'Obélix. À côté de lui, Panoramix (longue barbe blanche, druide en robe blanche, cape rouge, tenant une serpe d'or) est en train de cueillir du gui sur une branche de chêne au-dessus de lui.
+                <br>- Astérix : Il ne changera donc jamais, Obélix !
+                <br>- Panoramix : Une belle cueillette, par Bélénos !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="150" height="200" fill="#D2B48C" stroke="#8B4513" stroke-width="2"/>
+                    <rect x="80" y="120" width="30" height="50" fill="red"/> <circle cx="95" cy="110" r="15" fill="#FFDAB9"/> <path d="M 85,100 l -10,-15 l 10,0 Z" fill="silver"/> <path d="M 105,100 l 10,-15 l -10,0 Z" fill="silver"/> <line x1="80" y1="130" x2="110" y2="140" stroke="black"/> <line x1="80" y1="140" x2="110" y2="130" stroke="black"/> <rect x="180" y="80" width="40" height="90" fill="white"/> <rect x="175" y="80" width="50" height="20" fill="red"/> <polygon points="200,70 190,170 210,170" fill="white"/> <circle cx="200" cy="60" r="15" fill="#FFDAB9"/> <rect x="220" y="0" width="30" height="150" fill="#8B4513"/> <line x1="200" y1="50" x2="250" y2="30" stroke="#8B4513" stroke-width="5"/> <circle cx="210" cy="40" r="5" fill="#228B22"/> <circle cx="225" cy="35" r="5" fill="#228B22"/> <path d="M 190,70 Q 195,65 190,60" fill="none" stroke="gold" stroke-width="2"/> <g class="speech-bubble-group">
+                        <title>Astérix : Il ne changera donc jamais, Obélix !</title>
+                        <path class="speech-bubble-path" d="M 20,50 Q 20,20 50,20 T 130,20 Q 130,50 100,50 T 70,60 L 85,100 Z" />
+                        <text x="75" y="35" class="speech-bubble-text" style="font-size:8px;">Il ne changera donc jamais, Obélix !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Panoramix : Une belle cueillette, par Bélénos !</title>
+                        <path class="speech-bubble-path" d="M 150,40 Q 150,10 180,10 T 280,10 Q 280,40 250,40 T 220,50 L 200,55 Z" />
+                        <text x="215" y="25" class="speech-bubble-text" style="font-size:8px;">Une belle cueillette, par Bélénos !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Vue sur un chemin forestier ombragé menant vers le village (non visible). Une litière luxueuse de style grec (bois sculpté, rideaux colorés fermés) est portée par quatre esclaves à l'allure fatiguée (musclés, vêtus de simples pagnes). Devant la litière marche un homme grand et mince à l'allure exotique et sophistiquée : Hypnos. Il est vêtu d'une toge grecque chatoyante (par exemple, violet et or), sandales élégantes, et porte une barbe courte et bien taillée. Il tient un coffret en bois précieux sous son bras.
+                <br>- Esclave 1 : Pff... Encore loin, ce village ?
+                <br>- Esclave 2 : J'espère pas... mes pieds me tuent !
+                <br>- Hypnos (pensée) : Bientôt, la fortune...</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,200 100,50 200,50 300,200" fill="#A0522D"/> <rect x="0" y="0" width="300" height="50" fill="#006400" /> <line x1="80" y1="50" x2="50" y2="200" stroke="#556B2F" stroke-width="10"/> <line x1="220" y1="50" x2="250" y2="200" stroke="#556B2F" stroke-width="10"/> <rect x="100" y="100" width="100" height="50" fill="#FFD700" stroke="black"/> <line x1="80" y1="125" x2="220" y2="125" stroke="#A0522D" stroke-width="5"/> <rect x="100" y="100" width="100" height="10" fill="purple"/> <line x1="125" y1="100" x2="125" y2="150" stroke="red" stroke-width="3"/> <line x1="175" y1="100" x2="175" y2="150" stroke="red" stroke-width="3"/> <ellipse cx="90" cy="135" rx="10" ry="15" fill="#DEB887"/> <ellipse cx="70" cy="135" rx="10" ry="15" fill="#DEB887"/> 
+                    <ellipse cx="210" cy="135" rx="10" ry="15" fill="#DEB887"/> <ellipse cx="230" cy="135" rx="10" ry="15" fill="#DEB887"/> 
+
+                    <ellipse cx="150" cy="70" rx="15" ry="30" fill="purple"/> <circle cx="150" cy="30" r="10" fill="#FFDAB9"/> <rect x="155" y="50" width="10" height="15" fill="#8B4513"/> <g class="speech-bubble-group">
+                        <title>Esclave 1 : Pff... Encore loin, ce village ?</title>
+                        <path class="speech-bubble-path" d="M 20,150 Q 20,130 40,130 T 100,130 Q 100,150 80,150 T 60,155 L 70,140 Z"/>
+                        <text x="60" y="140" class="speech-bubble-text" style="font-size:7px;">Pff... Encore loin, ce village ?</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>Esclave 2 : J'espère pas... mes pieds me tuent !</title>
+                        <path class="speech-bubble-path" d="M 180,150 Q 180,130 200,130 T 280,130 Q 280,150 260,150 T 240,155 L 230,140 Z"/>
+                        <text x="230" y="140" class="speech-bubble-text" style="font-size:7px;">J'espère pas... mes pieds me tuent !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Hypnos (pensée) : Bientôt, la fortune...</title>
+                        <path class="thought-bubble-path" d="M 150,5 Q 140,0 130,5 T 120,15 Q 130,20 140,15 T 150,5 M 140,20 Q 145,23 150,25" />
+                        <ellipse cx="180" cy="15" rx="45" ry="10" class="thought-bubble-path"/>
+                        <text x="180" y="15" class="speech-bubble-text" style="font-size:7px;">Bientôt, la fortune...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Au centre du village. Cétautomatix (torse nu, musclé, tablier de forgeron) a interrompu son travail, marteau en l'air au-dessus de son enclume. À côté, Ordralfabétix (vendeur de poisson, maillot rayé) tient un poisson à l'aspect douteux par la queue, le nez pincé. Les deux regardent vers l'entrée du village (hors champ à droite), l'air surpris et curieux.
+                <br>- Cétautomatix : Tiens ? De la visite ?
+                <br>- Ordralfabétix : Pas mes poissons ! Ils ne sont pas frais !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="150" width="300" height="50" fill="#DEB887"/>
+                    <ellipse cx="80" cy="100" rx="25" ry="40" fill="#FFDAB9"/> <rect x="70" y="120" width="20" height="30" fill="gray"/> <circle cx="80" cy="50" r="15" fill="#FFDAB9"/> <rect x="100" y="80" width="10" height="30" fill="brown"/> <rect x="95" y="70" width="20" height="10" fill="darkgray"/> <rect x="60" y="130" width="40" height="20" fill="black"/> <ellipse cx="200" cy="100" rx="25" ry="40" fill="#ADD8E6"/> <path d="M180 80 L220 80 M180 90 L220 90 M180 100 L220 100 M180 110 L220 110 M180 120 L220 120" stroke="white" stroke-width="3"/> <circle cx="200" cy="50" r="15" fill="#FFDAB9"/> <path d="M 220,80 Q 240,90 220,100 Z" fill="silver"/> <line x1="200" y1="60" x2="195" y2="55" stroke="black"/> <line x1="200" y1="60" x2="205" y2="55" stroke="black"/> <g class="speech-bubble-group">
+                        <title>Cétautomatix : Tiens ? De la visite ?</title>
+                        <path class="speech-bubble-path" d="M 30,40 Q 30,10 60,10 T 130,10 Q 130,40 100,40 T 75,50 L 80,45 Z" />
+                        <text x="80" y="25" class="speech-bubble-text">Tiens ? De la visite ?</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Ordralfabétix : Pas mes poissons ! Ils ne sont pas frais !</title>
+                        <path class="speech-bubble-path" d="M 150,40 Q 150,10 190,10 T 280,10 Q 280,40 240,40 T 210,50 L 200,45 Z" />
+                        <text x="215" y="25" class="speech-bubble-text" style="font-size:7px;">Pas mes poissons ! Ils ne sont pas frais !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Abraracourcix (chef du village, gros, moustachu, casque avec des plumes de taureau) est juché sur son bouclier, porté par deux guerriers gaulois. Il a une expression d'étonnement et d'autorité contrariée, regardant vers l'entrée du village. Bonemine, sa femme (cheveux tirés en chignon, rouleau à pâtisserie parfois visible à la ceinture), marche à côté du bouclier, l'air tout aussi intrigué mais avec une pointe d'espoir.
+                <br>- Abraracourcix : Par Toutatis ! Qui donc approche ?
+                <br>- Bonemine : J'espère que c'est quelqu'un d'important, cette fois !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="170" width="300" height="30" fill="#DEB887"/>
+                    <ellipse cx="150" cy="100" rx="40" ry="50" fill="#FFDAB9"/> <circle cx="150" cy="40" r="20" fill="#FFDAB9"/> <path d="M 130,40 Q 150,50 170,40" stroke="black" fill="none" stroke-width="2"/> <path d="M 140,20 L 135,5 L 145,5 Z" fill="red"/> <path d="M 160,20 L 155,5 L 165,5 Z" fill="red"/> <ellipse cx="150" cy="150" rx="50" ry="10" fill="silver" stroke="black"/> <ellipse cx="100" cy="160" rx="10" ry="20" fill="#FFDAB9"/> 
+                    <ellipse cx="200" cy="160" rx="10" ry="20" fill="#FFDAB9"/> 
+
+                    <ellipse cx="250" cy="130" rx="15" ry="30" fill="#ADD8E6"/> <circle cx="250" cy="90" r="10" fill="#FFDAB9"/> <circle cx="250" cy="80" r="5" fill="black"/> <g class="speech-bubble-group">
+                        <title>Abraracourcix : Par Toutatis ! Qui donc approche ?</title>
+                        <path class="speech-bubble-path" d="M 20,60 Q 20,30 50,30 T 130,30 Q 130,60 100,60 T 70,70 L 130,60 Z"/>
+                        <text x="75" y="45" class="speech-bubble-text" style="font-size:7px;">Par Toutatis ! Qui donc approche ?</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Bonemine : J'espère que c'est quelqu'un d'important, cette fois !</title>
+                        <path class="speech-bubble-path" d="M 180,90 Q 180,60 210,60 T 290,60 Q 290,90 260,90 T 230,100 L 240,90 Z"/>
+                        <text x="235" y="75" class="speech-bubble-text" style="font-size:6px;">J'espère que c'est quelqu'un<tspan x="235" dy="7">d'important, cette fois !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>L'entrée principale du village, avec sa porte en bois massif. La litière d'Hypnos est maintenant visible juste devant, les porteurs s'étant arrêtés. Hypnos se tient devant. Deux gardes gaulois anonymes (robustes, casqués, armés de lances) bloquent le passage en croisant leurs lances, l'air sévère.
+                <br>- Garde 1 : Halte-là, étranger !
+                <br>- Garde 2 : Que voulez-vous ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="0" width="200" height="200" fill="#A0522D"/>
+                    <line x1="50" y1="0" x2="50" y2="200" stroke="#8B4513" stroke-width="10"/>
+                    <line x1="250" y1="0" x2="250" y2="200" stroke="#8B4513" stroke-width="10"/>
+                    <rect x="120" y="50" width="60" height="100" fill="#8B4513" stroke="black" stroke-width="2"/> <rect x="100" y="150" width="100" height="40" fill="#FFD700" stroke="black"/>
+                    
+                    <ellipse cx="150" cy="120" rx="15" ry="30" fill="purple"/> 
+                    <circle cx="150" cy="80" r="10" fill="#FFDAB9"/>
+
+                    <ellipse cx="80" cy="100" rx="15" ry="35" fill="#D3D3D3"/> <circle cx="80" cy="55" r="10" fill="#FFDAB9"/> <line x1="60" y1="150" x2="120" y2="50" stroke="gray" stroke-width="4"/> <ellipse cx="220" cy="100" rx="15" ry="35" fill="#D3D3D3"/> <circle cx="220" cy="55" r="10" fill="#FFDAB9"/> <line x1="240" y1="150" x2="180" y2="50" stroke="gray" stroke-width="4"/> <g class="speech-bubble-group">
+                        <title>Garde 1 : Halte-là, étranger !</title>
+                        <path class="speech-bubble-path" d="M 20,40 Q 20,10 50,10 T 120,10 Q 120,40 90,40 T 60,50 L 75,50 Z"/>
+                        <text x="70" y="25" class="speech-bubble-text">Halte-là, étranger !</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>Garde 2 : Que voulez-vous ?</title>
+                        <path class="speech-bubble-path" d="M 180,40 Q 180,10 210,10 T 280,10 Q 280,40 250,40 T 220,50 L 225,50 Z"/>
+                        <text x="230" y="25" class="speech-bubble-text">Que voulez-vous ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6>Gros plan sur le visage d'Hypnos. Il affiche un sourire engageant, presque hypnotique. Ses yeux brillent d'une lueur malicieuse et intelligente. Il incline légèrement la tête, son coffret toujours tenu précieusement.
+                <br>- Hypnos : Salutations, braves Gaulois ! J'apporte des songes merveilleux !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="70" fill="#FFDAB9"/> <ellipse cx="125" cy="80" rx="10" ry="5" fill="white"/> <circle cx="125" cy="80" r="3" fill="blue"/> <ellipse cx="175" cy="80" rx="10" ry="5" fill="white"/> <circle cx="175" cy="80" r="3" fill="blue"/> <path d="M 130,120 Q 150,140 170,120" stroke="black" fill="none" stroke-width="2"/> <path d="M 130,60 Q 150,50 170,60" stroke="black" fill="none" stroke-width="3"/> <rect x="120" y="150" width="60" height="10" fill="#A0522D"/> <rect x="160" y="130" width="30" height="40" fill="#8B4513" /> <g class="speech-bubble-group">
+                        <title>Hypnos : Salutations, braves Gaulois ! J'apporte des songes merveilleux !</title>
+                        <path class="speech-bubble-path" d="M 50,180 Q 20,180 20,150 T 50,120 Q 150,120 250,120 T 280,150 Q 280,180 250,180 L 150,170 Z"/>
+                        <text x="150" y="140" class="speech-bubble-text" style="font-size:8px;">Salutations, braves Gaulois !</text>
+                        <text x="150" y="155" class="speech-bubble-text" style="font-size:8px;">J'apporte des songes merveilleux !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6>Plan plus large montrant l'entrée du village. Hypnos et sa litière font face à un groupe de villageois maintenant rassemblés : Astérix, Obélix (qui est revenu, tenant un sanglier sous chaque bras, l'air affamé et curieux), Panoramix, Abraracourcix (descendu de son bouclier), et d'autres figures familières (Agecanonix, la femme de Cétautomatix, etc.) en arrière-plan. Tous observent Hypnos avec un mélange d'interrogation et de méfiance. L'ombre d'Hypnos s'étire vers eux.
+                <br>- Obélix : Des sangliers merveilleux, Astérix ?
+                <br>(Bloc narratif) : L'arrivée de cet énigmatique marchand grec allait bientôt bouleverser la routine du village... Qui était-il, et que pouvait-il bien proposer aux Irréductibles Gaulois ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#D2B48C"/>
+                    <line x1="0" y1="0" x2="300" y2="0" stroke="#A0522D" stroke-width="20"/> <ellipse cx="50" cy="100" rx="10" ry="20" fill="purple"/> <rect x="20" y="120" width="60" height="30" fill="#FFD700"/> <polygon points="50,120 150,180 130,190 30,125" fill="rgba(0,0,0,0.3)"/> <ellipse cx="250" cy="150" rx="8" ry="15" fill="red"/> <circle cx="250" cy="130" r="7" fill="#FFDAB9"/>
+                    <ellipse cx="220" cy="140" rx="20" ry="30" fill="#ADD8E6"/> <circle cx="220" cy="100" r="10" fill="#FFDAB9"/>
+                    <ellipse cx="200" cy="130" rx="8" ry="5" fill="#A0522D"/> <ellipse cx="240" cy="130" rx="8" ry="5" fill="#A0522D"/> <rect x="180" y="110" width="15" height="50" fill="white"/> <circle cx="187" cy="100" r="7" fill="#FFDAB9"/>
+                    <ellipse cx="260" cy="100" rx="15" ry="20" fill="#FFDAB9"/>
+                    <circle cx="170" cy="150" r="10" fill="#D3D3D3"/> <circle cx="200" cy="160" r="8" fill="#D3D3D3"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Obélix : Des sangliers merveilleux, Astérix ?</title>
+                        <path class="speech-bubble-path" d="M 180,50 Q 180,30 200,30 T 280,30 Q 280,50 260,50 T 230,60 L 225,100 Z"/>
+                        <text x="230" y="40" class="speech-bubble-text" style="font-size:7px;">Des sangliers merveilleux, Astérix ?</text>
+                    </g>
+
+                    <g class="narrative-box-group">
+                        <title>L'arrivée de cet énigmatique marchand grec allait bientôt bouleverser la routine du village... Qui était-il, et que pouvait-il bien proposer aux Irréductibles Gaulois ?</title>
+                        <rect x="10" y="165" width="280" height="30" class="narrative-box-path"/>
+                        <text x="150" y="175" class="narrative-text" text-anchor="middle">
+                            <tspan x="150" dy="0">L'arrivée de cet énigmatique marchand grec allait bientôt bouleverser la routine du village...</tspan>
+                            <tspan x="150" dy="10">Qui était-il, et que pouvait-il bien proposer aux Irréductibles Gaulois ?</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

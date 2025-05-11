@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Le Point Rouge Mène la Danse</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .main-title { text-align: center; margin-bottom: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 1000px; margin: 20px auto; }
+        .comic-page-title { font-size: 1.5em; font-weight: bold; text-align: center; margin-bottom: 10px; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; text-align: center; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 30px); box-sizing: border-box; min-width: 280px; max-width: 320px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; font-weight: bold; text-align: left;}
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 3/2; background-color: white; } /* Adjusted aspect-ratio */
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+        /* Character styles */
+        .quick { fill: blue; }
+        .flupke { fill: green; }
+        .agent15 { fill: navy; }
+        .agent15-kepi { fill: black; }
+        .chat { fill: sienna; }
+        .laser-pointer-obj { fill: silver; stroke: grey; }
+        .laser-dot { fill: red; }
+        .ground { fill: #D3D3D3; }
+        .building-facade { fill: #F0E68C; stroke: #BDB76B; }
+        .wall { fill: #E0E0E0; }
+        .muret-poubelle { fill: #A9A9A9; }
+        .onomatopoeia { font-size: 12px; font-weight: bold; fill: black; text-anchor: middle; }
+        .lightbulb { fill: yellow; stroke: orange; stroke-width:1; }
+
+    </style>
+</head>
+<body>
+    <h1 class="main-title">Le Point Rouge Mène la Danse - Storyboard Complet</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h2 class="comic-page-title">Page 1</h2>
+        <h5 class="comic-page-summary">Quick et Flupke découvrent pointeur laser, activent point lumineux, aperçoivent Agent 15, idée germe.</h5>
+        <div class="panel-grid">
+            
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Case 1 : Q&F marchent, Q voit objet brillant.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="ground" x="0" y="150" width="300" height="50"/>
+                    <rect class="building-facade" x="0" y="0" width="300" height="150"/>
+                    <circle class="quick" cx="100" cy="120" r="10"/> 
+                    <rect class="quick" x="95" y="130" width="10" height="30"/>
+                    <circle class="flupke" cx="150" cy="120" r="10"/>
+                    <rect class="flupke" x="145" y="130" width="10" height="30"/>
+                    <ellipse class="laser-pointer-obj" cx="180" cy="170" rx="8" ry="3" transform="rotate(-15 180 170)"/>
+                    <path d="M105 125 L160 165" stroke="black" stroke-width="1" fill="none" /> 
+                    <g class="speech-bubble-group">
+                        <title>Quick : "Tiens ? Qu'est-ce que c'est que ça, Flupke ?"</title>
+                        <path class="speech-bubble-path" d="M 40 30 C 30 30 20 40 20 50 C 20 60 30 70 40 70 L 150 70 C 160 70 170 60 170 50 C 170 40 160 30 150 30 Z M 80 70 L 70 80 L 100 70 Z"/>
+                        <text class="speech-bubble-text" x="95" y="45">
+                            <tspan x="95" dy="-5">Tiens ? Qu'est-ce que</tspan>
+                            <tspan x="95" dy="12">c'est que ça, Flupke ?</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Case 2 : Flupke ramasse objet: pointeur laser.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse fill="#F5DEB3" cx="150" cy="100" rx="50" ry="30"/>
+                    <rect class="laser-pointer-obj" x="130" y="90" width="40" height="10" rx="2"/>
+                     <circle class="flupke" cx="80" cy="100" r="10"/> 
+                    <circle class="quick" cx="220" cy="100" r="10"/>
+                    <g class="speech-bubble-group">
+                        <title>Flupke : "On dirait une mini-torche..."</title>
+                        <path class="speech-bubble-path" d="M 50 150 C 40 150 30 160 30 170 C 30 180 40 190 50 190 L 180 190 C 190 190 200 180 200 170 C 200 160 190 150 180 150 Z M 100 150 L 90 140 L 115 150 Z"/>
+                        <text class="speech-bubble-text" x="115" y="170">On dirait une mini-torche...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Case 3 : Flupke active laser, point rouge sur mur.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="wall" x="0" y="0" width="300" height="200"/>
+                    <circle class="flupke" cx="80" cy="130" r="15"/> 
+                    <rect class="flupke" x="70" y="145" width="20" height="40"/>
+                    <rect class="laser-pointer-obj" x="90" y="135" width="25" height="6" transform="rotate(-30 90 135)"/>
+                    <circle class="quick" cx="150" cy="130" r="15"/>
+                    <rect class="quick" x="140" y="145" width="20" height="40"/>
+                    <circle class="laser-dot" cx="250" cy="80" r="5"/>
+                    <text class="onomatopoeia" x="100" y="115">CLIC!</text>
+                    <g class="speech-bubble-group">
+                        <title>Flupke (avec un petit "CLIC" sonore venant de l'objet) : "Oh !"</title>
+                        <path class="speech-bubble-path" d="M 60 50 C 50 50 40 60 40 70 C 40 80 50 90 60 90 L 100 90 C 110 90 120 80 120 70 C 120 60 110 50 100 50 Z M 75 90 L 70 100 L 85 90 Z"/>
+                        <text class="speech-bubble-text" x="80" y="70">Oh !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Quick : "Regarde !"</title>
+                        <path class="speech-bubble-path" d="M 130 30 C 120 30 110 40 110 50 C 110 60 120 70 130 70 L 190 70 C 200 70 210 60 210 50 C 210 40 200 30 190 30 Z M 145 70 L 140 80 L 155 70 Z"/>
+                        <text class="speech-bubble-text" x="160" y="50">Regarde !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Case 4 : Q&F s'amusent avec point rouge.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="wall" x="0" y="0" width="300" height="200"/>
+                    <circle class="flupke" cx="70" cy="130" r="15"/> 
+                    <rect class="flupke" x="60" y="145" width="20" height="40"/>
+                     <rect class="laser-pointer-obj" x="80" y="135" width="25" height="6" transform="rotate(-45 80 135)"/>
+                    <circle class="quick" cx="180" cy="130" r="15"/>
+                    <rect class="quick" x="170" y="145" width="20" height="40"/>
+                    <path d="M175 140 Q 160 110 140 100" stroke="black" stroke-width="1" fill="none"/> <circle class="laser-dot" cx="150" cy="100" r="5"/>
+                    <circle class="laser-dot" cx="220" cy="150" r="5" opacity="0.5"/>
+                    <g class="speech-bubble-group">
+                        <title>Quick (riant) : "Hi hi ! Plus vite !"</title>
+                        <path class="speech-bubble-path" d="M 170 30 C 160 30 150 40 150 50 C 150 60 160 70 170 70 L 250 70 C 260 70 270 60 270 50 C 270 40 260 30 250 30 Z M 185 70 L 180 80 L 195 70 Z"/>
+                        <text class="speech-bubble-text" x="210" y="50">Hi hi ! Plus vite !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Case 5 : Agent 15 au loin; idée Quick (ampoule).</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="ground" x="0" y="150" width="300" height="50"/>
+                    <line x1="0" y1="150" x2="300" y2="150" stroke="grey" stroke-width="2"/> <circle class="agent15" cx="250" cy="135" r="7"/>
+                    <rect class="agent15" x="246" y="142" width="8" height="20"/>
+                    <rect class="agent15-kepi" x="245" y="130" width="10" height="5"/>
+                    <circle class="quick" cx="50" cy="150" r="10"/> 
+                    <rect class="quick" x="45" y="160" width="10" height="25"/>
+                    <circle class="flupke" cx="90" cy="150" r="10"/>
+                    <rect class="flupke" x="85" y="160" width="10" height="25"/>
+                    <path class="lightbulb" d="M50 125 Q 40 115 40 105 C 40 95 50 85 60 85 C 70 85 80 95 80 105 Q 80 115 70 125 Z M 55 125 L 65 125 L 63 130 L 57 130 Z" transform="translate(-10, -10) scale(0.7)"/>
+                    <g class="speech-bubble-group">
+                        <title>Flupke : "C'est l'Agent 15 !"</title>
+                        <path class="speech-bubble-path" d="M 100 100 C 90 100 80 110 80 120 C 80 130 90 140 100 140 L 200 140 C 210 140 220 130 220 120 C 220 110 210 100 200 100 Z M 110 140 L 100 150 L 120 140 Z"/>
+                        <text class="speech-bubble-text" x="150" y="120">C'est l'Agent 15 !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Case 6 : Quick chuchote idée à Flupke complice.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="quick" cx="100" cy="100" r="20"/> 
+                    <rect class="quick" x="90" y="120" width="20" height="50"/>
+                    <rect class="laser-pointer-obj" x="110" y="110" width="25" height="6"/>
+                    <circle class="flupke" cx="180" cy="100" r="20"/>
+                    <rect class="flupke" x="170" y="120" width="20" height="50"/>
+                    <path d="M120 100 C 130 95, 140 95, 150 100" stroke="grey" stroke-dasharray="2,2" fill="none"/>
+                     <g class="speech-bubble-group">
+                        <title>Quick (chuchotant) : "J'ai une idée géniaaaale..."</title>
+                        <path class="speech-bubble-path" d="M30 30 C 20 30 10 40 10 50 C 10 60 20 70 30 70 L 150 70 C 160 70 170 60 170 50 C 170 40 160 30 150 30 Z M 80 70 L 70 80 L 90 70 Z" transform="scale(0.9) translate(10,10)"/>
+                        <text class="speech-bubble-text" x="85" y="50" font-size="9">J'ai une idée géniaaaale...</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_2_storyboard_content">
+        <h2 class="comic-page-title">Page 2</h2>
+        <h5 class="comic-page-summary">Gamins visent Agent 15 avec point rouge; il est perplexe puis agacé; chat attiré bondit sur lui.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_2_panel_1">
+                <h6>Case 1 : Q&F cachés, point rouge sur dos Agent 15.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="ground" x="0" y="150" width="300" height="50"/>
+                    <rect class="muret-poubelle" x="20" y="100" width="100" height="50"/> 
+                    <circle class="agent15" cx="230" cy="110" r="15"/>
+                    <rect class="agent15" x="220" y="125" width="20" height="40"/>
+                    <rect class="agent15-kepi" x="222" y="100" width="16" height="8"/>
+                    <circle class="laser-dot" cx="230" cy="135" r="4"/>
+                    <circle class="quick" cx="50" cy="90" r="8"/> 
+                    <rect class="quick" x="46" y="98" width="8" height="15" class="quick"/>
+                    <rect class="laser-pointer-obj" x="55" y="95" width="15" height="4" transform="rotate(10 55 95)"/>
+                    <circle class="flupke" cx="80" cy="90" r="8"/>
+                    <rect class="flupke" x="76" y="98" width="8" height="15"/>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_2">
+                <h6>Case 2 : Agent 15 perplexe se gratte, point sur képi.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="agent15" cx="150" cy="100" r="20"/>
+                    <rect class="agent15" x="140" y="120" width="20" height="50"/>
+                    <rect class="agent15-kepi" x="142" y="85" width="16" height="10"/>
+                    <circle class="laser-dot" cx="150" cy="90" r="3"/>
+                    <path d="M160 125 Q 170 115 165 105" stroke="black" stroke-width="2" fill="none"/>
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 : "Hein ? Qu'est-ce qui me chatouille ?"</title>
+                        <path class="speech-bubble-path" d="M 50 30 C 40 30 30 40 30 50 C 30 60 40 70 50 70 L 220 70 C 230 70 240 60 240 50 C 240 40 230 30 220 30 Z M 160 70 L 150 80 L 170 70 Z"/>
+                        <text class="speech-bubble-text" x="135" y="50">Hein ? Qu'est-ce qui me chatouille ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_3">
+                <h6>Case 3 : Agent 15 agacé par point; Q&F rient cachés.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="ground" x="0" y="150" width="300" height="50"/>
+                    <rect class="muret-poubelle" x="10" y="110" width="80" height="40"/> 
+                    <circle class="agent15" cx="200" cy="110" r="15" transform="rotate(5 200 110)"/>
+                    <rect class="agent15" x="190" y="125" width="20" height="40" transform="rotate(5 200 125)"/>
+                    <rect class="agent15-kepi" x="192" y="100" width="16" height="8" transform="rotate(5 200 100)"/>
+                    <circle class="laser-dot" cx="150" cy="160" r="4"/>
+                    <circle class="quick" cx="30" cy="100" r="6"/> 
+                    <circle class="flupke" cx="55" cy="100" r="6"/>
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 : "Mais enfin ! C'est quoi ce truc ?"</title>
+                        <path class="speech-bubble-path" d="M 150 30 C 140 30 130 40 130 50 C 130 60 140 70 150 70 L 280 70 C 290 70 300 60 300 50 C 300 40 290 30 280 30 Z M 210 70 L 200 80 L 220 70 Z" transform="translate(-10, 0)"/>
+                        <text class="speech-bubble-text" x="215" y="50">Mais enfin ! C'est quoi ce truc ?</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Quick (petite bulle, en chuchotant) : "Hi hi hi !"</title>
+                        <path class="speech-bubble-path" d="M 10 30 C 0 30 -10 40 -10 50 C -10 60 0 70 10 70 L 70 70 C 80 70 90 60 90 50 C 90 40 80 30 70 30 Z M 30 70 L 25 80 L 40 70 Z" transform="translate(15, 0)"/>
+                        <text class="speech-bubble-text" x="45" y="50" font-size="9">Hi hi hi !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_4">
+                <h6>Case 4 : Chat concentré fixe point rouge près Agent 15.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse class="chat" cx="100" cy="150" rx="30" ry="15"/> <circle class="chat" cx="130" cy="140" r="10"/> <polygon class="chat" points="130,130 125,120 135,120" /> <polygon class="chat" points="138,133 133,123 143,123" /> <line x1="70" y1="150" x2="50" y2="140" stroke="sienna" stroke-width="3"/> <circle fill="yellow" cx="133" cy="140" r="2"/>
+                    <circle fill="yellow" cx="127" cy="140" r="2"/>
+                    <circle class="laser-dot" cx="250" cy="180" r="4"/>
+                    <g class="speech-bubble-group">
+                         <title>MRRROW...</title>
+                         <path class="speech-bubble-path" d="M140 80 Q130 80 130 90 Q130 100 140 100 L180 100 Q190 100 190 90 Q190 80 180 80Z M150 100 L145 110 L155 100Z "/>
+                         <text class="speech-bubble-text" x="160" y="90" font-size="9">MRRROW...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_5">
+                <h6>Case 5 : Chat bondit sur Agent 15 hurlant; képi vole.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="rotate(-30 150 120)">
+                        <circle class="agent15" cx="150" cy="100" r="15"/>
+                        <rect class="agent15" x="140" y="115" width="20" height="50"/>
+                    </g>
+                    <rect class="agent15-kepi" x="100" y="70" width="16" height="8" transform="rotate(45 100 70)"/>
+                    <ellipse class="chat" cx="160" cy="90" rx="25" ry="12"/>
+                    <circle class="chat" cx="180" cy="80" r="8"/>
+                    <circle class="laser-dot" cx="170" cy="85" r="3"/>
+                    <circle class="quick" cx="50" cy="170" r="10"/> 
+                    <rect class="quick" x="45" y="180" width="10" height="20"/>
+                    <circle class="flupke" cx="80" cy="170" r="10"/>
+                    <rect class="flupke" x="75" y="180" width="10" height="20"/>
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 (hurlant) : "MAIS QU'EST-CE QUE... ?! AU SECOURS !"</title>
+                        <path class="speech-bubble-path" d="M180 20 C170 20 160 30 160 40 C160 50 170 60 180 60 L280 60 C290 60 300 50 300 40 C300 30 290 20 280 20 Z M200 60 L190 70 L210 60 Z"/>
+                        <text class="speech-bubble-text" x="230" y="35">
+                             <tspan x="230" dy="-5">MAIS QU'EST-CE QUE...?!</tspan>
+                             <tspan x="230" dy="12">AU SECOURS !</tspan>
+                        </text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Chat (onomatopée) : "GRRRROW !"</title>
+                         <path class="speech-bubble-path" d="M180 120 Q170 120 170 130 Q170 140 180 140 L240 140 Q250 140 250 130 Q250 120 240 120Z M190 120 L185 110 L195 120Z "/>
+                        <text class="onomatopoeia speech-bubble-text" x="210" y="130">GRRRROW !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_6">
+                <h6>Case 6 : Agent 15 à terre avec chat; Q&F mi-hilares mi-désolés.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(120, 160) rotate(80)">
+                        <circle class="agent15" cx="0" cy="0" r="15"/>
+                        <rect class="agent15" x="-10" y="15" width="20" height="40"/>
+                    </g>
+                    <rect class="agent15-kepi" x="200" y="170" width="16" height="8"/>
+                    <ellipse class="chat" cx="130" cy="140" rx="20" ry="10"/>
+                    <circle class="chat" cx="145" cy="130" r="7"/>
+                    <circle class="laser-dot" cx="140" cy="135" r="3"/>
+                    <circle class="quick" cx="50" cy="100" r="10"/> 
+                    <rect class="quick" x="45" y="110" width="10" height="25"/>
+                    <circle class="flupke" cx="90" cy="100" r="10"/>
+                    <rect class="flupke" x="85" y="110" width="10" height="25"/>
+                    <g class="speech-bubble-group">
+                        <title>Flupke : "Zut alors !"</title>
+                        <path class="speech-bubble-path" d="M 60 30 C 50 30 40 40 40 50 C 40 60 50 70 60 70 L 130 70 C 140 70 150 60 150 50 C 150 40 140 30 130 30 Z M 85 70 L 80 80 L 95 70 Z"/>
+                        <text class="speech-bubble-text" x="95" y="50">Zut alors !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Quick : "Hi hi... Oups !"</title>
+                        <path class="speech-bubble-path" d="M 10 50 C 0 50 -10 60 -10 70 C -10 80 0 90 10 90 L 80 90 C 90 90 100 80 100 70 C 100 60 90 50 80 50 Z M 40 90 L 35 100 L 50 90 Z" transform="translate(0, -30)"/>
+                        <text class="speech-bubble-text" x="45" y="70">Hi hi... Oups !</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

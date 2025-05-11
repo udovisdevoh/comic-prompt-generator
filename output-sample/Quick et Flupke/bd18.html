@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - L'Arroseur Arrosé à Retardement</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 2,1; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 10px; font-style: italic; fill: black; }
+        h1 { text-align: center; }
+        h5 { text-align: center; font-size: 1.1em; }
+        h6 { font-weight: normal; font-size: 13px; margin-top: 5px; margin-bottom: 8px; background-color: #efefef; padding: 5px; border-radius:3px; border-left: 3px solid #999;}
+        .character-quick { fill: lightblue; stroke: darkblue; }
+        .character-flupke { fill: lightgreen; stroke: darkgreen; }
+        .character-agent15 { fill: lightcoral; stroke: darkred; }
+        .object { fill: lightgrey; stroke: grey; }
+        .sound-effect { font-size: 18px; font-weight: bold; fill: red; text-anchor: middle; }
+    </style>
+</head>
+<body>
+    <h1>L'Arroseur Arrosé à Retardement (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5>Page 1 : Quick et Flupke installent leur piège à base de tuyau d'arrosage et d'un réveil matin. L'Agent 15 passe une première fois sans se faire arroser, laissant les enfants perplexes.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Description Visuelle : Plan moyen. Quick, le genou à terre, est en train de bricoler avec un tuyau d'arrosage jaune qu'il attache à un vieux réveil matin à sonnerie (avec les deux cloches sur le dessus). Flupke, debout à côté, le regarde faire avec un air interrogateur, une clé à molette à la main. En arrière-plan, un coin de rue typiquement bruxellois, avec un mur de briques et un bout de trottoir.<br>Dialogues/Texte : Flupke : "Tu es sûr que ça va marcher, Quick ?"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="150" fill="#D2B48C" /> <line x1="0" y1="30" x2="300" y2="30" stroke="#8B4513" stroke-width="0.5"/>
+                    <line x1="0" y1="60" x2="300" y2="60" stroke="#8B4513" stroke-width="0.5"/>
+                    <line x1="0" y1="90" x2="300" y2="90" stroke="#8B4513" stroke-width="0.5"/>
+                    <line x1="0" y1="120" x2="300" y2="120" stroke="#8B4513" stroke-width="0.5"/>
+                    <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" /> <circle cx="100" cy="125" r="15" class="character-quick" />
+                    <rect x="90" y="140" width="20" height="30" class="character-quick" />
+                    <text x="100" y="100" font-size="8">Q</text>
+
+
+                    <circle cx="150" cy="115" r="15" class="character-flupke" />
+                    <rect x="140" y="130" width="20" height="40" class="character-flupke" />
+                     <text x="150" y="90" font-size="8">F</text>
+                    <rect x="160" y="135" width="5" height="15" class="object" />
+                    <rect x="158" y="135" width="9" height="5" class="object" />
+
+                    <path d="M 110 145 Q 130 155 140 165" stroke="yellow" stroke-width="4" fill="none" />
+                    <circle cx="125" cy="160" r="10" fill="silver" stroke="black" />
+                    <circle cx="120" cy="150" r="3" fill="darkgrey" />
+                    <circle cx="130" cy="150" r="3" fill="darkgrey" />
+
+                    <g class="speech-bubble-group">
+                        <title>Flupke : "Tu es sûr que ça va marcher, Quick ?"</title>
+                        <path class="speech-bubble-path" d="M 170,80 Q 170,60 190,60 L 270,60 Q 290,60 290,80 L 290,100 Q 290,120 270,120 L 195,120 L 175,130 L 190,120 L 190,120 Q 170,120 170,100 Z" />
+                        <text x="230" y="90" class="speech-bubble-text">Tu es sûr que ça va<tspan x="230" dy="12">marcher, Quick ?</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Description Visuelle : Gros plan sur le mécanisme : le tuyau est positionné pour arroser le trottoir, et la ficelle du réveil est tendue vers une petite cheville plantée dans le mur, prête à être actionnée par la sonnerie pour ouvrir un robinet de fortune (ou pincer/relâcher le tuyau). Quick fait un dernier ajustement avec un sourire malicieux.<br>Dialogues/Texte : Quick : "Hé hé ! Imparable, je te dis !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="100" fill="#D2B48C" /> <rect x="0" y="100" width="300" height="100" fill="#A9A9A9" /> <circle cx="150" cy="130" r="25" fill="silver" stroke="black" />
+                    <circle cx="140" cy="105" r="8" fill="darkgrey" />
+                    <circle cx="160" cy="105" r="8" fill="darkgrey" />
+                    <line x1="150" y1="130" x2="200" y2="80" stroke="brown" stroke-width="1" />
+                    <rect x="198" y="75" width="4" height="10" fill="saddlebrown" />
+                    <path d="M 120 140 Q 80 150 50 160 L 50 170" stroke="yellow" stroke-width="8" fill="none" />
+                    <rect x="46" y="160" width="8" height="10" fill="darkgrey"/> <circle cx="170" cy="150" r="10" class="character-quick" />
+                    <text x="170" y="155" font-size="8" text-anchor="middle">Q</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Quick : "Hé hé ! Imparable, je te dis !"</title>
+                        <path class="speech-bubble-path" d="M 200,20 Q 200,0 220,0 L 280,0 Q 300,0 300,20 L 300,40 Q 300,60 280,60 L 225,60 L 205,70 L 220,60 L 220,60 Q 200,60 200,40 Z" />
+                        <text x="250" y="30" class="speech-bubble-text">Hé hé ! Imparable,<tspan x="250" dy="12">je te dis !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Description Visuelle : Plan d'ensemble. Quick et Flupke sont cachés derrière un angle de mur, guettant. On voit l'Agent 15, de dos, qui s'approche au loin, marchant tranquillement sur le trottoir, sa matraque à la main. Le piège (tuyau et réveil) est visible au premier plan, discret.<br>Dialogues/Texte : Flupke (chuchotant) : "Chut ! Le voilà !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="150" fill="#D2B48C" /> <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" /> <rect x="0" y="0" width="80" height="150" fill="#BFBFBF" /> <circle cx="120" cy="165" r="5" fill="silver" />
+                    <path d="M 125 165 Q 140 170 150 175" stroke="yellow" stroke-width="2" fill="none" />
+
+                    <circle cx="70" cy="130" r="8" class="character-quick" />
+                     <text x="70" y="120" font-size="6">Q</text>
+                    <circle cx="75" cy="140" r="8" class="character-flupke" />
+                     <text x="75" y="153" font-size="6">F</text>
+
+                    <rect x="220" y="135" width="15" height="35" class="character-agent15" />
+                    <circle cx="227.5" cy="130" r="10" class="character-agent15" />
+                    <rect x="225" y="120" width="5" height="5" fill="darkblue" /> <line x1="235" y1="150" x2="240" y2="145" stroke="black" stroke-width="2" /> <g class="speech-bubble-group">
+                        <title>Flupke (chuchotant) : "Chut ! Le voilà !"</title>
+                        <path class="speech-bubble-path" d="M 30,80 Q 30,60 50,60 L 130,60 Q 150,60 150,80 L 150,100 Q 150,120 130,120 L 95,120 L 85,135 L 90,120 L 50,120 Q 30,120 30,100 Z" stroke-dasharray="3,2"/>
+                        <text x="90" y="90" class="speech-bubble-text">Chut ! Le voilà !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Description Visuelle : Plan moyen. L'Agent 15 passe juste à côté du piège, sans le remarquer. Il regarde droit devant lui, l'air un peu distrait. Quick et Flupke, toujours cachés, ont des yeux ronds de surprise et d'incompréhension. Le réveil n'a pas sonné.<br>Dialogues/Texte : Quick (chuchotant, déconcerté) : "Mais ? Pourquoi... ?"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="150" fill="#D2B48C" />
+                    <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" />
+                     <rect x="0" y="0" width="80" height="150" fill="#BFBFBF" /> <circle cx="150" cy="165" r="8" fill="silver" />
+                    <path d="M 158 165 Q 170 170 180 175" stroke="yellow" stroke-width="3" fill="none" />
+
+                    <rect x="160" y="115" width="25" height="55" class="character-agent15" />
+                    <circle cx="172.5" cy="105" r="15" class="character-agent15" />
+                    <rect x="168" y="90" width="10" height="8" fill="darkblue" /> <line x1="150" y1="100" x2="195" y2="100" stroke="black" stroke-width="0.5" /> <circle cx="60" cy="120" r="10" class="character-quick" />
+                     <text x="60" y="110" font-size="6">Q</text>
+                    <circle cx="60" cy="122" r="2" fill="white"/> <circle cx="60" cy="122" r="1" fill="black"/> <circle cx="65" cy="135" r="10" class="character-flupke" />
+                     <text x="65" y="148" font-size="6">F</text>
+                    <circle cx="65" cy="137" r="2" fill="white"/> <circle cx="65" cy="137" r="1" fill="black"/> <g class="speech-bubble-group">
+                        <title>Quick (chuchotant, déconcerté) : "Mais ? Pourquoi... ?"</title>
+                        <path class="speech-bubble-path" d="M 20,60 Q 20,40 40,40 L 120,40 Q 140,40 140,60 L 140,80 Q 140,100 120,100 L 85,100 L 75,115 L 80,100 L 40,100 Q 20,100 20,80 Z" stroke-dasharray="3,2"/>
+                        <text x="80" y="70" class="speech-bubble-text">Mais ? Pourquoi... ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Description Visuelle : L'Agent 15 s'éloigne, toujours de dos. Quick et Flupke sortent prudemment de leur cachette, se grattant la tête, l'air dépité. Le piège est intact.<br>Dialogues/Texte : Flupke : "Ben alors ? Il s'est rien passé !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="150" fill="#D2B48C" />
+                    <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" />
+
+                    <rect x="250" y="138" width="10" height="30" class="character-agent15" />
+                    <circle cx="255" cy="133" r="7" class="character-agent15" />
+                     <rect x="253" y="126" width="4" height="4" fill="darkblue" /> <circle cx="100" cy="165" r="8" fill="silver" />
+                    <path d="M 108 165 Q 120 170 130 175" stroke="yellow" stroke-width="3" fill="none" />
+
+                    <circle cx="80" cy="130" r="15" class="character-quick" />
+                    <rect x="70" y="145" width="20" height="35" class="character-quick" />
+                     <text x="80" y="110" font-size="8">Q</text>
+                    <path d="M 85 125 Q 95 115 90 110" stroke="darkblue" fill="none" stroke-width="1.5" /> <circle cx="130" cy="130" r="15" class="character-flupke" />
+                    <rect x="120" y="145" width="20" height="35" class="character-flupke" />
+                    <text x="130" y="110" font-size="8">F</text>
+                    <line x1="125" y1="135" x2="135" y2="133" stroke="darkgreen" stroke-width="1"/> <g class="speech-bubble-group">
+                        <title>Flupke : "Ben alors ? Il s'est rien passé !"</title>
+                        <path class="speech-bubble-path" d="M 150,80 Q 150,60 170,60 L 250,60 Q 270,60 270,80 L 270,100 Q 270,120 250,120 L 175,120 L 155,130 L 170,120 L 170,120 Q 150,120 150,100 Z" />
+                        <text x="210" y="90" class="speech-bubble-text">Ben alors ? Il s'est<tspan x="210" dy="12">rien passé !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Description Visuelle : Plan rapproché sur Quick et Flupke. Quick est penché sur le réveil, l'examinant avec un froncement de sourcils. Flupke le regarde, l'air de dire "Je te l'avais bien dit". Le réveil semble inerte.<br>Dialogues/Texte : Quick : "Attends... J'ai dû mal régler l'heure !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" />
+
+                    <circle cx="150" cy="160" r="20" fill="silver" stroke="black" />
+                    <circle cx="140" cy="140" r="6" fill="darkgrey" />
+                    <circle cx="160" cy="140" r="6" fill="darkgrey" />
+                    <line x1="150" y1="160" x2="150" y2="145" stroke="black" /> <line x1="150" y1="160" x2="160" y2="165" stroke="black" /> <circle cx="120" cy="110" r="20" class="character-quick" />
+                    <rect x="105" y="130" width="30" height="40" class="character-quick" />
+                    <text x="120" y="90" font-size="10">Q</text>
+                    <path d="M 115 105 Q 120 100 125 105" stroke="darkblue" stroke-width="2" fill="none" /> <circle cx="200" cy="110" r="20" class="character-flupke" />
+                    <rect x="185" y="130" width="30" height="40" class="character-flupke" />
+                    <text x="200" y="90" font-size="10">F</text>
+                    <ellipse cx="195" cy="108" rx="3" ry="1.5" fill="darkgreen" /> <ellipse cx="205" cy="108" rx="3" ry="1.5" fill="darkgreen" /> <g class="speech-bubble-group">
+                        <title>Quick : "Attends... J'ai dû mal régler l'heure !"</title>
+                        <path class="speech-bubble-path" d="M 20,20 Q 20,0 40,0 L 160,0 Q 180,0 180,20 L 180,40 Q 180,60 160,60 L 100,60 L 80,75 L 90,60 L 40,60 Q 20,60 20,40 Z" />
+                        <text x="100" y="30" class="speech-bubble-text">Attends... J'ai dû mal<tspan x="100" dy="12">régler l'heure !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_2_storyboard_content">
+        <h5>Page 2 : Alors que Quick et Flupke examinent leur mécanisme défaillant, l'Agent 15, intrigué par le réveil, revient sur ses pas. Le piège se déclenche de manière inattendue, provoquant une chute absurde.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_2_panel_1">
+                <h6>Description Visuelle : Plan moyen. Quick tapote le réveil, essayant de le faire fonctionner. Flupke est à côté, les bras croisés, un peu sceptique. On voit en arrière-plan, au loin, l'Agent 15 qui s'est arrêté et se retourne, l'air intrigué par quelque chose.<br>Dialogues/Texte : Flupke : "Laisse tomber, Quick, c'est fichu."</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" />
+                    <rect x="0" y="0" width="300" height="150" fill="#D2B48C" />
+
+                    <circle cx="130" cy="160" r="15" fill="silver" stroke="black" />
+                     <circle cx="122" cy="145" r="4" fill="darkgrey" /> <circle cx="138" cy="145" r="4" fill="darkgrey" />
+
+                    <circle cx="100" cy="125" r="15" class="character-quick" />
+                    <rect x="90" y="140" width="20" height="30" class="character-quick" />
+                    <text x="100" y="115" font-size="8">Q</text>
+                    <line x1="110" y1="130" x2="120" y2="145" stroke="darkblue" stroke-width="2" /> <circle cx="170" cy="125" r="15" class="character-flupke" />
+                    <rect x="160" y="140" width="20" height="30" class="character-flupke" />
+                     <text x="170" y="115" font-size="8">F</text>
+                    <line x1="165" y1="150" x2="175" y2="150" stroke="darkgreen" stroke-width="2" /> <rect x="250" y="110" width="10" height="25" class="character-agent15" />
+                    <circle cx="255" cy="105" r="7" class="character-agent15" />
+                    <text x="255" y="95" font-size="6" text-anchor="middle">?</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Flupke : "Laisse tomber, Quick, c'est fichu."</title>
+                        <path class="speech-bubble-path" d="M 190,80 Q 190,60 210,60 L 280,60 Q 300,60 300,80 L 300,100 Q 300,120 280,120 L 215,120 L 195,130 L 210,120 L 210,120 Q 190,120 190,100 Z" />
+                        <text x="245" y="90" class="speech-bubble-text">Laisse tomber, Quick,<tspan x="245" dy="12">c'est fichu.</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_2">
+                <h6>Description Visuelle : Gros plan sur le visage de l'Agent 15 qui revient sur ses pas. Il a un air curieux et pointe du doigt vers le sol (hors champ pour le spectateur, mais en direction du réveil).<br>Dialogues/Texte : Agent 15 (pensée, bulle en nuage) : "Tiens ? Qu'est-ce que c'est que ce truc par terre ?"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="50" class="character-agent15" />
+                    <rect x="130" y="50" width="40" height="20" fill="darkblue" /> <circle cx="135" cy="90" r="5" fill="white" /><circle cx="135" cy="90" r="2" fill="black" /> <circle cx="165" cy="90" r="5" fill="white" /><circle cx="165" cy="90" r="2" fill="black" /> <path d="M 140 115 Q 150 125 160 115" stroke="darkred" fill="none" stroke-width="2" /> <text x="150" y="30" font-size="12" text-anchor="middle">?</text> <line x1="170" y1="130" x2="200" y2="170" stroke="darkred" stroke-width="8" />
+                    <circle cx="200" cy="170" r="4" fill="darkred" />
+
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 (pensée) : "Tiens ? Qu'est-ce que c'est que ce truc par terre ?"</title>
+                        <path class="thought-bubble-path" d="M 30,140 Q 30,120 50,120 L 200,120 Q 220,120 220,140 L 220,160 Q 220,180 200,180 L 50,180 Q 30,180 30,160 Z" />
+                        <text x="125" y="150" class="speech-bubble-text">Tiens ? Qu'est-ce que c'est<tspan x="125" dy="12">que ce truc par terre ?</tspan></text>
+                        <circle cx="100" cy="120" r="3" fill="white" stroke="black" stroke-width="1" />
+                        <circle cx="115" cy="110" r="5" fill="white" stroke="black" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_3">
+                <h6>Description Visuelle : Plan moyen. L'Agent 15 est maintenant penché au-dessus du réveil, l'observant de près. Quick et Flupke, surpris par son retour, le regardent avec de grands yeux, un peu en panique. Quick a encore la main sur le réveil.<br>Dialogues/Texte : Agent 15 : "Mais... c'est un réveil ? Qu'est-ce qu'il fait là ?"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="170" width="300" height="30" fill="#A9A9A9" />
+                     <circle cx="150" cy="165" r="15" fill="silver" stroke="black" />
+                    <circle cx="142" cy="150" r="4" fill="darkgrey" /> <circle cx="158" cy="150" r="4" fill="darkgrey" />
+
+                    <circle cx="150" cy="100" r="20" class="character-agent15" />
+                    <rect x="135" y="120" width="30" height="50" class="character-agent15" transform="rotate(-15 150 120)" />
+                     <rect x="140" y="80" width="20" height="10" fill="darkblue" /> <circle cx="80" cy="135" r="15" class="character-quick" />
+                    <rect x="70" y="150" width="20" height="30" class="character-quick" />
+                     <text x="80" y="120" font-size="8">Q</text>
+                    <circle cx="78" cy="133" r="3" fill="white"/><circle cx="78" cy="133" r="1.5" fill="black"/> <line x1="90" y1="140" x2="135" y2="155" stroke="darkblue" stroke-width="2" /> <circle cx="220" cy="135" r="15" class="character-flupke" />
+                    <rect x="210" y="150" width="20" height="30" class="character-flupke" />
+                     <text x="220" y="120" font-size="8">F</text>
+                    <circle cx="218" cy="133" r="3" fill="white"/><circle cx="218" cy="133" r="1.5" fill="black"/> <g class="speech-bubble-group">
+                        <title>Agent 15 : "Mais... c'est un réveil ? Qu'est-ce qu'il fait là ?"</title>
+                        <path class="speech-bubble-path" d="M 160,20 Q 160,0 180,0 L 280,0 Q 300,0 300,20 L 300,50 Q 300,70 280,70 L 185,70 L 165,85 L 180,70 L 180,70 Q 160,70 160,50 Z" />
+                        <text x="230" y="25" class="speech-bubble-text">Mais... c'est un réveil ?<tspan x="230" dy="12">Qu'est-ce qu'il</tspan><tspan x="230" dy="12">fait là ?</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_4">
+                <h6>Description Visuelle : Soudain, le réveil se met à sonner bruyamment ("DRIIIING !"). Au même instant, l'Agent 15, surpris par le bruit strident juste sous son nez, sursaute violemment en arrière. Quick et Flupke ont un mouvement de recul également.<br>Dialogues/Texte : Effet sonore (gros et gras) : DRIIIING !!! Agent 15 : "Sapristi !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="170" width="300" height="30" fill="#A9A9A9" />
+
+                    <circle cx="150" cy="165" r="15" fill="silver" stroke="black" />
+                    <circle cx="142" cy="150" r="4" fill="darkgrey" /> <circle cx="158" cy="150" r="4" fill="darkgrey" />
+                    <text x="150" y="130" class="sound-effect">DRIIIING !!!</text>
+                    <path d="M140,145 L130,135 M160,145 L170,135 M140,150 L130,150 M160,150 L170,150" stroke="black" stroke-width="1.5"/> <circle cx="180" cy="100" r="20" class="character-agent15" transform="rotate(10 180 100)" />
+                    <rect x="165" y="120" width="30" height="50" class="character-agent15" transform="rotate(10 180 120)" />
+                    <text x="180" y="70" font-size="10" text-anchor="middle">!!!</text> <circle cx="70" cy="135" r="15" class="character-quick" transform="rotate(-5 70 135)" />
+                    <rect x="60" y="150" width="20" height="30" class="character-quick" transform="rotate(-5 70 150)" />
+
+                    <circle cx="230" cy="135" r="15" class="character-flupke" transform="rotate(5 230 135)" />
+                    <rect x="220" y="150" width="20" height="30" class="character-flupke" transform="rotate(5 230 150)" />
+
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 : "Sapristi !"</title>
+                        <path class="speech-bubble-path" d="M 200,20 Q 200,0 220,0 L 280,0 Q 300,0 300,20 L 300,40 Q 300,60 280,60 L 225,60 L 205,70 L 220,60 L 220,60 Q 200,60 200,40 Z" />
+                        <text x="250" y="30" class="speech-bubble-text">Sapristi !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_5">
+                <h6>Description Visuelle : Action ! Au moment où l'Agent 15 sursaute en arrière, le jet d'eau puissant jaillit du tuyau, non pas vers l'endroit où il se tenait initialement, mais directement vers le ciel à cause de sa surprise qui a fait bouger le tuyau qu'il a peut-être touché en se penchant. L'eau monte en arc de cercle. Quick et Flupke regardent la scène, bouche bée.<br>Dialogues/Texte : Flupke : "Ça alors !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="170" width="300" height="30" fill="#A9A9A9" />
+                    <rect x="0" y="0" width="300" height="170" fill="#ADD8E6" /> <path d="M 100 175 Q 80 160 70 140" stroke="yellow" stroke-width="6" fill="none" /> <path d="M 70 140 Q 150 20 230 140" stroke="blue" stroke-width="10" fill="rgba(0,0,255,0.5)" /> <text x="75" y="130" font-size="12" fill="blue">FWOOSH!</text>
+
+                    <circle cx="200" cy="130" r="20" class="character-agent15" />
+                    <rect x="185" y="150" width="30" height="30" class="character-agent15" />
+
+
+                    <circle cx="50" cy="140" r="15" class="character-quick" />
+                    <rect x="40" y="155" width="20" height="25" class="character-quick" />
+                    <ellipse cx="50" cy="145" rx="4" ry="2" fill="white" /> <circle cx="250" cy="140" r="15" class="character-flupke" />
+                    <rect x="240" y="155" width="20" height="25" class="character-flupke" />
+                    <ellipse cx="250" cy="145" rx="4" ry="2" fill="white" /> <g class="speech-bubble-group">
+                        <title>Flupke : "Ça alors !"</title>
+                        <path class="speech-bubble-path" d="M 230,20 Q 230,0 250,0 L 290,0 Q 310,0 310,20 L 310,40 Q 310,60 290,60 L 255,60 L 235,70 L 250,60 L 250,60 Q 230,60 230,40 Z" transform="translate(-20, 0)" />
+                        <text x="260" y="30" class="speech-bubble-text" transform="translate(-20, 0)">Ça alors !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_6">
+                <h6>Description Visuelle : Punch line. Plan d'ensemble. L'Agent 15, qui a reculé de quelques pas pour éviter le jet initial, se retrouve pile sous la retombée de l'arc d'eau. Il est trempé de la tête aux pieds, l'air complètement ahuri et furieux, le képi de travers. Le jet d'eau continue de l'arroser copieusement. Quick et Flupke, un peu à l'écart, éclatent de rire.<br>Dialogues/Texte : Agent 15 (hurlant, avec des gouttes d'eau partout) : "QUICK ! FLUPKE ! VOUS ME LE PAIEREZ !" Quick (hilare) : "Finalement, il était bien réglé !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                     <rect x="0" y="150" width="300" height="50" fill="#A9A9A9" />
+                    <rect x="0" y="0" width="300" height="150" fill="#ADD8E6" /> <path d="M 70 140 Q 150 20 230 140 L 230 170 Z" stroke="blue" stroke-width="0" fill="rgba(0,0,255,0.5)" />
+                     <path d="M 70 140 Q 150 20 230 140" stroke="blue" stroke-width="10" fill="none" />
+                    <circle cx="230" cy="120" r="3" fill="blue" /> <circle cx="225" cy="130" r="2" fill="blue" /> <circle cx="235" cy="125" r="2.5" fill="blue" /> <circle cx="230" cy="120" r="20" class="character-agent15" />
+                    <rect x="215" y="140" width="30" height="40" class="character-agent15" />
+                    <rect x="220" y="100" width="20" height="10" fill="darkblue" transform="rotate(-15 230 100)"/> <text x="230" y="90" font-size="12" text-anchor="middle" fill="red">!!!</text> <circle cx="50" cy="140" r="15" class="character-quick" />
+                    <rect x="40" y="155" width="20" height="25" class="character-quick" />
+                    <text x="50" y="130" font-size="8">Haha!</text>
+
+                    <circle cx="90" cy="140" r="15" class="character-flupke" />
+                    <rect x="80" y="155" width="20" height="25" class="character-flupke" />
+                    <text x="90" y="130" font-size="8">Haha!</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Agent 15 : "QUICK ! FLUPKE ! VOUS ME LE PAIEREZ !"</title>
+                        <path class="speech-bubble-path" d="M 150,10 Q 150,-10 170,-10 L 280,-10 Q 300,-10 300,10 L 300,40 Q 300,60 280,60 L 235,60 L 225,75 L 230,60 L 170,60 Q 150,60 150,40 Z" transform="translate(0, 10)"/>
+                        <text x="225" y="15" class="speech-bubble-text" transform="translate(0, 10)">QUICK ! FLUPKE !<tspan x="225" dy="12">VOUS ME LE PAIEREZ !</tspan></text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>Quick : "Finalement, il était bien réglé !"</title>
+                        <path class="speech-bubble-path" d="M 10,80 Q 10,60 30,60 L 130,60 Q 150,60 150,80 L 150,100 Q 150,120 130,120 L 75,120 L 55,130 L 70,120 L 30,120 Q 10,120 10,100 Z" />
+                        <text x="80" y="90" class="speech-bubble-text">Finalement, il était<tspan x="80" dy="12">bien réglé !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

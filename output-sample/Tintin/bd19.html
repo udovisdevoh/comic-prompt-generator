@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Livraison Express à Moulinsart</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; max-width: 1600px; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; text-align: center;}
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1.5; stroke-dasharray: 3,2; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 12px; fill: black; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 12px; font-style: italic; fill: black; }
+        h1 { text-align: center; }
+        h6 { font-weight: normal; font-size: 14px; line-height: 1.4; }
+        .character-label { font-size: 9px; text-anchor: middle; fill: #555; }
+        .onomatopoeia { font-size: 20px; font-weight: bold; fill: red; text-anchor: middle; }
+    </style>
+</head>
+<body>
+    <h1>Livraison Express à Moulinsart (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Tintin, enthousiasmé par le nouveau drone livreur du Professeur Tournesol, tente d'envoyer une tasse de café au Capitaine Haddock. Milou, attiré par l'objet volant, le pourchasse, causant un atterrissage forcé très humide pour le café et une surprise pour le Capitaine.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Description Visuelle : Intérieur, salon de Moulinsart. Le Professeur Tournesol, tout sourire, présente fièrement un petit drone (quadricoptère) avec une pince tenant un sucre, à Tintin qui le regarde avec intérêt. Milou, assis aux pieds de Tintin, observe la scène, l'oreille dressée, l'air curieux.<br>
+                - BLOC NARRATIF : Au château de Moulinsart, le génie du Professeur Tournesol a encore frappé...<br>
+                - TOURNESOL (enthousiaste) : "Et voici ma dernière création, Tintin ! Le Livreur Express Miniature ! Fini les déplacements inutiles !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#f0f0f0" />
+                    <line x1="0" y1="180" x2="300" y2="180" stroke="#aaa" stroke-width="2" /> <circle cx="80" cy="100" r="15" fill="#f7e0c2" stroke="black" stroke-width="1"/> <rect x="70" y="115" width="20" height="40" fill="#5a8f37" stroke="black" stroke-width="1"/> <path d="M 70 105 Q 80 90 90 105 Z" fill="#333"/> <text x="80" y="165" class="character-label">Tournesol</text>
+
+                    <circle cx="150" cy="110" r="15" fill="#f7e0c2" stroke="black" stroke-width="1"/> <path d="M 150 95 Q 153 90 156 95 L 153 90 Z" fill="#ff8c00" stroke="black" stroke-width="0.5"/> <rect x="140" y="125" width="20" height="45" fill="#add8e6" stroke="black" stroke-width="1"/> <rect x="140" y="170" width="20" height="10" fill="#a0522d" stroke="black" stroke-width="1"/> <text x="150" y="185" class="character-label">Tintin</text>
+
+                    <ellipse cx="180" cy="165" rx="10" ry="7" fill="white" stroke="black" stroke-width="1"/> <circle cx="190" cy="160" r="5" fill="white" stroke="black" stroke-width="1"/> <path d="M 192 158 L 195 155 M 170 165 L 165 160" stroke="black" stroke-width="1"/> <text x="180" y="178" class="character-label">Milou</text>
+
+                    <rect x="100" y="90" width="30" height="15" fill="silver" stroke="black" stroke-width="1"/> <line x1="95" y1="90" x2="135" y2="90" stroke="grey" stroke-width="1"/> <line x1="100" y1="85" x2="100" y2="95" stroke="grey" stroke-width="1"/> <circle cx="95" cy="85" r="3" fill="lightgrey"/> <circle cx="135" cy="85" r="3" fill="lightgrey"/>
+                    <circle cx="105" cy="80" r="3" fill="lightgrey"/> <circle cx="125" cy="80" r="3" fill="lightgrey"/>
+                    <rect x="110" y="105" width="5" height="5" fill="white" stroke="black" stroke-width="0.5"/> <g class="narrative-box-group">
+                        <title>Au château de Moulinsart, le génie du Professeur Tournesol a encore frappé...</title>
+                        <rect x="10" y="10" width="280" height="25" class="narrative-box-path"/>
+                        <text x="150" y="22.5" class="narrative-text" text-anchor="middle">Au château de Moulinsart, le génie du Professeur Tournesol a encore frappé...</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Et voici ma dernière création, Tintin ! Le Livreur Express Miniature ! Fini les déplacements inutiles !</title>
+                        <path d="M 90 80 C 70 80, 60 70, 70 60 Q 70 40, 90 40 L 200 40 Q 220 40, 220 60 L 220 70 Q 220 90, 200 90 L 100 90 L 90 80 Z" class="speech-bubble-path"/>
+                        <text x="145" y="55" class="speech-bubble-text">Et voici ma dernière création, Tintin ! Le Livreur</text>
+                        <text x="145" y="68" class="speech-bubble-text">Express Miniature ! Fini les déplacements inutiles !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Description Visuelle : Tintin, un peu sceptique mais amusé, tient une télécommande rudimentaire. Le drone est en vol stationnaire devant lui, portant cette fois une tasse de café fumante.<br>
+                - TINTIN : "Impressionnant, Professeur ! Je vais justement apporter son café au Capitaine."<br>
+                - TOURNESOL (mettant son cornet à l'oreille) : "Comment ? Vous allez chasser le capitaine ?"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#f0f0f0" />
+                    <line x1="0" y1="180" x2="300" y2="180" stroke="#aaa" stroke-width="2" />
+
+                    <circle cx="80" cy="110" r="15" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <path d="M 80 95 Q 83 90 86 95 L 83 90 Z" fill="#ff8c00" stroke="black" stroke-width="0.5"/>
+                    <rect x="70" y="125" width="20" height="45" fill="#add8e6" stroke="black" stroke-width="1"/>
+                    <rect x="70" y="170" width="20" height="10" fill="#a0522d" stroke="black" stroke-width="1"/>
+                    <rect x="90" y="120" width="10" height="20" fill="grey" stroke="black" stroke-width="1"/> <text x="80" y="185" class="character-label">Tintin</text>
+
+                    <rect x="150" y="90" width="30" height="15" fill="silver" stroke="black" stroke-width="1"/>
+                    <line x1="145" y1="90" x2="185" y2="90" stroke="grey" stroke-width="1"/>
+                    <line x1="150" y1="85" x2="150" y2="95" stroke="grey" stroke-width="1"/>
+                    <circle cx="145" cy="85" r="3" fill="lightgrey"/> <circle cx="185" cy="85" r="3" fill="lightgrey"/>
+                    <rect x="158" y="105" width="14" height="10" fill="#fff" stroke="#000" stroke-width="1"/> <path d="M 172 107 C 176 109 176 111 172 113" fill="none" stroke="#000" stroke-width="1"/> <path d="M 160 103 Q 162 98 164 103 M 165 103 Q 167 98 169 103 M 170 103 Q 172 98 174 103" stroke="#555" stroke-width="0.5"/> <text x="165" y="125" class="character-label">Drone</text>
+
+                    <circle cx="230" cy="120" r="10" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <rect x="225" y="130" width="10" height="30" fill="#5a8f37" stroke="black" stroke-width="1"/>
+                    <path d="M 235 125 L 245 115 L 245 120 Z" fill="grey" stroke="black" stroke-width="1"/> <text x="230" y="165" class="character-label">Tournesol</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Impressionnant, Professeur ! Je vais justement apporter son café au Capitaine.</title>
+                        <path d="M 90 80 C 70 80, 60 70, 70 60 Q 70 40, 90 40 L 220 40 Q 240 40, 240 60 L 240 70 Q 240 90, 220 90 L 100 90 L 90 80 Z" class="speech-bubble-path"/>
+                        <text x="155" y="55" class="speech-bubble-text">Impressionnant, Professeur ! Je vais justement</text>
+                        <text x="155" y="68" class="speech-bubble-text">apporter son café au Capitaine.</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                         <title>Comment ? Vous allez chasser le capitaine ?</title>
+                        <path d="M 220 100 C 200 100, 190 90, 200 80 Q 200 60, 220 60 L 280 60 Q 300 60, 300 80 L 300 90 Q 300 110, 280 110 L 230 110 L 220 100 Z" transform="translate(-20, -45)" class="speech-bubble-path"/>
+                        <text x="230" y="75" class="speech-bubble-text">Comment ? Vous allez</text>
+                        <text x="230" y="88" class="speech-bubble-text">chasser le capitaine ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Description Visuelle : Le drone, piloté par Tintin (visible en arrière-plan, concentré sur sa télécommande), survole le couloir de Moulinsart en direction du salon où lit le Capitaine. Milou, en premier plan, a vu le drone et commence à trottiner derrière, la queue frétillante.<br>
+                - MILOU (bulle de pensée) : "Tiens, tiens ! Un drôle d'oiseau mécanique !"<br>
+                - BRUIT DU DRONE (onomatopée) : Bzzzzzz</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#d2b48c" /> <polygon points="50,0 250,0 200,200 100,200" fill="#c1a37e" /> <rect x="250" y="50" width="40" height="80" fill="#a0522d" /> <circle cx="40" cy="150" r="8" fill="#f7e0c2" stroke="black" stroke-width="0.5"/>
+                    <rect x="35" y="158" width="10" height="22" fill="#add8e6" stroke="black" stroke-width="0.5"/>
+                    <rect x="46" y="155" width="5" height="10" fill="grey" stroke="black" stroke-width="0.5"/> <rect x="140" y="80" width="20" height="10" fill="silver" stroke="black" stroke-width="1"/>
+                    <circle cx="138" cy="78" r="2" fill="lightgrey"/> <circle cx="162" cy="78" r="2" fill="lightgrey"/>
+                    <rect x="144" y="90" width="12" height="8" fill="#fff" stroke="#000" stroke-width="0.5"/> <text x="150" y="70" class="onomatopoeia" fill="black" font-size="10px">Bzzzzzz</text>
+
+                    <ellipse cx="180" cy="165" rx="15" ry="10" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="195" cy="158" r="7" fill="white" stroke="black" stroke-width="1"/>
+                    <path d="M 198 155 L 203 148 M 165 165 Q 160 155 165 150" stroke="black" stroke-width="1"/> <text x="180" y="185" class="character-label">Milou</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Tiens, tiens ! Un drôle d'oiseau mécanique !</title>
+                        <path d="M 220,130 A 10,10 0 0,1 230,120 A 10,10 0 0,1 240,130 A 10,10 0 0,1 230,140 A 10,10 0 0,1 220,130
+                                 M 230,110 A 10,10 0 0,1 240,100 A 10,10 0 0,1 250,110 A 10,10 0 0,1 240,120 A 10,10 0 0,1 230,110
+                                 M 210,125 Q 200,135 195,145" class="thought-bubble-path" transform="translate(-10, -60) scale(1.2)"/>
+                        <text x="230" y="75" class="speech-bubble-text">Tiens, tiens ! Un drôle</text>
+                        <text x="230" y="88" class="speech-bubble-text">d'oiseau mécanique !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Description Visuelle : Gros plan sur Milou qui se lance à la poursuite du drone, jappant joyeusement. Le drone est juste devant lui, commençant à vaciller légèrement.<br>
+                - MILOU : "Wouf ! Wouf ! Attends-moi !"<br>
+                - TINTIN (hors champ, inquiet) : "Milou, non ! Laisse !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#d2b48c" />
+
+                    <rect x="100" y="70" width="25" height="12" fill="silver" stroke="black" stroke-width="1" transform="rotate(5 112 76)"/>
+                    <circle cx="98" cy="68" r="2.5" fill="lightgrey" transform="rotate(5 112 76)"/> <circle cx="127" cy="68" r="2.5" fill="lightgrey" transform="rotate(5 112 76)"/>
+                    <rect x="105" y="82" width="15" height="10" fill="#fff" stroke="#000" stroke-width="0.5" transform="rotate(5 112 76)"/> <path d="M 107 80 Q 109 75 111 80 M 112 80 Q 114 75 116 80" stroke="#555" stroke-width="0.5" transform="rotate(5 112 76)"/> <ellipse cx="180" cy="130" rx="30" ry="20" fill="white" stroke="black" stroke-width="1.5"/> <circle cx="210" cy="115" r="15" fill="white" stroke="black" stroke-width="1.5"/> <path d="M 215 110 L 225 100 M 212 105 L 220 98" stroke="black" stroke-width="1.5"/> <path d="M 150 130 L 140 140 M 155 135 L 145 145" stroke="black" stroke-width="1.5"/> <path d="M 190 145 L 180 155 M 195 150 L 185 160" stroke="black" stroke-width="1.5"/> <text x="195" y="165" class="character-label">Milou</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Wouf ! Wouf ! Attends-moi !</title>
+                        <path d="M 230 80 C 210 80, 200 70, 210 60 Q 210 40, 230 40 L 280 40 Q 300 40, 300 60 L 300 70 Q 300 90, 280 90 L 240 90 L 230 80 Z" class="speech-bubble-path"/>
+                        <text x="255" y="65" class="speech-bubble-text">Wouf ! Wouf ! Attends-moi !</text>
+                    </g>
+
+                     <g class="speech-bubble-group">
+                        <title>Milou, non ! Laisse !</title>
+                        <path d="M 30 170 C 10 170, 0 160, 10 150 Q 10 130, 30 130 L 100 130 Q 120 130, 120 150 L 120 160 Q 120 180, 100 180 L 40 180 L 30 170 Z" class="speech-bubble-path"/>
+                        <text x="65" y="155" class="speech-bubble-text">Milou, non ! Laisse !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Description Visuelle : Le Capitaine Haddock est confortablement installé dans son fauteuil, lisant son journal, une pipe à la bouche, l'air paisible. On voit par l'embrasure de la porte le drone qui arrive, dangereusement incliné, avec Milou qui saute pour l'attraper.<br>
+                - CAPITAINE HADDOCK (marmonnant, absorbé par sa lecture) : "...Mille sabords, encore ces politiciens..."<br>
+                - MILOU (hors champ, jappant) : "Grrr ! Wouf !"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#e6ccb3" /> <rect x="80" y="100" width="100" height="80" fill="#8b4513" stroke="black" stroke-width="1"/> <line x1="0" y1="180" x2="300" y2="180" stroke="#a0522d" stroke-width="2" /> <circle cx="130" cy="90" r="20" fill="#f7e0c2" stroke="black" stroke-width="1"/> <rect x="110" y="110" width="40" height="60" fill="#000080" stroke="black" stroke-width="1"/> <path d="M 120 100 Q 130 115 140 100 Q 135 120 130 120 Q 125 120 120 100 Z" fill="#333"/> <rect x="145" y="85" width="15" height="5" fill="#654321" stroke="black" stroke-width="0.5"/> <line x1="160" y1="83" x2="162" y2="80" stroke="#ccc" stroke-width="1"/> <line x1="163" y1="82" x2="165" y2="79" stroke="#ccc" stroke-width="1"/> <rect x="100" y="80" width="60" height="40" fill="white" stroke="black" stroke-width="1" transform="rotate(-10 130 100)" /> <text x="115" y="95" font-size="5px">Le Soir</text>
+                    <text x="130" y="175" class="character-label">Haddock</text>
+
+                    <rect x="0" y="0" width="70" height="200" fill="#d2b48c" /> <line x1="70" y1="0" x2="70" y2="200" stroke="black" stroke-width="2"/> <rect x="20" y="70" width="20" height="10" fill="silver" stroke="black" stroke-width="1" transform="rotate(-30 30 75)"/>
+                    <rect x="24" y="80" width="12" height="8" fill="#fff" stroke="#000" stroke-width="0.5" transform="rotate(-30 30 75)"/> <ellipse cx="40" cy="100" rx="10" ry="7" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="50" cy="95" r="5" fill="white" stroke="black" stroke-width="1"/>
+                    <path d="M 45 105 L 40 110 M 35 105 L 30 110" stroke="black" stroke-width="1"/> <g class="speech-bubble-group">
+                        <title>...Mille sabords, encore ces politiciens...</title>
+                        <path d="M 170 60 C 150 60, 140 50, 150 40 Q 150 20, 170 20 L 280 20 Q 300 20, 300 40 L 300 50 Q 300 70, 280 70 L 180 70 L 170 60 Z" class="speech-bubble-path"/>
+                        <text x="225" y="45" class="speech-bubble-text">...Mille sabords, encore ces politiciens...</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Grrr ! Wouf !</title>
+                        <path d="M 20 160 C 0 160, -10 150, 0 140 Q 0 120, 20 120 L 60 120 Q 80 120, 80 140 L 80 150 Q 80 170, 60 170 L 30 170 L 20 160 Z" class="speech-bubble-path"/>
+                        <text x="40" y="145" class="speech-bubble-text">Grrr ! Wouf !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Description Visuelle : Catastrophe ! Le drone, heurté par Milou qui essaie de l'attraper avec sa patte, lâche la tasse. La tasse de café est en plein vol, se renversant. Le Capitaine commence à peine à lever les yeux de son journal, surpris par le bruit.<br>
+                - BRUIT (onomatopée) : CRASH ! (bruit du drone heurté)<br>
+                - TINTIN (hors champ, catastrophé) : "MILOU !!!"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#e6ccb3" />
+                    <rect x="80" y="100" width="100" height="80" fill="#8b4513" stroke="black" stroke-width="1"/> <line x1="0" y1="180" x2="300" y2="180" stroke="#a0522d" stroke-width="2" />
+
+                    <circle cx="130" cy="90" r="20" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <rect x="110" y="110" width="40" height="60" fill="#000080" stroke="black" stroke-width="1"/>
+                    <path d="M 120 100 Q 130 115 140 100 Q 135 120 130 120 Q 125 120 120 100 Z" fill="#333"/>
+                    <ellipse cx="125" cy="85" rx="3" ry="4" fill="white" stroke="black" stroke-width="0.5"/> <ellipse cx="138" cy="85" rx="3" ry="4" fill="white" stroke="black" stroke-width="0.5"/> <circle cx="125" cy="85" r="1" fill="black"/> <circle cx="138" cy="85" r="1" fill="black"/> <rect x="100" y="80" width="60" height="40" fill="white" stroke="black" stroke-width="1" transform="translate(0 5) rotate(-5 130 100)" /> <rect x="70" y="60" width="20" height="10" fill="silver" stroke="black" stroke-width="1" transform="rotate(45 80 65)"/>
+                    <line x1="65" y1="58" x2="70" y2="70" stroke="black" stroke-width="1"/> <ellipse cx="80" cy="80" rx="10" ry="7" fill="white" stroke="black" stroke-width="1"/> <circle cx="90" cy="75" r="5" fill="white" stroke="black" stroke-width="1"/> <path d="M 85 70 L 80 65" stroke="black" stroke-width="1"/> <rect x="120" y="50" width="15" height="12" fill="#fff" stroke="#000" stroke-width="1" transform="rotate(-60 127.5 56)"/>
+                    <path d="M 125 45 Q 140 55 150 65 L 145 75 Q 130 60 120 50 Z" fill="#654321" /> <path d="M 110 55 L 115 50 L 120 55 M 105 60 L 110 55 L 115 60" stroke="#654321" stroke-width="1.5" /> <text x="50" y="40" class="onomatopoeia">CRASH!</text>
+
+                    <g class="speech-bubble-group">
+                        <title>MILOU !!!</title>
+                        <path d="M 230 170 C 210 170, 200 160, 210 150 Q 210 130, 230 130 L 280 130 Q 300 130, 300 150 L 300 160 Q 300 180, 280 180 L 240 180 L 230 170 Z" class="speech-bubble-path"/>
+                        <text x="255" y="155" class="speech-bubble-text">MILOU !!!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6>Description Visuelle : Le café brûlant atterrit en plein sur le journal du Capitaine Haddock et éclabousse son visage et sa chemise. Ses yeux sortent de leurs orbites, sa pipe est éjectée de sa bouche.<br>
+                - BRUIT (onomatopée) : SPLASH !!!<br>
+                - CAPITAINE HADDOCK (hurlant, surpris et furieux) : "NOM D'UNE PITE DE MOULE À GAUFRES !!! MAIS QU'EST-CE QUE...?!"</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#e6ccb3" />
+                    <rect x="80" y="100" width="100" height="80" fill="#8b4513" stroke="black" stroke-width="1"/>
+                    <line x1="0" y1="180" x2="300" y2="180" stroke="#a0522d" stroke-width="2" />
+
+                    <circle cx="130" cy="90" r="20" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <rect x="110" y="110" width="40" height="60" fill="#000080" stroke="black" stroke-width="1"/>
+                    <path d="M 120 100 Q 130 115 140 100 Q 135 120 130 120 Q 125 120 120 100 Z" fill="#333"/>
+                    <circle cx="122" cy="85" r="5" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="122" cy="85" r="2" fill="black"/>
+                    <circle cx="140" cy="85" r="5" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="140" cy="85" r="2" fill="black"/>
+                    <path d="M 130 100 Q 135 95 140 100" fill="none" stroke="black" stroke-width="1.5"/> <rect x="100" y="80" width="60" height="40" fill="#d3c1a4" stroke="black" stroke-width="1" transform="translate(10 15) rotate(15 130 100)" />
+                    <path d="M 105 85 Q 130 70 155 85 Q 140 110 110 110 Z" fill="#654321" opacity="0.7"/> <circle cx="130" cy="90" r="15" fill="none" stroke="#654321" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="130" y1="75" x2="128" y2="65" stroke="#654321" stroke-width="1.5"/>
+                    <line x1="140" y1="80" x2="145" y2="70" stroke="#654321" stroke-width="1.5"/>
+                    <line x1="120" y1="95" x2="110" y2="90" stroke="#654321" stroke-width="1.5"/>
+                    <path d="M 115 115 C 120 110 125 115 130 110" fill="none" stroke="#654321" stroke-width="1"/> <rect x="70" y="70" width="15" height="5" fill="#654321" stroke="black" stroke-width="0.5" transform="rotate(-30 77.5 72.5)"/>
+
+                    <text x="150" y="50" class="onomatopoeia">SPLASH!!!</text>
+
+                    <g class="speech-bubble-group">
+                        <title>NOM D'UNE PITE DE MOULE À GAUFRES !!! MAIS QU'EST-CE QUE...?!"</title>
+                        <path d="M 160 20 C 140 20, 130 30, 140 40 L 150 70 L 160 60 L 170 70 L 180 60 L 190 70 L 200 60 L 210 70 L 220 60 L 230 70 L 240 40 Q 260 20 290 20 L 160 20 Z" class="speech-bubble-path" transform="translate(-20, 10) scale(1.1)"/>
+                        <text x="195" y="38" class="speech-bubble-text">NOM D'UNE PITE DE</text>
+                        <text x="195" y="51" class="speech-bubble-text">MOULE À GAUFRES !!!</text>
+                        <text x="195" y="64" class="speech-bubble-text">MAIS QU'EST-CE QUE...?!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6>Description Visuelle : Tintin arrive en courant dans le salon, l'air désolé. Le Professeur Tournesol le suit, l'air ahuri. Le drone est écrasé au sol. Milou, tout penaud, la queue basse, a la tasse vide sur la tête comme un chapeau. Le Capitaine, trempé de café, se lève de son fauteuil, rouge de colère, le poing levé.<br>
+                - TINTIN : "Capitaine ! Je suis navré ! C'est..."<br>
+                - CAPITAINE HADDOCK : "ESPÈCE DE MOULE À GAUFRES INTERSIDÉRAL ! Bachi-bouzouk de tonnerre de Brest !"<br>
+                - TOURNESOL (pointant le drone) : "Mon invention ! Un léger défaut de stabilité en présence de canidés joueurs, semble-t-il..."</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#e6ccb3" />
+                    <line x1="0" y1="180" x2="300" y2="180" stroke="#a0522d" stroke-width="2" />
+
+                    <circle cx="230" cy="80" r="20" fill="#ff4500" stroke="black" stroke-width="1"/> <rect x="210" y="100" width="40" height="70" fill="#000080" stroke="black" stroke-width="1"/> <path d="M 220 90 Q 230 105 240 90 Q 235 110 230 110 Q 225 110 220 90 Z" fill="#333"/> <path d="M 200 100 C 205 95 210 100 205 105 Z" fill="#f7e0c2" stroke="black" stroke-width="1"/> <text x="230" y="175" class="character-label">Haddock</text>
+
+                    <circle cx="50" cy="130" r="15" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <path d="M 50 115 Q 53 110 56 115 L 53 110 Z" fill="#ff8c00" stroke="black" stroke-width="0.5"/>
+                    <rect x="40" y="145" width="20" height="30" fill="#add8e6" stroke="black" stroke-width="1"/>
+                    <line x1="45" y1="140" x2="55" y2="140" stroke="black" stroke-width="1"/> <text x="50" y="180" class="character-label">Tintin</text>
+
+                    <circle cx="100" cy="135" r="12" fill="#f7e0c2" stroke="black" stroke-width="1"/>
+                    <rect x="92" y="147" width="16" height="28" fill="#5a8f37" stroke="black" stroke-width="1"/>
+                    <circle cx="97" cy="133" r="1.5" fill="black"/> <circle cx="103" cy="133" r="1.5" fill="black"/> <text x="100" y="180" class="character-label">Tournesol</text>
+
+                    <ellipse cx="150" cy="160" rx="12" ry="8" fill="white" stroke="black" stroke-width="1"/> <circle cx="160" cy="153" r="6" fill="white" stroke="black" stroke-width="1"/> <path d="M 138 160 Q 135 165 138 168" stroke="black" stroke-width="1"/> <rect x="155" y="140" width="10" height="8" fill="#fff" stroke="#000" stroke-width="1"/> <text x="150" y="175" class="character-label">Milou</text>
+
+                    <rect x="140" y="170" width="25" height="5" fill="silver" stroke="black" stroke-width="1" transform="rotate(10 152 172)"/>
+                    <line x1="135" y1="168" x2="145" y2="175" stroke="grey" stroke-width="1"/> <line x1="160" y1="170" x2="150" y2="177" stroke="grey" stroke-width="1"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Capitaine ! Je suis navré ! C'est...</title>
+                        <path d="M 60 110 C 40 110, 30 100, 40 90 Q 40 70, 60 70 L 130 70 Q 150 70, 150 90 L 150 100 Q 150 120, 130 120 L 70 120 L 60 110 Z" class="speech-bubble-path"/>
+                        <text x="95" y="95" class="speech-bubble-text">Capitaine ! Je suis navré ! C'est...</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>ESPÈCE DE MOULE À GAUFRES INTERSIDÉRAL ! Bachi-bouzouk de tonnerre de Brest !</title>
+                        <path d="M 200 20 C 180 20, 170 30, 180 40 L 190 70 L 200 60 L 210 70 L 220 60 L 230 70 L 240 40 Q 260 20 290 20 L 200 20 Z" class="speech-bubble-path" transform="scale(1.1) translate(-10, 5)"/>
+                        <text x="215" y="35" class="speech-bubble-text" font-size="10px">ESPÈCE DE MOULE À GAUFRES</text>
+                        <text x="215" y="47" class="speech-bubble-text" font-size="10px">INTERSIDÉRAL ! Bachi-bouzouk</text>
+                        <text x="215" y="59" class="speech-bubble-text" font-size="10px">de tonnerre de Brest !</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Mon invention ! Un léger défaut de stabilité en présence de canidés joueurs, semble-t-il...</title>
+                         <path d="M 115 115 C 95 115, 85 105, 95 95 Q 95 75, 115 75 L 205 75 Q 225 75, 225 95 L 225 105 Q 225 125, 205 125 L 125 125 L 115 115 Z" class="speech-bubble-path" transform="translate(0,-30)"/>
+                        <text x="160" y="90" class="speech-bubble-text" font-size="10px">Mon invention ! Un léger défaut de stabilité</text>
+                        <text x="160" y="102" class="speech-bubble-text" font-size="10px">en présence de canidés joueurs, semble-t-il...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6>Description Visuelle : Gros plan sur le Capitaine Haddock, furibond, du café dégoulinant de sa barbe, regardant Milou. Milou, toujours avec la tasse sur la tête, le regarde avec de grands yeux innocents.<br>
+                - CAPITAINE HADDOCK (fusillant Milou du regard) : "Et toi, espèce de... de... clé à molette à la vanille !!!"<br>
+                - MILOU (bulle de pensée, l'air de ne pas comprendre) : "Moi ? J'essayais juste de l'aider à atterrir... Il avait l'air perdu ce truc."</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#f5f5f5" />
+
+                    <circle cx="100" cy="100" r="45" fill="#ff6347" stroke="black" stroke-width="1.5"/> <path d="M 80 110 Q 100 140 120 110 Q 110 150 100 150 Q 90 150 80 110 Z" fill="#222"/> <path d="M 85 120 Q 90 115 95 120 M 105 120 Q 110 115 115 120" stroke="#654321" stroke-width="3"/> <ellipse cx="85" cy="90" rx="8" ry="5" fill="white" stroke="black" stroke-width="1"/>
+                    <ellipse cx="115" cy="90" rx="8" ry="5" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="83" cy="90" r="2" fill="black"/> <circle cx="113" cy="90" r="2" fill="black"/>
+                    <line x1="75" y1="80" x2="95" y2="88" stroke="black" stroke-width="2"/> <line x1="105" y1="88" x2="125" y2="80" stroke="black" stroke-width="2"/> <path d="M 90 120 Q 100 110 110 120" fill="none" stroke="black" stroke-width="2"/> <text x="100" y="160" class="character-label">Haddock</text>
+
+                    <circle cx="220" cy="130" r="25" fill="white" stroke="black" stroke-width="1.5"/> <circle cx="210" cy="125" r="5" fill="black"/> <circle cx="230" cy="125" r="5" fill="black"/> <ellipse cx="220" cy="140" rx="4" ry="2" fill="pink" stroke="black" stroke-width="1"/> <path d="M 215 105 L 220 95 L 225 105 Z" fill="#fff" stroke="#000" stroke-width="1.5"/> <path d="M 200 115 Q 205 105 210 115 M 230 115 Q 235 105 240 115" stroke="black" stroke-width="1.5"/> <text x="220" y="165" class="character-label">Milou</text>
+
+                    <g class="speech-bubble-group">
+                         <title>Et toi, espèce de... de... clé à molette à la vanille !!!</title>
+                        <path d="M 130 30 C 110 30, 100 40, 110 50 L 120 80 L 130 70 L 140 80 L 150 70 L 160 80 L 170 50 Q 190 30, 220 30 L 130 30 Z" class="speech-bubble-path" transform="translate(-60,0) scale(1.1)" />
+                        <text x="100" y="50" class="speech-bubble-text" font-size="11px">Et toi, espèce de... de...</text>
+                        <text x="100" y="63" class="speech-bubble-text" font-size="11px">clé à molette à la vanille !!!</text>
+                    </g>
+
+                    <g class="speech-bubble-group">
+                        <title>Moi ? J'essayais juste de l'aider à atterrir... Il avait l'air perdu ce truc.</title>
+                        <path d="M 250,100 A 10,10 0 0,1 260,90 A 10,10 0 0,1 270,100 A 10,10 0 0,1 260,110 A 10,10 0 0,1 250,100
+                                 M 260,80 A 10,10 0 0,1 270,70 A 10,10 0 0,1 280,80 A 10,10 0 0,1 270,90 A 10,10 0 0,1 260,80
+                                 M 240,105 Q 230,115 225,120" class="thought-bubble-path" transform="translate(0,-45) scale(1.2)"/>
+                        <text x="260" y="55" class="speech-bubble-text" font-size="10px">Moi ? J'essayais juste de l'aider</text>
+                        <text x="260" y="67" class="speech-bubble-text" font-size="10px">à atterrir... Il avait l'air perdu</text>
+                        <text x="260" y="79" class="speech-bubble-text" font-size="10px">ce truc.</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

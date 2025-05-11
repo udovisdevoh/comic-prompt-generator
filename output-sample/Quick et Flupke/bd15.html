@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - L'Arrosage Automatique (et Catastrophique)</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 1.4em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 14px; fill: black; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1.5; stroke-dasharray: 3,2; }
+        .sfx-text { font-size: 14px; font-weight: bold; fill: red; text-anchor: middle; dominant-baseline: middle;}
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 14px; font-style: italic; fill: black; }
+		h6 { font-weight: normal; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>L'Arrosage Automatique (et Catastrophique) (Storyboard Complet)</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content"> 
+        <h5 class="comic-page-summary">Page 1 : L'Agent 15 arrose péniblement des fleurs sous un soleil de plomb. Quick et Flupke l'observent et ont une "idée géniale" pour l'aider. Ils commencent à assembler un système d'arrosage improvisé avec des tuyaux, un entonnoir et d'autres objets hétéroclites, sous le regard d'abord méfiant puis intrigué de l'Agent 15.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_1_panel_1"> 
+                <h6>Extérieur jour, devant le commissariat. Un petit parterre de fleurs chétives. L'Agent 15, en uniforme, képi de travers, transpire abondamment (grosses gouttes) en tenant un petit arrosoir d'où s'écoule un mince filet d'eau. Le soleil tape fort (dessiné avec des rayons intenses). Expression d'effort et de lassitude.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="270" cy="30" r="20" fill="yellow" />
+                    <line x1="270" y1="55" x2="270" y2="65" stroke="yellow" stroke-width="2"/>
+                    <line x1="245" y1="30" x2="235" y2="30" stroke="yellow" stroke-width="2"/>
+                    <line x1="295" y1="30" x2="305" y2="30" stroke="yellow" stroke-width="2"/>
+                    <line x1="260" y1="10" x2="255" y2="0" stroke="yellow" stroke-width="2"/>
+                    <line x1="280" y1="10" x2="285" y2="0" stroke="yellow" stroke-width="2"/>
+                    <line x1="250" y1="50" x2="240" y2="60" stroke="yellow" stroke-width="2"/>
+                    <line x1="290" y1="50" x2="300" y2="60" stroke="yellow" stroke-width="2"/>
+
+                    <rect x="10" y="50" width="100" height="140" fill="#d3d3d3" stroke="black"/>
+                    <rect x="40" y="120" width="30" height="70" fill="#a0522d" stroke="black"/> <text x="55" y="70" font-size="8">POLICE</text>
+
+                    <rect x="120" y="170" width="100" height="20" fill="#8b4513"/>
+                    <circle cx="140" cy="165" r="5" fill="pink"/><line x1="140" y1="170" x2="140" y2="160" stroke="green"/>
+                    <circle cx="160" cy="165" r="5" fill="red"/><line x1="160" y1="170" x2="160" y2="160" stroke="green"/>
+                    <circle cx="180" cy="165" r="5" fill="yellow"/><line x1="180" y1="170" x2="180" y2="160" stroke="green"/>
+
+                    <rect x="200" y="100" width="30" height="60" fill="darkblue"/> <circle cx="215" cy="90" r="15" fill="peachpuff"/> <path d="M205,78 Q215,70 225,78 Z" fill="darkblue"/> <ellipse cx="210" cy="85" rx="2" ry="1" fill="black"/> <line x1="215" y1="95" x2="215" y2="100" stroke="black"/> <path d="M210,105 Q215,102 220,105" fill="none" stroke="black"/> <rect x="230" y="130" width="20" height="15" fill="grey"/>
+                    <line x1="240" y1="130" x2="250" y2="120" stroke="grey" stroke-width="3"/> <line x1="250" y1="120" x2="252" y2="125" stroke="lightblue" stroke-width="1"/> <circle cx="205" cy="70" r="2" fill="lightblue"/>
+                    <circle cx="225" cy="75" r="2" fill="lightblue"/>
+                    <path d="M215,65 A5 5 0 0 0 210 60 L215 60 Z" fill="lightblue"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Pfioou... Quelle corvée par cette chaleur !</title>
+                        <path d="M150,30 C130,30 130,60 150,60 L230,60 C250,60 250,30 230,30 Z" class="thought-bubble-path"/>
+                        <circle cx="190" cy="65" r="3" fill="white" stroke="black" stroke-width="1.5" stroke-dasharray="3,2"/>
+                        <circle cx="200" cy="72" r="2" fill="white" stroke="black" stroke-width="1.5" stroke-dasharray="3,2"/>
+                        <text x="190" y="45" class="speech-bubble-text">Pfioou... Quelle corvée...</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Quick et Flupke, cachés à moitié derrière un coin de mur, observent la scène. Quick a un doigt sur la tempe, l'air de réfléchir intensément, une ampoule (idée !) s'allume au-dessus de sa tête. Flupke le regarde, curieux.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="100" height="200" fill="#a9a9a9" stroke="black"/>
+                    <circle cx="120" cy="100" r="15" fill="peachpuff"/> <rect x="110" y="115" width="20" height="40" fill="red"/> <line x1="120" y1="90" x2="115" y2="85" stroke="black"/> <text x="120" y="103" font-size="10" text-anchor="middle">Q</text>
+                    <circle cx="120" cy="70" r="8" fill="yellow" stroke="black"/>
+                    <rect x="117" y="78" width="6" height="5" fill="grey" stroke="black"/>
+                    <line x1="120" y1="62" x2="120" y2="55" stroke="black" stroke-width="1"/>
+                    <line x1="110" y1="65" x2="105" y2="60" stroke="black" stroke-width="1"/>
+                    <line x1="130" y1="65" x2="135" y2="60" stroke="black" stroke-width="1"/>
+
+                    <circle cx="150" cy="120" r="15" fill="peachpuff"/> <rect x="140" y="135" width="20" height="40" fill="blue"/> <text x="150" y="123" font-size="10" text-anchor="middle">F</text>
+
+                    <g class="speech-bubble-group">
+                        <title>J'ai une idée géniale, Flupke !</title>
+                        <path d="M150,30 C130,30 130,50 150,50 L240,50 C260,50 260,30 240,30 Z M160,50 L140,60 L150,50" class="speech-bubble-path"/>
+                        <text x="195" y="40" class="speech-bubble-text">J'ai une idée géniale, Flupke !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Encore une ?</title>
+                        <path d="M200,70 C180,70 180,90 200,90 L270,90 C290,90 290,70 270,70 Z M200,90 L170,100 L190,90" class="speech-bubble-path"/>
+                        <text x="235" y="80" class="speech-bubble-text">Encore une ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Quick et Flupke sont maintenant près de l'Agent 15, qui les regarde d'un air soupçonneux. Quick désigne l'arrosoir de l'Agent 15 d'un air dédaigneux. Flupke sourit, complice.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="100" width="30" height="60" fill="darkblue"/>
+                    <circle cx="65" cy="90" r="15" fill="peachpuff"/>
+                    <path d="M55,78 Q65,70 75,78 Z" fill="darkblue"/>
+                    <line x1="60" y1="88" x2="63" y2="85" stroke="black"/> <line x1="70" y1="85" x2="67" y2="88" stroke="black"/> <text x="65" y="170" font-size="10">A15</text>
+
+                    <rect x="150" y="120" width="25" height="50" fill="red"/>
+                    <circle cx="162" cy="110" r="15" fill="peachpuff"/>
+                    <text x="162" y="113" font-size="10">Q</text>
+                    <line x1="170" y1="125" x2="130" y2="135" stroke="black" stroke-width="2"/> <rect x="110" y="140" width="15" height="10" fill="grey"/> <rect x="200" y="125" width="25" height="50" fill="blue"/>
+                    <circle cx="212" cy="115" r="15" fill="peachpuff"/>
+                    <text x="212" y="118" font-size="10">F</text>
+                    <path d="M208,120 Q212,123 216,120" fill="none" stroke="black"/> <g class="speech-bubble-group">
+                        <title>M'sieur l'Agent, votre méthode est... archaïque ! On va vous aider !</title>
+                        <path d="M100,20 C80,20 80,50 100,50 L250,50 C270,50 270,20 250,20 Z M150,50 L160,65 L170,50" class="speech-bubble-path"/>
+                        <text x="175" y="35" class="speech-bubble-text" style="font-size:8px;">M'sieur l'Agent, votre méthode est...<tspan x="175" dy="10">archaïque ! On va vous aider !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Montage rapide : Quick et Flupke s'affairent. Quick essaie d'emboîter un vieux tuyau percé à un entonnoir. Flupke tente de fixer le tout à un robinet avec de la ficelle et un vieux chewing-gum. On voit des objets divers : une passoire, un bout de bois, une vieille chaussure.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="100" width="25" height="50" fill="red"/>
+                    <circle cx="62" cy="90" r="15" fill="peachpuff"/>
+                    <text x="62" y="93" font-size="10">Q</text>
+                    <rect x="70" y="110" width="50" height="10" fill="grey" transform="rotate(-15 70 110)"/>
+                    <path d="M110,100 L130,90 L130,110 Z" fill="silver"/> <rect x="180" y="110" width="25" height="50" fill="blue"/>
+                    <circle cx="192" cy="100" r="15" fill="peachpuff"/>
+                    <text x="192" y="103" font-size="10">F</text>
+                    <rect x="220" y="120" width="10" height="30" fill="brass"/>
+                    <rect x="210" y="115" width="30" height="10" fill="brass"/>
+                    <path d="M210,130 C200,135 190,125 180,130" fill="none" stroke="brown" stroke-width="1" stroke-dasharray="2,1"/>
+                    <circle cx="190" cy="128" r="3" fill="pink"/> <rect x="10" y="170" width="30" height="10" fill="silver" stroke="black"/> <line x1="45" y1="180" x2="75" y2="175" stroke="brown" stroke-width="4"/> <path d="M80,170 Q90,160 100,170 L95,180 L85,180 Z" fill="#4a3b32"/> <text x="90" y="50" class="sfx-text">Clip!</text>
+                    <text x="150" y="70" class="sfx-text">Clac!</text>
+                    <text x="210" y="60" class="sfx-text">Twischt!</text>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>L'Agent 15, bras croisés, observe leur construction hétéroclite avec un air de plus en plus perplexe, un sourcil levé. La "machine" commence à prendre une forme absurde, avec des tuyaux partant dans tous les sens.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="230" y="100" width="30" height="60" fill="darkblue"/>
+                    <circle cx="245" cy="90" r="15" fill="peachpuff"/>
+                    <path d="M235,78 Q245,70 255,78 Z" fill="darkblue"/>
+                    <line x1="240" y1="88" x2="243" y2="82" stroke="black"/> <path d="M235,120 L225,110" stroke="darkblue" stroke-width="3"/> <path d="M255,120 L265,110" stroke="darkblue" stroke-width="3"/> <text x="245" y="170" font-size="10">A15</text>
+
+                    <rect x="50" y="150" width="150" height="20" fill="lightgrey" stroke="black"/> <rect x="70" y="100" width="15" height="50" fill="grey" stroke="black"/> <path d="M85,100 Q120,80 150,110 T180,90" stroke="grey" stroke-width="8" fill="none"/> <path d="M60,150 L40,130 L30,140" stroke="grey" stroke-width="8" fill="none"/> <path d="M100,100 L120,70 L140,90" fill="silver"/> <g class="speech-bubble-group">
+                        <title>Pourvu que ça ne finisse pas comme la dernière fois...</title>
+                        <path d="M30,20 C10,20 10,50 30,50 L200,50 C220,50 220,20 200,20 Z M210,50 L225,65 L235,50" class="speech-bubble-path"/>
+                        <text x="115" y="35" class="speech-bubble-text" style="font-size:8px;">Pourvu que ça ne finisse pas<tspan x="115" dy="10">comme la dernière fois...</tspan></text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Quick, très fier, présente "l'invention" terminée : un assemblage improbable de tuyaux, entonnoir, passoire, le tout relié tant bien que mal au robinet. Flupke est à côté, pouce en l'air, souriant béatement. L'Agent 15 semble un peu plus intéressé, voire légèrement impressionné par l'audace.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="120" width="10" height="60" fill="brass"/> <rect x="90" y="115" width="30" height="10" fill="brass"/>
+                    <path d="M110,140 C80,140 80,100 110,100 L150,100 C180,100 180,80 150,80 L120,80" stroke="grey" stroke-width="10" fill="none" /> <path d="M150,80 L170,60 L190,80 Z" fill="silver"/> <rect x="115" y="70" width="40" height="10" fill="darkgrey" stroke="black"/> <circle cx="120" cy="75" r="1" fill="black"/> <circle cx="130" cy="75" r="1" fill="black"/> <circle cx="140" cy="75" r="1" fill="black"/> <circle cx="150" cy="75" r="1" fill="black"/>
+                    <path d="M120,120 Q100,150 80,160" stroke="saddlebrown" stroke-width="2" fill="none"/> <rect x="20" y="100" width="25" height="50" fill="red"/>
+                    <circle cx="32" cy="90" r="15" fill="peachpuff"/>
+                    <text x="32" y="93" font-size="10">Q</text>
+                    <path d="M25,100 Q40,80 55,100" fill="none" stroke="black"/> <rect x="60" y="110" width="25" height="50" fill="blue"/>
+                    <circle cx="72" cy="100" r="15" fill="peachpuff"/>
+                    <text x="72" y="103" font-size="10">F</text>
+                    <circle cx="75" cy="115" r="4" fill="peachpuff" stroke="black"/> <line x1="72" y1="120" x2="72" y2="110" stroke="blue" stroke-width="3"/> <path d="M68,105 Q72,108 76,105" fill="none" stroke="black"/> <rect x="230" y="100" width="30" height="60" fill="darkblue"/>
+                    <circle cx="245" cy="90" r="15" fill="peachpuff"/>
+                    <path d="M235,78 Q245,70 255,78 Z" fill="darkblue"/>
+                    <text x="245" y="170" font-size="10">A15</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Et voilà ! L'arroseur automatique "Quick & Flupke Mark I" ! Prêt pour le test !</title>
+                        <path d="M10,10 C-10,10 -10,40 10,40 L180,40 C200,40 200,10 180,10 Z M30,40 L35,55 L45,40" class="speech-bubble-path"/>
+                        <text x="95" y="25" class="speech-bubble-text" style="font-size:8px;">Et voilà ! L'arroseur "Q&F Mark I" !<tspan x="95" dy="10">Prêt pour le test !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_2_storyboard_content">
+        <h5 class="comic-page-summary">Page 2 : Le système est "prêt". Quick et Flupke actionnent leur invention qui, après quelques ratés comiques, se déchaîne de manière incontrôlable, arrosant tout sauf les fleurs, et en particulier l'Agent 15 qui se retrouve trempé et furieux. La dernière case montre les enfants s'enfuyant et l'Agent 15 dégoulinant, avec un détail absurde pour la punchline.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_2_panel_1">
+                <h6>Flupke, avec un grand geste théâtral, ouvre le robinet à fond. Quick est à côté, les mains sur les hanches, supervisant avec un air important. L'Agent 15 s'est un peu approché, curieux du résultat.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="120" width="10" height="60" fill="brass"/> <rect x="90" y="115" width="30" height="10" fill="brass" id="handle"/>
+                    <path d="M110,140 C80,140 80,100 110,100 L150,100" stroke="grey" stroke-width="10" fill="none" /> <rect x="60" y="110" width="25" height="50" fill="blue"/>
+                    <circle cx="72" cy="100" r="15" fill="peachpuff"/>
+                    <text x="72" y="103" font-size="10">F</text>
+                    <line x1="72" y1="115" x2="95" y2="118" stroke="blue" stroke-width="3"/> <animateMotion xlink:href="#handle" dur="0.5s" begin="0s" fill="freeze" path="M0,0 Q5,-10 0,-20 Z" />
+
+
+                    <rect x="20" y="100" width="25" height="50" fill="red"/>
+                    <circle cx="32" cy="90" r="15" fill="peachpuff"/>
+                    <text x="32" y="93" font-size="10">Q</text>
+                    <line x1="25" y1="120" x2="20" y2="115" stroke="red" stroke-width="3"/> <line x1="39" y1="120" x2="44" y2="115" stroke="red" stroke-width="3"/> <rect x="200" y="100" width="30" height="60" fill="darkblue"/>
+                    <circle cx="215" cy="90" r="15" fill="peachpuff"/>
+                    <path d="M205,78 Q215,70 225,78 Z" fill="darkblue"/>
+                    <text x="215" y="170" font-size="10">A15</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Contact !</title>
+                        <path d="M50,20 C30,20 30,40 50,40 L120,40 C140,40 140,20 120,20 Z M70,40 L70,55 L80,40" class="speech-bubble-path"/>
+                        <text x="85" y="30" class="speech-bubble-text">Contact !</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>Puissance maximale !</title>
+                        <path d="M10,50 C-10,50 -10,70 10,70 L100,70 C120,70 120,50 100,50 Z M30,70 L30,85 L40,70" class="speech-bubble-path"/>
+                        <text x="55" y="60" class="speech-bubble-text">Puissance maximale !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_2">
+                <h6>La machine toussote. Un petit jet d'eau sort de la passoire... et arrose le pied de Quick. Un autre petit jet erratique sort d'un trou du tuyau et éclabousse le képi de l'Agent 15.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M110,140 C80,140 80,100 110,100 L150,100" stroke="grey" stroke-width="10" fill="none" /> <rect x="105" y="70" width="40" height="10" fill="darkgrey" stroke="black"/> <path d="M110,80 Q100,100 80,150" stroke="lightblue" stroke-width="2" fill="none"/>
+                    <circle cx="80" cy="150" r="3" fill="lightblue"/> <circle cx="130" cy="100" r="2" fill="black"/> <path d="M130,100 Q180,90 220,80" stroke="lightblue" stroke-width="2" fill="none"/>
+                    <circle cx="220" cy="80" r="3" fill="lightblue"/> <rect x="70" y="100" width="25" height="50" fill="red"/>
+                    <circle cx="82" cy="90" r="15" fill="peachpuff"/>
+                    <text x="82" y="93" font-size="10">Q</text>
+                    <ellipse cx="80" cy="85" rx="3" ry="1.5" fill="white" stroke="black"/> <rect x="75" y="150" width="10" height="5" fill="brown"/> <rect x="210" y="100" width="30" height="60" fill="darkblue"/>
+                    <circle cx="225" cy="90" r="15" fill="peachpuff"/>
+                    <path d="M215,78 Q225,70 235,78 Z" fill="darkblue" id="kepiA15"/> <text x="225" y="170" font-size="10">A15</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Euh... Petit réglage nécessaire !</title>
+                        <path d="M10,10 C-10,10 -10,30 10,30 L150,30 C170,30 170,10 150,10 Z M80,30 L80,45 L90,30" class="speech-bubble-path"/>
+                        <text x="80" y="20" class="speech-bubble-text">Euh... Petit réglage !</text>
+                    </g>
+                    <text x="50" y="50" class="sfx-text">Pschitt!</text>
+                    <text x="180" y="60" class="sfx-text">Splurt!</text>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_3">
+                <h6>Soudain, un des raccords en ficelle lâche. Le tuyau principal se met à fouetter l'air comme un serpent fou, projetant des jets d'eau puissants et désordonnés dans toutes les directions. L'Agent 15 commence à esquiver, l'air paniqué.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100,150 C50,100 150,50 200,100 S 250,150 200,50 S 100,20 50,50" stroke="grey" stroke-width="10" fill="none" id="crazyhose"/>
+                    <path d="M50,50 Q30,30 10,40" stroke="blue" stroke-width="3" fill="none"/>
+                    <path d="M200,100 Q230,80 250,90" stroke="blue" stroke-width="3" fill="none"/>
+                    <path d="M200,50 Q180,20 170,10" stroke="blue" stroke-width="3" fill="none"/>
+                    <path d="M50,50 L40,40 L60,40 Z" fill="blue"/> <text x="90" y="160" font-size="8">Ficelle lâche</text>
+                    <path d="M100,150 C90,155 80,145 70,150" fill="none" stroke="brown" stroke-width="1" stroke-dasharray="2,1" transform="rotate(15 85 150)"/>
+
+                    <rect x="230" y="100" width="30" height="60" fill="darkblue" transform="rotate(-15 245 130)"/>
+                    <circle cx="240" cy="90" r="15" fill="peachpuff" transform="rotate(-15 245 130)"/>
+                    <path d="M230,78 Q240,70 250,78 Z" fill="darkblue" transform="rotate(-15 245 130)"/>
+                    <ellipse cx="235" cy="85" rx="3" ry="2" fill="white"/><circle cx="235" cy="85" r="1" fill="black"/> <ellipse cx="245" cy="85" rx="3" ry="2" fill="white"/><circle cx="245" cy="85" r="1" fill="black"/> <path d="M235,95 Q240,105 245,95" fill="none" stroke="black" transform="rotate(-15 245 130)"/> <text x="240" y="170" font-size="10">A15</text>
+
+                    <rect x="10" y="150" width="15" height="30" fill="red"/> <circle cx="17" cy="145" r="7" fill="peachpuff"/> <text x="17" y="148" font-size="7">Q</text>
+                    <rect x="30" y="155" width="15" height="30" fill="blue"/> <circle cx="37" cy="150" r="7" fill="peachpuff"/> <text x="37" y="153" font-size="7">F</text>
+                    
+                    <g class="speech-bubble-group">
+                        <title>Attention ! Catastrophe !</title>
+                        <path d="M150,10 C130,10 130,30 150,30 L280,30 C300,30 300,10 280,10 Z M240,30 L250,45 L260,30" class="speech-bubble-path"/>
+                        <text x="215" y="20" class="speech-bubble-text">Attention ! Catastrophe !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_4">
+                <h6>C'est le chaos. L'Agent 15 est maintenant au centre de l'action, essayant de se protéger avec ses mains. Un jet puissant le frappe en plein visage, faisant voler son képi. Un autre jet arrose la façade du commissariat, un autre encore un passant au loin. Les fleurs, elles, sont toujours sèches. Quick et Flupke commencent à réaliser que la situation leur échappe.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="135" y="90" width="30" height="60" fill="darkblue"/>
+                    <circle cx="150" cy="80" r="15" fill="peachpuff"/>
+                    <line x1="140" y1="80" x2="130" y2="70" stroke="peachpuff" stroke-width="4"/> <line x1="160" y1="80" x2="170" y2="70" stroke="peachpuff" stroke-width="4"/> <text x="150" y="160" font-size="10">A15</text>
+
+                    <path d="M180,60 Q190,50 200,60 Z" fill="darkblue" id="flyingkepi">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 10,-15; 20,-20" dur="1s" repeatCount="1"/>
+                        <animateTransform attributeName="transform" type="rotate" additive="sum" values="0 190 55; 30 190 55; 60 190 55" dur="1s" repeatCount="1"/>
+                    </path>
+                    
+                    <path d="M50,150 C100,100 140,80 150,80" stroke="blue" stroke-width="5" fill="none"/> <path d="M60,50 C80,80 100,150" stroke="blue" stroke-width="4" fill="none"/> <rect x="10" y="100" width="50" height="90" fill="#d3d3d3" stroke="black"/> <path d="M150,50 C200,60 250,70" stroke="blue" stroke-width="3" fill="none"/> <circle cx="260" cy="75" r="10" fill="grey"/> <circle cx="260" cy="70" r="3" fill="lightblue"/> <rect x="200" y="170" width="80" height="20" fill="#8b4513"/>
+                    <circle cx="220" cy="165" r="5" fill="pink" opacity="0.7"/><line x1="220" y1="170" x2="220" y2="160" stroke="green" opacity="0.7"/>
+                    <circle cx="240" cy="165" r="5" fill="red" opacity="0.7"/><line x1="240" y1="170" x2="240" y2="160" stroke="green" opacity="0.7"/>
+
+                    <rect x="10" y="20" width="20" height="40" fill="red"/> <circle cx="20" cy="15" r="10" fill="peachpuff"/> <text x="20" y="17" font-size="8">Q</text>
+                    <ellipse cx="18" cy="13" rx="2" ry="1"/><ellipse cx="22" cy="13" rx="2" ry="1"/> <rect x="40" y="25" width="20" height="40" fill="blue"/> <circle cx="50" cy="20" r="10" fill="peachpuff"/> <text x="50" y="22" font-size="8">F</text>
+
+                    <g class="speech-bubble-group">
+                        <title>Ça arrose... un peu fort, non ?</title>
+                        <path d="M30,170 C10,170 10,190 30,190 L150,190 C170,190 170,170 150,170 Z M55,170 L50,160 L60,170" class="speech-bubble-path"/>
+                        <text x="90" y="180" class="speech-bubble-text">Ça arrose... un peu fort, non ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_5">
+                <h6>Quick et Flupke s'enfuient à toutes jambes vers la droite de la case, regardant par-dessus leur épaule avec des mines déconfites mais aussi un peu amusées. En arrière-plan, l'Agent 15 est complètement trempé, dégoulinant de la tête aux pieds, les bras ballants, l'air absolument furieux. Le tuyau continue de l'arroser.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="180" y="100" width="25" height="50" fill="red" transform="rotate(15 192 125)"/>
+                    <circle cx="192" cy="90" r="15" fill="peachpuff" transform="rotate(15 192 125)"/>
+                    <text x="192" y="93" font-size="10" transform="rotate(15 192 125)">Q</text>
+                    <path d="M185,90 Q180,88 178,92" fill="none" stroke="black"/> <line x1="170" y1="110" x2="150" y2="115" stroke="grey" stroke-width="1"/>
+                    <line x1="170" y1="120" x2="150" y2="125" stroke="grey" stroke-width="1"/>
+
+                    <rect x="220" y="105" width="25" height="50" fill="blue" transform="rotate(15 232 130)"/>
+                    <circle cx="232" cy="95" r="15" fill="peachpuff" transform="rotate(15 232 130)"/>
+                    <text x="232" y="98" font-size="10" transform="rotate(15 232 130)">F</text>
+                    <path d="M225,95 Q220,93 218,97" fill="none" stroke="black"/> <line x1="210" y1="115" x2="190" y2="120" stroke="grey" stroke-width="1"/>
+                    <line x1="210" y1="125" x2="190" y2="130" stroke="grey" stroke-width="1"/>
+
+                    <rect x="50" y="90" width="30" height="60" fill="darkblue" opacity="0.8"/>
+                    <circle cx="65" cy="80" r="15" fill="peachpuff" opacity="0.8"/>
+                    <path d="M55,68 Q65,60 75,68 Z" fill="darkblue" opacity="0.8"/> <path d="M60,75 L63,78 M67,78 L70,75" stroke="black" stroke-width="2"/> <path d="M60,90 Q65,85 70,90" fill="none" stroke="black" stroke-width="1.5"/> <circle cx="60" cy="70" r="2" fill="lightblue"/><path d="M60,72 v5" stroke="lightblue"/>
+                    <circle cx="70" cy="100" r="2" fill="lightblue"/><path d="M70,102 v5" stroke="lightblue"/>
+                    <circle cx="55" cy="120" r="2" fill="lightblue"/><path d="M55,122 v5" stroke="lightblue"/>
+                    <text x="65" y="160" font-size="10">A15</text>
+
+                    <path d="M10,50 C30,60 50,80 65,90" stroke="grey" stroke-width="8" fill="none"/>
+                    <path d="M65,90 Q70,100 75,110" stroke="blue" stroke-width="4" fill="none"/> <g class="speech-bubble-group">
+                        <title>Mission accomplie... ou presque !</title>
+                        <path d="M150,20 C130,20 130,40 150,40 L280,40 C300,40 300,20 280,20 Z M180,40 L190,55 L200,40" class="speech-bubble-path"/>
+                        <text x="215" y="30" class="speech-bubble-text">Mission accomplie... ou presque !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>QUICK ! FLUPKE ! Attendez que je vous attrape, sales gosses !</title>
+                        <path d="M10,160 C-10,160 -10,190 10,190 L250,190 C270,190 270,160 250,160 Z M60,160 L50,150 L55,160" class="speech-bubble-path" style="stroke-width:2.5; fill:#FFDDDD;"/>
+                        <text x="130" y="175" class="speech-bubble-text" style="font-weight:bold; font-size:9px;">QUICK ! FLUPKE ! Attendez que je vous<tspan x="130" dy="10">attrape, sales gosses !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_6">
+                <h6>Gros plan sur l'Agent 15, trempé, les cheveux plaqués, l'uniforme collant à la peau. Il est furibond. La PUNCHLINE VISUELLE : un petit poisson rouge, manifestement aspiré du bocal du commissariat par le système de tuyauterie, frétille sur le dessus de son képi (qu'il a réussi à remettre de travers sur sa tête). Les fleurs, en arrière-plan, sont toujours aussi sèches et semblent même se moquer de lui.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="80" width="100" height="110" fill="darkblue" opacity="0.7"/> <circle cx="150" cy="60" r="40" fill="peachpuff"/> <path d="M120,30 C130,20 170,20 180,30 L175,60 L125,60 Z" fill="black" opacity="0.8"/>
+                    <path d="M115,70 Q150,80 185,70" fill="none" stroke="darkblue" stroke-width="2"/> <path d="M130,25 Q150,10 170,25 L165,40 L135,40 Z" fill="darkblue" transform="rotate(-15 150 30)"/>
+                    
+                    <ellipse cx="150" cy="15" rx="10" ry="5" fill="orange" stroke="darkorange" transform="rotate(-15 150 30)"/>
+                    <path d="M158,13 L163,10 L163,16 Z" fill="darkorange" transform="rotate(-15 150 30)"/> <circle cx="145" cy="15" r="1" fill="black" transform="rotate(-15 150 30)"/> <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" xlink:href="[xlink:href='ellipse[fill=orange]']"/> <line x1="135" y1="50" x2="145" y2="55" stroke="black" stroke-width="2.5"/>
+                    <line x1="165" y1="50" x2="155" y2="55" stroke="black" stroke-width="2.5"/>
+                    <path d="M140,70 Q150,60 160,70" fill="none" stroke="black" stroke-width="2"/> <circle cx="130" cy="40" r="2" fill="lightblue"/><path d="M130,42 v8" stroke="lightblue"/>
+                    <circle cx="170" cy="80" r="3" fill="lightblue"/><path d="M170,83 v10" stroke="lightblue"/>
+                    <circle cx="150" cy="100" r="2" fill="lightblue"/><path d="M150,102 v8" stroke="lightblue"/>
+
+                    <rect x="10" y="170" width="60" height="20" fill="#8b4513" opacity="0.5"/>
+                    <circle cx="25" cy="165" r="5" fill="pink" opacity="0.4"/><line x1="25" y1="170" x2="25" y2="160" stroke="green" opacity="0.4"/>
+                    <path d="M22,160 C25,163 28,160" stroke="green" fill="none"/> <rect x="220" y="170" width="60" height="20" fill="#8b4513" opacity="0.5"/>
+                    <circle cx="235" cy="165" r="5" fill="red" opacity="0.4"/><line x1="235" y1="170" x2="235" y2="160" stroke="green" opacity="0.4"/>
+                     <path d="M232,160 C235,163 238,160" stroke="green" fill="none"/>
+
+                    <g class="speech-bubble-group">
+                        <title>La prochaine fois... j'utilise un seau ! Et je les mets DEDANS !</title>
+                        <path d="M30,120 C10,120 10,150 30,150 L270,150 C290,150 290,120 270,120 Z M150,120 L150,110 L160,120" class="speech-bubble-path" style="fill: #f0f0f0;"/>
+                        <text x="150" y="135" class="speech-bubble-text" style="font-size:8px;">La prochaine fois... j'utilise un seau !<tspan x="150" dy="10">Et je les mets DEDANS !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
