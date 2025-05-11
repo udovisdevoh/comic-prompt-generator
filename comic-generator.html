@@ -587,7 +587,7 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             const storyboardPrompt = `
 Vous êtes un assistant expert en création de storyboards VISUELS pour bandes dessinées au format HTML et SVG, à partir de descriptions textuelles détaillées.
 
-TÂCHE : Convertir ${isMonoblocConversion ? `la description textuelle complète de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous, qui décrit UNE SEULE ${unitName},` : `la description détaillée de la ${unitName} NUMÉRO ${pageNum} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous`} en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour cette SEULE ${unitName}.
+TÂCHE : Convertir ${isMonoblocConversion ? `la description textuelle complète de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous, qui décrit toutes les ${unitName},` : `la description détaillée de la ${unitName} NUMÉRO ${pageNum} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous`} en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour toutes les ${unitName}.
 
 ${isMonoblocConversion ? 
 `DESCRIPTION COMPLÈTE DE L'OEUVRE (1 ${unitName.toUpperCase()}) À CONVERTIR (contient Titre global, Résumé global, Personnages, Ton, et la description détaillée de cette unique ${unitName}) :` : 
@@ -615,7 +615,7 @@ INSTRUCTIONS POUR LA GÉNÉRATION DU DOCUMENT HTML/SVG DE CETTE ${unitName.toUpp
 3.  **Structure du Document HTML :**
     * \`<head>\` avec \`<title>Storyboard - [TITRE DE L'OEUVRE] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</title>\` et les styles CSS.
     * \`<body>\` avec \`<h1>[TITRE DE L'OEUVRE] - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}</h1>\`.
-    * UN SEUL \`<div class="comic-page" id="page_${pageNum}_storyboard_content">\`.
+    * UN \`<div class="comic-page" id="page_${pageNum}_storyboard_content">\` PAR PAGE.
     * Dans ce div, le résumé de la ${unitName} (\`<h5>\`) et une \`<div class="panel-grid">\`.
 4.  **Structure par Case :**
     * Chaque case décrite devient un \`<div class="panel-container">\`.
