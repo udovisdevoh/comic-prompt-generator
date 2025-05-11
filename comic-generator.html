@@ -425,7 +425,7 @@
         generateStep1PromptBtn.addEventListener('click', function() {
             const nomDeLaBd = nomBdInput.value.trim() || "[Nom de la BD à définir]";
             let typeOeuvre = getTypeOeuvre();
-            step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-2 phrases pour un gag ou strip, 3-5 pour une histoire courte ou un chapitre, potentiellement plus pour un arc narratif ou une aventure complète)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante mais respecter le thème de l'univers de ${nomDeLaBd}.`;
+            step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-2 phrases pour un gag ou strip, 3-5 pour une histoire courte ou un chapitre, potentiellement plus pour un arc narratif ou une aventure complète)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante (ni à un titre existant de l'oeuvre, le titre doit être démarqué des titres existants) mais respecter le thème de l'univers de ${nomDeLaBd}.`;
         });
         copyStep1PromptBtn.addEventListener('click', () => copyToClipboard('step1PromptOutput'));
 
@@ -799,7 +799,7 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 4.  **TON ET STYLE :**
     (Décrivez le ton général (humoristique, aventureux, dramatique, etc.) et le style graphique/narratif à adopter pour cette oeuvre, en respectant l'univers de "${nomDeLaBd}".)
 5.  **ORIGINALITÉ ET RESPECT DE L'UNIVERS :**
-    L'oeuvre générée doit être une création originale, évitant de reproduire trop fidèlement des oeuvres existantes, tout en restant cohérente avec l'esprit, les thèmes et les personnages de l'univers de "${nomDeLaBd}".
+    L'oeuvre générée doit être une création originale, évitant de reproduire trop fidèlement des oeuvres existantes, le titre ne doit pas ressembler à un titre existant de l'oeuvre, tout en restant cohérente avec l'esprit, les thèmes et les personnages de l'univers de "${nomDeLaBd}".
 
 ### PARTIE B : STRUCTURE DÉTAILLÉE ET RÉSUMÉS DES ${unitName.toUpperCase()}S
 1.  **NOMBRE TOTAL DE ${unitName.toUpperCase()}S EFFECTIVEMENT UTILISÉES DANS VOTRE GÉNÉRATION :**
