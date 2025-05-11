@@ -640,7 +640,7 @@ INSTRUCTIONS POUR LA GÉNÉRATION DU DOCUMENT HTML/SVG :
     * ${mangaSpecificsForStoryboard}
 6.  **Code Source Brut :** N'ÉCHAPPEZ PAS les caractères HTML (\`<\`, \`>\`).
 
-UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE :
+INSPIREZ-VOUS FORTEMENT DU TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE QUI DOIT ÊTRE EN VRAI HTML, pas avec "&lt;"  :
 \`\`\`html
 <!DOCTYPE html>
 <html lang="fr">
@@ -649,18 +649,19 @@ UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE 
     <title>Storyboard - [TITRE DE L'OEUVRE EXTRAIT]${isMonoblocConversion ? '' : ` - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</title>
     <style>
         body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 800px; margin: 20px auto; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
         .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 250px; max-width: 300px; display: flex; flex-direction: column;}
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
         .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
         .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
         svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
         .speech-bubble-group title {} 
         .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
-        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 14px; fill: black; }
         .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
-        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+        .narrative-text { font-size: 15px; font-style: italic; fill: black; }
+		h6 { font-weight: normal; font-size: 14px; }
     </style>
 </head>
 <body>
