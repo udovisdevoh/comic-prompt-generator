@@ -452,7 +452,7 @@
 
             let endingDescription = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
             if (currentNomBd.toLowerCase().includes("gag") || totalPages <= 2) { 
-                endingDescription = `une "punch line" – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+                endingDescription = `une "punch line" – un dénouement surprenant (dernière case seulement), très drôle, et d'une nature délicieusement absurde ou inusitée.`;
             }
 
             const panelsAvg = panelsPerPageInput.value;
@@ -540,7 +540,7 @@ ${getMangaSpecifics().replace("\n    - Pour un manga, i", "Pour un manga, n")} `
             const totalPagesForGagCheck = parseInt(totalPagesInput.value, 10);
             let endingDescriptionDetail = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
             if (currentNomBd.toLowerCase().includes("gag") || totalPagesForGagCheck <= 2) {
-                endingDescriptionDetail = `une "punch line" mémorable – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+                endingDescriptionDetail = `une "punch line" mémorable – un dénouement surprenant (à la dernière case seulement), très drôle, et d'une nature délicieusement absurde ou inusitée.`;
             }
             
             const prompt = `Considérant cette oeuvre (${getTypeOeuvre().replace("d'un ", "").replace("d'une ", "")}) suivante:
@@ -630,7 +630,7 @@ INSTRUCTIONS POUR LA GÉNÉRATION DU DOCUMENT HTML/SVG :
         * Dans ce div, le résumé de la ${unitName} (\`<h5>\`) et une \`<div class="panel-grid">\`.
 4.  **Structure par Case :**
     * Chaque case décrite devient un \`<div class="panel-container">\`.
-    * Titre \`<h6>\` : "[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) SANS LES DIALOGUES]".
+    * Titre \`<h6>\` : "[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) AVEC LES DIALOGUES FORMATTÉS, UNE INTERVENTION VERBALE PAR LIGNE avec un tiret avant chaque intervention verbale]".
     * Élément \`<svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">\`.
 5.  **Contenu SVG Schématique :**
     * INTERPRÉTEZ la "Description Visuelle" et "Dialogues/Texte" de chaque case.
@@ -669,7 +669,7 @@ INSPIREZ-VOUS FORTEMENT DU TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POU
     
     <div class="comic-page" id="page_X_storyboard_content"> <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} X : [DESCRIPTION DE CETTE ${unitName}]</h5>
         <div class="panel-grid">
-            <div class="panel-container" id="page_X_panel_Y"> <h6>[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) SANS LES DIALOGUES]</h6>
+            <div class="panel-container" id="page_X_panel_Y"> <h6>[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) AVEC LES DIALOGUES, pas besoin d'écrire le # de la case, ne pas mentionner explicitement "Description Visuelle: " avant la description visuelle]</h6>
                 <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
                     [Contenu SVG pour cette case. Inclure <title> pour tooltips des bulles/narration.]
                     ${mangaSpecificsForStoryboard}
@@ -770,7 +770,7 @@ Si le storyboard HTML/SVG complet pour TOUTES les ${unitName}s décrites dans le
 
             let endingType = "une conclusion satisfaisante (par exemple, la fin d'un arc narratif, la résolution d'un combat important, ou un cliffhanger pour le prochain chapitre/la prochaine histoire).";
             if (nomDeLaBd.toLowerCase().includes("gag") || totalPages <= 2) {
-                endingType = `une "punch line" – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
+                endingType = `une "punch line" (à la dernière case seulement) – un dénouement surprenant, très drôle, et d'une nature délicieusement absurde ou inusitée.`;
             }
             
             let mangaSpecifics = getMangaSpecifics();
@@ -814,7 +814,7 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
         * Nombre de mots prévus (approximatif) : [Nombre]
         * Nombre de blocs narratifs/explicatifs prévus : [Nombre]
 
-    *(Rappel : La dernière unité (${unitName}) doit se terminer par ${endingType})*
+    *(Rappel : La dernière unité (${unitName}) doit se terminer (dernière case seulement) par ${endingType})*
 
 ### PARTIE C : DESCRIPTION DÉTAILLÉE DE CHAQUE ${unitName.toUpperCase()} ET DE CHAQUE CASE
 **POUR CHAQUE ${unitName.toUpperCase()}** (décrite dans la PARTIE B, du/de la ${unitName} 1 au/à la ${unitName} [Nombre total de ${unitName}s utilisées]) :
@@ -825,7 +825,7 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 **POUR CHAQUE CASE** (de 1 au nombre de cases défini pour CETTE UNITÉ (${unitName.toUpperCase()}) DANS LA PARTIE B) :
 
 **Case [Numéro de la case] :**
-* **Description Visuelle :** (Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
+* **(Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
 * **Dialogues/Texte :** (Texte exact des bulles, pensées, ou blocs narratifs DANS cette case. Si muet, indiquer "Aucun dialogue".)
 
 **-------------------- FIN ${unitName.toUpperCase()} [Numéro] --------------------**
