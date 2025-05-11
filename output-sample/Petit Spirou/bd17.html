@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Le Regard indiscret... ou presque !</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 0 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 300px; max-width: 450px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; height: 80px; overflow-y: auto;} /* Ajustement pour description */
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; } /* stroke-width ajusté */
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; } /* taille de police ajustée */
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 3,2; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 10px; font-style: italic; fill: black; } /* taille de police ajustée */
+        h1 { text-align: center; }
+        h5 { text-align: center; }
+        h6 { font-weight: normal; font-size: 14px; margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>Le Regard indiscret... ou presque ! (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Le Petit Spirou présente à Vertignasse son "super-périscope" pour observer discrètement le vestiaire des filles. Après une installation fébrile, la "vision" obtenue n'est pas celle escomptée et se termine par une confrontation embarrassante avec M. Mégot.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6 class="panel-summary">Extérieur, cour de récréation près du gymnase. Le Petit Spirou, excité, chuchote à l'oreille de Vertignasse, qui a l'air dubitatif. Spirou tient derrière son dos un objet long et fin bricolé avec des boîtes de conserve et des miroirs. En arrière-plan, la porte du vestiaire des filles.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="150" y="50" width="140" height="100" fill="#D3D3D3" stroke="black"/>
+                    <rect x="230" y="70" width="40" height="70" fill="#A0522D" stroke="black"/>
+                    <text x="250" y="65" font-size="8">Filles</text>
+                    <circle cx="80" cy="130" r="15" fill="red"/> <path d="M75 115 Q80 105 85 115" fill="red" stroke="black"/> <rect x="70" y="145" width="20" height="35" fill="red"/> <text x="80" y="135" font-size="10">S</text>
+                    <circle cx="130" cy="130" r="15" fill="green"/> <rect x="120" y="145" width="20" height="35" fill="green"/> <text x="130" y="135" font-size="10">V</text>
+                    <line x1="125" y1="125" x2="135" y2="130" stroke="black"/> <rect x="65" y="150" width="10" height="20" fill="grey" transform="rotate(-15 70 150)"/>
+                    <g class="speech-bubble-group">
+                        <title>PETIT SPIROU (chuchotant) : "Tu vas voir, Vertignasse ! Mon 'Discréto-scope' est révolutionnaire !"</title>
+                        <path class="speech-bubble-path" d="M40,80 Q40,60 60,60 L170,60 Q190,60 190,80 L190,100 Q190,120 170,120 L80,120 L70,130 L60,120 L40,120 Q40,120 40,100 Z"/>
+                        <text class="speech-bubble-text" x="115" y="80" font-size="8">Tu vas voir, Vertignasse!</text>
+                        <text class="speech-bubble-text" x="115" y="92" font-size="8">Mon 'Discréto-scope' est</text>
+                        <text class="speech-bubble-text" x="115" y="104" font-size="8">révolutionnaire ! (chuchote)</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6 class="panel-summary">Plan rapproché sur le "Discréto-scope" que Spirou montre fièrement. C'est un assemblage hétéroclite de tubes en carton, de boîtes de conserve et de petits miroirs scotchés. Vertignasse le regarde avec un sourcil levé.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="80" y="80" width="140" height="20" fill="silver" stroke="black"/>
+                    <rect x="90" y="70" width="20" height="40" fill="grey" stroke="black"/>
+                    <circle cx="150" cy="90" r="15" fill="lightgrey" stroke="black"/>
+                    <rect x="200" y="85" width="10" height="10" fill="blue" stroke="black"/> <line x1="100" y1="80" x2="110" y2="100" stroke="grey" stroke-width="3"/> <circle cx="70" cy="100" r="10" fill="red"/>
+                    <circle cx="240" cy="130" r="20" fill="green"/>
+                    <text x="240" y="135" font-size="10">V</text>
+                    <line x1="235" y1="120" x2="245" y2="125" stroke="black" stroke-width="2"/> <g class="speech-bubble-group">
+                        <title>VERTIGNASSE : "Révolutionnaire... ou juste un autre truc qui va nous attirer des ennuis ?"</title>
+                        <path class="speech-bubble-path" d="M150,20 Q150,0 170,0 L280,0 Q300,0 300,20 L300,40 Q300,60 280,60 L250,60 L240,70 L230,60 L170,60 Q150,60 150,40 Z"/>
+                        <text class="speech-bubble-text" x="225" y="20" font-size="8">Révolutionnaire... ou juste</text>
+                        <text class="speech-bubble-text" x="225" y="32" font-size="8">un autre truc qui va nous</text>
+                        <text class="speech-bubble-text" x="225" y="44" font-size="8">attirer des ennuis ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6 class="panel-summary">Spirou est agenouillé près du mur du gymnase, tentant d'insérer l'extrémité de son "Discréto-scope" dans une petite ouverture ou une aération menant (selon lui) vers le vestiaire des filles. Vertignasse fait le guet, l'air nerveux.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#D3D3D3"/>
+                    <rect x="100" y="100" width="30" height="15" fill="grey" stroke="black"/> <circle cx="70" cy="130" r="15" fill="red"/> <path d="M65 115 Q70 105 75 115" fill="red" stroke="black"/>
+                    <rect x="60" y="145" width="20" height="25" fill="red"/> <text x="70" y="135" font-size="10">S</text>
+                    <line x1="85" y1="135" x2="110" y2="107" stroke="silver" stroke-width="10"/>
+                    <circle cx="200" cy="150" r="15" fill="green"/> <rect x="190" y="165" width="20" height="30" fill="green"/> <text x="200" y="155" font-size="10">V</text>
+                    <ellipse cx="195" cy="145" rx="3" ry="2" fill="white"/> <circle cx="195" cy="145" r="1" fill="black"/> <ellipse cx="205" cy="145" rx="3" ry="2" fill="white"/> <circle cx="205" cy="145" r="1" fill="black"/>
+                    <g class="speech-bubble-group">
+                        <title>PETIT SPIROU : "Fais le guet ! Vision 'top secrète' imminente !"</title>
+                        <path class="speech-bubble-path" d="M20,20 Q20,0 40,0 L150,0 Q170,0 170,20 L170,40 Q170,60 150,60 L70,60 L60,70 L50,60 L40,60 Q20,60 20,40 Z"/>
+                        <text class="speech-bubble-text" x="95" y="22" font-size="8">Fais le guet ! Vision 'top</text>
+                        <text class="speech-bubble-text" x="95" y="34" font-size="8">secrète' imminente !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6 class="panel-summary">Spirou a l'œil collé à son extrémité du périscope. Son visage exprime une concentration intense, puis une surprise grandissante.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="50" fill="red"/> <path d="M135 60 Q150 40 165 60" fill="red" stroke="black" stroke-width="2"/> <text x="150" y="105" font-size="20">S</text>
+                    <rect x="170" y="80" width="30" height="20" fill="grey"/> <circle cx="160" cy="90" r="10" fill="white" stroke="black"/> <circle cx="160" cy="90" r="5" fill="black"/>
+                    <line x1="130" y1="75" x2="150" y2="80" stroke="black" stroke-width="2"/> <line x1="140" y1="85" x2="150" y2="80" stroke="black" stroke-width="2"/> <path d="M140 120 Q150 125 160 120" stroke="black" stroke-width="2" fill="none"/> <line x1="190" y1="70" x2="200" y2="60" stroke="black" stroke-width="1.5"/>
+                    <line x1="195" y1="75" x2="205" y2="65" stroke="black" stroke-width="1.5"/>
+                    <g class="speech-bubble-group">
+                        <title>PETIT SPIROU : "Ça y est ! Je vois... je vois..."</title>
+                        <path class="speech-bubble-path" d="M20,150 Q20,130 40,130 L150,130 Q170,130 170,150 L170,170 Q170,190 150,190 L140,190 L130,180 L120,190 L40,190 Q20,190 20,170 Z"/>
+                        <text class="speech-bubble-text" x="95" y="160" font-size="10">Ça y est ! Je vois... je vois...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6 class="panel-summary">Vue subjective "à travers le périscope" (cercle noir autour de l'image). On voit une chaussette trouée et un mollet poilu, et un bout de chaussure de sport usée.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clipCircle">
+                            <circle cx="150" cy="100" r="90"/>
+                        </clipPath>
+                    </defs>
+                    <rect x="0" y="0" width="300" height="200" fill="black"/>
+                    <g clip-path="url(#clipCircle)">
+                        <rect x="0" y="0" width="300" height="200" fill="lightyellow"/>
+                        <ellipse cx="150" cy="100" rx="30" ry="70" fill="#FLE5B9" stroke="black"/>
+                        <line x1="140" y1="80" x2="135" y2="70" stroke="black" stroke-width="0.5"/>
+                        <line x1="150" y1="90" x2="145" y2="80" stroke="black" stroke-width="0.5"/>
+                        <line x1="160" y1="100" x2="155" y2="90" stroke="black" stroke-width="0.5"/>
+                        <line x1="145" y1="120" x2="140" y2="110" stroke="black" stroke-width="0.5"/>
+                        <path d="M130,150 Q150,170 170,150 L175,180 L125,180 Z" fill="grey" stroke="black"/>
+                        <circle cx="150" cy="160" r="5" fill="lightyellow" stroke="black"/> <path d="M110,175 Q150,195 190,175 L180,190 L120,190 Z" fill="darkblue" stroke="black"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6 class="panel-summary">Retour sur Spirou, l'œil toujours au périscope, mais son expression est passée de la surprise à la confusion totale, voire au dégoût. Vertignasse, impatient, le secoue par l'épaule.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="30" fill="red"/> <path d="M90 75 Q100 65 110 75" fill="red" stroke="black"/>
+                    <text x="100" y="105" font-size="10">S</text>
+                    <rect x="115" y="90" width="20" height="15" fill="grey"/> <circle cx="110" cy="97" r="7" fill="white" stroke="black"/>
+                    <circle cx="110" cy="97" r="3" fill="black"/>
+                    <line x1="85" y1="85" x2="95" y2="90" stroke="black"/> <line x1="105" y1="90" x2="115" y2="85" stroke="black"/> <path d="M90 115 Q100 110 110 115" stroke="black" fill="none"/> <path d="M80 90 Q85 85 90 90" fill="lightgreen" stroke="black" stroke-width="0.5"/> <circle cx="180" cy="120" r="20" fill="green"/> <rect x="170" y="140" width="20" height="30" fill="green"/> <text x="180" y="125" font-size="10">V</text>
+                    <line x1="150" y1="110" x2="125" y2="110" stroke="black" stroke-width="1.5"/> <line x1="150" y1="115" x2="125" y2="115" stroke="black" stroke-width="1.5"/>
+                    <g class="speech-bubble-group">
+                        <title>VERTIGNASSE : "Alors ?! C'est comment ?! Des détails croustillants ?"</title>
+                        <path class="speech-bubble-path" d="M180,20 Q180,0 200,0 L290,0 Q310,0 310,20 L310,50 Q310,70 290,70 L220,70 L210,80 L200,70 L180,70 Q180,70 180,50 Z"/>
+                        <text class="speech-bubble-text" x="245" y="20" font-size="8">Alors ?! C'est comment ?!</text>
+                        <text class="speech-bubble-text" x="245" y="32" font-size="8">Des détails croustillants ?</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>PETIT SPIROU (grimace) : "Euh... Pas vraiment ce à quoi je m'attendais..."</title>
+                        <path class="speech-bubble-path" d="M20,150 Q20,130 40,130 L150,130 Q170,130 170,150 L170,170 Q170,190 150,190 L110,190 L100,180 L90,190 L40,190 Q20,190 20,170 Z"/>
+                        <text class="speech-bubble-text" x="95" y="155" font-size="8">Euh... Pas vraiment ce à</text>
+                        <text class="speech-bubble-text" x="95" y="167" font-size="8">quoi je m'attendais...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6 class="panel-summary">Plan plus large. On voit que l'autre extrémité du "Discréto-scope" de Spirou ne pointe pas du tout vers le vestiaire des filles, mais ressort maladroitement à travers un trou plus bas dans le mur... juste à côté du pied de M. Mégot, qui est en train de faire ses étirements, dos aux enfants.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#D3D3D3"/>
+                    <line x1="0" y1="180" x2="300" y2="180" stroke="grey" stroke-width="2"/> <circle cx="50" cy="150" r="10" fill="red"/> <rect x="45" y="160" width="10" height="20" fill="red"/> <circle cx="80" cy="155" r="10" fill="green"/> <rect x="75" y="165" width="10" height="20" fill="green"/> <line x1="60" y1="155" x2="150" y2="165" stroke="silver" stroke-width="8"/> <rect x="148" y="161" width="15" height="15" fill="grey" stroke="black"/> <rect x="130" y="140" width="60" height="5" fill="grey" stroke="black"/> <circle cx="220" cy="100" r="20" fill="blue"/> <rect x="200" y="120" width="40" height="50" fill="blue"/> <path d="M200 170 L180 190 L190 190 Z" fill="blue"/> <path d="M240 170 L250 190 L260 190 Z" fill="blue"/> <text x="220" y="105" font-size="10">M</text>
+                    <path d="M163 168 L200 180" stroke-dasharray="2,2" stroke="red" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6 class="panel-summary">M. Mégot s'est retourné, ayant senti quelque chose chatouiller sa cheville. Il regarde avec surprise le bout du "Discréto-scope" qui dépasse du mur, puis lève les yeux et aperçoit Spirou et Vertignasse un peu plus loin, l'air coupable. Spirou a lâché son invention, horrifié.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="70" r="25" fill="blue"/> <rect x="120" y="95" width="60" height="80" fill="blue"/> <text x="150" y="75" font-size="15">M</text>
+                    <line x1="140" y1="55" x2="160" y2="55" stroke="black"/> <path d="M140 80 Q150 90 160 80" stroke="black" fill="white"/> <rect x="100" y="160" width="20" height="15" fill="grey" stroke="black"/>
+                    <line x1="120" y1="167" x2="150" y2="175" stroke="grey" stroke-width="8"/> <circle cx="230" cy="150" r="10" fill="red"/> <rect x="225" y="160" width="10" height="15" fill="red"/> <circle cx="260" cy="155" r="10" fill="green"/> <rect x="255" y="165" width="10" height="15" fill="green"/> <text x="230" y="140" font-size="10">!</text> <line x1="228" y1="145" x2="232" y2="142" stroke="black"/> <line x1="258" y1="150" x2="262" y2="147" stroke="black"/> <g class="speech-bubble-group">
+                        <title>M. MÉGOT (l'air sévère mais intrigué) : "Tiens, tiens... Vous vous intéressez à mes techniques d'échauffement, les garçons ?"</title>
+                        <path class="speech-bubble-path" d="M20,10 Q20,0 40,0 L250,0 Q270,0 270,10 L270,40 Q270,50 250,50 L160,50 L150,60 L140,50 L40,50 Q20,50 20,40 Z"/>
+                        <text class="speech-bubble-text" x="145" y="15" font-size="8">Tiens, tiens... Vous vous intéressez</text>
+                        <text class="speech-bubble-text" x="145" y="27" font-size="8">à mes techniques d'échauffement,</text>
+                        <text class="speech-bubble-text" x="145" y="39" font-size="8">les garçons ?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6 class="panel-summary">Spirou et Vertignasse sont figés, livides, avec des gouttes de sueur sur le front. M. Mégot, un sourire narquois aux lèvres, s'est approché et a ramassé le "Discréto-scope". Il le regarde curieusement.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="70" cy="150" r="15" fill="#90EE90"/> <rect x="60" y="165" width="20" height="30" fill="red"/> <text x="70" y="155" font-size="10">S</text>
+                    <line x1="65" y1="135" x2="75" y2="135" stroke="black"/> <ellipse cx="68" cy="140" rx="2" ry="1" stroke="blue"/> <ellipse cx="72" cy="140" rx="2" ry="1" stroke="blue"/> <circle cx="120" cy="155" r="15" fill="#90EE90"/> <rect x="110" y="170" width="20" height="30" fill="green"/> <text x="120" y="160" font-size="10">V</text>
+                     <line x1="115" y1="140" x2="125" y2="140" stroke="black"/>
+                     <ellipse cx="118" cy="145" rx="2" ry="1" stroke="blue"/> <ellipse cx="122" cy="145" rx="2" ry="1" stroke="blue"/>
+
+                    <circle cx="220" cy="80" r="25" fill="blue"/> <rect x="190" y="105" width="60" height="85" fill="blue"/> <text x="220" y="85" font-size="15">M</text>
+                    <path d="M205 90 Q220 95 235 90" stroke="black" fill="none"/> <rect x="170" y="90" width="15" height="60" fill="silver" stroke="black" transform="rotate(-30 170 90)"/> <g class="speech-bubble-group">
+                        <title>M. MÉGOT : "Un périscope ? Pour mieux admirer mes magnifiques chevilles ? Flatté, les jeunes, flatté !"</title>
+                        <path class="speech-bubble-path" d="M150,10 Q150,0 170,0 L290,0 Q310,0 310,10 L310,45 Q310,55 290,55 L230,55 L220,65 L210,55 L170,55 Q150,55 150,45 Z"/>
+                        <text class="speech-bubble-text" x="230" y="15" font-size="8">Un périscope ? Pour mieux admirer</text>
+                        <text class="speech-bubble-text" x="230" y="27" font-size="8">mes magnifiques chevilles ?</text>
+                        <text class="speech-bubble-text" x="230" y="39" font-size="8">Flatté, les jeunes, flatté !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>PETIT SPIROU (pensée, petite bulle) : C'est pas possible, quel ratage !</title>
+                        <path class="thought-bubble-path" d="M30 50 Q 20 50, 20 60 Q 20 70, 30 70 L 40 70 Q 50 70, 50 80 Q 50 90, 40 90 L 100 90 Q 110 90, 110 80 Q 110 70, 100 70 L 90 70 Q 80 70, 80 60 Q 80 50, 90 50 Z"/>
+                        <text class="speech-bubble-text" x="65" y="70" font-size="8">C'est pas possible,</text>
+                         <text class="speech-bubble-text" x="65" y="80" font-size="8">quel ratage !</text>
+                        <circle cx="60" cy="105" r="3" fill="white" stroke="black"/>
+                        <circle cx="55" cy="115" r="5" fill="white" stroke="black"/>
+                        <circle cx="50" cy="128" r="6" fill="white" stroke="black"/>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

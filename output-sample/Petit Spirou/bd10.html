@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - L'Énigme du Casier Mystérieux - Page 1</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; max-width: 800px; margin: 0 auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 250px; max-width: 300px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
+        .speech-bubble-group title {} 
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1.5; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; }
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1.5; stroke-dasharray: 3,2; } /* Dashed for thought */
+        .onomatopoeia-text { font-size: 12px; font-weight: bold; fill: black; text-anchor: middle; }
+        .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; }
+    </style>
+</head>
+<body>
+    <h1>L'Énigme du Casier Mystérieux - Page 1</h1>
+    
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Spirou et amis espionnent M. Mégot avec son casier, découvrant une simple sucette; déception des enfants, surprise du prof.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6 class="panel-summary">Case 1 : Enfants espionnent M. Mégot à son casier.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="15" height="190" fill="#8B4513" />
+                    <line x1="20" y1="5" x2="50" y2="25" stroke="#8B4513" stroke-width="2"/>
+                    <line x1="20" y1="195" x2="50" y2="175" stroke="#8B4513" stroke-width="2"/>
+
+                    <circle cx="40" cy="50" r="15" fill="#FFDBAC" stroke="black" stroke-width="1"/> <circle cx="45" cy="50" r="2" fill="black" /> <ellipse cx="40" cy="55" rx="5" ry="2" fill="white" stroke="black" stroke-width="0.5"/> <circle cx="60" cy="80" r="15" fill="#FFDBAC" stroke="black" stroke-width="1"/> <circle cx="65" cy="80" r="2" fill="black" /> <ellipse cx="60" cy="85" rx="5" ry="2" fill="white" stroke="black" stroke-width="0.5"/> <circle cx="45" cy="110" r="15" fill="#FFDBAC" stroke="black" stroke-width="1"/> <circle cx="50" cy="110" r="2" fill="black" /> <ellipse cx="45" cy="115" rx="5" ry="2" fill="white" stroke="black" stroke-width="0.5"/> <rect x="150" y="60" width="60" height="100" fill="#A9A9A9" /> <circle cx="180" cy="50" r="20" fill="#FFDBAC" /> <rect x="140" y="110" width="20" height="40" fill="#A9A9A9" /> <rect x="200" y="110" width="20" height="40" fill="#A9A9A9" /> <rect x="220" y="40" width="50" height="120" fill="#D3D3D3" stroke="black"/>
+                    <rect x="225" y="45" width="40" height="10" fill="#A9A9A9" /> <g class="speech-bubble-group">
+                        <title>Chut ! Regardez M. Mégot...</title>
+                        <path class="speech-bubble-path" d="M 20 150 Q 20 130 40 130 L 120 130 Q 140 130 140 150 L 140 170 Q 140 190 120 190 L 40 190 Q 20 190 20 170 Z M 50 170 L 40 180 L 45 170 Z" />
+                        <text x="80" y="160" class="speech-bubble-text">Chut ! Regardez M. Mégot...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6 class="panel-summary">Case 2 : Gros plan mains M. Mégot sortant objet.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="280" height="180" fill="#D3D3D3" stroke="black"/>
+                    <rect x="20" y="20" width="260" height="160" fill="#C0C0C0" /> <ellipse cx="100" cy="100" rx="30" ry="20" fill="#FFDBAC" stroke="black"/> <ellipse cx="200" cy="100" rx="30" ry="20" fill="#FFDBAC" stroke="black"/> <ellipse cx="150" cy="100" rx="40" ry="25" fill="#F5F5DC" stroke="black"/> <text x="150" y="105" font-size="10">?</text>
+
+                    <text x="250" y="50" class="onomatopoeia-text">Ffff...</text>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6 class="panel-summary">Case 3 : Enfants cachés: Spirou pensif, Vertignasse excité, Cassius inquiet.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#D2B48C" />
+                    <rect x="0" y="150" width="300" height="50" fill="#A0522D" />
+                    
+                    <circle cx="70" cy="100" r="25" fill="#FFDBAC" stroke="black"/>
+                    <circle cx="75" cy="95" r="3" fill="black"/> <path d="M 65 110 Q 70 105 75 110" stroke="black" fill="none"/> <circle cx="150" cy="90" r="25" fill="#FFDBAC" stroke="black"/>
+                    <circle cx="155" cy="85" r="3" fill="black"/> <ellipse cx="150" cy="100" rx="10" ry="5" fill="white" stroke="black" /> <circle cx="230" cy="110" r="25" fill="#FFDBAC" stroke="black"/>
+                    <circle cx="235" cy="105" r="3" fill="black"/> <path d="M 225 120 Q 230 125 235 120" stroke="black" fill="none"/> <g class="speech-bubble-group">
+                        <title>Qu'est-ce que ça peut bien être ? Un trésor ?</title>
+                        <path class="speech-bubble-path" d="M 100 20 Q 100 0 120 0 L 220 0 Q 240 0 240 20 L 240 40 Q 240 60 220 60 L 120 60 Q 100 60 100 40 Z M 160 60 L 150 70 L 155 60 Z"/>
+                        <text x="170" y="30" class="speech-bubble-text" style="font-size:8px;">Qu'est-ce que ça peut bien être ?<tspan x="170" dy="10">Un trésor ?</tspan></text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>Ou des revues interdites !</title>
+                        <path class="speech-bubble-path" d="M 180 140 Q 180 120 200 120 L 280 120 Q 300 120 300 140 L 300 160 Q 300 180 280 180 L 200 180 Q 180 180 180 160 Z M 240 160 L 230 170 L 235 160 Z"/>
+                        <text x="240" y="150" class="speech-bubble-text">Ou des revues interdites !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6 class="panel-summary">Case 4 : M. Mégot referme casier avec ÉNORME cadenas, soulagé.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="60" width="60" height="100" fill="#A9A9A9" /> <circle cx="130" cy="50" r="20" fill="#FFDBAC" /> <path d="M 115 55 Q 125 60 115 65" stroke="black" fill="none" /> <rect x="180" y="40" width="50" height="120" fill="#D3D3D3" stroke="black"/>
+                    
+                    <rect x="195" y="90" width="20" height="30" fill="gold" stroke="black"/>
+                    <path d="M 195 90 Q 205 70 215 90" stroke="black" fill="gold" stroke-width="3"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Ouf ! Personne ne doit le voir...</title>
+                        <path class="thought-bubble-path" d="M 30 20 Q 30 0 50 0 L 150 0 Q 170 0 170 20 L 170 40 Q 170 60 150 60 L 50 60 Q 30 60 30 40 Z"/>
+                        <text x="100" y="30" class="speech-bubble-text">Ouf ! Personne ne doit le voir...</text>
+                        <circle cx="120" cy="70" r="3" fill="white" stroke="black"/>
+                        <circle cx="130" cy="65" r="2" fill="white" stroke="black"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6 class="panel-summary">Case 5 : Enfants complotent; Spirou a une idée.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="80" cy="100" r="25" fill="#FFDBAC" stroke="black"/>
+                    <circle cx="85" cy="95" r="3" fill="black"/>
+                    <ellipse cx="80" cy="110" rx="10" ry="4" fill="white" stroke="black"/> <path d="M 80 50 Q 70 60 75 70 Q 70 80 80 80 Q 90 80 85 70 Q 90 60 80 50 Z" fill="yellow" stroke="orange"/>
+                    <line x1="80" y1="80" x2="80" y2="85" stroke="orange" stroke-width="2"/>
+
+                    <circle cx="150" cy="120" r="20" fill="#FFDBAC" stroke="black"/>
+                    <circle cx="200" cy="110" r="20" fill="#FFDBAC" stroke="black"/>
+
+                    <g class="speech-bubble-group">
+                        <title>J'ai un plan pour jeter un œil quand il aura le dos tourné !</title>
+                        <path class="speech-bubble-path" d="M 20 20 Q 20 0 40 0 L 280 0 Q 300 0 300 20 L 300 50 Q 300 70 280 70 L 40 70 Q 20 70 20 50 Z M 80 70 L 70 80 L 75 70 Z"/>
+                        <text x="160" y="25" class="speech-bubble-text" style="font-size:8px;">J'ai un plan pour jeter un œil<tspan x="160" dy="10">quand il aura le dos tourné !</tspan></text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6 class="panel-summary">Case 6 : M. Mégot s'éloigne; Spirou se faufile, amis font guet.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="250" y="70" width="30" height="60" fill="#A9A9A9" opacity="0.7" />
+                    <circle cx="265" cy="60" r="10" fill="#FFDBAC" opacity="0.7" />
+                    <text x="265" y="140" font-size="10" fill="grey">♪♫</text> <rect x="20" y="40" width="50" height="120" fill="#D3D3D3" stroke="black"/>
+
+                    <circle cx="100" cy="150" r="15" fill="#FFDBAC" stroke="black"/> <rect x="95" y="165" width="10" height="20" fill="red"/> <path d="M 90 160 Q 110 150 100 140" stroke="black" fill="none"/> <circle cx="180" cy="50" r="15" fill="#FFDBAC" stroke="black"/> <circle cx="183" cy="48" r="2" fill="black"/>
+                    <circle cx="220" cy="60" r="15" fill="#FFDBAC" stroke="black"/> <circle cx="217" cy="58" r="2" fill="black"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Vite, vite !</title>
+                        <path class="speech-bubble-path" d="M 150 10 Q 150 0 160 0 L 210 0 Q 220 0 220 10 L 220 25 Q 220 35 210 35 L 160 35 Q 150 35 150 25 Z M 180 35 L 175 45 L 178 35 Z"/>
+                        <text x="185" y="17.5" class="speech-bubble-text">Vite, vite !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6 class="panel-summary">Case 7 : Spirou devant casier, tente de regarder.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="100" y="20" width="100" height="160" fill="#D3D3D3" stroke="black"/>
+                    <rect x="145" y="90" width="10" height="20" fill="gold" stroke="black"/> <path d="M 145 90 Q 150 80 155 90" stroke="black" fill="gold" stroke-width="1"/>
+                    <line x1="100" y1="100" x2="200" y2="100" stroke="#B0B0B0" stroke-width="1"/> <circle cx="150" cy="70" r="3" fill="black" /> <circle cx="80" cy="100" r="20" fill="#FFDBAC" stroke="black"/> <circle cx="95" cy="100" r="5" fill="white" stroke="black"/> <circle cx="98" cy="100" r="2" fill="black"/>
+                    <path d="M 70 95 L 75 100 L 70 105" stroke="black" fill="none"/> <rect x="60" y="120" width="15" height="30" fill="red"/> <g class="speech-bubble-group">
+                        <title>Alors... je vois... je vois...</title>
+                        <path class="speech-bubble-path" d="M 20 20 Q 20 0 40 0 L 160 0 Q 180 0 180 20 L 180 40 Q 180 60 160 60 L 40 60 Q 20 60 20 40 Z M 70 60 L 60 70 L 65 60 Z"/>
+                        <text x="100" y="30" class="speech-bubble-text">Alors... je vois... je vois...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6 class="panel-summary">Case 8 : GRANDE CASE: Intérieur casier: sucette géante sur coussin.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="290" height="190" fill="#A9A9A9" stroke="black"/>
+
+                    <rect x="20" y="150" width="60" height="30" fill="blue" rx="5"/> <ellipse cx="50" cy="165" rx="20" ry="8" fill="grey"/> <ellipse cx="250" cy="160" rx="25" ry="10" fill="darkred"/> <ellipse cx="150" cy="120" rx="50" ry="20" fill="purple" stroke="black"/>
+                    <ellipse cx="150" cy="115" rx="40" ry="15" fill="#DA70D6"/>
+
+                    <circle cx="150" cy="70" r="40" fill="url(#lollipopGradient)"/>
+                    <defs>
+                        <radialGradient id="lollipopGradient">
+                        <stop offset="0%" stop-color="red"/>
+                        <stop offset="20%" stop-color="orange"/>
+                        <stop offset="40%" stop-color="yellow"/>
+                        <stop offset="60%" stop-color="green"/>
+                        <stop offset="80%" stop-color="blue"/>
+                        <stop offset="100%" stop-color="indigo"/>
+                        </radialGradient>
+                    </defs>
+                    <rect x="145" y="105" width="10" height="40" fill="white" stroke="black"/> <g class="speech-bubble-group">
+                        <title>Une... SUCETTE ?!</title>
+                        <path class="speech-bubble-path" d="M 180 10 Q 180 0 190 0 L 280 0 Q 290 0 290 10 L 290 30 Q 290 40 280 40 L 190 40 Q 180 40 180 30 Z M 170 20 L 160 15 L 170 25 Z"/> <text x="235" y="20" class="speech-bubble-text" style="font-weight:bold;">Une... SUCETTE ?!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6 class="panel-summary">Case 9 : PUNCH LINE: M. Mégot surpris, enfants déçus.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="180" y="50" width="70" height="110" fill="#A9A9A9" /> <circle cx="215" cy="40" r="25" fill="#FFDBAC" /> <circle cx="210" cy="35" r="3" fill="black"/> <circle cx="220" cy="35" r="3" fill="black"/> <path d="M 210 48 Q 215 55 220 48" stroke="black" fill="none"/> <circle cx="170" cy="80" r="15" fill="pink"/>
+                    <rect x="167" y="95" width="6" height="20" fill="white" stroke="black"/>
+
+                    <rect x="10" y="30" width="50" height="140" fill="#D3D3D3" stroke="black"/>
+                     <rect x="10" y="30" width="25" height="140" fill="#C0C0C0" /> <circle cx="50" cy="150" r="15" fill="#FFDBAC" stroke="black"/>
+                    <path d="M 45 155 Q 50 160 55 155" stroke="black" fill="none"/> <circle cx="90" cy="160" r="15" fill="#FFDBAC" stroke="black"/>
+                     <path d="M 85 165 Q 90 170 95 165" stroke="black" fill="none"/>
+                    <circle cx="130" cy="150" r="15" fill="#FFDBAC" stroke="black"/>
+                    <path d="M 125 155 Q 130 160 135 155" stroke="black" fill="none"/>
+
+                    <g class="speech-bubble-group">
+                        <title>Ben quoi ? C'est ma préférée ! Faut pas l'abîmer avant la récré !</title>
+                        <path class="speech-bubble-path" d="M 150 10 Q 150 0 170 0 L 290 0 Q 300 0 300 10 L 300 45 Q 300 55 290 55 L 170 55 Q 150 55 150 45 Z M 220 55 L 210 65 L 215 55 Z"/>
+                        <text x="225" y="18" class="speech-bubble-text" style="font-size:7px;">Ben quoi ? C'est ma préférée !<tspan x="225" dy="10">Faut pas l'abîmer avant la récré !</tspan></text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>Tout ça pour ça...</title>
+                        <path class="speech-bubble-path" d="M 20 80 Q 20 70 35 70 L 125 70 Q 140 70 140 80 L 140 100 Q 140 110 125 110 L 35 110 Q 20 110 20 100 Z M 90 110 L 85 120 L 88 110 Z"/>
+                        <text x="80" y="90" class="speech-bubble-text" style="font-size:8px;">Tout ça pour ça...</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
