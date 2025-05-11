@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - Le Mystère du Caniche Volant</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; } /* Ajout de justify-content */
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 300px; /* Ajustement min-width */ max-width:450px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; } /* Ajustement stroke-width */
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; } /* Ajustement font-size */
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 3,2; } /* Style pour bulle de pensée */
+        .narrative-box-path { fill: #FFFACD; stroke: #BDB76B; stroke-width: 1; } /* Ajustement stroke */
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; } /* Ajustement font-size */
+        h1 { text-align: center; }
+        h5 { text-align: center; }
+        h6 { font-weight: normal; font-size: 12px; margin-top: 0; margin-bottom: 5px; line-height: 1.4; } /* Ajustement font-size et line-height */
+        .onomatopoeia { font-size: 24px; font-weight: bold; fill: red; text-anchor: middle; }
+        /* Character styles */
+        .tintin-houpette { fill: orange; stroke: black; stroke-width: 0.5px; }
+        .tintin-face { fill: #FFEBCD; stroke: black; stroke-width: 0.5px; }
+        .tintin-pull { fill: #ADD8E6; stroke: black; stroke-width: 0.5px; }
+        .tintin-pants { fill: #D2B48C; stroke: black; stroke-width: 0.5px; }
+        .haddock-casquette { fill: #000080; stroke: black; stroke-width: 0.5px; }
+        .haddock-face { fill: #FFDAB9; stroke: black; stroke-width: 0.5px; }
+        .haddock-barbe { fill: #A0522D; stroke: black; stroke-width: 0.5px; }
+        .haddock-coat { fill: #4682B4; stroke: black; stroke-width: 0.5px; }
+        .milou-body { fill: white; stroke: black; stroke-width: 0.5px; }
+        .generic-person-face { fill: #F5DEB3; stroke: black; stroke-width: 0.5px; }
+        .generic-person-body { fill: #B0C4DE; stroke: black; stroke-width: 0.5px; }
+        .security-uniform { fill: #556B2F; stroke: black; stroke-width: 0.5px;}
+        .director-suit { fill: #C0C0C0; stroke: black; stroke-width: 0.5px;}
+        .caniche-body { fill: #FFF0F5; stroke: #DB7093; stroke-width: 0.5px;}
+        .dugenou-hair { fill: grey; }
+        .dugenou-coat { fill: #D3D3D3; }
+    </style>
+</head>
+<body>
+    <h1>Le Mystère du Caniche Volant (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Tintin, Milou et le Capitaine Haddock admirent les concurrents d'une exposition canine. Soudain, l'alarme retentit : l'Os d'Or, trophée du concours, a disparu de sa vitrine ! Tous les regards se tournent vers Fifi "Le Voltigeur", un caniche agile aperçu près de la scène du vol juste avant.</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Grand plan d'ensemble. Une exposition canine animée dans un hall élégant. Plusieurs chiens de races variées sont présentés par leurs maîtres. Tintin (souriant, en civil : pantalon de golf, pull), Milou (joyeux, langue pendante) et le Capitaine Haddock (l'air un peu bougon mais curieux, en tenue de ville avec sa casquette de marin) sont au premier plan, regardant vers un podium où un speaker annonce quelque chose.
+                - BLOC NARRATIF : C'est sous un soleil radieux que Tintin, Milou et le Capitaine Haddock ont décidé de visiter la grande exposition canine internationale...
+                - SPEAKER : ...et maintenant, accueillons notre prochain champion !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#F0F8FF"/>
+                    <rect x="200" y="80" width="80" height="10" fill="#A0522D" />
+                    <text x="240" y="70" font-size="8">Podium</text>
+                    <rect x="230" y="50" width="20" height="30" class="generic-person-body" />
+                    <circle cx="240" cy="40" r="8" class="generic-person-face" />
+                    <circle cx="50" cy="150" r="10" class="tintin-face"/><polygon points="50,140 53,135 47,135" class="tintin-houpette"/>
+                    <rect x="45" y="160" width="10" height="30" class="tintin-pull"/>
+                    <ellipse cx="80" cy="175" rx="10" ry="5" class="milou-body"/>
+                    <circle cx="110" cy="150" r="10" class="haddock-face"/><path d="M105,142 Q110,135 115,142 Z" class="haddock-casquette"/>
+                    <rect x="105" y="160" width="10" height="30" class="haddock-coat"/>
+                    <g class="speech-bubble-group">
+                        <title>BLOC NARRATIF : C'est sous un soleil radieux que Tintin, Milou et le Capitaine Haddock ont décidé de visiter la grande exposition canine internationale...</title>
+                        <rect x="10" y="10" width="180" height="30" class="narrative-box-path"/>
+                        <text x="100" y="25" class="narrative-text">C'est sous un soleil radieux que Tintin, Milou et le Capitaine...</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>SPEAKER : ...et maintenant, accueillons notre prochain champion !</title>
+                        <path d="M220,40 Q220,20 240,20 Q260,20 260,40 Q260,60 240,60 L235,60 L230,65 L230,60 Q220,60 220,40 Z" class="speech-bubble-path"/>
+                        <text x="240" y="40" class="speech-bubble-text" font-size="6">...prochain champion !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Plan moyen sur Tintin, Milou et le Capitaine. Tintin observe un caniche particulièrement pomponné qui fait une petite pirouette. Milou jappe joyeusement.
+                - TINTIN : Regardez-moi cette agilité, Capitaine ! Certains de ces concurrents sont de véritables athlètes !
+                - MILOU (pensée) : Ouah ! Presque aussi doué que moi !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="70" cy="100" r="15" class="tintin-face"/><polygon points="70,85 75,75 65,75" class="tintin-houpette"/>
+                    <rect x="60" y="115" width="20" height="40" class="tintin-pull"/>
+                    <ellipse cx="40" cy="140" rx="15" ry="10" class="milou-body"/>
+                    <text x="40" y="130" font-size="8">Jappe!</text>
+                    <circle cx="120" cy="100" r="15" class="haddock-face"/><path d="M110,88 Q120,78 130,88 Z" class="haddock-casquette"/>
+                    <rect x="110" y="115" width="20" height="45" class="haddock-coat"/>
+                    <circle cx="200" cy="120" r="10" class="caniche-body"/> <circle cx="195" cy="110" r="5" class="caniche-body"/> <circle cx="205" cy="110" r="5" class="caniche-body"/>
+                    <text x="200" y="140" font-size="8">Pirouette!</text>
+                     <g class="speech-bubble-group">
+                        <title>TINTIN : Regardez-moi cette agilité, Capitaine ! Certains de ces concurrents sont de véritables athlètes !</title>
+                        <path d="M70,70 Q50,40 100,40 Q150,40 130,70 L100,70 L90,80 L95,70 Z" class="speech-bubble-path"/>
+                        <text x="100" y="55" class="speech-bubble-text">Regardez cette agilité ! De vrais athlètes !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>MILOU (pensée) : Ouah ! Presque aussi doué que moi !</title>
+                        <path d="M30,100 Q20,90 40,80 Q50,90 45,100 Z M40,80 Q35,70 50,70 Q55,70 55,75 Z M50,70 Q45,60 60,60 Q65,60 65,65 Z" class="thought-bubble-path" transform="translate(-5,0) scale(0.8)"/>
+                        <text x="42" y="80" class="speech-bubble-text" font-size="7" transform="scale(0.8)">Presque aussi doué!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Gros plan sur le Capitaine Haddock, qui hausse un sourcil, l'air sceptique, une pipe à la bouche (non allumée, par respect du lieu).
+                - CAPITAINE HADDOCK : Tonnerre de Brest ! Des athlètes à quatre pattes, peut-être... mais ça ne vaut pas un bon vieux loup de mer !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="40" class="haddock-face"/>
+                    <path d="M130,70 Q150,40 170,70 Z" class="haddock-casquette" transform="scale(1.5) translate(-50, -20)"/>
+                    <rect x="140" y="125" width="20" height="10" class="haddock-barbe" />
+                    <ellipse cx="130" cy="90" rx="5" ry="2" fill="black"/> <path d="M125,80 Q130,75 135,80" stroke="black" stroke-width="2" fill="none"/> <rect x="160" y="105" width="20" height="5" fill="brown"/> <rect x="178" y="107" width="5" height="2" fill="#696969"/> <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : Tonnerre de Brest ! Des athlètes à quatre pattes, peut-être... mais ça ne vaut pas un bon vieux loup de mer !</title>
+                        <path d="M150,30 Q80,0 150,0 Q220,0 190,30 L170,30 L160,45 L165,30 Z" class="speech-bubble-path" transform="translate(0, 10)"/>
+                        <text x="150" y="25" class="speech-bubble-text">Tonnerre de Brest ! Pas un loup de mer !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_4">
+                <h6>Plan américain. Les trois amis passent devant une vitrine sécurisée où est exposé un magnifique os en or massif sur un coussin de velours. Une petite pancarte indique "L'Os d'Or - Grand Prix d'Honneur".
+                - TINTIN : Impressionnant trophée, n'est-ce pas ? L'Os d'Or !
+                - MILOU (pensée, yeux brillants) : Ça alors ! Quel festin !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="150" y="50" width="120" height="100" fill="#D3E8FF" stroke="grey" stroke-width="2"/>
+                    <rect x="160" y="100" width="30" height="10" fill="#FFD700" stroke="black"/> <ellipse cx="175" cy="120" rx="25" ry="10" fill="purple"/> <rect x="170" y="60" width="100" height="20" fill="lightgrey"/> <text x="175" y="72" font-size="7">L'Os d'Or</text>
+                    <circle cx="40" cy="130" r="10" class="tintin-face"/><polygon points="40,120 43,115 37,115" class="tintin-houpette"/>
+                    <rect x="35" y="140" width="10" height="25" class="tintin-pull"/>
+                    <ellipse cx="70" cy="155" rx="10" ry="5" class="milou-body"/>
+                    <text x="70" y="145" font-size="10" fill="yellow">★ ★</text> <circle cx="100" cy="130" r="10" class="haddock-face"/><path d="M95,122 Q100,115 105,122 Z" class="haddock-casquette"/>
+                    <rect x="95" y="140" width="10" height="25" class="haddock-coat"/>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Impressionnant trophée, n'est-ce pas ? L'Os d'Or !</title>
+                        <path d="M40,100 Q20,70 70,70 Q120,70 100,100 L70,100 L60,110 L65,100 Z" class="speech-bubble-path"/>
+                        <text x="70" y="85" class="speech-bubble-text">Impressionnant trophée! L'Os d'Or!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>MILOU (pensée, yeux brillants) : Ça alors ! Quel festin !</title>
+                        <path d="M60,125 Q50,115 70,105 Q80,115 75,125 Z M70,105 Q65,95 80,95 Q85,95 85,100 Z M80,95 Q75,85 90,85 Q95,85 95,90 Z" class="thought-bubble-path" transform="scale(0.7) translate(5,15)"/>
+                        <text x="77" y="109" class="speech-bubble-text" font-size="7" transform="scale(0.7)">Quel festin !</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Soudain, un grand "RRRIIIIING !!!" retentit. Les personnages (Tintin, Haddock) sursautent, expressions de surprise. Milou dresse les oreilles. Des gens en arrière-plan commencent à s'agiter.
+                - ONOMATOPÉE (grande et visible) : RRRIIIIING !!!
+                - CAPITAINE HADDOCK : Mille sabords ! Qu'est-ce que c'est que ce raffut ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <text x="150" y="60" class="onomatopoeia">RRRIIIIING !!!</text>
+                    <circle cx="70" cy="130" r="15" class="tintin-face"/> <text x="70" y="125" font-size="10">!?</text>
+                    <rect x="60" y="145" width="20" height="40" class="tintin-pull"/>
+                    <ellipse cx="40" cy="170" rx="15" ry="10" class="milou-body"/>
+                    <path d="M30,160 L35,150 L40,160 Z" class="milou-body"/> <path d="M45,160 L50,150 L55,160 Z" class="milou-body"/> <circle cx="120" cy="130" r="15" class="haddock-face"/> <text x="120" y="125" font-size="10">!?</text>
+                    <path d="M110,118 Q120,108 130,118 Z" class="haddock-casquette"/>
+                    <rect x="110" y="145" width="20" height="45" class="haddock-coat"/>
+                    <circle cx="200" cy="150" r="5" fill="grey"/> <rect x="197" y="155" width="6" height="15" fill="darkgrey"/>
+                    <circle cx="220" cy="145" r="5" fill="grey"/> <rect x="217" y="150" width="6" height="15" fill="darkgrey"/>
+                     <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : Mille sabords ! Qu'est-ce que c'est que ce raffut ?</title>
+                        <path d="M120,100 Q100,70 150,70 Q200,70 180,100 L150,100 L140,110 L145,100 Z" class="speech-bubble-path"/>
+                        <text x="150" y="85" class="speech-bubble-text">Mille sabords! Ce raffut?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Plan large montrant la vitrine de l'Os d'Or, maintenant vide ! Un agent de sécurité se précipite vers la vitrine, l'air paniqué. La foule commence à s'attrouper, expressions choquées.
+                - AGENT DE SÉCURITÉ (criant) : Au voleur ! L'Os d'Or a disparu !
+                - VOIX DANS LA FOULE 1 : Disparu ?
+                - VOIX DANS LA FOULE 2 : Incroyable !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="50" width="120" height="100" fill="#D3E8FF" stroke="grey" stroke-width="2"/>
+                    <text x="110" y="100" font-size="10">(Vide!)</text>
+                    <rect x="180" y="120" width="20" height="40" class="security-uniform"/>
+                    <circle cx="190" cy="110" r="10" class="generic-person-face"/> <text x="190" y="105" font-size="8">!!!</text>
+                    <circle cx="230" cy="140" r="8" class="generic-person-face"/> <rect x="225" y="148" width="10" height="20" class="generic-person-body"/>
+                    <circle cx="250" cy="135" r="8" class="generic-person-face"/> <rect x="245" y="143" width="10" height="20" class="generic-person-body"/>
+                    <g class="speech-bubble-group">
+                        <title>AGENT DE SÉCURITÉ (criant) : Au voleur ! L'Os d'Or a disparu !</title>
+                        <path d="M190,80 Q170,50 220,50 Q270,50 250,80 L220,80 L210,90 L215,80 Z" class="speech-bubble-path"/>
+                        <text x="220" y="65" class="speech-bubble-text" font-weight="bold">Au voleur ! L'Os d'Or disparu !</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>VOIX DANS LA FOULE 1 : Disparu ?</title>
+                        <path d="M230,115 Q225,105 240,105 Q245,105 245,110 Z" class="speech-bubble-path" transform="scale(0.8) translate(40,0)"/>
+                        <text x="238" y="110" class="speech-bubble-text" font-size="8" transform="scale(0.8)">Disparu?</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>VOIX DANS LA FOULE 2 : Incroyable !</title>
+                        <path d="M250,105 Q245,95 260,95 Q265,95 265,100 Z" class="speech-bubble-path" transform="scale(0.8) translate(30,0)"/>
+                        <text x="258" y="100" class="speech-bubble-text" font-size="8" transform="scale(0.8)">Incroyable!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_7">
+                <h6>Plan moyen. Le directeur du concours, un homme petit et nerveux avec des lunettes, montre du doigt un petit caniche blanc (Fifi "Le Voltigeur") qui s'éloigne tranquillement de la zone de la vitrine, l'air de rien.
+                - DIRECTEUR DU CONCOURS : C'est lui ! Fifi "Le Voltigeur" ! Je l'ai vu rôder par ici il y a une seconde ! C'est un spécialiste de l'évasion !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="100" width="30" height="50" class="director-suit"/>
+                    <circle cx="65" cy="90" r="12" class="generic-person-face"/>
+                    <rect x="60" y="85" width="10" height="3" fill="black"/> <line x1="80" y1="100" x2="120" y2="110" stroke="black" stroke-width="2"/> <ellipse cx="180" cy="130" rx="20" ry="12" class="caniche-body"/>
+                    <circle cx="170" cy="120" r="6" class="caniche-body"/> <circle cx="190" cy="120" r="6" class="caniche-body"/> <text x="180" y="150" font-size="8">(s'éloigne)</text>
+                    <g class="speech-bubble-group">
+                        <title>DIRECTEUR DU CONCOURS : C'est lui ! Fifi "Le Voltigeur" ! Je l'ai vu rôder par ici il y a une seconde ! C'est un spécialiste de l'évasion !</title>
+                        <path d="M65,60 Q35,30 100,30 Q165,30 135,60 L100,60 L90,70 L95,60 Z" class="speech-bubble-path"/>
+                        <text x="100" y="45" class="speech-bubble-text">C'est lui! Fifi! Spécialiste de l'évasion!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_8">
+                <h6>Gros plan sur Tintin, l'air songeur, un doigt sur le menton. Milou, à côté de lui, fronce le museau, l'air perplexe.
+                - TINTIN : Un chien, voleur d'un trophée aussi lourd ? Voilà qui est curieux...
+                - MILOU (pensée) : Hmm, ça sent l'embrouille cette histoire...</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="120" cy="100" r="35" class="tintin-face"/>
+                    <polygon points="120,65 128,50 112,50" class="tintin-houpette"/>
+                    <text x="115" y="125" font-size="10">☝️</text> <ellipse cx="200" cy="130" rx="25" ry="15" class="milou-body"/>
+                    <text x="200" y="120" font-size="10">?</text> <g class="speech-bubble-group">
+                        <title>TINTIN : Un chien, voleur d'un trophée aussi lourd ? Voilà qui est curieux...</title>
+                        <path d="M120,50 Q80,20 150,20 Q220,20 190,50 L160,50 L150,60 L155,50 Z" class="speech-bubble-path" transform="translate(-20,-10)"/>
+                        <text x="140" y="35" class="speech-bubble-text" transform="translate(-20,-10)">Un chien voleur? Curieux...</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>MILOU (pensée) : Hmm, ça sent l'embrouille cette histoire...</title>
+                        <path d="M190,95 Q180,85 200,75 Q210,85 205,95 Z M200,75 Q195,65 210,65 Q215,65 215,70 Z M210,65 Q205,55 220,55 Q225,55 225,60 Z" class="thought-bubble-path" transform="scale(0.9)"/>
+                        <text x="205" y="75" class="speech-bubble-text" font-size="8" transform="scale(0.9)">Hmm, ça sent l'embrouille...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_1_panel_9">
+                <h6>Plan sur le Capitaine Haddock, rouge de colère, poing levé en direction du caniche Fifi qui trottine au loin. D'autres personnes regardent Fifi avec suspicion.
+                - CAPITAINE HADDOCK : Par le grand Cric ! Un caniche chapardeur ! Je l'aurais parié ! Attrapez cette petite fripouille à houppette !
+                - TINTIN (hors champ, petite bulle venant de la case 8) : Doucement, Capitaine ! Ne tirons pas de conclusions hâtives !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="20" fill="red" class="haddock-face"/> <path d="M90,82 Q100,72 110,82 Z" class="haddock-casquette"/>
+                    <rect x="90" y="120" width="20" height="50" class="haddock-coat"/>
+                    <text x="100" y="90" font-size="15">🗯️</text> <ellipse cx="250" cy="150" rx="10" ry="6" class="caniche-body"/>
+                    <circle cx="180" cy="130" r="8" class="generic-person-face"/> <rect x="176" y="138" width="8" height="18" class="generic-person-body"/>
+                    <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : Par le grand Cric ! Un caniche chapardeur ! Je l'aurais parié ! Attrapez cette petite fripouille à houppette !</title>
+                        <path d="M100,60 Q60,20 130,20 Q200,20 170,60 L140,60 L130,70 L135,60 Z" class="speech-bubble-path"/>
+                        <text x="130" y="40" class="speech-bubble-text" font-weight="bold">Caniche chapardeur! Attrapez-le!</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>TINTIN (hors champ) : Doucement, Capitaine ! Ne tirons pas de conclusions hâtives !</title>
+                        <path d="M30,170 Q20,160 40,150 Q50,160 45,170 Z" class="speech-bubble-path" transform="scale(0.8) translate(10,10)"/> <text x="38" y="160" class="speech-bubble-text" font-size="8" transform="scale(0.8) translate(10,10)">Doucement, Capitaine!</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_2_storyboard_content">
+        <h5 class="comic-page-summary">Page 2 : Tandis que le Capitaine Haddock accuse Fifi, Tintin remarque un détail étrange : une légère odeur de carburant et une petite hélice coincée dans un rideau près de la vitrine vide. Milou flaire une piste qui les mène à l'extérieur, vers le stand du Professeur Dugenou, où ils découvrent le caniche... et l'Os d'Or, attachés à un mini-drone ! La punch line révélera l'explication absurde du "vol".</h5>
+        <div class="panel-grid">
+
+            <div class="panel-container" id="page_2_panel_1">
+                <h6>Tintin est agenouillé près de la vitrine vide, examinant le sol avec attention. Le Capitaine Haddock est debout derrière lui, l'air toujours furieux, gesticulant en direction de la sortie. Milou renifle activement le sol.
+                - CAPITAINE HADDOCK : Alors, Tintin ? Vous voyez bien que c'est ce... ce flibustier à poils qui a fait le coup ! Il faut le rattraper !
+                - TINTIN : Un instant, Capitaine. Regardez ça... et cette odeur...</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="50" width="80" height="70" fill="#D3E8FF" stroke="grey" stroke-width="1" opacity="0.5"/>
+                    <circle cx="120" cy="150" r="10" class="tintin-face"/><polygon points="120,140 123,135 117,135" class="tintin-houpette"/>
+                    <rect x="115" y="160" width="10" height="15" class="tintin-pull"/> <rect x="115" y="175" width="10" height="10" class="tintin-pants"/> <ellipse cx="80" cy="175" rx="12" ry="7" class="milou-body"/> <text x="70" y="178" font-size="8">sniff</text>
+                    <circle cx="200" cy="100" r="15" class="haddock-face" fill="orangered"/> <path d="M190,88 Q200,78 210,88 Z" class="haddock-casquette"/>
+                    <rect x="190" y="115" width="20" height="45" class="haddock-coat"/> <text x="220" y="110" font-size="10">💢</text> <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : Alors, Tintin ? Vous voyez bien que c'est ce... ce flibustier à poils qui a fait le coup ! Il faut le rattraper !</title>
+                        <path d="M200,70 Q170,40 220,40 Q270,40 250,70 L220,70 L210,80 L215,70 Z" class="speech-bubble-path"/>
+                        <text x="220" y="55" class="speech-bubble-text">Ce flibustier à poils! Rattrapez-le!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Un instant, Capitaine. Regardez ça... et cette odeur...</title>
+                        <path d="M120,120 Q100,90 150,90 Q200,90 180,120 L150,120 L140,130 L145,120 Z" class="speech-bubble-path" transform="translate(0, -10)"/>
+                        <text x="150" y="105" class="speech-bubble-text" transform="translate(0,-10)">Un instant... Regardez ça... cette odeur...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_2">
+                <h6>Gros plan sur la main de Tintin qui tient une toute petite hélice de drone (environ 5 cm). En arrière-plan flou, on voit le rideau près de la vitrine où elle était coincée.
+                - TINTIN : Une hélice... et ça sent légèrement le carburant spécial pour modèles réduits.
+                - BLOC NARRATIF : L'esprit vif de Tintin s'interrogeait : quel rapport entre une hélice et la disparition de l'Os d'Or ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="100" rx="30" ry="20" fill="#FFEBCD"/> <path d="M140,95 L160,105 M140,105 L160,95" stroke="grey" stroke-width="3"/> <circle cx="150" cy="100" r="3" fill="darkgrey"/> <rect x="50" y="30" width="200" height="140" fill="#D8BFD8" opacity="0.5"/>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Une hélice... et ça sent légèrement le carburant spécial pour modèles réduits.</title>
+                        <path d="M150,50 Q100,20 170,20 Q240,20 200,50 L180,50 L170,60 L175,50 Z" class="speech-bubble-path"/>
+                        <text x="170" y="35" class="speech-bubble-text">Une hélice... odeur de carburant...</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>BLOC NARRATIF : L'esprit vif de Tintin s'interrogeait : quel rapport entre une hélice et la disparition de l'Os d'Or ?</title>
+                        <rect x="20" y="150" width="260" height="30" class="narrative-box-path"/>
+                        <text x="150" y="165" class="narrative-text">L'esprit vif de Tintin s'interrogeait : quel rapport entre une hélice et la disparition...?</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_3">
+                <h6>Milou aboie doucement ("Wouf !") en tirant légèrement sur le pantalon de Tintin, le museau pointé vers une sortie latérale du hall d'exposition.
+                - MILOU (bulle d'aboiement) : Wouf ! Wouf !
+                - TINTIN : Tu as trouvé quelque chose, Milou ? Montre-moi !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="15" class="tintin-face"/><polygon points="100,85 105,75 95,75" class="tintin-houpette"/>
+                    <rect x="90" y="115" width="20" height="40" class="tintin-pull"/>
+                    <rect x="90" y="155" width="20" height="10" class="tintin-pants"/> <ellipse cx="60" cy="150" rx="15" ry="10" class="milou-body"/>
+                    <line x1="70" y1="150" x2="90" y2="160" stroke="black" stroke-width="1"/> <line x1="45" y1="145" x2="20" y2="130" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/> <defs><marker id="arrowhead" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto"><polygon points="0 0, 5 1.75, 0 3.5" /></marker></defs>
+                    <rect x="0" y="100" width="30" height="50" fill="grey"/> <text x="15" y="125" font-size="8">SORTIE</text>
+                    <g class="speech-bubble-group">
+                        <title>MILOU (bulle d'aboiement) : Wouf ! Wouf !</title>
+                        <path d="M60,120 Q50,110 70,110 Q80,110 75,120 Z" class="speech-bubble-path" transform="translate(-5,0)"/>
+                        <text x="65" y="115" class="speech-bubble-text" font-weight="bold">Wouf! Wouf!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Tu as trouvé quelque chose, Milou ? Montre-moi !</title>
+                        <path d="M100,70 Q80,40 130,40 Q180,40 160,70 L130,70 L120,80 L125,70 Z" class="speech-bubble-path"/>
+                        <text x="130" y="55" class="speech-bubble-text">Trouvé quelque chose, Milou? Montre!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_4">
+                <h6>Plan américain. Tintin, Milou et un Capitaine Haddock encore sceptique suivent la piste de Milou qui les mène à l'extérieur du hall principal, vers une zone moins fréquentée avec des stands d'accessoires pour animaux.
+                - CAPITAINE HADDOCK : Espérons que ton fin limier ne nous mène pas à la buvette, mille millions de mille sabords ! J'ai soif de justice, moi !
+                - TINTIN : Faisons confiance à son flair, Capitaine.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="150" rx="12" ry="7" class="milou-body"/> <text x="40" y="145" font-size="8">Suivez!</text>
+                    <circle cx="100" cy="130" r="10" class="tintin-face"/><polygon points="100,120 103,115 97,115" class="tintin-houpette"/>
+                    <rect x="95" y="140" width="10" height="30" class="tintin-pull"/>
+                    <circle cx="150" cy="130" r="10" class="haddock-face"/><path d="M145,122 Q150,115 155,122 Z" class="haddock-casquette"/>
+                    <rect x="145" y="140" width="10" height="30" class="haddock-coat"/> <text x="150" y="125" font-size="8">?</text>
+                    <rect x="200" y="100" width="80" height="60" fill="#D2B48C" opacity="0.7"/> <text x="210" y="130" font-size="7">Stands</text>
+                    <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : Espérons que ton fin limier ne nous mène pas à la buvette, mille millions de mille sabords ! J'ai soif de justice, moi !</title>
+                        <path d="M150,100 Q120,70 180,70 Q240,70 210,100 L180,100 L170,110 L175,100 Z" class="speech-bubble-path"/>
+                        <text x="180" y="85" class="speech-bubble-text">Pas à la buvette, j'ai soif de justice!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Faisons confiance à son flair, Capitaine.</title>
+                        <path d="M100,100 Q80,80 120,80 Q160,80 140,100 L120,100 L110,108 L115,100 Z" class="speech-bubble-path" transform="translate(0,-5)"/>
+                        <text x="120" y="90" class="speech-bubble-text" transform="translate(0,-5)">Confiance à son flair, Capitaine.</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_5">
+                <h6>Ils arrivent devant un stand un peu désordonné surmonté d'une enseigne : "Professeur Dugenou - Innovations Canines Hi-Tech". Le Professeur Dugenou, un homme âgé, cheveux en bataille, lunettes sur le bout du nez, est en train de tapoter nerveusement une télécommande complexe.
+                - TINTIN : Excusez-moi, Monsieur... Nous enquêtons sur la disparition de l'Os d'Or.
+                - PROFESSEUR DUGENOU (distrait, sans les regarder) : L'Os d'Or ? Ah oui, très joli... Zzzzt... Fichue télécommande ! Où est passé ce bouton de retour automatique ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="120" y="50" width="160" height="120" fill="#E6E6FA"/>
+                    <text x="130" y="70" font-size="7">Prof. Dugenou - Innovations Canines</text>
+                    <circle cx="200" cy="130" r="12" class="generic-person-face"/>
+                    <path d="M190,120 Q200,110 210,120 T190,120" class="dugenou-hair"/> <rect x="195" y="128" width="10" height="3" fill="grey"/> <rect x="190" y="142" width="20" height="35" class="dugenou-coat"/>
+                    <rect x="220" y="130" width="15" height="10" fill="darkgrey"/> <text x="222" y="137" font-size="5">Zzt</text><circle cx="50" cy="140" r="10" class="tintin-face"/><rect x="45" y="150" width="10" height="30" class="tintin-pull"/>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Excusez-moi, Monsieur... Nous enquêtons sur la disparition de l'Os d'Or.</title>
+                        <path d="M50,110 Q30,80 80,80 Q130,80 110,110 L80,110 L70,120 L75,110 Z" class="speech-bubble-path"/>
+                        <text x="80" y="95" class="speech-bubble-text">Excusez-moi... enquêtons Os d'Or.</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>PROFESSEUR DUGENOU (distrait) : L'Os d'Or ? Ah oui, très joli... Zzzzt... Fichue télécommande ! Où est passé ce bouton de retour automatique ?</title>
+                        <path d="M200,100 Q170,70 230,70 Q290,70 260,100 L230,100 L220,110 L225,100 Z" class="speech-bubble-path"/>
+                        <text x="230" y="85" class="speech-bubble-text" font-size="7">L'Os d'Or? Très joli... Zzt... Fichue télécommande!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_6">
+                <h6>Derrière le Professeur Dugenou, caché par une tenture à moitié tirée, on aperçoit le caniche Fifi "Le Voltigeur", l'air parfaitement calme, assis sagement. À côté de lui, posé au sol, l'Os d'Or ! Attaché à l'Os, on distingue les sangles d'un petit harnais relié à un mini-drone quadricoptère (une hélice manquante).
+                - MILOU (joyeux) : WOUF !
+                - CAPITAINE HADDOCK (stupéfait, pointant du doigt) : Tonnerre de Brest ! L'Os d'Or ! Et le... le pirate à quatre pattes !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="80" width="30" height="60" class="dugenou-coat"/>
+                    <path d="M80,50 Q100,150 80,180" stroke="purple" stroke-width="3" fill="purple" fill-opacity="0.3"/>
+                    <ellipse cx="150" cy="140" rx="15" ry="10" class="caniche-body"/>
+                    <rect x="180" y="145" width="25" height="8" fill="#FFD700" stroke="black"/>
+                    <rect x="175" y="130" width="15" height="10" fill="grey"/>
+                    <line x1="170" y1="130" x2="175" y2="125" stroke="black"/> <line x1="190" y1="130" x2="195" y2="125" stroke="black"/> <line x1="170" y1="140" x2="175" y2="145" stroke="black"/> <ellipse cx="250" cy="160" rx="10" ry="6" class="milou-body"/>
+                    <circle cx="220" cy="100" r="10" class="haddock-face" fill="lightcoral"/><path d="M215,92 Q220,85 225,92 Z" class="haddock-casquette"/> <line x1="210" y1="105" x2="180" y2="120" stroke="black"/> <g class="speech-bubble-group">
+                        <title>MILOU (joyeux) : WOUF !</title>
+                        <path d="M250,135 Q240,125 260,125 Q270,125 265,135 Z" class="speech-bubble-path"/>
+                        <text x="255" y="130" class="speech-bubble-text" font-weight="bold">WOUF!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK (stupéfait) : Tonnerre de Brest ! L'Os d'Or ! Et le... le pirate à quatre pattes !</title>
+                        <path d="M220,70 Q190,40 240,40 Q290,40 270,70 L240,70 L230,80 L235,70 Z" class="speech-bubble-path"/>
+                        <text x="240" y="55" class="speech-bubble-text">L'Os d'Or! Le pirate à quatre pattes!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_7">
+                <h6>Tintin s'approche, un léger sourire aux lèvres. Le Professeur Dugenou se retourne enfin, l'air confus.
+                - TINTIN : Professeur Dugenou, je présume ? Il semblerait que votre... "Innovation Canine Hi-Tech" ait fait une petite excursion imprévue.
+                - PROFESSEUR DUGENOU : Ah ! Mon "Canidrone Express" ! Oui, je testais le système de récupération d'objets... Fifi devait juste rapporter sa balle...</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="70" cy="130" r="15" class="tintin-face"/><polygon points="70,115 75,105 65,105" class="tintin-houpette"/>
+                    <rect x="60" y="145" width="20" height="40" class="tintin-pull"/> <text x="70" y="135" font-size="8">🙂</text>
+                    <circle cx="180" cy="130" r="15" class="generic-person-face"/><path d="M170,120 Q180,110 190,120 T170,120" class="dugenou-hair"/>
+                    <rect x="170" y="145" width="20" height="40" class="dugenou-coat"/> <text x="180" y="125" font-size="10">?</text>
+                    <g class="speech-bubble-group">
+                        <title>TINTIN : Professeur Dugenou, je présume ? Il semblerait que votre... "Innovation Canine Hi-Tech" ait fait une petite excursion imprévue.</title>
+                        <path d="M70,100 Q40,70 100,70 Q160,70 130,100 L100,100 L90,110 L95,100 Z" class="speech-bubble-path"/>
+                        <text x="100" y="85" class="speech-bubble-text">Prof. Dugenou? Votre innovation...</text>
+                    </g>
+                     <g class="speech-bubble-group">
+                        <title>PROFESSEUR DUGENOU : Ah ! Mon "Canidrone Express" ! Oui, je testais le système de récupération d'objets... Fifi devait juste rapporter sa balle...</title>
+                        <path d="M180,100 Q150,70 210,70 Q270,70 240,100 L210,100 L200,110 L205,100 Z" class="speech-bubble-path"/>
+                        <text x="210" y="85" class="speech-bubble-text" font-size="7">Ah! Mon Canidrone! Testais récupération...</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_8">
+                <h6>Gros plan sur le Professeur Dugenou, qui se gratte la tête, l'air penaud mais fier de son invention. Il tient la télécommande d'une main et désigne le drone de l'autre.
+                - PROFESSEUR DUGENOU : J'ai dû entrer les mauvaises coordonnées... ou peut-être que l'Os d'Or a une signature métallique plus attractive que sa baballe... Il est conçu pour rapporter les objets les plus précieux à son maître ! Une petite erreur de programmation, c'est tout !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="40" class="generic-person-face"/>
+                    <path d="M130,70 Q150,50 170,70 T130,70" class="dugenou-hair" transform="scale(1.2) translate(-25,-10)"/>
+                    <text x="130" y="90" font-size="10">✋</text> <rect x="180" y="110" width="25" height="15" fill="darkgrey"/> <line x1="120" y1="110" x2="100" y2="120" stroke="black"/> <g class="speech-bubble-group">
+                        <title>PROFESSEUR DUGENOU : J'ai dû entrer les mauvaises coordonnées... ou peut-être que l'Os d'Or a une signature métallique plus attractive que sa baballe... Il est conçu pour rapporter les objets les plus précieux à son maître ! Une petite erreur de programmation, c'est tout !</title>
+                        <path d="M150,40 Q80,10 150,10 Q220,10 190,40 L170,40 L160,50 L165,40 Z" class="speech-bubble-path"/>
+                        <text x="150" y="25" class="speech-bubble-text" font-size="7.5">Mauvaises coordonnées... signature métallique... erreur de programmation!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="panel-container" id="page_2_panel_9">
+                <h6>PUNCH LINE. Plan large comique. Le Capitaine Haddock, bouche bée, regarde le caniche Fifi qui, au lieu de paraître coupable, a attrapé la casquette du Capitaine (tombée de surprise ?) et la dépose délicatement sur la tête du Professeur Dugenou à l'aide du mini-drone (réparé ou un autre similaire). Milou aboie de rire. Tintin sourit, amusé.
+                - CAPITAINE HADDOCK (criant, les yeux exorbités, sans sa casquette) : MILLE MILLIARDS DE MILLE SABORDS DE TONNERRE DE BREST ! NON SEULEMENT IL VOLE LES OS, MAIS MAINTENANT IL ME DÉPOUILLE DE MON COUVRE-CHEF POUR HABILLER CE SAVANT FOU ?!
+                - TINTIN (souriant) : Au moins, Professeur, votre système de "dépôt de précision" semble parfaitement au point !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="130" r="15" class="haddock-face"/> <circle cx="50" cy="125" r="3" fill="black"/> <circle cx="50" cy="135" r="5" fill="white" stroke="black"/> <rect x="40" y="145" width="20" height="40" class="haddock-coat"/>
+                    <circle cx="150" cy="130" r="15" class="generic-person-face"/><path d="M140,120 Q150,110 160,120 T140,120" class="dugenou-hair"/>
+                    <rect x="140" y="145" width="20" height="40" class="dugenou-coat"/>
+                    <path d="M142,117 Q150,107 158,117 Z" class="haddock-casquette" transform="scale(0.8) translate(37,-15)"/> <rect x="145" y="80" width="10" height="7" fill="grey"/> <ellipse cx="150" cy="100" rx="8" ry="5" class="caniche-body"/> <ellipse cx="230" cy="160" rx="12" ry="7" class="milou-body"/> <text x="230" y="155" font-size="8">HaHa!</text>
+                    <circle cx="260" cy="130" r="10" class="tintin-face"/><polygon points="260,120 263,115 257,115" class="tintin-houpette"/>
+                    <rect x="255" y="140" width="10" height="30" class="tintin-pull"/> <text x="260" y="133" font-size="7">🙂</text>
+                    <g class="speech-bubble-group">
+                        <title>CAPITAINE HADDOCK : MILLE MILLIARDS DE MILLE SABORDS DE TONNERRE DE BREST ! NON SEULEMENT IL VOLE LES OS, MAIS MAINTENANT IL ME DÉPOUILLE DE MON COUVRE-CHEF POUR HABILLER CE SAVANT FOU ?!</title>
+                        <path d="M50,100 Q10,30 80,30 Q150,30 120,100 L80,100 L70,110 L75,100 Z" class="speech-bubble-path" transform="scale(1.1) translate(-10,-10)"/>
+                        <text x="75" y="60" class="speech-bubble-text" font-size="6.5" font-weight="bold">MILLE MILLIARDS...! IL ME DÉPOUILLE DE MON COUVRE-CHEF?!</text>
+                    </g>
+                    <g class="speech-bubble-group">
+                         <title>TINTIN (souriant) : Au moins, Professeur, votre système de "dépôt de précision" semble parfaitement au point !</title>
+                        <path d="M260,100 Q230,70 280,70 Q310,70 290,100 L280,100 L270,110 L275,100 Z" class="speech-bubble-path" transform="translate(-20,0)"/>
+                        <text x="270" y="85" class="speech-bubble-text" font-size="7" transform="translate(-20,0)">Au moins, votre "dépôt de précision" est au point!</text>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
