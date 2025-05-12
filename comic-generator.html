@@ -113,38 +113,43 @@
 </head>
 <body>
     <div class="container">
-        <h1>Générateur de Prompts BD IA</h1>
+        <h1>Générateur de Prompts BD & Roman IA</h1>
 
         <div class="mode-selector">
-            <h3>Choisir le mode de génération de texte :</h3>
-            <label><input type="radio" name="generationMode" value="stepByStep" checked> Mode par Étapes (inclut Storyboard par page)</label>
-            <label><input type="radio" name="generationMode" value="singleBlock"> Mode Monobloc (Texte intégral)</label>
+            <h3>Choisir le mode de génération :</h3>
+            <label><input type="radio" name="generationMode" value="stepByStep" checked> Mode par Étapes (BD/Manga)</label>
+            <label><input type="radio" name="generationMode" value="singleBlockText"> Mode Monobloc (Texte BD/Manga)</label>
+            <label><input type="radio" name="generationMode" value="singleBlockRoman"> Mode Monobloc (Format Roman)</label>
         </div>
 
         <div class="step-section" id="parametersSection">
             <h2>Paramètres Généraux de l'Oeuvre</h2>
-            <label for="presetSelect">Choisir un preset :</label>
+            <label for="presetSelect">Choisir un preset (sera adapté pour format roman si besoin) :</label>
             <select id="presetSelect">
                 <option value="">-- Manuel --</option>
             </select>
             <label for="nomBd">Nom de la série / type d'oeuvre :</label>
-            <input type="text" id="nomBd" value="Mon Gag">
-            <label for="totalPages">Pages/Strips au total (base) :</label>
-            <input type="number" id="totalPages" value="2">
-            <label for="pageVariation">Variation de pages/strips (+/-) :</label>
+            <input type="text" id="nomBd" value="Mon Oeuvre">
+            <label for="totalPages" id="totalPagesLabel">Pages/Strips/Chapitres (base) :</label>
+            <input type="number" id="totalPages" value="10">
+            <label for="pageVariation" id="pageVariationLabel">Variation (+/-) :</label>
             <input type="number" id="pageVariation" value="0">
-            <label for="panelsPerPage">Cases par page/strip (moyenne) :</label>
-            <input type="number" id="panelsPerPage" value="6">
-            <label for="bubblesPerPage">Bulles par page/strip (moyenne) :</label>
-            <input type="number" id="bubblesPerPage" value="5">
-            <label for="wordsPerPage">Mots par page/strip (moyenne) :</label>
-            <input type="number" id="wordsPerPage" value="30">
-            <label for="yellowBlocksPerPage">Blocs narratifs par page/strip (moyenne) :</label>
-            <input type="number" id="yellowBlocksPerPage" value="0">
+            
+            <div id="comicSpecificParams">
+                <label for="panelsPerPage" id="panelsPerPageLabel">Cases par page/strip (moyenne) :</label>
+                <input type="number" id="panelsPerPage" value="9">
+                <label for="bubblesPerPage" id="bubblesPerPageLabel">Bulles par page/strip (moyenne) :</label>
+                <input type="number" id="bubblesPerPage" value="10">
+            </div>
+            
+            <label for="wordsPerPage" id="wordsPerPageLabel">Mots par page/strip/chapitre (moyenne) :</label>
+            <input type="number" id="wordsPerPage" value="150">
+            <label for="yellowBlocksPerPage" id="yellowBlocksPerPageLabel">Blocs narratifs / Importance narration (0-2) :</label>
+            <input type="number" id="yellowBlocksPerPage" value="1">
         </div>
 
         <div id="stepByStepModeContainer">
-            <h3 class="mode-title">Mode par Étapes</h3>
+            <h3 class="mode-title">Mode par Étapes (BD/Manga)</h3>
             <div class="step-section">
                 <h2>Étape 1 : Définition de l'Oeuvre</h2>
                 <button id="generateStep1Prompt">Générer Prompt Étape 1</button>
@@ -182,9 +187,9 @@
         </div>
 
         <div id="singleBlockTextModeContainer" class="mode-section hidden">
-            <h3 class="mode-title">Mode Monobloc (Sortie Texte Intégral)</h3>
-            <p>Génère un prompt unique pour obtenir toute la description textuelle de l'oeuvre par l'IA.</p>
-            <button id="generateSingleBlockTextPrompt">Générer Prompt Monobloc (Texte)</button>
+            <h3 class="mode-title">Mode Monobloc (Texte intégral - Format BD/Manga)</h3>
+            <p>Génère un prompt unique pour obtenir toute la description textuelle de l'oeuvre au format BD/Manga par l'IA.</p>
+            <button id="generateSingleBlockTextPrompt">Générer Prompt Monobloc (Texte BD/Manga)</button>
             <label for="singleBlockTextPromptOutput">Prompt Monobloc pour l'IA :</label>
             <textarea id="singleBlockTextPromptOutput" readonly style="min-height: 200px;"></textarea>
             <button id="copySingleBlockTextPrompt" class="button-secondary">Copier Prompt Monobloc</button>
@@ -193,55 +198,68 @@
             <textarea id="singleBlockAiTextOutput" style="min-height: 250px;"></textarea>
             
             <div id="monoblocStoryboardConversionSection" class="storyboard-page-section">
-                 <h4>Conversion en Storyboard de la Sortie Monobloc</h4>
+                 <h4>Conversion en Storyboard de la Sortie Monobloc (BD/Manga)</h4>
                  <p class="warning-text"><strong>Attention :</strong> Convertir une sortie monobloc de nombreuses pages/strips en storyboard peut générer un prompt de conversion très long et une sortie HTML/SVG extrêmement volumineuse. L'IA pourrait avoir des difficultés à tout traiter ou tronquer le résultat. Le prompt suivant demandera la conversion de TOUT le texte ci-dessus en un unique document HTML.</p>
                  <button id="generateMonoblocToStoryboardPromptBtn" class="button-tertiary">Générer Prompt Storyboard (depuis sortie monobloc)</button>
                  <label for="monoblocToStoryboardConversionPromptOutput">Prompt Storyboard (depuis sortie monobloc) :</label>
                  <textarea id="monoblocToStoryboardConversionPromptOutput" readonly></textarea>
                  <button id="copyMonoblocToStoryboardConversionPromptBtn" class="button-secondary">Copier Prompt Storyboard</button>
-                 <label for="monoblocStoryboardAiHtmlOutput">Coller le code HTML/SVG du storyboard complet ici :</label>
+                 <label for="monoblocStoryboardAiHtmlOutput">Coller le code HTML/SVG du storyboard ici :</label>
                  <textarea id="monoblocStoryboardAiHtmlOutput" style="font-family: monospace;"></textarea>
             </div>
         </div>
+        
+        <div id="singleBlockRomanModeContainer" class="mode-section hidden">
+            <h3 class="mode-title">Mode Monobloc (Format Roman)</h3>
+            <p>Génère un prompt unique pour obtenir une oeuvre narrative complète au format roman par l'IA.</p>
+            <button id="generateSingleBlockRomanPromptBtn">Générer Prompt Monobloc (Roman)</button>
+            <label for="singleBlockRomanPromptOutput">Prompt Monobloc (Roman) pour l'IA :</label>
+            <textarea id="singleBlockRomanPromptOutput" readonly style="min-height: 200px;"></textarea>
+            <button id="copySingleBlockRomanPromptBtn" class="button-secondary">Copier Prompt Roman</button>
+            <hr style="margin: 20px 0;">
+            <label for="singleBlockRomanAiOutput">Coller le texte du roman généré par l'IA ici :</label>
+            <textarea id="singleBlockRomanAiOutput" style="min-height: 250px;"></textarea>
+        </div>
+
     </div>
 
     <div id="toast-notification"></div>
 
     <script>
         const presets = { 
-            achiletalon:    { nomBd: "Achille Talon (gag)",                totalPages: 2,  pageVariation: 0,  panelsPerPage: 12, bubblesPerPage: 18, wordsPerPage: 220, yellowBlocksPerPage: 1 },
+            achiletalon:    { nomBd: "Achille Talon (gag)",                    totalPages: 2,  pageVariation: 0,  panelsPerPage: 12, bubblesPerPage: 18, wordsPerPage: 220, yellowBlocksPerPage: 1 },
             asterix:        { nomBd: "Astérix",                                totalPages: 42, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 116, yellowBlocksPerPage: 1 },
             astroboy:       { nomBd: "Astro Boy (chapitre aventure)",          totalPages: 24, pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, 
             attackontitan:  { nomBd: "Attack on Titan (chapitre)",             totalPages: 40, pageVariation: 5,  panelsPerPage: 5,  bubblesPerPage: 6,  wordsPerPage: 70,  yellowBlocksPerPage: 1 }, 
             berserk:        { nomBd: "Berserk (chapitre)",                     totalPages: 22, pageVariation: 4,  panelsPerPage: 5,  bubblesPerPage: 5,  wordsPerPage: 60,  yellowBlocksPerPage: 1 }, 
             blakemortimer:  { nomBd: "Blake et Mortimer",                      totalPages: 56, pageVariation: 2,  panelsPerPage: 10, bubblesPerPage: 12, wordsPerPage: 280, yellowBlocksPerPage: 2 },
-            bouleetbill:    { nomBd: "Boule et Bill (gag)",                totalPages: 1,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 6,  wordsPerPage: 45,  yellowBlocksPerPage: 0 },
+            bouleetbill:    { nomBd: "Boule et Bill (gag)",                    totalPages: 1,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 6,  wordsPerPage: 45,  yellowBlocksPerPage: 0 },
             deathnote:      { nomBd: "Death Note (chapitre)",                  totalPages: 19, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 9,  wordsPerPage: 110, yellowBlocksPerPage: 1 }, 
-            dragonball:     { nomBd: "Dragon Ball (Goku enfant)",  totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
-            dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte)",totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 },
+            dragonball:     { nomBd: "Dragon Ball (Goku enfant)",              totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
+            dragonballz:    { nomBd: "Dragon Ball Z (Goku adulte)",            totalPages: 100,pageVariation: 4,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 75,  yellowBlocksPerPage: 1 },
             drslump:        { nomBd: "Dr. Slump (chapitre gag)",               totalPages: 14, pageVariation: 1,  panelsPerPage: 7,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
             garfield:       { nomBd: "Garfield (gag-strip)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 3,  bubblesPerPage: 3,  wordsPerPage: 20,  yellowBlocksPerPage: 0 }, 
-            gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag)",               totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
+            gastonlagaffe:  { nomBd: "Gaston Lagaffe (gag)",                   totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
             iznogoud:       { nomBd: "Iznogoud (1 histoire)",                  totalPages: 10, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 115, yellowBlocksPerPage: 1 },
-            joebarteam:     { nomBd: "Joe Bar Team (gag)",                 totalPages: 1,  pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 8,  wordsPerPage: 80,  yellowBlocksPerPage: 0 },
+            joebarteam:     { nomBd: "Joe Bar Team (gag)",                     totalPages: 1,  pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 8,  wordsPerPage: 80,  yellowBlocksPerPage: 0 },
             jozettejocko:   { nomBd: "Jo, Zette et Jocko",                     totalPages: 52, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 12, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             luckyluke:      { nomBd: "Lucky Luke",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 120, yellowBlocksPerPage: 1 },
             marsupilami:    { nomBd: "Marsupilami (aventure)",                 totalPages: 46, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
             naruto:         { nomBd: "Naruto (chapitre)",                      totalPages: 18, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 80,  yellowBlocksPerPage: 1 }, 
             onepiece:       { nomBd: "One Piece (chapitre)",                   totalPages: 17, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
-            oumpahpah:      { nomBd: "Oumpah-Pah",                totalPages: 30, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
+            oumpahpah:      { nomBd: "Oumpah-Pah",                             totalPages: 30, pageVariation: 2,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
             peanuts:        { nomBd: "Peanuts (gag-strip)",                    totalPages: 1,  pageVariation: 0,  panelsPerPage: 4,  bubblesPerPage: 4,  wordsPerPage: 30,  yellowBlocksPerPage: 0 }, 
             philemon:       { nomBd: "Philémon (aventure onirique)",           totalPages: 44, pageVariation: 2,  panelsPerPage: 7,  bubblesPerPage: 11, wordsPerPage: 110, yellowBlocksPerPage: 1 },
             pierrafeuquebec:{ nomBd: "Les Pierrafeu (BD québécoise)",          totalPages: 12, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 7,  wordsPerPage: 90,  yellowBlocksPerPage: 1 },
             petitspirougag: { nomBd: "Le Petit Spirou (gag)",                  totalPages: 1,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 9,  wordsPerPage: 60,  yellowBlocksPerPage: 0 },
-            petitspirouhist:{ nomBd: "Le Petit Spirou (hist)",            totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
+            petitspirouhist:{ nomBd: "Le Petit Spirou (hist)",                 totalPages: 6,  pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 10, wordsPerPage: 70,  yellowBlocksPerPage: 0 },
             quickflupke:    { nomBd: "Quick et Flupke (gag)",                  totalPages: 2,  pageVariation: 0,  panelsPerPage: 6,  bubblesPerPage: 5,  wordsPerPage: 30,  yellowBlocksPerPage: 0 },
-            schtroumpfs:    { nomBd: "Les Schtroumpfs",           totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
+            schtroumpfs:    { nomBd: "Les Schtroumpfs",                        totalPages: 29, pageVariation: 10, panelsPerPage: 10, bubblesPerPage: 13, wordsPerPage: 100, yellowBlocksPerPage: 1 },
             simpsonquebec:  { nomBd: "Les Simpson (BD québécoise)",            totalPages: 22, pageVariation: 2,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 110, yellowBlocksPerPage: 1 },
             spirou:         { nomBd: "Spirou et Fantasio",                     totalPages: 58, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 14, wordsPerPage: 130, yellowBlocksPerPage: 1 },
             spyxfamily:     { nomBd: "Spy x Family (chapitre/mission)",        totalPages: 25, pageVariation: 5,  panelsPerPage: 6,  bubblesPerPage: 8,  wordsPerPage: 90,  yellowBlocksPerPage: 1 }, 
             tintin:         { nomBd: "Tintin",                                 totalPages: 62, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 13, wordsPerPage: 140, yellowBlocksPerPage: 1 },
-            yakari:         { nomBd: "Yakari",             totalPages: 44, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
+            yakari:         { nomBd: "Yakari",                                 totalPages: 44, pageVariation: 0,  panelsPerPage: 8,  bubblesPerPage: 9,  wordsPerPage: 80,  yellowBlocksPerPage: 1 },
             yokotsuno:      { nomBd: "Yoko Tsuno",                             totalPages: 44, pageVariation: 0,  panelsPerPage: 9,  bubblesPerPage: 11, wordsPerPage: 130, yellowBlocksPerPage: 1 }
         };
 
@@ -253,20 +271,27 @@
         const bubblesPerPageInput = document.getElementById('bubblesPerPage');
         const wordsPerPageInput = document.getElementById('wordsPerPage');
         const yellowBlocksPerPageInput = document.getElementById('yellowBlocksPerPage');
+        // Labels des paramètres généraux
+        const totalPagesLabel = document.getElementById('totalPagesLabel');
+        const pageVariationLabel = document.getElementById('pageVariationLabel');
+        const panelsPerPageLabel = document.getElementById('panelsPerPageLabel');
+        const bubblesPerPageLabel = document.getElementById('bubblesPerPageLabel');
+        const wordsPerPageLabel = document.getElementById('wordsPerPageLabel');
+        const yellowBlocksLabel = document.getElementById('yellowBlocksPerPageLabel');
+        const comicSpecificParamsDiv = document.getElementById('comicSpecificParams');
 
+
+        // Step-by-step mode elements
         const generateStep1PromptBtn = document.getElementById('generateStep1Prompt');
         const step1PromptOutput = document.getElementById('step1PromptOutput');
         const copyStep1PromptBtn = document.getElementById('copyStep1Prompt');
         const step1AiResponse = document.getElementById('step1AiResponse');
-
         const generateStep2PromptBtn = document.getElementById('generateStep2Prompt');
         const step2PromptOutput = document.getElementById('step2PromptOutput');
         const copyStep2PromptBtn = document.getElementById('copyStep2Prompt');
         const step2AiResponse = document.getElementById('step2AiResponse');
-        
         const setupStep3FieldsBtn = document.getElementById('setupStep3Fields');
         const step3PagePromptsContainer = document.getElementById('step3PagePromptsContainer');
-
         const compileAllContentBtn = document.getElementById('compileAllContent');
         const finalCompilationOutput = document.getElementById('finalCompilationOutput'); 
         const copyFinalCompilationBtn = document.getElementById('copyFinalCompilation');
@@ -274,10 +299,13 @@
         const toastNotification = document.getElementById('toast-notification');
         let toastTimeout;
 
+        // Mode Management Elements
         const modeRadios = document.querySelectorAll('input[name="generationMode"]');
         const stepByStepModeContainer = document.getElementById('stepByStepModeContainer');
         const singleBlockTextModeContainer = document.getElementById('singleBlockTextModeContainer'); 
+        const singleBlockRomanModeContainer = document.getElementById('singleBlockRomanModeContainer'); 
 
+        // Mode Monobloc (Texte BD/Manga) Elements
         const generateSingleBlockTextPromptBtn = document.getElementById('generateSingleBlockTextPrompt');
         const singleBlockTextPromptOutput = document.getElementById('singleBlockTextPromptOutput');
         const copySingleBlockTextPromptBtn = document.getElementById('copySingleBlockTextPrompt');
@@ -289,14 +317,51 @@
         const copyMonoblocToStoryboardConversionPromptBtn = document.getElementById('copyMonoblocToStoryboardConversionPromptBtn');
         const monoblocStoryboardAiHtmlOutput = document.getElementById('monoblocStoryboardAiHtmlOutput'); 
 
+        // Mode Monobloc (Roman) Elements
+        const generateSingleBlockRomanPromptBtn = document.getElementById('generateSingleBlockRomanPromptBtn');
+        const singleBlockRomanPromptOutput = document.getElementById('singleBlockRomanPromptOutput');
+        const copySingleBlockRomanPromptBtn = document.getElementById('copySingleBlockRomanPromptBtn');
+        const singleBlockRomanAiOutput = document.getElementById('singleBlockRomanAiOutput');
+
 
         function switchMode(mode) {
             stepByStepModeContainer.classList.add('hidden');
             singleBlockTextModeContainer.classList.add('hidden');
+            singleBlockRomanModeContainer.classList.add('hidden'); 
+            
+            const comicParams = document.getElementById('comicSpecificParams'); // Récupérer l'élément ici
+            const totalPagesLabel = document.getElementById('totalPagesLabel');
+            const pageVariationLabel = document.getElementById('pageVariationLabel');
+            const panelsPerPageLabel = document.getElementById('panelsPerPageLabel');
+            const bubblesPerPageLabel = document.getElementById('bubblesPerPageLabel');
+            const wordsPerPageLabel = document.getElementById('wordsPerPageLabel');
+            const yellowBlocksLabel = document.getElementById('yellowBlocksPerPageLabel');
+
             if (mode === 'stepByStep') {
                 stepByStepModeContainer.classList.remove('hidden');
-            } else if (mode === 'singleBlock') {
+                comicParams.classList.remove('hidden');
+                totalPagesLabel.textContent = "Pages/Strips au total (base) :";
+                pageVariationLabel.textContent = "Variation de pages/strips (+/-) :";
+                panelsPerPageLabel.textContent = "Cases par page/strip (moyenne) :";
+                bubblesPerPageLabel.textContent = "Bulles par page/strip (moyenne) :";
+                wordsPerPageLabel.textContent = "Mots par page/strip (moyenne) :";
+                yellowBlocksLabel.textContent = "Blocs narratifs par page/strip (moyenne) :";
+            } else if (mode === 'singleBlockText') { 
                 singleBlockTextModeContainer.classList.remove('hidden');
+                comicParams.classList.remove('hidden');
+                totalPagesLabel.textContent = "Pages/Strips au total (base) :";
+                pageVariationLabel.textContent = "Variation de pages/strips (+/-) :";
+                panelsPerPageLabel.textContent = "Cases par page/strip (moyenne) :";
+                bubblesPerPageLabel.textContent = "Bulles par page/strip (moyenne) :";
+                wordsPerPageLabel.textContent = "Mots par page/strip (moyenne) :";
+                yellowBlocksLabel.textContent = "Blocs narratifs par page/strip (moyenne) :";
+            } else if (mode === 'singleBlockRoman') {
+                singleBlockRomanModeContainer.classList.remove('hidden');
+                comicParams.classList.add('hidden'); 
+                totalPagesLabel.textContent = "Chapitres/Sections au total (base) :";
+                pageVariationLabel.textContent = "Variation Chapitres/Sections (+/-) :";
+                wordsPerPageLabel.textContent = "Mots par Chapitre/Section (moyenne) :";
+                yellowBlocksLabel.textContent = "Importance de la Narration (0=peu, 1=équilibré, 2=beaucoup) :";
             }
         }
 
@@ -307,14 +372,14 @@
         });
         
         function setDefaultParameters() {
-            nomBdInput.value = "Mon Gag"; 
-            totalPagesInput.value = 2; 
+            nomBdInput.value = "Mon Oeuvre"; 
+            totalPagesInput.value = 10; 
             pageVariationInput.value = 0; 
-            panelsPerPageInput.value = 6;
-            bubblesPerPageInput.value = 5;
-            wordsPerPageInput.value = 30;
-            yellowBlocksPerPageInput.value = 0;
-             monoblocStoryboardConversionSection.classList.remove('hidden'); // Toujours visible dans ce mode
+            panelsPerPageInput.value = 9; 
+            bubblesPerPageInput.value = 10;
+            wordsPerPageInput.value = 150;
+            yellowBlocksPerPageInput.value = 1;
+            monoblocStoryboardConversionSection.classList.remove('hidden'); 
         }
 
         function populatePresetDropdown() {
@@ -352,7 +417,7 @@
             if(selectedPresetKey !== "") { 
                  showToastNotification("Les champs de l'Étape 3 ont été réinitialisés suite au changement de preset/paramètres.");
             }
-             monoblocStoryboardConversionSection.classList.remove('hidden'); // S'assurer qu'elle est visible quand les params changent
+             monoblocStoryboardConversionSection.classList.remove('hidden'); 
         });
         
         function showToastNotification(message) {
@@ -386,9 +451,12 @@
             }
         }
         
-        function getTypeOeuvre() {
+        function getTypeOeuvre(isRomanMode = false) {
             const nomDeLaBd = nomBdInput.value.trim();
             const currentTotalPages = parseInt(totalPagesInput.value, 10);
+            
+            if(isRomanMode) return "d'un roman (ou d'une nouvelle)";
+
             let typeOeuvre = "d'un album"; 
             if (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && currentTotalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) { typeOeuvre = "d'un gag (format strip)"; }
             else if (nomDeLaBd.toLowerCase().includes("gag")) { typeOeuvre = "d'un gag"; } 
@@ -407,13 +475,17 @@
             return typeOeuvre;
         }
 
-        function getUnitName() {
+        function getUnitName(isRomanMode = false) {
+            if(isRomanMode) return "chapitre";
+
             const nomDeLaBd = nomBdInput.value.trim();
             const totalPages = parseInt(totalPagesInput.value, 10);
             return (nomDeLaBd.toLowerCase().includes("gag-strip") || (nomDeLaBd.toLowerCase().includes("gag 1p.") && totalPages === 1 && !nomDeLaBd.toLowerCase().includes("petit spirou")) ) ? "strip" : "page";
         }
         
-        function getMangaSpecifics() {
+        function getMangaSpecifics(isRomanMode = false) {
+            if(isRomanMode) return ""; 
+
             const nomDeLaBd = nomBdInput.value.trim();
             let typeOeuvre = getTypeOeuvre(); 
             if (typeOeuvre.includes("manga") || nomDeLaBd.toLowerCase().includes("chapitre") || nomDeLaBd.toLowerCase().includes("arc") || ["naruto", "one piece", "attack on titan", "death note", "berserk", "spy x family", "dr. slump", "astro boy", "dragon ball", "dragon ball z"].some(m => nomDeLaBd.toLowerCase().includes(m.replace(/\s/g, '')))) { 
@@ -424,7 +496,7 @@
 
         generateStep1PromptBtn.addEventListener('click', function() {
             const nomDeLaBd = nomBdInput.value.trim() || "[Nom de la BD à définir]";
-            let typeOeuvre = getTypeOeuvre();
+            let typeOeuvre = getTypeOeuvre(document.querySelector('input[name="generationMode"]:checked').value === 'singleBlockRoman');
             step1PromptOutput.value = `Générez-moi le titre ${typeOeuvre} de ${nomDeLaBd}\nainsi qu'un très court résumé de l'intrigue principale (1-2 phrases pour un gag ou strip, 3-5 pour une histoire courte ou un chapitre, potentiellement plus pour un arc narratif ou une aventure complète)\nainsi que la liste des personnages importants et leur rôle\net le ton et le style de l'oeuvre. L'oeuvre doit être originale et ne pas trop ressembler à une oeuvre existante (ni à un titre existant de l'oeuvre, le titre doit être démarqué des titres existants) mais respecter le thème de l'univers de ${nomDeLaBd}.`;
         });
         copyStep1PromptBtn.addEventListener('click', () => copyToClipboard('step1PromptOutput'));
@@ -563,15 +635,13 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             showToastNotification(`Prompt pour texte détaillé de la ${unitName} ${pageNum} généré.`);
         }
 
-        function handleGenerateStoryboardPromptForPage(event, sourceTextareaIdForMonobloc, pageNumForMonoblocStoryboard) { 
-            const pageNum = pageNumForMonoblocStoryboard || parseInt(event.target.dataset.page, 10);
-            const isMonoblocConversion = !!pageNumForMonoblocStoryboard;
-
+        function handleGenerateStoryboardPromptForPage(event, sourceTextareaIdForMonobloc, isFullMonoblocConversion = false) { 
+            const pageNum = isFullMonoblocConversion ? 1 : parseInt(event.target.dataset.page, 10); 
             const detailedTextForPage = document.getElementById(sourceTextareaIdForMonobloc || `pageAiDetailedResponse_${pageNum}`).value.trim();
             const step1Info = step1AiResponse.value.trim();
 
             if (!detailedTextForPage) {
-                showToastNotification(`Veuillez d'abord fournir la description textuelle détaillée pour la ${getUnitName()} ${pageNum}.`);
+                showToastNotification(`Veuillez d'abord fournir la description textuelle détaillée pour ${isFullMonoblocConversion ? 'la sortie monobloc' : `la ${getUnitName()} ${pageNum}`}.`);
                 return;
             }
             
@@ -581,32 +651,30 @@ Si c'est le/la dernier/dernière ${unitName} de l'oeuvre (selon les descriptions
             let typeOeuvre = getTypeOeuvre();
             let mangaSpecificsForStoryboard = getMangaSpecifics();
             
+            let extractedTitle = nomDeLaBd; 
             const titleFromStep1Match = step1Info.match(/TITRE DE L'OEUVRE\s*:\s*([^\n]+)/i);
-            let extractedTitle = nomDeLaBd; // Fallback
             if (titleFromStep1Match && titleFromStep1Match[1]) {
                 extractedTitle = titleFromStep1Match[1].trim();
-            } else if (isMonoblocConversion && detailedTextForPage) {
-                // Essayer d'extraire le titre de la PARTIE A du texte monobloc
+            } else if (isFullMonoblocConversion && detailedTextForPage) {
                 const monoblocTitleMatch = detailedTextForPage.match(/### PARTIE A : DÉFINITION GLOBALE DE L'OEUVRE[\s\S]*?1\.\s*TITRE DE L'OEUVRE\s*:\s*([^\n]+)/i);
                 if (monoblocTitleMatch && monoblocTitleMatch[1]) {
                     extractedTitle = monoblocTitleMatch[1].trim();
                 }
             }
 
-
             const storyboardPrompt = `
 Vous êtes un assistant expert en création de storyboards VISUELS pour bandes dessinées au format HTML et SVG, à partir de descriptions textuelles détaillées.
 
-TÂCHE : Convertir ${isMonoblocConversion ? `la description textuelle complète de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous, qui peut décrire UNE ou PLUSIEURS ${unitName}s,` : `la description détaillée de la ${unitName} NUMÉRO ${pageNum} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous`} en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour ${isMonoblocConversion ? `TOUTES les ${unitName}s décrites` : `cette SEULE ${unitName}`}.
+TÂCHE : Convertir ${isFullMonoblocConversion ? `la description textuelle complète de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous, qui peut décrire UNE ou PLUSIEURS ${unitName}s,` : `la description détaillée de la ${unitName} NUMÉRO ${pageNum} de l'oeuvre "${nomDeLaBd}" (type "${typeOeuvre}") fournie ci-dessous`} en un **DOCUMENT HTML COMPLET ET AUTONOME** contenant le storyboard pour ${isFullMonoblocConversion ? `TOUTES les ${unitName}s décrites` : `cette SEULE ${unitName}`}.
 
-${isMonoblocConversion ? 
+${isFullMonoblocConversion ? 
 `DESCRIPTION COMPLÈTE DE L'OEUVRE À CONVERTIR (contient Titre global, Résumé global, Personnages, Ton, et la description détaillée de chaque ${unitName}) :` : 
 `INFORMATIONS GÉNÉRALES SUR L'OEUVRE (issues de l'Étape 1 du processus par étapes, pour contexte et titre global) :`}
 --- DÉBUT INFO OEUVRE / TEXTE SOURCE ---
-${isMonoblocConversion ? detailedTextForPage : (step1Info || `TITRE DE L'OEUVRE : ${nomDeLaBd}\n[Autres informations de l'Étape 1 non fournies]`)} 
+${isFullMonoblocConversion ? detailedTextForPage : (step1Info || `TITRE DE L'OEUVRE : ${nomDeLaBd}\n[Autres informations de l'Étape 1 non fournies]`)} 
 --- FIN INFO OEUVRE / TEXTE SOURCE ---
 
-${isMonoblocConversion ? '' : 
+${isFullMonoblocConversion ? '' : 
 `DESCRIPTION DÉTAILLÉE DE LA ${unitName.toUpperCase()} ${pageNum} À CONVERTIR :
 --- DÉBUT DESCRIPTION ${unitName.toUpperCase()} ${pageNum} ---
 ${detailedTextForPage}
@@ -620,40 +688,39 @@ INSTRUCTIONS POUR LA GÉNÉRATION DU DOCUMENT HTML/SVG :
 1.  **Format de Sortie :** Un document HTML5 valide et complet, commençant par \`<!DOCTYPE html>\` et se terminant par \`</html>\`.
 2.  **Extraction d'Informations Clés :**
     * Extrayez le **TITRE GÉNÉRAL DE L'OEUVRE** (cherchez "TITRE DE L'OEUVRE :" dans la description fournie). Si non trouvé, utilisez "${extractedTitle}".
-    * Pour ${isMonoblocConversion ? `CHAQUE ${unitName.toUpperCase()} décrite dans le texte source (PARTIE B et C)` : `CETTE ${unitName.toUpperCase()} ${pageNum}`}:
+    * Pour ${isFullMonoblocConversion ? `CHAQUE ${unitName.toUpperCase()} décrite dans le texte source (PARTIE B et C)` : `CETTE ${unitName.toUpperCase()} ${pageNum}`}:
+        * Synthétisez un **Résumé Sommaire EXTRÊMEMENT DENSE** (1 phrase courte max, enlevez les articles et mots superflus si besoin pour une concision maximale) de cette ${unitName}, contenant TOUTE l'information essentielle pour la comprendre, à partir de sa description détaillée.
         * Déterminez le **Nombre de cases** pour cette ${unitName} en analysant sa description (PARTIE B ou C de la source).
 3.  **Structure du Document HTML :**
-    * \`<head>\` avec \`<title>Storyboard - [TITRE DE L'OEUVRE] ${isMonoblocConversion ? '' : `- ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</title>\` et les styles CSS.
-    * \`<body>\` avec \`<h1>[TITRE DE L'OEUVRE] ${isMonoblocConversion ? '' : `- ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</h1>\`.
-    * Pour ${isMonoblocConversion ? `CHAQUE ${unitName.toUpperCase()} identifiée`: `la ${unitName.toUpperCase()} unique demandée`} :
-        * Un \`<div class="comic-page" id="page_[Numéro_de_la_page_dans_l_oeuvre]_storyboard_content">\`.
-        * Dans ce div, le résumé de la ${unitName} (\`<h5>\`) et une \`<div class="panel-grid">\`.
+    * \`<head>\` avec \`<title>Storyboard - [TITRE DE L'OEUVRE] ${isFullMonoblocConversion ? '(Complet)' : `- ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</title>\` et les styles CSS.
+    * \`<body>\` avec \`<h1>[TITRE DE L'OEUVRE] ${isFullMonoblocConversion ? '(Storyboard Complet)' : `- ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</h1>\`.
+    * Pour ${isFullMonoblocConversion ? `CHAQUE ${unitName.toUpperCase()} identifiée dans le texte source (numérotez-les séquentiellement)`: `la ${unitName.toUpperCase()} unique demandée (identifiée comme ${pageNum})`} :
+        * Un \`<div class="comic-page" id="page_[NuméroEffectifDeLaPage]_storyboard_content">\`.
+        * Dans ce div, le résumé dense de la ${unitName} (\`<h5>\`) et une \`<div class="panel-grid">\`.
 4.  **Structure par Case :**
     * Chaque case décrite devient un \`<div class="panel-container">\`.
-    * Titre \`<h6>\` : "[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) AVEC LES DIALOGUES FORMATTÉS, UNE INTERVENTION VERBALE PAR LIGNE avec un tiret avant chaque intervention verbale]".
+    * Titre \`<h6>\` : "[LA DESCRIPTION VISUELLE DÉTAILLÉE DE LA CASE (extraite du texte source), SANS les dialogues. Formatée pour lisibilité, mais sans labels techniques comme 'Description Visuelle :']".
     * Élément \`<svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">\`.
 5.  **Contenu SVG Schématique :**
-    * INTERPRÉTEZ la "Description Visuelle" et "Dialogues/Texte" de chaque case.
-    * Formes SVG SIMPLES. Personnages schématiques.
-    * Dialogues/Narration dans bulles/rectangles SVG, chacun avec un sous-élément SVG \`<title>texte COMPLET du dialogue/narration</title>\` pour tooltip.
-    * Positionnement logique.
+    * Pour chaque case, basez le dessin SVG sur sa "Description Visuelle" COMPLÈTE extraite du texte source (celle utilisée pour le \`<h6>\` ci-dessus), en veillant à ce qu'elle ne contienne PAS les dialogues.
+    * Dialogues/Narration : Extrayez les "Dialogues/Texte" de chaque case du texte source et intégrez-les dans des bulles/rectangles SVG distincts. Chaque bulle/bloc doit contenir un sous-élément SVG \`<title>texte COMPLET du dialogue/narration</title>\` pour tooltip (apparaîtra au survol, le délai est géré par le navigateur).
     * ${mangaSpecificsForStoryboard}
 6.  **Code Source Brut :** N'ÉCHAPPEZ PAS les caractères HTML (\`<\`, \`>\`).
 
-INSPIREZ-VOUS FORTEMENT DU TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE QUI DOIT ÊTRE EN VRAI HTML, pas avec "&lt;"  :
+UTILISEZ LE TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POUR VOTRE SORTIE :
 \`\`\`html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Storyboard - [TITRE DE L'OEUVRE EXTRAIT]${isMonoblocConversion ? '' : ` - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</title>
+    <title>Storyboard - [TITRE DE L'OEUVRE EXTRAIT]${isFullMonoblocConversion ? ' - Complet' : ` - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</title>
     <style>
         body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
         .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
         .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; }
         .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 450px; max-width: 500px; display: flex; flex-direction: column;}
-        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; }
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; white-space: pre-wrap; }
         .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 4/3; background-color: white; }
         svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; } 
         .speech-bubble-group title {} 
@@ -661,35 +728,37 @@ INSPIREZ-VOUS FORTEMENT DU TEMPLATE HTML/SVG SUIVANT COMME STRUCTURE DE BASE POU
         .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 14px; fill: black; }
         .narrative-box-path { fill: #FFFACD; stroke: #F0E68C; stroke-width: 1; }
         .narrative-text { font-size: 15px; font-style: italic; fill: black; }
-		h6 { font-weight: normal; font-size: 14px; }
+        h6 { font-weight: normal; font-size: 14px; }
     </style>
 </head>
 <body>
-    <h1>[TITRE DE L'OEUVRE EXTRAIT]${isMonoblocConversion ? ` (Storyboard Complet)` : ` - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</h1>
+    <h1>[TITRE DE L'OEUVRE EXTRAIT]${isFullMonoblocConversion ? ` (Storyboard Complet)` : ` - ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} ${pageNum}`}</h1>
     
-    <div class="comic-page" id="page_X_storyboard_content"> <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} X : [DESCRIPTION DE CETTE ${unitName}]</h5>
+    <div class="comic-page" id="page_X_storyboard_content"> 
+        <h5>${unitName.charAt(0).toUpperCase() + unitName.slice(1)} X : [Résumé EXTRÊMEMENT DENSE de cette ${unitName}]</h5>
         <div class="panel-grid">
-            <div class="panel-container" id="page_X_panel_Y"> <h6>[DESCRIPTION DÉTAILLÉE DE LA CASE (DESCRIPTION VISUELLE ETC) AVEC LES DIALOGUES, pas besoin d'écrire le # de la case, ne pas mentionner explicitement "Description Visuelle: " avant la description visuelle]</h6>
+            <div class="panel-container" id="page_X_panel_Y"> 
+                <h6>[LA DESCRIPTION VISUELLE DÉTAILLÉE DE LA CASE (provenant du texte source, SANS les dialogues, et sans labels comme "Description Visuelle:")]</h6>
                 <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-                    [Contenu SVG pour cette case. Inclure <title> pour tooltips des bulles/narration.]
+                    [Contenu SVG pour cette case. Les DIALOGUES/TEXTES (extraits du texte source) vont dans les bulles SVG, avec <title> pour tooltip.]
                     ${mangaSpecificsForStoryboard}
                 </svg>
             </div>
-            </div>
+        </div>
     </div>
-    </body>
+</body>
 </html>
 \`\`\`
-${isMonoblocConversion ? `
+${isFullMonoblocConversion ? `
 INSTRUCTION IMPORTANTE CONCERNANT LA LONGUEUR DE LA RÉPONSE (Mode Monobloc vers Storyboard) :
 Si le storyboard HTML/SVG complet pour TOUTES les ${unitName}s décrites dans le texte source est trop long pour une seule réponse :
-1.  Générez autant de ${unitName}s complètes que possible DANS UN DOCUMENT HTML VALIDE.
+1.  Veuillez générer autant de ${unitName}s complètes que possible DANS UN DOCUMENT HTML VALIDE.
 2.  Indiquez clairement à la fin de votre réponse jusqu'à quelle ${unitName} le code a été fourni (ex: "Code HTML/SVG fourni jusqu'à la ${unitName} X sur Y.").
 3.  Soyez prêt à continuer la génération du code pour les ${unitName}s suivantes si l'utilisateur envoie simplement le message : "Continuez". Vous reprendrez alors exactement où vous vous êtes arrêté, en générant les ${unitName}s suivantes, idéalement en complétant le document HTML (si possible) ou en démarrant un nouveau fragment HTML pour les ${unitName}s restantes.` : ''}
 `;
-            const outputTextareaId = isMonoblocConversion ? `monoblocToStoryboardConversionPromptOutput` : `storyboardPromptOutput_page_${pageNum}`;
+            const outputTextareaId = isFullMonoblocConversion ? `monoblocToStoryboardConversionPromptOutput` : `storyboardPromptOutput_page_${pageNum}`;
             document.getElementById(outputTextareaId).value = storyboardPrompt.trim();
-            showToastNotification(`Prompt Storyboard pour ${unitName} ${pageNum} généré.`);
+            showToastNotification(`Prompt Storyboard pour ${isFullMonoblocConversion ? 'la sortie monobloc' : unitName + ' ' + pageNum} généré.`);
         }
         
         compileAllContentBtn.addEventListener('click', function() {
@@ -825,7 +894,7 @@ VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE D�
 **POUR CHAQUE CASE** (de 1 au nombre de cases défini pour CETTE UNITÉ (${unitName.toUpperCase()}) DANS LA PARTIE B) :
 
 **Case [Numéro de la case] :**
-* **(Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
+* **Description Visuelle :** (Description schématique simple et claire du dessin : personnages, actions, expressions, décor, cadrage, angles. ${mangaSpecifics})
 * **Dialogues/Texte :** (Texte exact des bulles, pensées, ou blocs narratifs DANS cette case. Si muet, indiquer "Aucun dialogue".)
 
 **-------------------- FIN ${unitName.toUpperCase()} [Numéro] --------------------**
@@ -848,14 +917,107 @@ Si vous ne parvenez pas à générer l'intégralité de la PARTIE C en une seule
         });
         copySingleBlockTextPromptBtn.addEventListener('click', () => copyToClipboard('singleBlockTextPromptOutput'));
         
-        generateMonoblocToStoryboardPromptBtn.addEventListener('click', function() {
-            const singleBlockText = singleBlockAiTextOutput.value.trim();
-            if (!singleBlockText) {
-                showToastNotification("Veuillez d'abord coller la sortie textuelle complète du Mode Monobloc.");
+        // NOUVEAU : Écouteur pour le bouton de génération de prompt roman
+        generateSingleBlockRomanPromptBtn.addEventListener('click', function() {
+            const nomDeLaBd = nomBdInput.value.trim() || "[Nom de l'Oeuvre à Définir]";
+            const totalPages = parseInt(totalPagesInput.value, 10); // Interprété comme chapitres/sections
+            const variation = parseInt(pageVariationInput.value, 10);
+            // panelsPerPage et bubblesPerPage sont moins pertinents pour le format roman direct
+            const wordsPerPage = wordsPerPageInput.value; // Interprété comme mots par chapitre/section
+            const yellowBlocksPerPage = yellowBlocksPerPageInput.value; // Interprété comme importance de la narration
+
+            if (isNaN(totalPages) || totalPages <= 0) {
+                showToastNotification("Veuillez définir un nombre de chapitres/sections (base) valide.");
                 return;
             }
-            // Appeler la fonction de génération de prompt storyboard, en lui indiquant la source et que c'est pour la "page 1" conceptuelle de ce bloc de texte
-            handleGenerateStoryboardPromptForPage(null, 'singleBlockAiTextOutput', 1); 
+
+            let typeOeuvreRoman = getTypeOeuvre(true); // true pour format roman
+            let unitNameRoman = getUnitName(true);     // Sera "chapitre"
+
+            let pageCountDetails = "";
+            if (variation === 0) {
+                pageCountDetails = `${totalPages} ${unitNameRoman}${totalPages > 1 ? 's' : ''} au total (nombre fixe).`;
+            } else {
+                const minPages = Math.max(1, totalPages - variation);
+                const maxPages = totalPages + variation;
+                pageCountDetails = `Environ ${totalPages} ${unitNameRoman}${totalPages > 1 ? 's' : ''} au total. Le nombre final peut varier de ${minPages} à ${maxPages}.`;
+            }
+            
+            const romanPrompt = `
+Vous êtes un assistant expert en création littéraire.
+Votre tâche est de générer une oeuvre narrative complète de type "${typeOeuvreRoman}" dans l'univers de "${nomDeLaBd}", au format d'un roman ou d'une nouvelle.
+
+PARAMÈTRES GÉNÉRAUX DE L'OEUVRE (pour guider la structure et la densité) :
+- Longueur de base attendue : ${totalPages} ${unitNameRoman}${totalPages > 1 ? 's' : ''}.
+- Variation autorisée : +/- ${variation} ${unitNameRoman}${totalPages > 1 ? 's' : ''}.
+- Mots par ${unitNameRoman} (moyenne indicative) : ${wordsPerPage}
+- Importance de la Narration vs Dialogue (0=très dialogué, 1=équilibré, 2=très narratif) : ${yellowBlocksPerPage} 
+  (Adaptez la proportion de descriptions narratives par rapport aux dialogues en conséquence.)
+
+VEUILLEZ FOURNIR LES INFORMATIONS SUIVANTES DANS L'ORDRE ET AVEC LA STRUCTURE DÉTAILLÉE CI-DESSOUS :
+
+### PARTIE A : DÉFINITION GLOBALE DE L'OEUVRE
+1.  **TITRE DE L'OEUVRE :**
+    [Proposez un titre original et adapté]
+2.  **RÉSUMÉ DE L'INTRIGUE PRINCIPALE :**
+    (Décrivez le concept central, les enjeux majeurs, et la direction générale de l'intrigue en 3 à 7 phrases.)
+3.  **PERSONNAGES IMPORTANTS :**
+    (Listez les personnages clés, y compris les nouveaux si pertinent, et décrivez brièvement leur rôle, motivations, et arcs narratifs potentiels.)
+4.  **TON ET STYLE D'ÉCRITURE :**
+    (Décrivez le ton général (humoristique, dramatique, épique, etc.) et le style d'écriture (ex: direct, poétique, introspectif) à adopter pour cette oeuvre, en respectant l'univers de "${nomDeLaBd}" mais adapté au format roman.)
+5.  **THÈMES ABORDÉS :**
+    [Quels thèmes majeurs seront explorés dans cette histoire ?]
+6.  **ORIGINALITÉ ET RESPECT DE L'UNIVERS :**
+    L'oeuvre générée doit être une création originale, tout en restant cohérente avec l'esprit et les personnages de l'univers de "${nomDeLaBd}".
+
+### PARTIE B : STRUCTURE DES ${unitNameRoman.toUpperCase()}S / SECTIONS
+1.  **NOMBRE TOTAL DE ${unitNameRoman.toUpperCase()}S EFFECTIVEMENT UTILISÉES DANS VOTRE GÉNÉRATION :**
+    [Indiquez ici le nombre exact de ${unitNameRoman}s que vous allez décrire ci-dessous, en respectant la variation autorisée.]
+2.  **POUR CHAQUE ${unitNameRoman.toUpperCase()}** (de 1 au Nombre total de ${unitNameRoman}s) :
+
+    **${unitNameRoman.charAt(0).toUpperCase() + unitNameRoman.slice(1)} [Numéro] - Titre du ${unitNameRoman} (optionnel) :** [Si vous souhaitez un titre pour ce ${unitNameRoman}]
+    * **Résumé Sommaire du ${unitNameRoman.toUpperCase()} :** (2-4 lignes maximum. Décrivez les événements clés, le développement de l'intrigue ou des personnages dans ce ${unitNameRoman}. Assurez que chaque ${unitNameRoman} (sauf le dernier) se termine d'une manière qui engage le lecteur pour le suivant.)
+
+    *(Rappel : Le dernier ${unitNameRoman} doit offrir une conclusion satisfaisante et cohérente avec l'ensemble de l'oeuvre.)*
+
+### PARTIE C : CORPS DU RÉCIT (FORMAT ROMAN)
+
+**POUR CHAQUE ${unitNameRoman.toUpperCase()}** (défini en PARTIE B, de 1 au Nombre total de ${unitNameRoman}s) :
+
+**-------------------- DÉBUT ${unitNameRoman.toUpperCase()} [Numéro] --------------------**
+**(Si vous avez donné un titre au ${unitNameRoman} en PARTIE B, vous pouvez le répéter ici. Sinon, commencez directement par le texte.)**
+*(Rappel du Résumé Sommaire du ${unitNameRoman.toUpperCase()} [Numéro] ici, pour guider votre écriture)*
+
+[Écrivez ici le contenu de ce ${unitNameRoman} sous forme de prose narrative.
+- Intégrez naturellement les descriptions d'actions, d'environnements, les émotions et les pensées des personnages.
+- Pour les dialogues, utilisez IMPÉRATIVEMENT le format suivant pour chaque prise de parole :
+  - PERSONNAGE (optionnel : adverbe ou courte description de ton/action) : "Texte du dialogue entre guillemets."
+  Exemple : - Haddock (surpris) : "Mille millions de mille sabords !"
+- Gérez les changements de scènes ou de points de vue avec des sauts de paragraphe ou des séparateurs discrets si nécessaire.
+- L'ensemble doit se lire comme un ${unitNameRoman} de roman ou une nouvelle, en respectant le ton, le style et les personnages définis en PARTIE A, et en s'inspirant des paramètres de densité (mots par ${unitNameRoman}) et d'importance de la narration.]
+
+**-------------------- FIN ${unitNameRoman.toUpperCase()} [Numéro] --------------------**
+
+NOTES IMPORTANTES POUR VOTRE GÉNÉRATION :
+-   **Cohérence Narrative :** Assurez une parfaite continuité et progression logique de l'intrigue et des personnages à travers les ${unitNameRoman}s.
+-   **Style d'Écriture :** Maintenez un style d'écriture engageant et adapté au public cible de l'univers "${nomDeLaBd}".
+-   **Format de Sortie :** Veuillez utiliser la structure de titres (### PARTIE A, etc.) et la mise en forme des dialogues comme indiqué pour faciliter la lecture.
+
+INSTRUCTION IMPORTANTE CONCERNANT LA LONGUEUR DE LA RÉPONSE POUR LA PARTIE C :
+La rédaction de tous les ${unitNameRoman}s (PARTIE C) peut s'avérer très longue.
+Si vous ne parvenez pas à générer l'intégralité de la PARTIE C en une seule réponse en raison de limitations de longueur :
+1.  Veuillez générer autant de ${unitNameRoman}s complets que possible dans votre réponse actuelle.
+2.  À la fin de votre réponse, veuillez indiquer clairement jusqu'à quel ${unitNameRoman} vous avez fourni le texte (par exemple : "${unitNameRoman.charAt(0).toUpperCase() + unitNameRoman.slice(1)} X sur Y généré.").
+3.  Soyez prêt à continuer la génération des ${unitNameRoman}s suivants si l'utilisateur vous envoie simplement le message : "Continuez". Vous reprendrez alors exactement où vous vous êtes arrêté.
+`;
+            singleBlockRomanPromptOutput.value = romanPrompt.trim();
+            showToastNotification("Prompt Monobloc (Format Roman) généré !");
+        });
+        copySingleBlockRomanPromptBtn.addEventListener('click', () => copyToClipboard('singleBlockRomanPromptOutput'));
+
+
+        generateMonoblocToStoryboardPromptBtn.addEventListener('click', function() {
+            handleGenerateStoryboardPromptForPage(null, 'singleBlockAiTextOutput', true); 
         });
         copyMonoblocToStoryboardConversionPromptBtn.addEventListener('click', () => copyToClipboard('monoblocToStoryboardConversionPromptOutput'));
         
@@ -863,7 +1025,7 @@ Si vous ne parvenez pas à générer l'intégralité de la PARTIE C en une seule
             populatePresetDropdown(); 
             setDefaultParameters(); 
             switchMode('stepByStep'); 
-            monoblocStoryboardConversionSection.classList.remove('hidden'); // S'assurer qu'il est visible par défaut dans le mode monobloc
+            monoblocStoryboardConversionSection.classList.remove('hidden'); 
         });
 
     </script>
