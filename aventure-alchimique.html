@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventure Alchimique - Générateur de Prompts Livre Interactif</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        #prompt-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input, select, textarea, button {
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        textarea#ameliorations {
+            resize: vertical;
+            min-height: 100px; /* Augmenté un peu pour mieux voir les instructions par défaut */
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #generated-prompt-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        #generated-prompt-container h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        #prompt-output {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            resize: vertical;
+            background-color: #fff;
+        }
+        #copy-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #2ecc71;
+        }
+        #copy-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aventure Alchimique</h1>
+    <h2>Générateur de Prompts pour Livre Interactif IA</h2>
+
+    <form id="prompt-form">
+        <label for="theme-preset">Choisir un thème prédéfini :</label>
+        <select id="theme-preset" name="theme-preset">
+            <option value="">-- Sélectionner un thème --</option>
+        </select>
+
+        <label for="theme-manuel">Ou entrer un thème personnalisé :</label>
+        <input type="text" id="theme-manuel" name="theme-manuel" placeholder="Ex: Mon univers de Fantaisie Sombre">
+
+        <label for="ton-aventure">Ton de l'aventure :</label>
+        <input type="text" id="ton-aventure" name="ton-aventure" placeholder="Ex: Épique, Humoristique, Sombre, Mystérieux">
+
+        <label for="style-ecriture">Style d'écriture :</label>
+        <input type="text" id="style-ecriture" name="style-ecriture" placeholder="Ex: Descriptif, Concis, Poétique, Immersif">
+
+        <label for="ameliorations">Instructions spécifiques ou améliorations pour le prompt :</label>
+        <textarea id="ameliorations" name="ameliorations" rows="5" placeholder="Des instructions spécifiques pour ce thème apparaîtront ici si disponibles..."></textarea>
+
+        <button type="button" onclick="genererPrompt()">Générer le Prompt</button>
+    </form>
+
+    <div id="generated-prompt-container" style="display: none;">
+        <h3>Prompt Généré pour l'IA :</h3>
+        <textarea id="prompt-output" readonly></textarea>
+        <button type="button" id="copy-button" onclick="copyPromptToClipboard()">Copier le Prompt</button>
+    </div>
+
+    <script>
+        const themePresetSelect = document.getElementById('theme-preset');
+        const themeManuelInput = document.getElementById('theme-manuel');
+        const tonAventureInput = document.getElementById('ton-aventure');
+        const styleEcritureInput = document.getElementById('style-ecriture');
+        const ameliorationsTextarea = document.getElementById('ameliorations');
+        const promptContainerDiv = document.getElementById('generated-prompt-container');
+        const promptOutputTextarea = document.getElementById('prompt-output');
+        const copyButton = document.getElementById('copy-button');
+
+        const themes = [
+            "Académie de Magie Moderne", "Alchimiste en Quête de la Pierre Philosophale", "Another World", "Astérix",
+            "Black Mirror / Dystopie Futuriste Proche", "Blade Runner / Univers Philip K. Dick", "Carlos Castaneda / Voyages Chamaniques",
+            "Columbo", "Cyberpunk", "Détective Noir", "Dieu Créateur d'Univers (avec assistants cosmiques)",
+            "Dieu Mineur Tentant de Gagner des Fidèles", "Doctor Who", "Dungeon and Dragon", "Enquêtes sur Conspirations",
+            "Espace Opéra Épique", "Exploration Sous-Marine Mystérieuse", "Fallout", "Gestion d'un Royaume / Cité",
+            "Ghostbuster", "Harry Potter", "Hero Quest", "Horreur Cosmique Lovecraftienne", "Indiana Jones",
+            "Journaliste d'Investigation dans un Monde Steampunk/Dieselpunk", "Jules Verne Aventure",
+            "Le Seigneur des Anneaux / Terre du Milieu", "Mass Effect", "Médiéval Fantastique Quelconque",
+            "Membre d'un Cirque Ambulant Fantastique", "Pilote de Mécano-Guerrier Géant", "Pirates des Caraïbes",
+            "Pokémon", "Post-Apocalyptique", "Prince of Persia", "Retour vers le futur", "Rêve Lucide / Exploration Onirique",
+            "Sherlock Holmes / Enquêtes Victoriennes", "Star Trek", "Star Trek mélangé avec Star Wars", "Star Wars",
+            "Stargate", "Steampunk", "Super-Héros", "Survivant d'une Ère Glaciaire Préhistorique",
+            "The Witcher / Andrzej Sapkowski", "Tintin", "Voyage dans le temps", "Voyage dans un autre pays",
+            "Voyageur Interdimensionnel Échoué", "Western Spaghetti", "World of Warcraft", "X-Files / Enquêtes Paranormales",
+            "Zelda"
+        ].sort();
+
+        // Instructions spécifiques par défaut pour certains thèmes
+        const defaultThemeInstructions = {
+            "Zelda": "Mettre l'accent sur l'exploration de vastes environnements, la résolution d'énigmes dans des donjons thématiques, et l'acquisition progressive d'objets clés ouvrant de nouvelles zones ou capacités. Le héros est souvent un protagoniste silencieux dont les actions parlent pour lui. Inclure une menace ancienne ou un grand mal à vaincre pour sauver le royaume et une figure de princesse ou de sage à protéger/aider.",
+            "Harry Potter": "L'aventure se déroule idéalement à Poudlard ou dans le monde magique britannique. Proposer des choix liés à l'apprentissage et l'utilisation de sortilèges, la participation à des cours, les interactions avec les élèves des différentes maisons (Gryffondor, Serpentard, etc.) et les professeurs. Intégrer un mystère à résoudre, des éléments de la vie scolaire (examens, Quidditch si pertinent) et potentiellement des confrontations avec des forces obscures. Permettre au joueur de définir sa maison ou ses affinités magiques.",
+            "Star Wars": "Placer l'aventure à une époque significative de l'univers Star Wars (Ancienne République, Guerre des Clones, Empire Galactique, Nouvelle République). Inclure des éléments iconiques : voyages en hyperespace, combats de vaisseaux spatiaux, utilisation de la Force (si le personnage est sensible), blasters, droïdes, diverses espèces aliens. Proposer des choix moraux liés à la Force (côté lumineux/obscur) ou à des factions (Rébellion/Empire, Jedi/Sith).",
+            "Cyberpunk": "L'ambiance doit être sombre, high-tech et souvent dystopique, avec des méga-corporations toutes puissantes et des bas-fonds dangereux. Le personnage pourrait être un mercenaire, un hacker, ou un détective. Inclure des augmentations cybernétiques, des intrigues de piratage informatique, des dilemmes moraux sur la technologie et l'humanité, et une esthétique néon-noire.",
+            "Détective Noir": "Créer une ambiance sombre et pluvieuse, typique des années 40-50. Le personnage est un détective privé cynique mais avec un code moral. L'intrigue doit être complexe, avec des fausses pistes, des personnages ambigus (femme fatale, policier corrompu). Mettre l'accent sur la collecte d'indices, les interrogatoires et les monologues intérieurs du détective.",
+            "Columbo": "Le joueur incarne un détective à l'apparence anodine mais à l'esprit brillant, dans le style de Columbo. L'aventure commence souvent par la découverte d'un meurtre apparemment parfait. Le plaisir vient de la manière dont le détective démasque le coupable (souvent connu du joueur/lecteur dès le début ou rapidement) par des questions faussement naïves, en relevant des détails insignifiants et en poussant le suspect à la faute. Inclure le fameux 'Juste une dernière chose...'.",
+            "Black Mirror / Dystopie Futuriste Proche": "Explorer les conséquences sociales, psychologiques ou éthiques d'une technologie futuriste spécifique (souvent à un stade avancé mais crédible). Le ton est généralement sombre, angoissant, et porte à la réflexion. L'histoire doit présenter un dilemme moral fort ou une critique sociale acerbe liée à cette technologie. Plusieurs fins, souvent douces-amères ou tragiques, sont appropriées.",
+            "Dungeon and Dragon": "Mettre en place une quête classique de JDR : exploration de donjons, combat contre des monstres (gobelins, dragons, etc.), récupération de trésors, gain d'expérience et de niveaux. Permettre au joueur de choisir ou de définir une classe (guerrier, mage, voleur, etc.) et une race (elfe, nain, humain, etc.) avec des capacités spécifiques. Inclure des PNJ pour donner des quêtes ou se joindre au groupe. Le système de règles peut être simplifié mais l'esprit doit y être.",
+            "Le Seigneur des Anneaux / Terre du Milieu": "Respecter l'ambiance épique et le lore de Tolkien. L'aventure peut impliquer un long voyage, la lutte contre les forces de Sauron (ou une menace similaire), la découverte de lieux mythiques (Comtés, Mordor, Moria, etc.). Les thèmes du courage, de l'amitié, de la tentation du pouvoir et de l'espoir face au désespoir sont centraux. Les races (Hobbits, Elfes, Nains, Hommes) doivent être distinctes.",
+            "X-Files / Enquêtes Paranormales": "Le joueur incarne un enquêteur (ou un duo d'enquêteurs avec des approches différentes : sceptique/croyant) confronté à des phénomènes inexpliqués : aliens, monstres, conspirations gouvernementales, pouvoirs psychiques. L'ambiance doit être mystérieuse, parfois effrayante. L'objectif est de rassembler des preuves, d'interroger des témoins et de découvrir la vérité, qui est souvent insaisissable ou dissimulée. 'La vérité est ailleurs.'",
+            "Dieu Créateur d'Univers (avec assistants cosmiques)": "Le joueur incarne une entité divine primordiale. Décrire les étapes de la création de l'univers, des galaxies, des étoiles, des planètes et de la vie. Proposer des choix sur les lois physiques, les types de vie à créer, les défis cosmiques à surmonter. Les 'assistants cosmiques' peuvent être des PNJ avec lesquels interagir, qui proposent des idées ou exécutent des tâches. L'échelle est immense et les conséquences des choix peuvent être cataclysmiques ou merveilleuses."
+        };
+
+        themes.forEach(theme => {
+            const option = document.createElement('option');
+            option.value = theme;
+            option.textContent = theme;
+            themePresetSelect.appendChild(option);
+        });
+
+        // Écouteur d'événement pour le changement de thème
+        themePresetSelect.addEventListener('change', function() {
+            const selectedTheme = this.value;
+            if (defaultThemeInstructions[selectedTheme]) {
+                ameliorationsTextarea.value = defaultThemeInstructions[selectedTheme];
+            } else {
+                ameliorationsTextarea.value = ''; // Efface si pas d'instructions pour ce thème ou si l'option vide est sélectionnée
+            }
+        });
+        
+        // Optionnel: Vider le champ d'améliorations si l'utilisateur commence à taper un thème manuel
+        // et qu'un thème prédéfini avait été sélectionné.
+        // Cela évite d'envoyer des instructions par défaut non pertinentes avec un thème manuel.
+        themeManuelInput.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                // Si l'utilisateur tape un thème manuel, on pourrait vouloir effacer les instructions par défaut
+                // Cependant, il pourrait aussi vouloir garder les instructions d'un preset comme base.
+                // Pour l'instant, on ne fait rien ici, l'utilisateur peut effacer manuellement.
+                // Une autre option serait de vider ameliorationsTextarea si defaultThemeInstructions[themePresetSelect.value] existe.
+            }
+        });
+
+
+        function genererPrompt() {
+            const selectedThemePreset = themePresetSelect.value;
+            const customTheme = themeManuelInput.value.trim();
+            const tonAventure = tonAventureInput.value.trim();
+            const styleEcriture = styleEcritureInput.value.trim();
+            // On utilise la valeur actuelle du textarea, qu'elle soit par défaut ou modifiée par l'utilisateur
+            const specificInstructions = ameliorationsTextarea.value.trim();
+
+            let univers = "";
+            if (customTheme) {
+                univers = customTheme;
+                 // Si un thème manuel est entré, on s'assure que les instructions spécifiques ne sont pas celles
+                 // d'un précédent thème prédéfini, à moins que l'utilisateur ne les ait intentionnellement gardées/modifiées.
+                 // Le comportement actuel est de prendre ce qui est dans la boîte, ce qui est flexible.
+            } else if (selectedThemePreset) {
+                univers = selectedThemePreset;
+            } else {
+                alert("Veuillez sélectionner un thème prédéfini ou entrer un thème personnalisé.");
+                return;
+            }
+
+            let prompt = `Crée une aventure textuelle interactive où je suis le héros, se déroulant dans l'univers de ${univers}.\n\n`;
+
+            if (tonAventure || styleEcriture) {
+                prompt += `Le ton général de l'aventure devrait être ${tonAventure || 'neutre'} et le style d'écriture ${styleEcriture || 'clair et engageant'}.\n\n`;
+            }
+
+            prompt += `Phase Initiale (Création de personnage et contexte) :\n`;
+            prompt += `1. Commence par me poser des questions pour personnaliser mon personnage. Selon le thème de ${univers}, cela peut inclure :\n`;
+            prompt += `   - Nom du personnage.\n`;
+            prompt += `   - Choix multiples pour des attributs clés (ex: race, classe, origine, compétences de départ).\n`;
+            prompt += `   - Ou choix parmi quelques archétypes de personnages prédéfinis avec une brève description.\n`;
+            prompt += `2. Après la création du personnage, introduis la situation de départ : décris le contexte, le lieu initial, et l'objectif ou le mystère qui lance l'aventure.\n\n`;
+
+            prompt += `Déroulement de l'Aventure (Page par Page) :\n`;
+            prompt += `1. À la fin de chaque description de situation ou d'événement, propose-moi clairement des choix pour la suite. Ces choix peuvent être :\n`;
+            prompt += `   - Options lettrées (A, B, C) pour des actions spécifiques.\n`;
+            prompt += `   - Une option de dialogue libre : "Que répondez-vous à [Nom du PNJ] ?" (ma réponse textuelle sera ma réplique).\n`;
+            prompt += `   - Une option d'action libre : "Que décidez-vous de faire ?" (ma réponse textuelle décrira mon action ou mon intention).\n`;
+            prompt += `2. Adapte la narration et les événements suivants en fonction de mes choix. Sois réactif et cohérent.\n`;
+            prompt += `3. N'hésite pas à décrire les conséquences de mes actions, qu'elles soient positives ou négatives. L'échec est une possibilité et peut mener à des développements narratifs intéressants.\n\n`;
+
+            prompt += `Rôle du Maître du Jeu (DM) / Auteur :\n`;
+            prompt += `1. Maintiens ton rôle de conteur et de maître du jeu tout au long de l'aventure. Ne sors pas de ce rôle.\n`;
+            prompt += `2. Les Personnages Non-Joueurs (PNJ) doivent avoir leurs propres personnalités, motivations, et réagir de manière crédible à mes actions et dialogues.\n`;
+            prompt += `3. Sois créatif : introduis des rebondissements, des PNJ mémorables, des défis variés (combats, énigmes, dilemmes moraux) adaptés à l'univers de ${univers}.\n`;
+            prompt += `4. Si je propose une action libre qui semble plausible dans le contexte, même si elle n'est pas explicitement offerte, essaie de la résoudre et d'en décrire les conséquences.\n\n`;
+
+            prompt += `Objectif :\n`;
+            prompt += `Le but est de créer une expérience immersive et personnalisée de livre dont vous êtes le héros. Chaque page que tu génères doit faire avancer l'histoire en fonction de mes décisions.\n\n`;
+
+            if (specificInstructions) { // Cette variable prendra la valeur du textarea, qu'elle soit auto-populée ou manuelle
+                prompt += `Instructions Spécifiques du Joueur (à prendre en haute considération pour l'univers ${univers}) :\n${specificInstructions}\n\n`;
+            }
+
+            prompt += `Commençons par la première étape : la création de mon personnage pour l'univers de ${univers}. Pose-moi ta première question.`;
+
+            promptOutputTextarea.value = prompt;
+            promptContainerDiv.style.display = 'block';
+            copyButton.textContent = 'Copier le Prompt';
+            copyButton.disabled = false;
+
+            promptContainerDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function copyPromptToClipboard() {
+            try {
+                await navigator.clipboard.writeText(promptOutputTextarea.value);
+                const originalText = copyButton.textContent;
+                copyButton.textContent = 'Copié !';
+                copyButton.disabled = true;
+
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.disabled = false;
+                }, 2000);
+            } catch (err) {
+                console.error('Erreur lors de la copie vers le presse-papiers: ', err);
+                alert("La copie a échoué. Veuillez copier manuellement.");
+            }
+        }
+    </script>
+</body>
+</html>
