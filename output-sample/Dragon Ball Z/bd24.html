@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Storyboard - L'Odyssée Gastronomique de Son Goku !</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background-color: #e9e9e9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .comic-page { border: 2px solid #999; padding: 15px; background-color: #fff; box-shadow: 3px 3px 5px #ccc; width: 90%; margin: 20px auto; }
+        .comic-page-summary { font-style: italic; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; color: #555; }
+        .panel-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;}
+        .panel-container { border: 1px solid #ccc; margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; flex: 1 1 calc(33.333% - 20px); box-sizing: border-box; min-width: 320px; /* Ajusté pour mieux s'adapter */ max-width: 480px; display: flex; flex-direction: column;}
+        .panel-summary { font-size: 0.9em; color: #333; margin-bottom: 5px; } /* Renommé h6 en .panel-summary pour éviter confusion avec la sémantique h6 */
+        .panel-svg { border: 1px solid black; width: 100%; height: auto; aspect-ratio: 3/2; /* Ajusté pour un ratio plus commun */ background-color: white; }
+        svg text { font-family: "Comic Sans MS", "Arial Narrow", sans-serif; }
+        .speech-bubble-group title {}
+        .speech-bubble-path { fill: white; stroke: black; stroke-width: 1; }
+        .speech-bubble-text { text-anchor: middle; dominant-baseline: middle; font-size: 10px; fill: black; } /* Taille ajustée */
+        .thought-bubble-path { fill: white; stroke: black; stroke-width: 1; stroke-dasharray: 3,2; }
+        .narrative-box-path { fill: #FFFACD; stroke: #BDB76B; stroke-width: 1; } /* Couleur ajustée */
+        .narrative-text { font-size: 9px; font-style: italic; fill: black; } /* Taille ajustée */
+        .onomatopoeia-text { font-size: 18px; font-weight: bold; fill: #FF4500; text-anchor: middle; dominant-baseline: central; stroke: black; stroke-width: 0.5px;}
+        h1 { color: #333; }
+        h5 { margin-top: 0; color: #0056b3; }
+        h6 { font-weight: normal; font-size: 13px; color: #444; line-height: 1.4; margin-top: 0; margin-bottom: 8px;} /* Style pour la description de case */
+    </style>
+</head>
+<body>
+    <h1>L'Odyssée Gastronomique de Son Goku ! (Storyboard Complet)</h1>
+
+    <div class="comic-page" id="page_1_storyboard_content">
+        <h5 class="comic-page-summary">Page 1 : Goku s'entraîne avec une énergie débordante, mais il est soudainement interrompu par une sensation étrange et alléchante. Intrigué, il abandonne son entraînement pour en trouver la source, le menant à Capsule Corp où Bulma présente fièrement sa nouvelle invention culinaire.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_1_panel_1">
+                <h6>Plan large dynamique. Goku en tenue de combat orange, en plein air, dans un paysage rocheux typique des lieux d'entraînement DBZ. Il exécute un coup de poing puissant vers l'avant, créant une petite onde de choc. Expression concentrée et déterminée. Onomatopée : WHAAAM!
+                <br>- Aucun dialogue.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#ADD8E6"/>
+                    <path d="M0 150 Q 50 130, 100 150 T 200 140 T 300 160 L 300 200 L 0 200 Z" fill="#D2B48C"/>
+                    <circle cx="150" cy="100" r="15" fill="orange"/> <rect x="145" y="115" width="10" height="30" fill="orange"/> <line x1="150" y1="120" x2="180" y2="90" stroke="orange" stroke-width="5"/> <circle cx="185" cy="85" r="5" fill="#FFDEAD"/> <path d="M190 80 Q 200 70, 210 80 Q 200 90, 190 80" fill="none" stroke="grey" stroke-width="2"/> <path d="M195 75 Q 210 60, 225 75 Q 210 90, 195 75" fill="none" stroke="grey" stroke-width="1.5"/>
+                    <text x="250" y="50" class="onomatopoeia-text">WHAAAM!</text>
+                    <circle cx="150" cy="100" r="2" fill="black"/> <circle cx="155" cy="100" r="2" fill="black"/> </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_2">
+                <h6>Gros plan sur le visage de Goku. Ses yeux s'écarquillent soudainement, sa concentration est rompue. Une goutte de sueur perle sur sa tempe. Son nez frétille légèrement. Angle légèrement en contre-plongée pour accentuer la surprise.
+                <br>- GOKU (Bulle de pensée) : Hein ? C'est quoi... cette odeur ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="60" fill="orange"/> <ellipse cx="130" cy="90" rx="15" ry="10" fill="white"/> <circle cx="130" cy="90" r="5" fill="black"/>
+                    <ellipse cx="170" cy="90" rx="15" ry="10" fill="white"/> <circle cx="170" cy="90" r="5" fill="black"/>
+                    <path d="M145 115 Q 150 120 155 115" stroke="black" stroke-width="2" fill="none"/> <line x1="140" y1="130" x2="160" y2="130" stroke="black" stroke-width="2"/> <path d="M180 70 Q 182 65 185 70" fill="blue"/> <path d="M220 50m-25 0a25,20 0 1,0 50,0a25,20 0 1,0 -50,0" class="thought-bubble-path"/>
+                    <circle cx="200" cy="70" r="3" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="190" cy="80" r="2" fill="white" stroke="black" stroke-width="1"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU (Bulle de pensée) : Hein ? C'est quoi... cette odeur ?</title>
+                        <text x="220" y="45" class="speech-bubble-text" dy="-5">Hein ? C'est quoi...</text>
+                        <text x="220" y="45" class="speech-bubble-text" dy="10">cette odeur ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_3">
+                <h6>Goku flottant en l'air, il a arrêté son entraînement. Il regarde au loin, humant l'air avec une expression perplexe et intriguée, une main derrière la tête. Le paysage rocheux en arrière-plan.
+                <br>- GOKU : Ça ne ressemble à rien de ce que Chi-Chi cuisine... ni même à un barbecue de Maître Karine !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#ADD8E6"/>
+                    <path d="M0 150 Q 50 130, 100 150 T 200 140 T 300 160 L 300 200 L 0 200 Z" fill="#D2B48C"/>
+                    <circle cx="100" cy="80" r="10" fill="orange"/> <rect x="96" y="90" width="8" height="25" fill="orange"/> <line x1="90" y1="85" x2="100" y2="70" stroke="orange" stroke-width="3"/> <path d="M150 40 C 130 40 130 80 150 80 C 170 80 170 40 150 40 Z" class="speech-bubble-path"/>
+                    <polygon points="150,80 140,85 120,90" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU : Ça ne ressemble à rien de ce que Chi-Chi cuisine... ni même à un barbecue de Maître Karine !</title>
+                        <text x="150" y="50" class="speech-bubble-text" dy="-10">Ça ne ressemble à rien de ce que</text>
+                        <text x="150" y="50" class="speech-bubble-text" dy="0">Chi-Chi cuisine... ni même à un</text>
+                        <text x="150" y="50" class="speech-bubble-text" dy="10">barbecue de Maître Karine !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_4">
+                 <h6>Plan de taille montrant Goku atterrissant en douceur devant le dôme principal de Capsule Corporation. Il a un grand sourire curieux. Le logo "Capsule Corp" est visible.
+                <br>- BLOC NARRATIF : Guidé par cette mystérieuse et alléchante sensation, Goku arrive chez son amie de toujours...
+                <br>- GOKU : C'est sûr, ça vient d'ici !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#90EE90"/> <ellipse cx="150" cy="100" rx="80" ry="50" fill="#D3D3D3"/> <text x="150" y="105" text-anchor="middle" font-size="12" fill="blue">CAPSULE CORP</text>
+                    <circle cx="80" cy="130" r="10" fill="orange"/> <rect x="76" y="140" width="8" height="30" fill="orange"/> <rect x="10" y="10" width="280" height="35" class="narrative-box-path"/>
+                     <g class="speech-bubble-group">
+                        <title>BLOC NARRATIF : Guidé par cette mystérieuse et alléchante sensation, Goku arrive chez son amie de toujours...</title>
+                        <text x="150" y="20" class="narrative-text" text-anchor="middle" dy="-5">Guidé par cette mystérieuse et alléchante sensation,</text>
+                        <text x="150" y="20" class="narrative-text" text-anchor="middle" dy="5">Goku arrive chez son amie de toujours...</text>
+                    </g>
+                    <path d="M150 150 C 130 150 130 180 150 180 C 170 180 170 150 150 150 Z" class="speech-bubble-path"/>
+                    <polygon points="150,150 130,145 100,140" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                         <title>GOKU : C'est sûr, ça vient d'ici !</title>
+                        <text x="150" y="165" class="speech-bubble-text">C'est sûr, ça vient d'ici !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_5">
+                <h6>Intérieur du laboratoire de Bulma. Bulma, en blouse blanche par-dessus ses vêtements habituels, se tient fièrement à côté d'une machine futuriste et complexe, pleine de tuyaux, d'écrans et de lumières clignotantes. Goku entre, l'air toujours aussi affamé et curieux. Onomatopée pour la machine : BZZT! CLINK!
+                <br>- BULMA (souriante, les mains sur les hanches) : Goku ! Justement, regarde ma dernière invention !
+                <br>- GOKU : Wôw, Bulma ! C'est quoi ce truc ? C'est ça qui sent si bon ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/> <rect x="120" y="50" width="60" height="100" fill="silver"/> <circle cx="135" cy="70" r="5" fill="red"/> <circle cx="165" cy="70" r="5" fill="blue"/> <rect x="125" y="80" width="50" height="30" fill="black"/> <text x="50" y="30" class="onomatopoeia-text" font-size="12">BZZT! CLINK!</text>
+                    <circle cx="200" cy="120" r="10" fill="#FFDB58"/> <rect x="196" y="130" width="8" height="25" fill="pink"/> <rect x="194" y="128" width="12" height="28" fill="white" rx="3"/> <circle cx="80" cy="130" r="10" fill="orange"/>
+                    <rect x="76" y="140" width="8" height="25" fill="orange"/>
+                    <path d="M230 80 C 210 80 210 120 230 120 C 250 120 250 80 230 80 Z" class="speech-bubble-path"/>
+                    <polygon points="230,120 220,125 205,125" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>BULMA (souriante, les mains sur les hanches) : Goku ! Justement, regarde ma dernière invention !</title>
+                        <text x="230" y="95" class="speech-bubble-text" dy="-5">Goku ! Justement, regarde</text>
+                        <text x="230" y="95" class="speech-bubble-text" dy="5">ma dernière invention !</text>
+                    </g>
+                    <path d="M70 70 C 50 70 50 110 70 110 C 90 110 90 70 70 70 Z" class="speech-bubble-path"/>
+                    <polygon points="70,110 75,115 80,125" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU : Wôw, Bulma ! C'est quoi ce truc ? C'est ça qui sent si bon ?</title>
+                        <text x="70" y="85" class="speech-bubble-text" dy="-10">Wôw, Bulma ! C'est quoi</text>
+                        <text x="70" y="85" class="speech-bubble-text" dy="0">ce truc ? C'est ça qui</text>
+                        <text x="70" y="85" class="speech-bubble-text" dy="10">sent si bon ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_1_panel_6">
+                <h6>Gros plan sur la machine, avec un compartiment qui s'ouvre en émettant une légère vapeur appétissante. Bulma pointe la machine avec un pouce levé, un grand sourire de fierté. Goku a les yeux qui brillent d'anticipation.
+                <br>- BULMA : Exactement ! Je te présente... la "Machine à Festins Universels" ! Prépare tes papilles, mon cher Goku !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <rect x="50" y="30" width="200" height="140" fill="silver"/> <rect x="100" y="60" width="100" height="50" fill="#A9A9A9"/> <path d="M120 80 C 130 70, 140 70, 150 80 S 170 70, 180 80" stroke="#F0F8FF" stroke-width="3" fill="none" opacity="0.7"/> <circle cx="240" cy="150" r="10" fill="#FFDB58"/> <line x1="230" y1="140" x2="220" y2="130" stroke="black" stroke-width="2"/> <ellipse cx="60" cy="150" rx="10" ry="15" fill="orange"/> <circle cx="60" cy="150" r="3" fill="yellow"/>
+                    <path d="M150 40 C 100 40 100 100 200 100 C 280 100 280 40 150 40 Z" class="speech-bubble-path"/>
+                    <polygon points="200,100 210,110 230,135" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>BULMA : Exactement ! Je te présente... la "Machine à Festins Universels" ! Prépare tes papilles, mon cher Goku !</title>
+                        <text x="175" y="60" class="speech-bubble-text" dy="-15">Exactement ! Je te présente... la</text>
+                        <text x="175" y="60" class="speech-bubble-text" dy="-5">"Machine à Festins Universels" !</text>
+                        <text x="175" y="60" class="speech-bubble-text" dy="5">Prépare tes papilles, mon cher Goku !</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_2_storyboard_content">
+        <h5 class="comic-page-summary">Page 2 : Bulma explique le fonctionnement de sa "Machine à Festins Universels", capable de recréer n'importe quel plat. Goku, surexcité, demande le plat le plus délicieux de l'univers. La machine produit un mets magnifique et Goku s'empresse de le dévorer, sous le regard satisfait de Bulma et celui, plus sceptique, de Vegeta.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_2_panel_1">
+                <h6>Plan moyen. Bulma, enthousiaste, tapote sur un grand écran tactile intégré à sa machine. Goku est penché en avant, les yeux rivés sur l'écran qui affiche des images holographiques de plats divers et exotiques. Vegeta est visible en arrière-plan, bras croisés, appuyé contre un mur, l'air blasé.
+                <br>- BULMA : Grâce à une base de données collectée par les radars de mon père et mes propres voyages, elle peut synthétiser n'importe quel plat de n'importe quelle planète ! Goût, texture, valeur nutritive... tout y est !
+                <br>- GOKU : Incroyaaaable !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <rect x="100" y="40" width="100" height="120" fill="silver"/>
+                    <rect x="110" y="50" width="80" height="60" fill="#5F9EA0"/> <text x="150" y="80" fill="yellow" font-size="8" text-anchor="middle">🍜🍕🍰</text> <circle cx="70" cy="100" r="10" fill="#FFDB58"/> <rect x="66" y="110" width="8" height="30" fill="pink"/>
+                    <circle cx="150" cy="140" r="10" fill="orange"/> <rect x="146" y="150" width="8" height="25" fill="orange"/>
+                    <circle cx="250" cy="150" r="10" fill="#333333"/> <rect x="246" y="160" width="8" height="25" fill="blue"/>
+                    <path d="M60 30 C 20 30 20 90 100 90 C 180 90 180 30 60 30 Z" class="speech-bubble-path"/>
+                    <polygon points="100,90 90,95 75,98" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                         <title>BULMA : Grâce à une base de données collectée par les radars de mon père et mes propres voyages, elle peut synthétiser n'importe quel plat de n'importe quelle planète ! Goût, texture, valeur nutritive... tout y est !</title>
+                        <text x="90" y="45" class="speech-bubble-text" dy="-15">Grâce à une base de données...</text>
+                        <text x="90" y="45" class="speech-bubble-text" dy="-5">elle peut synthétiser n'importe quel plat...</text>
+                        <text x="90" y="45" class="speech-bubble-text" dy="5">Goût, texture, valeur nutritive... tout y est !</text>
+                    </g>
+                     <path d="M200 110 C 180 110 180 130 200 130 C 220 130 220 110 200 110 Z" class="speech-bubble-path"/>
+                    <polygon points="200,130 185,135 160,140" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                         <title>GOKU : Incroyaaaable !</title>
+                        <text x="200" y="120" class="speech-bubble-text">Incroyaaaable !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_2">
+                <h6>Gros plan sur le visage surexcité de Goku, des étoiles dans les yeux, bave au coin des lèvres.
+                <br>- GOKU : Alors... tu peux me faire... le plat le PLUS délicieux de TOUT l'univers ?!
+                <br>- BULMA (souriant, confiante) : C'est son test ultime ! Vas-y, demande !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="100" r="70" fill="orange"/> <polygon points="120,80 125,70 130,80 120,85 110,80 115,70" fill="yellow" stroke="black"/> <polygon points="180,80 185,70 190,80 180,85 170,80 175,70" fill="yellow" stroke="black"/> <path d="M140 130 Q 150 145 160 130" stroke="black" fill="none" stroke-width="2"/> <path d="M165 135 Q 170 140 168 145 L 165 135" fill="lightblue" stroke="blue"/> <path d="M100 40 C 60 40 60 100 150 100 C 240 100 240 40 100 40 Z" class="speech-bubble-path"/>
+                     <polygon points="150,100 150,110 150,110" style="fill:white; stroke:black; stroke-width:1;"/> <g class="speech-bubble-group">
+                        <title>GOKU : Alors... tu peux me faire... le plat le PLUS délicieux de TOUT l'univers ?!</title>
+                        <text x="150" y="60" class="speech-bubble-text" dy="-10">Alors... tu peux me faire... le plat</text>
+                        <text x="150" y="60" class="speech-bubble-text" dy="0">le PLUS délicieux de TOUT</text>
+                        <text x="150" y="60" class="speech-bubble-text" dy="10">l'univers ?!</text>
+                    </g>
+                    <path d="M230 150 C 190 150 190 190 230 190 C 270 190 270 150 230 150 Z" class="speech-bubble-path"/>
+                     <polygon points="230,150 225,145 220,140" style="fill:white; stroke:black; stroke-width:1;"/> <g class="speech-bubble-group">
+                         <title>BULMA (souriant, confiante) : C'est son test ultime ! Vas-y, demande !</title>
+                        <text x="230" y="165" class="speech-bubble-text" dy="-5">C'est son test ultime !</text>
+                        <text x="230" y="165" class="speech-bubble-text" dy="5">Vas-y, demande !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_3">
+                <h6>Bulma tape rapidement sur son interface. La machine s'illumine intensément, des bras robotiques s'activent à l'intérieur d'un compartiment transparent. Onomatopées : WHIRRR! ZAP! PLOP! Goku est en transe d'anticipation.
+                <br>- BLOC NARRATIF : Après quelques réglages savants...
+                <br>- BULMA : Et voilà ! Préparation du "Nectar Suprême d'Alpha-Centauri Prime" !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <rect x="80" y="40" width="140" height="120" fill="silver" stroke="yellow" stroke-width="3"/> <rect x="90" y="50" width="120" height="60" fill="rgba(200,200,255,0.5)"/> <line x1="110" y1="60" x2="130" y2="80" stroke="grey" stroke-width="4"/> <line x1="170" y1="60" x2="150" y2="80" stroke="grey" stroke-width="4"/> <text x="50" y="150" class="onomatopoeia-text" font-size="12">WHIRRR!</text>
+                    <text x="150" y="30" class="onomatopoeia-text" font-size="12">ZAP!</text>
+                    <text x="250" y="150" class="onomatopoeia-text" font-size="12">PLOP!</text>
+                    <circle cx="250" cy="170" r="10" fill="orange"/>
+                    <rect x="10" y="10" width="180" height="20" class="narrative-box-path"/>
+                    <g class="speech-bubble-group">
+                        <title>BLOC NARRATIF : Après quelques réglages savants...</title>
+                        <text x="100" y="20" class="narrative-text">Après quelques réglages savants...</text>
+                    </g>
+                    <path d="M230 50 C 180 50 180 100 230 100 C 280 100 280 50 230 50 Z" class="speech-bubble-path"/>
+                    <polygon points="230,50 200,50 185,55" style="fill:white; stroke:black; stroke-width:1;"/> <g class="speech-bubble-group">
+                        <title>BULMA : Et voilà ! Préparation du "Nectar Suprême d'Alpha-Centauri Prime" !</title>
+                        <text x="230" y="70" class="speech-bubble-text" dy="-5">Et voilà ! Préparation du "Nectar</text>
+                        <text x="230" y="70" class="speech-bubble-text" dy="5">Suprême d'Alpha-Centauri Prime" !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_4">
+                <h6>Un plat magnifique et coloré, presque irréel, sort de la machine sur un plateau. Il émet une vapeur dorée et semble scintiller. Goku a les mains jointes, comme en prière devant une divinité culinaire.
+                <br>- GOKU : Oooooooh... c'est... c'est magnifique !
+                <br>- VEGETA (depuis l'arrière-plan, sarcastique) : Pathétique. Toujours obsédé par la nourriture, Kakarotto.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <rect x="80" y="80" width="140" height="20" fill="#D3D3D3"/> <ellipse cx="150" cy="70" rx="40" ry="20" fill="gold"/> <path d="M130 60 C 135 50, 140 50, 145 60 S 155 50, 160 60 S 170 50 175 60" stroke="rgba(255,215,0,0.5)" stroke-width="3" fill="none"/> <text x="150" y="70" fill="purple" font-size="8" text-anchor="middle">✨✨</text> <circle cx="60" cy="150" r="10" fill="orange"/> <rect x="56" y="160" width="8" height="25" fill="orange"/>
+                    <line x1="60" y1="155" x2="70" y2="140" stroke="orange" stroke-width="3"/> <line x1="60" y1="155" x2="50" y2="140" stroke="orange" stroke-width="3"/> <circle cx="250" cy="170" r="8" fill="#333333"/> <rect x="247" y="178" width="6" height="15" fill="blue"/>
+                    <path d="M100 30 C 60 30 60 70 100 70 C 140 70 140 30 100 30 Z" class="speech-bubble-path"/>
+                    <polygon points="100,70 90,80 70,140" style="fill:white; stroke:black; stroke-width:1;"/>
+                     <g class="speech-bubble-group">
+                        <title>GOKU : Oooooooh... c'est... c'est magnifique !</title>
+                        <text x="100" y="50" class="speech-bubble-text">Oooooooh... c'est...</text>
+                        <text x="100" y="50" class="speech-bubble-text" dy="12">c'est magnifique !</text>
+                    </g>
+                    <path d="M240 130 C 200 130 200 160 240 160 C 280 160 280 130 240 130 Z" class="speech-bubble-path"/>
+                    <polygon points="240,160 245,165 248,168" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>VEGETA (depuis l'arrière-plan, sarcastique) : Pathétique. Toujours obsédé par la nourriture, Kakarotto.</title>
+                        <text x="240" y="140" class="speech-bubble-text" dy="-5">Pathétique. Toujours obsédé</text>
+                        <text x="240" y="140" class="speech-bubble-text" dy="5">par la nourriture, Kakarotto.</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_5">
+                <h6>Goku est assis à une table apparue comme par magie (ou apportée rapidement), une énorme fourchette et un couteau à la main, prêt à dévorer le plat. Le plat est immense devant lui. Bulma le regarde avec un sourire satisfait, un calepin à la main pour prendre des notes. Onomatopée : SLURP! (anticipé)
+                <br>- GOKU : Bon appétit ! HIIII HA !
+                <br>- BULMA (Bulle de pensée) : Parfait, les premiers tests sont concluants !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <rect x="50" y="150" width="200" height="10" fill="#A0522D"/> <ellipse cx="150" cy="130" rx="50" ry="30" fill="gold"/> <circle cx="150" cy="100" r="15" fill="orange"/> <rect x="145" y="115" width="10" height="30" fill="orange"/>
+                    <line x1="135" y1="110" x2="100" y2="100" stroke="grey" stroke-width="3"/> <line x1="165" y1="110" x2="200" y2="100" stroke="grey" stroke-width="3"/> <circle cx="250" cy="100" r="10" fill="#FFDB58"/> <rect x="246" y="110" width="8" height="25" fill="pink"/>
+                    <rect x="240" y="115" width="5" height="10" fill="#F5F5DC"/> <text x="50" y="50" class="onomatopoeia-text" font-size="14">SLURP!</text>
+                    <path d="M100 50 C 70 50 70 80 100 80 C 130 80 130 50 100 50 Z" class="speech-bubble-path"/>
+                    <polygon points="100,80 110,85 140,95" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU : Bon appétit ! HIIII HA !</title>
+                        <text x="100" y="65" class="speech-bubble-text">Bon appétit ! HIIII HA !</text>
+                    </g>
+                    <path d="M250 50m-25 0a25,20 0 1,0 50,0a25,20 0 1,0 -50,0" class="thought-bubble-path"/>
+                    <circle cx="230" cy="70" r="3" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="220" cy="80" r="2" fill="white" stroke="black" stroke-width="1"/>
+                    <g class="speech-bubble-group">
+                        <title>BULMA (Bulle de pensée) : Parfait, les premiers tests sont concluants !</title>
+                        <text x="250" y="45" class="speech-bubble-text" dy="-5">Parfait, les premiers tests</text>
+                        <text x="250" y="45" class="speech-bubble-text" dy="5">sont concluants !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_2_panel_6">
+                <h6>Goku engloutit le plat en une fraction de seconde, assiette vide et propre. Il a une expression de pure extase, les yeux fermés, des petites larmes de bonheur aux coins des yeux. Des petites étoiles flottent autour de sa tête. Onomatopée : GULP! AAAAH!
+                <br>- GOKU : C'ÉTAIT... DIVIN !!! Bulma, t'es un génie !
+                <br>- BULMA (souriant fièrement) : N'est-ce pas ? Alors, comment te sens-tu ? Effets secondaires ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="150" cy="140" rx="50" ry="10" fill="#F5F5F5"/> <circle cx="150" cy="100" r="20" fill="orange"/> <path d="M140 95 C 145 100 135 100 Z" fill="none" stroke="black" stroke-width="1"/> <path d="M160 95 C 165 100 155 100 Z" fill="none" stroke="black" stroke-width="1"/> <path d="M135 98 L 133 102" stroke="blue" stroke-width="1"/> <path d="M165 98 L 167 102" stroke="blue" stroke-width="1"/> <text x="120" y="80" fill="yellow" font-size="10">✨</text> <text x="180" y="80" fill="yellow" font-size="10">✨</text>
+                    <text x="50" y="50" class="onomatopoeia-text" font-size="14">GULP!</text> <text x="220" y="50" class="onomatopoeia-text" font-size="14">AAAAH!</text>
+                    <path d="M100 30 C 50 30 50 70 100 70 C 150 70 150 30 100 30 Z" class="speech-bubble-path"/>
+                    <polygon points="100,70 110,75 140,90" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU : C'ÉTAIT... DIVIN !!! Bulma, t'es un génie !</title>
+                        <text x="100" y="45" class="speech-bubble-text" dy="-5">C'ÉTAIT... DIVIN !!!</text>
+                        <text x="100" y="45" class="speech-bubble-text" dy="5">Bulma, t'es un génie !</text>
+                    </g>
+                    <path d="M200 150 C 150 150 150 190 200 190 C 250 190 250 150 200 150 Z" class="speech-bubble-path"/>
+                    <polygon points="200,150 190,145 180,120" style="fill:white; stroke:black; stroke-width:1;"/> <g class="speech-bubble-group">
+                        <title>BULMA (souriant fièrement) : N'est-ce pas ? Alors, comment te sens-tu ? Effets secondaires ?</title>
+                        <text x="200" y="165" class="speech-bubble-text" dy="-10">N'est-ce pas ? Alors,</text>
+                        <text x="200" y="165" class="speech-bubble-text" dy="0">comment te sens-tu ?</text>
+                        <text x="200" y="165" class="speech-bubble-text" dy="10">Effets secondaires ?</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic-page" id="page_3_storyboard_content">
+        <h5 class="comic-page-summary">Page 3 : Quelques secondes après avoir fini son plat, Goku se transforme subitement, non pas en Super Saiyan, mais en un gigantesque estomac sur pattes, obsédé par l'idée de tout dévorer. Bulma panique en réalisant le "léger" bug, tandis que Vegeta esquisse un rare sourire moqueur. La punch line finale vient de Goku-estomac.</h5>
+        <div class="panel-grid">
+            <div class="panel-container" id="page_3_panel_1">
+                <h6>Goku est debout, se tapotant le ventre, l'air satisfait. Soudain, une lueur étrange commence à l'envelopper. Son corps commence à se déformer légèrement, à gonfler de manière anormale au niveau du torse. Expression de surprise sur son visage. Onomatopée : FWOOOSH!
+                <br>- GOKU : Super bien ! J'ai jamais mangé un truc aussi... Whoa !
+                <br>- BULMA (commençant à s'inquiéter) : Goku ? Tu te sens... bizarre ?</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="150" cy="100" rx="25" ry="40" fill="orange" opacity="0.7"/> <circle cx="150" cy="60" r="15" fill="orange"/> <rect x="145" y="75" width="10" height="40" fill="orange"/> <path d="M120 50 Q 150 30 180 50 Q 190 100 180 150 Q 150 170 120 150 Q 110 100 120 50 Z" fill="yellow" opacity="0.3"/> <text x="230" y="50" class="onomatopoeia-text">FWOOOSH!</text>
+                     <path d="M80 40 C 40 40 40 80 80 80 C 120 80 120 40 80 40 Z" class="speech-bubble-path"/>
+                    <polygon points="80,80 90,85 140,70" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU : Super bien ! J'ai jamais mangé un truc aussi... Whoa !</title>
+                        <text x="80" y="55" class="speech-bubble-text" dy="-5">Super bien ! J'ai jamais mangé</text>
+                        <text x="80" y="55" class="speech-bubble-text" dy="5">un truc aussi... Whoa !</text>
+                    </g>
+                     <path d="M220 150 C 180 150 180 190 220 190 C 260 190 260 150 220 150 Z" class="speech-bubble-path"/>
+                    <polygon points="220,150 210,145 190,120" style="fill:white; stroke:black; stroke-width:1;"/> <g class="speech-bubble-group">
+                        <title>BULMA (commençant à s'inquiéter) : Goku ? Tu te sens... bizarre ?</title>
+                        <text x="220" y="165" class="speech-bubble-text" dy="-5">Goku ? Tu te sens...</text>
+                        <text x="220" y="165" class="speech-bubble-text" dy="5">bizarre ?</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_3_panel_2">
+                <h6>Transformation en cours ! Le corps de Goku se métamorphose rapidement. Son torse devient énorme, rond, ressemblant à un estomac géant. Ses bras et ses jambes semblent rétrécir en comparaison, et sa tête est perchée au sommet de cet "estomac". Ses yeux sont exorbités et affamés. Bulma recule, effarée, les mains devant la bouche.
+                <br>- GOKU (voix légèrement déformée, plus caverneuse) : Bizarrement... FAAAAAIM ! ENCORE PLUS FAAAIIM !
+                <br>- ONOMATOPÉE : POOF! BLORP!</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="150" cy="120" rx="60" ry="70" fill="#FFC0CB"/> <circle cx="150" cy="50" r="15" fill="orange"/> <ellipse cx="140" cy="45" rx="5" ry="3" fill="white"/> <circle cx="140" cy="45" r="2" fill="black"/> <ellipse cx="160" cy="45" rx="5" ry="3" fill="white"/> <circle cx="160" cy="45" r="2" fill="black"/> <rect x="120" y="110" width="5" height="15" fill="orange"/> <rect x="175" y="110" width="5" height="15" fill="orange"/> <circle cx="50" cy="150" r="10" fill="#FFDB58"/> <rect x="46" y="160" width="8" height="25" fill="pink"/>
+                    <text x="230" y="50" class="onomatopoeia-text">POOF!</text> <text x="230" y="80" class="onomatopoeia-text">BLORP!</text>
+                    <path d="M150 20 C 100 20 100 60 150 60 C 200 60 200 20 150 20 Z" class="speech-bubble-path"/>
+                    <polygon points="150,60 150,65 150,65" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU (voix légèrement déformée, plus caverneuse) : Bizarrement... FAAAAAIM ! ENCORE PLUS FAAAIIM !</title>
+                        <text x="150" y="35" class="speech-bubble-text" dy="-5">Bizarrement... FAAAAAIM !</text>
+                        <text x="150" y="35" class="speech-bubble-text" dy="5">ENCORE PLUS FAAAIIM !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_3_panel_3">
+                <h6>Plan large comique. Goku est maintenant un gigantesque estomac rose avec de petits bras et jambes ridicules et sa tête de Goku au-dessus. Il a une bouche immense sur "l'estomac" qui bave. Il regarde autour de lui avec une faim dévorante. Bulma est tombée à la renverse, paniquée.
+                <br>- GOKU-ESTOMAC : IL ME FAUT... PLUS DE NOURRITURE !!!
+                <br>- BULMA : AAAAH ! C'était PAS prévu ça ! J'ai dû oublier une ligne de code anti-obsession !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="150" cy="120" rx="70" ry="80" fill="#FFC0CB"/> <circle cx="150" cy="40" r="15" fill="orange"/> <rect x="100" y="100" width="10" height="20" fill="orange"/> <rect x="190" y="100" width="10" height="20" fill="orange"/> <rect x="130" y="190" width="10" height="10" fill="orange"/> <rect x="160" y="190" width="10" height="10" fill="orange"/> <path d="M120 130 Q 150 150 180 130 Q 150 160 120 130 Z" fill="#A52A2A"/> <circle cx="50" cy="170" r="10" fill="#FFDB58"/> <rect x="40" y="165" width="25" height="8" fill="pink" transform="rotate(-30 50 170)"/>
+                     <path d="M200 20 C 150 20 150 50 200 50 C 250 50 250 20 200 20 Z" class="speech-bubble-path"/>
+                    <polygon points="200,50 180,55 160,50" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU-ESTOMAC : IL ME FAUT... PLUS DE NOURRITURE !!!</title>
+                        <text x="200" y="35" class="speech-bubble-text">IL ME FAUT... PLUS DE</text>
+                        <text x="200" y="35" class="speech-bubble-text" dy="12">NOURRITURE !!!</text>
+                    </g>
+                     <path d="M80 100 C 40 100 40 130 80 130 C 120 130 120 100 80 100 Z" class="speech-bubble-path"/>
+                    <polygon points="80,130 70,135 55,160" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>BULMA : AAAAH ! C'était PAS prévu ça ! J'ai dû oublier une ligne de code anti-obsession !</title>
+                        <text x="80" y="110" class="speech-bubble-text" dy="-5">AAAAH ! C'était PAS prévu ça !</text>
+                        <text x="80" y="110" class="speech-bubble-text" dy="5">J'ai dû oublier une ligne de code...</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_3_panel_4">
+                <h6>Vegeta, qui observait de loin, a un sourcil levé et un très léger, presque imperceptible, sourire narquois. C'est un événement rare et donc notable.
+                <br>- VEGETA (Bulle de pensée, ton sec) : Hmph. Enfin une transformation à la hauteur de sa stupidité.</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#D0D0D0"/> <circle cx="150" cy="100" r="30" fill="#333333"/> <rect x="140" y="130" width="20" height="50" fill="blue"/> <path d="M140 90 Q 150 85 160 90" stroke="white" stroke-width="2" fill="none"/> <path d="M145 110 Q 150 112 155 110" stroke="white" stroke-width="1" fill="none"/> <path d="M220 50m-30 0a30,25 0 1,0 60,0a30,25 0 1,0 -60,0" class="thought-bubble-path"/>
+                    <circle cx="200" cy="80" r="4" fill="white" stroke="black" stroke-width="1"/>
+                    <circle cx="190" cy="95" r="3" fill="white" stroke="black" stroke-width="1"/>
+                    <g class="speech-bubble-group">
+                        <title>VEGETA (Bulle de pensée, ton sec) : Hmph. Enfin une transformation à la hauteur de sa stupidité.</title>
+                        <text x="220" y="45" class="speech-bubble-text" dy="-5">Hmph. Enfin une transformation</text>
+                        <text x="220" y="45" class="speech-bubble-text" dy="5">à la hauteur de sa stupidité.</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_3_panel_5">
+                <h6>Goku-Estomac essaie de "manger" un meuble du laboratoire (une console d'ordinateur, par exemple), sa bouche géante d'estomac tentant de l'engloutir. Bulma, en arrière-plan, est au téléphone, affolée, cherchant de l'aide. Onomatopée : CRUNCH? NOM NOM!
+                <br>- GOKU-ESTOMAC : CET ORDINATEUR A L'AIR CROUSTILLANT !
+                <br>- BULMA (au téléphone) : Papa ?! J'ai un GROS problème avec la machine à festins ! Goku s'est transformé en... enfin, c'est compliqué !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="100" cy="120" rx="60" ry="70" fill="#FFC0CB"/> <circle cx="100" cy="50" r="15" fill="orange"/> <path d="M70 130 Q 100 150 130 130 Q 100 160 70 130 Z" fill="#A52A2A"/> <rect x="150" y="100" width="50" height="70" fill="grey"/>
+                    <rect x="155" y="105" width="40" height="30" fill="black"/> <text x="220" y="50" class="onomatopoeia-text" font-size="10">CRUNCH?</text> <text x="220" y="70" class="onomatopoeia-text" font-size="10">NOM NOM!</text>
+                    <circle cx="250" cy="150" r="8" fill="#FFDB58"/> <rect x="247" y="158" width="6" height="20" fill="pink"/>
+                    <rect x="245" y="155" width="3" height="5" fill="black"/> <path d="M100 20 C 50 20 50 50 100 50 C 150 50 150 20 100 20 Z" class="speech-bubble-path"/>
+                    <polygon points="100,50 100,55 100,55" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU-ESTOMAC : CET ORDINATEUR A L'AIR CROUSTILLANT !</title>
+                        <text x="100" y="35" class="speech-bubble-text">CET ORDINATEUR A L'AIR</text>
+                        <text x="100" y="35" class="speech-bubble-text" dy="12">CROUSTILLANT !</text>
+                    </g>
+                    <path d="M250 100 C 200 100 200 140 250 140 C 300 140 300 100 250 100 Z" class="speech-bubble-path"/>
+                    <polygon points="250,140 250,145 250,145" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>BULMA (au téléphone) : Papa ?! J'ai un GROS problème avec la machine à festins ! Goku s'est transformé en... enfin, c'est compliqué !</title>
+                        <text x="250" y="112" class="speech-bubble-text" dy="-10">Papa ?! J'ai un GROS problème...</text>
+                        <text x="250" y="112" class="speech-bubble-text" dy="0">Goku s'est transformé en...</text>
+                        <text x="250" y="112" class="speech-bubble-text" dy="10">enfin, c'est compliqué !</text>
+                    </g>
+                </svg>
+            </div>
+             <div class="panel-container" id="page_3_panel_6">
+                <h6>Gros plan sur la "bouche" de Goku-Estomac qui a réussi à arracher un morceau du clavier de l'ordinateur et le mâchouille. Ses yeux (sur sa tête normale) sont mi-clos de plaisir.
+                <br>- GOKU-ESTOMAC : Mmmmh... Un peu métallique, mais ça cale un creux !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <path d="M50 50 Q 150 180 250 50 Q 150 220 50 50 Z" fill="#A52A2A"/> <rect x="130" y="90" width="40" height="15" fill="#A9A9A9" transform="rotate(15 150 100)"/> <text x="140" y="110" font-size="8">Alt</text> <text x="160" y="110" font-size="8">Ctrl</text>
+                    <circle cx="150" cy="30" r="15" fill="orange"/>
+                    <path d="M142 28 C 147 32 138 32 Z" fill="none" stroke="black" stroke-width="1"/> <path d="M158 28 C 162 32 152 32 Z" fill="none" stroke="black" stroke-width="1"/> <path d="M150 150 C 100 150 100 190 150 190 C 200 190 200 150 150 150 Z" class="speech-bubble-path"/>
+                    <polygon points="150,150 150,140 150,130" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU-ESTOMAC : Mmmmh... Un peu métallique, mais ça cale un creux !</title>
+                        <text x="150" y="165" class="speech-bubble-text" dy="-5">Mmmmh... Un peu métallique,</text>
+                        <text x="150" y="165" class="speech-bubble-text" dy="5">mais ça cale un creux !</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="panel-container" id="page_3_panel_7">
+                <h6>"Punch line" case. Goku-Estomac se tourne vers le lecteur (brisant légèrement le quatrième mur, ou regardant vers Bulma/Vegeta). Il a un air de fin gourmet ridicule, un petit doigt (si ses mains le permettent, sinon juste une expression) en l'air.
+                <br>- GOKU-ESTOMAC : Franchement, Bulma, pour ta prochaine version... pense à rajouter un mode "digestion de circuits imprimés" ! Ce serait top pour les encas technologiques !</h6>
+                <svg class="panel-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="300" height="200" fill="#E0E0E0"/>
+                    <ellipse cx="150" cy="120" rx="70" ry="80" fill="#FFC0CB"/> <circle cx="150" cy="40" r="15" fill="orange"/> <ellipse cx="145" cy="40" rx="3" ry="2" fill="black"/> <ellipse cx="155" cy="40" rx="3" ry="2" fill="black"/> <path d="M140 50 Q 150 55 160 50" stroke="black" fill="none"/> <rect x="195" y="90" width="5" height="15" fill="orange"/> <line x1="200" y1="90" x2="205" y2="85" stroke="orange" stroke-width="2"/> <path d="M150 20 C 80 20 80 80 200 80 C 280 80 280 20 150 20 Z" class="speech-bubble-path"/>
+                    <polygon points="200,80 180,85 160,70" style="fill:white; stroke:black; stroke-width:1;"/>
+                    <g class="speech-bubble-group">
+                        <title>GOKU-ESTOMAC : Franchement, Bulma, pour ta prochaine version... pense à rajouter un mode "digestion de circuits imprimés" ! Ce serait top pour les encas technologiques !</title>
+                        <text x="165" y="35" class="speech-bubble-text" dy="-15">Franchement, Bulma, pour ta</text>
+                        <text x="165" y="35" class="speech-bubble-text" dy="-5">prochaine version... pense à rajouter</text>
+                        <text x="165" y="35" class="speech-bubble-text" dy="5">un mode "digestion de circuits imprimés" !</text>
+                        <text x="165" y="35" class="speech-bubble-text" dy="15">Ce serait top pour les encas technologiques !</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
