@@ -42,7 +42,7 @@
         }
         textarea#ameliorations {
             resize: vertical;
-            min-height: 100px; /* Augmenté un peu pour mieux voir les instructions par défaut */
+            min-height: 100px;
         }
         button {
             background-color: #3498db;
@@ -100,8 +100,16 @@
 
         <label for="theme-manuel">Ou entrer un thème personnalisé :</label>
         <input type="text" id="theme-manuel" name="theme-manuel" placeholder="Ex: Mon univers de Fantaisie Sombre">
-
-        <label for="ton-aventure">Ton de l'aventure :</label>
+        
+        <label for="nombre-joueurs">Nombre de joueurs :</label>
+        <select id="nombre-joueurs" name="nombre-joueurs">
+            <option value="1" selected>1 (Solo)</option>
+            <option value="2">2 Joueurs</option>
+            <option value="3">3 Joueurs</option>
+            <option value="4">4 Joueurs</option>
+            <option value="5">5 Joueurs</option>
+        </select>
+        <div id="noms-joueurs-container"></div> <label for="ton-aventure">Ton de l'aventure :</label>
         <input type="text" id="ton-aventure" name="ton-aventure" placeholder="Ex: Épique, Humoristique, Sombre, Mystérieux">
 
         <label for="style-ecriture">Style d'écriture :</label>
@@ -122,6 +130,8 @@
     <script>
         const themePresetSelect = document.getElementById('theme-preset');
         const themeManuelInput = document.getElementById('theme-manuel');
+        const nombreJoueursSelect = document.getElementById('nombre-joueurs'); // Ajouté
+        // const nomsJoueursContainer = document.getElementById('noms-joueurs-container'); // Pour plus tard
         const tonAventureInput = document.getElementById('ton-aventure');
         const styleEcritureInput = document.getElementById('style-ecriture');
         const ameliorationsTextarea = document.getElementById('ameliorations');
@@ -130,31 +140,26 @@
         const copyButton = document.getElementById('copy-button');
 
         const themes = [
-            "Académie de Magie Moderne", "Alchimiste en Quête de la Pierre Philosophale", "Another World", "Astérix",
-            "Black Mirror / Dystopie Futuriste Proche", "Blade Runner / Univers Philip K. Dick", "Carlos Castaneda / Voyages Chamaniques",
-            "Columbo", "Cyberpunk", "Détective Noir", "Dieu Créateur d'Univers (avec assistants cosmiques)",
-            "Dieu Mineur Tentant de Gagner des Fidèles", "Doctor Who", "Dungeon and Dragon", "Enquêtes sur Conspirations",
-            "Espace Opéra Épique", "Exploration Sous-Marine Mystérieuse", "Fallout", "Gestion d'un Royaume / Cité",
-            "Ghostbuster", "Harry Potter", "Hero Quest", "Horreur Cosmique Lovecraftienne", "Indiana Jones",
-            "Journaliste d'Investigation dans un Monde Steampunk/Dieselpunk", "Jules Verne Aventure",
-            "Le Seigneur des Anneaux / Terre du Milieu", "Mass Effect", "Médiéval Fantastique Quelconque",
-            "Membre d'un Cirque Ambulant Fantastique", "Pilote de Mécano-Guerrier Géant", "Pirates des Caraïbes",
-            "Pokémon", "Post-Apocalyptique", "Prince of Persia", "Retour vers le futur", "Rêve Lucide / Exploration Onirique",
-            "Sherlock Holmes / Enquêtes Victoriennes", "Star Trek", "Star Trek mélangé avec Star Wars", "Star Wars",
-            "Stargate", "Steampunk", "Super-Héros", "Survivant d'une Ère Glaciaire Préhistorique",
-            "The Witcher / Andrzej Sapkowski", "Tintin", "Voyage dans le temps", "Voyage dans un autre pays",
-            "Voyageur Interdimensionnel Échoué", "Western Spaghetti", "World of Warcraft", "X-Files / Enquêtes Paranormales", 
-            "Zelda", "Schtroumpfs", "Bruce Almighty", "Liar Liar", "The Mask", "The Matrix", "Bill and Ted",
-			"Superman", "Batman", "Genghis Khan", "Alexandre le Grand", "Vercingétorix", "Jules César", "Napoléon",
-			"Jesus", "Willy Beamish", "Space Quest", "King Quest", "Police Quest", "Rabbi Jacob",
-			"Le Gendarme à St-Tropez", "Dune", "Blade Runner", "The Terminator", "Rambo",
-			"Kid Icarus", "Metroid", "Super Mario Bros", "Scarface", "Pulp Fiction",
-			"Fight Club", "Johnny Mnemonic", "Le petit prince", "Cabinet de psychologue",
-			"Cabinet de psychiatire", "Bureau d'avocat et procès", "Final Fantasy", "Tortues Ninja", "Les Intrépides",
-			"Groundhog Day (jour de la marmotte)", "Les invincibles", "Tortues Ninjas" 
+            "Académie de Magie Moderne", "Alchimiste en Quête de la Pierre Philosophale", "Alexandre le Grand", "Another World", "Astérix",
+            "Batman", "Bill and Ted", "Black Mirror / Dystopie Futuriste Proche", "Blade Runner", "Blade Runner / Univers Philip K. Dick", "Bruce Almighty",
+            "Bureau d'avocat et procès", "Cabinet de psychologue", "Cabinet de psychiatire", "Carlos Castaneda / Voyages Chamaniques", "Columbo",
+            "Cyberpunk", "Détective Noir", "Dieu Créateur d'Univers (avec assistants cosmiques)", "Dieu Mineur Tentant de Gagner des Fidèles",
+            "Doctor Who", "Dungeon and Dragon", "Dune", "Enquêtes sur Conspirations", "Espace Opéra Épique", "Exploration Sous-Marine Mystérieuse",
+            "Fallout", "Fight Club", "Final Fantasy", "Genghis Khan", "Gestion d'un Royaume / Cité", "Ghostbuster", "Groundhog Day (jour de la marmotte)",
+            "Harry Potter", "Hero Quest", "Horreur Cosmique Lovecraftienne", "Indiana Jones", "Jesus", "Johnny Mnemonic",
+            "Journaliste d'Investigation dans un Monde Steampunk/Dieselpunk", "Jules César", "Jules Verne Aventure", "Kid Icarus", "King Quest",
+            "Le Gendarme à St-Tropez", "Le petit prince", "Le Seigneur des Anneaux / Terre du Milieu", "Les Aventuriers du timbre perdu",
+            "Les Intrépides", "Les invincibles", "Liar Liar", "Mass Effect", "Médiéval Fantastique Quelconque",
+            "Membre d'un Cirque Ambulant Fantastique", "Metroid", "Napoléon", "Pilote de Mécano-Guerrier Géant", "Pirates des Caraïbes",
+            "Pokémon", "Police Quest", "Post-Apocalyptique", "Prince of Persia", "Pulp Fiction", "Rabbi Jacob", "Rambo", "Retour vers le futur",
+            "Rêve Lucide / Exploration Onirique", "Scarface", "Schtroumpfs", "Sherlock Holmes / Enquêtes Victoriennes", "Space Quest", "Star Trek",
+            "Star Trek mélangé avec Star Wars", "Star Wars", "Stargate", "Steampunk", "Super Mario Bros", "Super-Héros", "Superman",
+            "Survivant d'une Ère Glaciaire Préhistorique", "The Mask", "The Matrix", "The Terminator", "The Witcher / Andrzej Sapkowski", "Tintin",
+            "Tortues Ninjas", "Vercingétorix", "Voyage dans le temps", "Voyage dans un autre pays", "Voyageur Interdimensionnel Échoué",
+            "Western Spaghetti", "Willy Beamish", "World of Warcraft", "X-Files / Enquêtes Paranormales", "Zelda"
         ].sort();
 
-        // Instructions spécifiques par défaut pour certains thèmes
+
         const defaultThemeInstructions = {
             "Zelda": "Mettre l'accent sur l'exploration de vastes environnements, la résolution d'énigmes dans des donjons thématiques, et l'acquisition progressive d'objets clés ouvrant de nouvelles zones ou capacités. Le héros est souvent un protagoniste silencieux dont les actions parlent pour lui. Inclure une menace ancienne ou un grand mal à vaincre pour sauver le royaume et une figure de princesse ou de sage à protéger/aider.",
             "Harry Potter": "L'aventure se déroule idéalement à Poudlard ou dans le monde magique britannique. Proposer des choix liés à l'apprentissage et l'utilisation de sortilèges, la participation à des cours, les interactions avec les élèves des différentes maisons (Gryffondor, Serpentard, etc.) et les professeurs. Intégrer un mystère à résoudre, des éléments de la vie scolaire (examens, Quidditch si pertinent) et potentiellement des confrontations avec des forces obscures. Permettre au joueur de définir sa maison ou ses affinités magiques.",
@@ -176,43 +181,79 @@
             themePresetSelect.appendChild(option);
         });
 
-        // Écouteur d'événement pour le changement de thème
-        themePresetSelect.addEventListener('change', function() {
-            const selectedTheme = this.value;
-            if (defaultThemeInstructions[selectedTheme]) {
-                ameliorationsTextarea.value = defaultThemeInstructions[selectedTheme];
-            } else {
-                ameliorationsTextarea.value = ''; // Efface si pas d'instructions pour ce thème ou si l'option vide est sélectionnée
-            }
-        });
-        
-        // Optionnel: Vider le champ d'améliorations si l'utilisateur commence à taper un thème manuel
-        // et qu'un thème prédéfini avait été sélectionné.
-        // Cela évite d'envoyer des instructions par défaut non pertinentes avec un thème manuel.
-        themeManuelInput.addEventListener('input', function() {
-            if (this.value.trim() !== '') {
-                // Si l'utilisateur tape un thème manuel, on pourrait vouloir effacer les instructions par défaut
-                // Cependant, il pourrait aussi vouloir garder les instructions d'un preset comme base.
-                // Pour l'instant, on ne fait rien ici, l'utilisateur peut effacer manuellement.
-                // Une autre option serait de vider ameliorationsTextarea si defaultThemeInstructions[themePresetSelect.value] existe.
-            }
-        });
+		// Dans la fonction updateAmeliorationsTextarea :
 
+		function updateAmeliorationsTextarea() {
+			const selectedTheme = themePresetSelect.value;
+			const nombreJoueurs = parseInt(nombreJoueursSelect.value);
+			let newAmeliorationsText = "";
+
+			// 1. Instruction par défaut du thème
+			if (defaultThemeInstructions[selectedTheme]) {
+				newAmeliorationsText += defaultThemeInstructions[selectedTheme];
+			}
+
+			// 2. Directive multi-joueurs améliorée (axée sur la déduction/proposition par l'IA)
+			if (nombreJoueurs > 1) {
+				let multiPlayerIntro = `\n\n---\n**INSTRUCTIONS MULTIJOUEURS (${nombreJoueurs} joueurs) :**\nCette aventure implique ${nombreJoueurs} personnages joueurs. Vous (l'IA) allez établir ou déduire leurs dynamiques initiales.`;
+
+				let characterSetupGuidance = `\n- **Phase Initiale (Mise en Place des Personnages & Dynamiques) :**`;
+				characterSetupGuidance += `\n  - Pour les ${nombreJoueurs} personnages joueurs (nommez-les Joueur 1, Joueur 2,... Joueur ${nombreJoueurs}, ou utilisez des noms/archétypes s'ils sont suggérés dans d'autres instructions que je pourrais fournir) :`;
+				characterSetupGuidance += `\n    1.  **Établissez ou déduisez leurs relations initiales.** Peuvent-ils être alliés, neutres, rivaux, ennemis, ou former des équipes distinctes (ex: 2 vs 2, 1 vs 3, chacun pour soi) ? Tenez compte des informations que j'aurais pu fournir (par exemple, si des personnages antagonistes connus comme 'Batman' et 'Le Joker' sont mentionnés, utilisez cette connaissance comme base solide). Si peu d'informations sont données sur les relations, proposez une dynamique intéressante (qui peut être coopérative par défaut ou plus complexe si le thème s'y prête).`;
+				characterSetupGuidance += `\n    2.  **Définissez leurs objectifs initiaux, individuels ou d'équipe.** Ces objectifs peuvent être convergents, divergents, ou en opposition directe, en cohérence avec les relations établies.`;
+				characterSetupGuidance += `\n    3.  **Concevez et proposez une situation de départ pour chaque joueur ou équipe.** Ils peuvent commencer ensemble ou dans des lieux/contextes séparés. Si séparés, imaginez et décrivez brièvement comment leurs histoires et chemins initiaux sont distincts, et comment ils sont susceptibles de s'entremêler, de mener à des coopérations, des compétitions, ou des confrontations directes.`;
+				characterSetupGuidance += `\n  - Après avoir établi ce cadre initial pour les personnages, leurs dynamiques et leurs situations de départ respectives, décrivez la scène d'ouverture pour lancer l'aventure. Je (l'utilisateur de cette interface) fournirai ensuite les actions/réponses pour chaque joueur à tour de rôle ou selon vos indications, en fonction du scénario que vous aurez mis en place.`;
+
+				let gameplayGuidance = `\n- **Déroulement de l'Aventure :**`;
+				gameplayGuidance += `\n  - Adressez vos questions et propositions de choix aux joueurs individuellement (ex: "Joueur 1 [Nom/Archétype], que faites-vous ?"), à des équipes spécifiques si définies, ou au groupe entier si une action concertée est possible/logique. J'indiquerai quel joueur/équipe parle ou agit.`;
+				gameplayGuidance += `\n  - Si les joueurs (ou équipes) ont des objectifs divergents ou sont en conflit (selon ce que vous avez établi ou déduit), la narration doit refléter cette dynamique. Cela peut impliquer d'alterner les points de vue, de décrire des scènes où ils interagissent (coopèrent, rivalisent, s'affrontent), ou de gérer des actions qui peuvent aider ou nuire aux autres personnages joueurs.`;
+				gameplayGuidance += `\n  - Les conséquences des actions d'un joueur (ou d'une équipe) peuvent impacter les autres, positivement ou négativement.`;
+
+				let dmRoleGuidance = `\n- **Votre rôle de DM/Auteur :**`;
+				dmRoleGuidance += `\n  - Adaptez les défis, les PNJ, et les événements pour qu'ils soient significatifs et engageants pour des joueurs aux motivations et relations variées que vous aurez établies.`;
+				dmRoleGuidance += `\n  - Offrez des opportunités à chaque joueur (ou équipe) d'influencer l'histoire et de poursuivre ses objectifs, même s'ils sont contradictoires avec ceux des autres.`;
+				dmRoleGuidance += `\n  - Soyez créatif et prêt à gérer des rebondissements narratifs découlant des interactions (ou du manque d'interaction) entre les personnages joueurs.`;
+
+				const multiPlayerDirective = `${multiPlayerIntro}${characterSetupGuidance}${gameplayGuidance}${dmRoleGuidance}\n---`;
+				
+				if (newAmeliorationsText.trim() !== "") {
+					newAmeliorationsText += multiPlayerDirective;
+				} else {
+					newAmeliorationsText = multiPlayerDirective.trim(); 
+				}
+			}
+			ameliorationsTextarea.value = newAmeliorationsText;
+		}
+
+        themePresetSelect.addEventListener('change', updateAmeliorationsTextarea);
+        nombreJoueursSelect.addEventListener('change', updateAmeliorationsTextarea); // Appelle la même fonction pour mettre à jour
+        
+        // Appeler une première fois pour initialiser le champ si un thème/nb joueur est déjà sélectionné au chargement
+        // (utile si on sauvegarde l'état des champs, mais ici ils sont par défaut au chargement)
+        // updateAmeliorationsTextarea(); // Décommenter si besoin d'initialisation au chargement
+
+        themeManuelInput.addEventListener('input', function() {
+            // Si l'utilisateur tape un thème manuel, il est probable qu'il veuille des instructions spécifiques
+            // différentes de celles auto-populées. On pourrait choisir de vider ameliorationsTextarea,
+            // ou de le laisser tel quel pour qu'il puisse le modifier.
+            // Actuellement, on ne fait rien, l'utilisateur peut effacer manuellement.
+            // Si on veut vider :
+            // if (this.value.trim() !== '') {
+            // ameliorationsTextarea.value = '';
+            // }
+        });
 
         function genererPrompt() {
             const selectedThemePreset = themePresetSelect.value;
             const customTheme = themeManuelInput.value.trim();
+            // const nombreJoueurs = parseInt(nombreJoueursSelect.value); // Plus besoin de lire ici pour le prompt principal
             const tonAventure = tonAventureInput.value.trim();
             const styleEcriture = styleEcritureInput.value.trim();
-            // On utilise la valeur actuelle du textarea, qu'elle soit par défaut ou modifiée par l'utilisateur
-            const specificInstructions = ameliorationsTextarea.value.trim();
+            const specificInstructions = ameliorationsTextarea.value.trim(); // Contient maintenant les instructions du thème ET/OU multijoueurs
 
             let univers = "";
             if (customTheme) {
                 univers = customTheme;
-                 // Si un thème manuel est entré, on s'assure que les instructions spécifiques ne sont pas celles
-                 // d'un précédent thème prédéfini, à moins que l'utilisateur ne les ait intentionnellement gardées/modifiées.
-                 // Le comportement actuel est de prendre ce qui est dans la boîte, ce qui est flexible.
             } else if (selectedThemePreset) {
                 univers = selectedThemePreset;
             } else {
@@ -220,6 +261,7 @@
                 return;
             }
 
+            // Le prompt principal reste celui pour un joueur solo par défaut
             let prompt = `Crée une aventure textuelle interactive où je suis le héros, se déroulant dans l'univers de ${univers}.\n\n`;
 
             if (tonAventure || styleEcriture) {
@@ -250,7 +292,7 @@
             prompt += `Objectif :\n`;
             prompt += `Le but est de créer une expérience immersive et personnalisée de livre dont vous êtes le héros. Chaque page que tu génères doit faire avancer l'histoire en fonction de mes décisions.\n\n`;
 
-            if (specificInstructions) { // Cette variable prendra la valeur du textarea, qu'elle soit auto-populée ou manuelle
+            if (specificInstructions) {
                 prompt += `Instructions Spécifiques du Joueur (à prendre en haute considération pour l'univers ${univers}) :\n${specificInstructions}\n\n`;
             }
 
