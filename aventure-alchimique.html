@@ -183,6 +183,8 @@
 
 		// Dans la fonction updateAmeliorationsTextarea :
 
+		// Dans la fonction updateAmeliorationsTextarea :
+
 		function updateAmeliorationsTextarea() {
 			const selectedTheme = themePresetSelect.value;
 			const nombreJoueurs = parseInt(nombreJoueursSelect.value);
@@ -193,28 +195,27 @@
 				newAmeliorationsText += defaultThemeInstructions[selectedTheme];
 			}
 
-			// 2. Directive multi-joueurs améliorée (axée sur la déduction/proposition par l'IA)
+			// 2. Directive multi-joueurs améliorée
 			if (nombreJoueurs > 1) {
-				let multiPlayerIntro = `\n\n---\n**INSTRUCTIONS MULTIJOUEURS (${nombreJoueurs} joueurs) :**\nCette aventure implique ${nombreJoueurs} personnages joueurs. Vous (l'IA) allez établir ou déduire leurs dynamiques initiales.`;
+				let multiPlayerIntro = `\n\n---\n**INSTRUCTIONS MULTIJOUEURS (${nombreJoueurs} joueurs) :**\nCette aventure implique ${nombreJoueurs} personnages joueurs. Leurs relations et objectifs peuvent varier (par exemple : tous alliés, neutres les uns envers les autres, ouvertement antagonistes, ou répartis en équipes avec des objectifs propres ou opposés).`;
 
-				let characterSetupGuidance = `\n- **Phase Initiale (Mise en Place des Personnages & Dynamiques) :**`;
-				characterSetupGuidance += `\n  - Pour les ${nombreJoueurs} personnages joueurs (nommez-les Joueur 1, Joueur 2,... Joueur ${nombreJoueurs}, ou utilisez des noms/archétypes s'ils sont suggérés dans d'autres instructions que je pourrais fournir) :`;
-				characterSetupGuidance += `\n    1.  **Établissez ou déduisez leurs relations initiales.** Peuvent-ils être alliés, neutres, rivaux, ennemis, ou former des équipes distinctes (ex: 2 vs 2, 1 vs 3, chacun pour soi) ? Tenez compte des informations que j'aurais pu fournir (par exemple, si des personnages antagonistes connus comme 'Batman' et 'Le Joker' sont mentionnés, utilisez cette connaissance comme base solide). Si peu d'informations sont données sur les relations, proposez une dynamique intéressante (qui peut être coopérative par défaut ou plus complexe si le thème s'y prête).`;
-				characterSetupGuidance += `\n    2.  **Définissez leurs objectifs initiaux, individuels ou d'équipe.** Ces objectifs peuvent être convergents, divergents, ou en opposition directe, en cohérence avec les relations établies.`;
-				characterSetupGuidance += `\n    3.  **Concevez et proposez une situation de départ pour chaque joueur ou équipe.** Ils peuvent commencer ensemble ou dans des lieux/contextes séparés. Si séparés, imaginez et décrivez brièvement comment leurs histoires et chemins initiaux sont distincts, et comment ils sont susceptibles de s'entremêler, de mener à des coopérations, des compétitions, ou des confrontations directes.`;
-				characterSetupGuidance += `\n  - Après avoir établi ce cadre initial pour les personnages, leurs dynamiques et leurs situations de départ respectives, décrivez la scène d'ouverture pour lancer l'aventure. Je (l'utilisateur de cette interface) fournirai ensuite les actions/réponses pour chaque joueur à tour de rôle ou selon vos indications, en fonction du scénario que vous aurez mis en place.`;
+				let characterCreationGuidance = `\n- **Phase Initiale (Création des Personnages & Mise en Situation) :**`;
+				characterCreationGuidance += `\n  - Pour chacun des ${nombreJoueurs} personnages joueurs (que vous pouvez nommer Joueur 1, Joueur 2,... Joueur ${nombreJoueurs} si je ne fournis pas leurs noms spécifiques), en plus de la personnalisation habituelle (attributs, compétences selon le thème), demandez-moi (l'utilisateur de cette interface) de clarifier :`;
+				characterCreationGuidance += `\n    1.  Leurs relations initiales : Sont-ils alliés, rivaux, ennemis ? Forment-ils des équipes distinctes (ex: équipe A vs équipe B) ?`;
+				characterCreationGuidance += `\n    2.  Leurs objectifs individuels ou d'équipe, surtout s'ils sont divergents.`;
+				characterCreationGuidance += `\n    3.  Leur situation de départ : Commencent-ils l'aventure ensemble au même endroit, ou dans des lieux/situations séparés ? Si séparés, comment leurs histoires sont-elles susceptibles de s'entremêler ou d'entrer en collision ?`;
 
 				let gameplayGuidance = `\n- **Déroulement de l'Aventure :**`;
-				gameplayGuidance += `\n  - Adressez vos questions et propositions de choix aux joueurs individuellement (ex: "Joueur 1 [Nom/Archétype], que faites-vous ?"), à des équipes spécifiques si définies, ou au groupe entier si une action concertée est possible/logique. J'indiquerai quel joueur/équipe parle ou agit.`;
-				gameplayGuidance += `\n  - Si les joueurs (ou équipes) ont des objectifs divergents ou sont en conflit (selon ce que vous avez établi ou déduit), la narration doit refléter cette dynamique. Cela peut impliquer d'alterner les points de vue, de décrire des scènes où ils interagissent (coopèrent, rivalisent, s'affrontent), ou de gérer des actions qui peuvent aider ou nuire aux autres personnages joueurs.`;
+				gameplayGuidance += `\n  - Adressez vos questions et propositions de choix aux joueurs individuellement (ex: "Joueur 1 [Batman], que faites-vous ?"), à des équipes spécifiques si définies, ou au groupe entier si une action concertée est possible/logique. J'indiquerai quel joueur/équipe parle ou agit.`;
+				gameplayGuidance += `\n  - Si les joueurs (ou équipes) ont des objectifs divergents ou sont en conflit, la narration doit refléter cette dynamique. Cela peut impliquer d'alterner les points de vue, de décrire des scènes où ils interagissent (coopèrent, rivalisent, s'affrontent), ou de gérer des actions qui peuvent aider ou nuire aux autres personnages joueurs, conformément aux relations et objectifs établis.`;
 				gameplayGuidance += `\n  - Les conséquences des actions d'un joueur (ou d'une équipe) peuvent impacter les autres, positivement ou négativement.`;
 
 				let dmRoleGuidance = `\n- **Votre rôle de DM/Auteur :**`;
-				dmRoleGuidance += `\n  - Adaptez les défis, les PNJ, et les événements pour qu'ils soient significatifs et engageants pour des joueurs aux motivations et relations variées que vous aurez établies.`;
+				dmRoleGuidance += `\n  - Adaptez les défis, les PNJ, et les événements pour qu'ils soient significatifs et engageants pour des joueurs aux motivations potentiellement variées.`;
 				dmRoleGuidance += `\n  - Offrez des opportunités à chaque joueur (ou équipe) d'influencer l'histoire et de poursuivre ses objectifs, même s'ils sont contradictoires avec ceux des autres.`;
-				dmRoleGuidance += `\n  - Soyez créatif et prêt à gérer des rebondissements narratifs découlant des interactions (ou du manque d'interaction) entre les personnages joueurs.`;
+				dmRoleGuidance += `\n  - Soyez prêt à gérer des rebondissements narratifs découlant des interactions (ou du manque d'interaction) entre les personnages joueurs.`;
 
-				const multiPlayerDirective = `${multiPlayerIntro}${characterSetupGuidance}${gameplayGuidance}${dmRoleGuidance}\n---`;
+				const multiPlayerDirective = `${multiPlayerIntro}${characterCreationGuidance}${gameplayGuidance}${dmRoleGuidance}\n---`;
 				
 				if (newAmeliorationsText.trim() !== "") {
 					newAmeliorationsText += multiPlayerDirective;
