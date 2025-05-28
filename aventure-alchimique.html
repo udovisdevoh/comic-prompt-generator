@@ -299,17 +299,23 @@
             prompt += `4. Si je propose une action libre qui semble plausible dans le contexte, même si elle n'est pas explicitement offerte, essaie de la résoudre et d'en décrire les conséquences.\n\n`;
 			prompt += `5. Conserver le style d'écriture tout au long de l'aventure, par exemple, si c'est un style concis, il doit rester concis.\n\n`;
 			
-            // Génération des nombres aléatoires
-/*			
-            let randomNumbers = [];
+            // Génération des lettres aléatoires
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let randomLetters = [];
             for (let i = 0; i < 32; i++) {
-                randomNumbers.push(Math.floor(Math.random() * 10000) + 1); // Nombres entre 1 et 10000
+                const randomIndex = Math.floor(Math.random() * alphabet.length);
+                randomLetters.push(alphabet[randomIndex]);
             }
-            let randomNumbersString = randomNumbers.join(', ');
+            let randomLettersString = randomLetters.join(', '); // Sera une chaîne comme "A, X, E, P, ..."
 
-            prompt += `Comment générer le contenu aléatoire :\n`;
-            prompt += `1. Voici une liste de 32 nombres générés au hasard : ${randomNumbersString}. Utilise-les comme sources d'inspiration ou points de départ pour introduire des éléments uniques et variés dans l'histoire (noms, lieux spécifiques, événements mineurs, caractéristiques de PNJ, etc.). Par exemple, le premier nombre pourrait influencer un détail du lieu de départ, le deuxième un trait de caractère d'un PNJ rencontré, etc. L'utilisation doit être créative et subtile, pas une application littérale des nombres eux-mêmes.\n\n`;
-*/
+            prompt += `Comment générer le contenu aléatoire et unique :\n`;
+            prompt += `1. Voici une liste de 32 lettres majuscules générées au hasard : ${randomLettersString}.\n`;
+            prompt += `   Utilise ces lettres comme 'seeds' ou points d'ancrage thématiques lorsque tu conçois les éléments uniques de l'histoire. Par exemple, pour une lettre donnée de cette liste (en les utilisant de manière séquentielle ou en piochant dedans au besoin) :\n`;
+            prompt += `     - Tu pourrais t'en inspirer pour l'initiale du nom d'un PNJ (Personnage Non Joueur) que tu introduis.\n`;
+            prompt += `     - Elle pourrait influencer le nom d'un lieu important ou d'une région découverte.\n`;
+            prompt += `     - Elle pourrait suggérer un concept clé, un artefact, une organisation, ou même une émotion dominante pour une scène ou un personnage.\n`;
+            prompt += `   L'objectif est d'utiliser ces lettres pour injecter de la variété et de l'originalité de manière créative et subtile, pas comme une contrainte stricte à chaque fois. Si une lettre ne t'inspire pas pour un élément particulier, passe à la suivante ou utilise-la pour un autre aspect plus tard. Lorsqu'il n'y a plus de lettres dans la séquence, recommande à piocher au début.\n\n`;
+
 
             prompt += `Objectif :\n`;
             prompt += `Le but est de créer une expérience immersive et personnalisée de livre dont vous êtes le héros. Chaque page que tu génères doit faire avancer l'histoire en fonction de mes décisions.\n\n`;
