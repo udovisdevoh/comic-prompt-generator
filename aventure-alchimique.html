@@ -298,6 +298,17 @@
             prompt += `3. Sois créatif : introduis des rebondissements, des PNJ mémorables, des défis variés (combats, énigmes, dilemmes moraux) adaptés à l'univers de ${univers}.\n`;
             prompt += `4. Si je propose une action libre qui semble plausible dans le contexte, même si elle n'est pas explicitement offerte, essaie de la résoudre et d'en décrire les conséquences.\n\n`;
 			prompt += `5. Conserver le style d'écriture tout au long de l'aventure, par exemple, si c'est un style concis, il doit rester concis.\n\n`;
+			
+            // Génération des nombres aléatoires
+            let randomNumbers = [];
+            for (let i = 0; i < 32; i++) {
+                randomNumbers.push(Math.floor(Math.random() * 10000) + 1); // Nombres entre 1 et 10000
+            }
+            let randomNumbersString = randomNumbers.join(', ');
+
+            prompt += `Comment générer le contenu aléatoire :\n`;
+            prompt += `1. Voici une liste de 32 nombres générés au hasard : ${randomNumbersString}. Utilise-les comme sources d'inspiration ou points de départ pour introduire des éléments uniques et variés dans l'histoire (noms, lieux spécifiques, événements mineurs, caractéristiques de PNJ, etc.). Par exemple, le premier nombre pourrait influencer un détail du lieu de départ, le deuxième un trait de caractère d'un PNJ rencontré, etc. L'utilisation doit être créative et subtile, pas une application littérale des nombres eux-mêmes.\n\n`;
+
 
             prompt += `Objectif :\n`;
             prompt += `Le but est de créer une expérience immersive et personnalisée de livre dont vous êtes le héros. Chaque page que tu génères doit faire avancer l'histoire en fonction de mes décisions.\n\n`;
