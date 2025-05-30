@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Chroniques du Code-Maître : Générateur de Prompt Initial</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 { margin-bottom: 10px;}
+        h1 + p { text-align:center; margin-top:0px; margin-bottom:30px; font-style: italic;}
+        h2 { margin-top: 30px; margin-bottom: 15px;}
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input[type="text"], select, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        textarea#instructions-speciales, textarea#master-prompt-output {
+            resize: vertical;
+            min-height: 150px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .prompt-configurator {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+        #master-prompt-container {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #e9ecef;
+        }
+        #master-prompt-output {
+            font-family: monospace;
+            background-color: #fff;
+        }
+        #copy-master-prompt {
+            background-color: #2ecc71;
+            margin-top: 5px;
+        }
+        #copy-master-prompt:hover {
+            background-color: #27ae60;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Les Chroniques du Code-Maître</h1>
+        <p>Générateur de Prompt Initial pour Aventures Interactives en Scènes HTML</p>
+
+        <div class="prompt-configurator">
+            <h2>Configuration de l'Aventure</h2>
+            <form id="game-config-form">
+                <label for="theme-preset">Choisir un thème prédéfini :</label>
+                <select id="theme-preset" name="theme-preset">
+                    <option value="">-- Sélectionner un thème --</option>
+                </select>
+
+                <label for="theme-manuel">Ou entrer un thème personnalisé :</label>
+                <input type="text" id="theme-manuel" name="theme-manuel" placeholder="Ex: Mon univers de Fantaisie Sombre">
+                
+                <label for="nombre-joueurs">Nombre de joueurs :</label>
+                <select id="nombre-joueurs" name="nombre-joueurs">
+                    <option value="1" selected>1 (Solo)</option>
+                    <option value="2">2 Joueurs</option>
+                    <option value="3">3 Joueurs</option>
+                    <option value="4">4 Joueurs</option>
+                    <option value="5">5 Joueurs</option>
+                </select>
+
+                <label for="ton-aventure">Ton de l'aventure :</label>
+                <input type="text" id="ton-aventure" name="ton-aventure" placeholder="Ex: Épique, Humoristique, Sombre, Mystérieux">
+
+                <label for="style-ecriture">Style d'écriture (pour le texte DANS les scènes) :</label>
+                <input type="text" id="style-ecriture" name="style-ecriture" placeholder="Ex: Descriptif, Concis, Poétique" value="Très concis">
+
+                <label for="instructions-speciales">Instructions spécifiques pour le Maître du Jeu IA :</label>
+                <textarea id="instructions-speciales" name="instructions-speciales" rows="14" placeholder="Instructions pour l'IA sur la génération des scènes HTML/JS (exécutées séparément par vous)..."></textarea>
+
+                <button type="button" onclick="genererMasterPrompt()">Générer le Prompt Initial pour l'IA</button>
+            </form>
+        </div>
+
+        <div id="master-prompt-container" class="hidden">
+            <h3>Prompt Initial pour l'IA (Maître du Jeu) :</h3>
+            <textarea id="master-prompt-output" readonly></textarea>
+            <button type="button" id="copy-master-prompt" onclick="copyToClipboard('master-prompt-output', this)">Copier le Prompt Initial</button>
+            <p style="margin-top: 10px;"><em>Copiez ce prompt et donnez-le à votre IA Maître du Jeu. L'IA ne vous répondra QU'AVEC du code source pour une page web que vous exécuterez ensuite séparément. Le code résultat de la scène devra être copié manuellement depuis cette scène pour le donner à l'IA.</em></p>
+        </div>
+    </div>
+
+    <script>
+        const themePresetSelect = document.getElementById('theme-preset');
+        const themeManuelInput = document.getElementById('theme-manuel');
+        const nombreJoueursSelect = document.getElementById('nombre-joueurs');
+        const tonAventureInput = document.getElementById('ton-aventure');
+        const styleEcritureInput = document.getElementById('style-ecriture');
+        const instructionsSpecialesTextarea = document.getElementById('instructions-speciales');
+        const masterPromptContainerDiv = document.getElementById('master-prompt-container');
+        const masterPromptOutputTextarea = document.getElementById('master-prompt-output');
+
+        const themes = [ // Liste inchangée
+            "Académie de Magie Moderne", "Alchimiste en Quête de la Pierre Philosophale", "Alexandre le Grand", "Another World", "Astérix",
+            "Batman", "Bill and Ted", "Black Mirror / Dystopie Futuriste Proche", "Blade Runner", "Blade Runner / Univers Philip K. Dick", "Bruce Almighty",
+            "Bureau d'avocat et procès", "Cabinet de psychologue", "Cabinet de sexologue", "Cabinet de psychiatire", "Carlos Castaneda / Voyages Chamaniques", "Columbo",
+            "Cyberpunk", "Détective Noir", "Dieu Créateur d'Univers (avec assistants cosmiques)", "Dieu Mineur Tentant de Gagner des Fidèles",
+            "Doctor Who", "Dungeon and Dragon", "Dune", "Enquêtes sur Conspirations", "Espace Opéra Épique", "Exploration Sous-Marine Mystérieuse",
+            "Fallout", "Fight Club", "Final Fantasy", "Genghis Khan", "Gestion d'un Royaume / Cité", "Ghostbuster", "Groundhog Day (jour de la marmotte)",
+            "Harry Potter", "Hero Quest", "Horreur Cosmique Lovecraftienne", "Indiana Jones", "Jesus", "Johnny Mnemonic",
+            "Journaliste d'Investigation dans un Monde Steampunk/Dieselpunk", "Jules César", "Jules Verne Aventure", "Kid Icarus", "King Quest",
+            "Le Gendarme à St-Tropez", "Le petit prince", "Le Seigneur des Anneaux / Terre du Milieu", "Les Aventuriers du timbre perdu",
+            "Les Intrépides", "Les invincibles", "Liar Liar", "Mass Effect", "Médiéval Fantastique Quelconque",
+            "Membre d'un Cirque Ambulant Fantastique", "Metroid", "Napoléon", "Pilote de Mécano-Guerrier Géant", "Pirates des Caraïbes",
+            "Pokémon", "Police Quest", "Post-Apocalyptique", "Prince of Persia", "Pulp Fiction", "Rabbi Jacob", "Rambo", "Retour vers le futur",
+            "Rêve Lucide / Exploration Onirique", "Scarface", "Schtroumpfs", "Sherlock Holmes / Enquêtes Victoriennes", "Space Quest", "Star Trek",
+            "Star Trek mélangé avec Star Wars", "Star Wars", "Stargate", "Steampunk", "Super Mario Bros", "Super-Héros", "Superman",
+            "Survivant d'une Ère Glaciaire Préhistorique", "The Mask", "The Matrix", "The Terminator", "The Witcher / Andrzej Sapkowski", "Tintin",
+            "Tortues Ninjas", "Vercingétorix", "Voyage dans le temps", "Voyage dans un autre pays", "Voyageur Interdimensionnel Échoué", "Dexter",
+            "Western Spaghetti", "Willy Beamish", "World of Warcraft", "X-Files / Enquêtes Paranormales", "Zelda",
+            "Passe-Partout (émission jeunesse Québecoise)", "Mythologie Hindoue", "Egypte Antique", "Mohenjo-daro", "Être un gourou de secte (par exemple Raël)",
+            "Mythologie Grecque", "Empire Ottoman", "Empire Byzantin", "Simpsons", "Surprise sur prise", "Borat",
+            "Les mystérieuses citées d'or", "Remi sans famille", "Astro le petit robot",
+            "Simulation de politicien", "Philémon (Fred)", "Occupation Double (télé réalité québécoise)", "Karma et réincarnation",
+            "The Truman Show", "Mythologie bouddhiste", "Inception", "Un procès"
+        ].sort();
+
+        const defaultThemeGameInstructions = { // Inchangé par rapport à la version précédente
+            "Zelda":
+                "MJ IA, pour Zelda, tes scènes doivent simuler l'exploration et la résolution d'énigmes. Une scène peut comporter plusieurs interactions : par exemple, le joueur entre dans une salle, peut examiner plusieurs objets (chaque examen met à jour une partie de la description dans la scène via ton script), puis doit activer des éléments interactifs dans un certain ordre. Le 'CODE DE RÉSULTAT' final (ex: `DONJON_CRYPTE_SECRETE_OUVERTE_PAR_SEQUENCE_LEVIERS`) ne serait généré qu'après la réussite de cette séquence complète au sein de la scène.\n" +
+                "Autres exemples de 'CODE DE RÉSULTAT' finaux pour une scène Zelda: `OBJET_EPEE_DE_LEGENDE_RETIREE_DU_SOCLE`, `VIEIL_ERMITE_A_REVELE_CARTE_DU_DESERT`.",
+            "Super Mario Bros":
+                "MJ IA, pour un thème de plateforme inspiré de Super Mario Bros, crée des scènes 2D simples. Le joueur (emoji 👨 ou 🍄) peut 'sauter' (modification de sa position verticale via une touche ou un élément interactif) pour atteindre des 'plateformes' (simulées par des éléments de page stylisés) et collecter des 'pièces' (💰). Des 'ennemis' (🐢, 👾) peuvent se déplacer horizontalement. Une scène peut être un petit 'niveau' à traverser, avec plusieurs sauts et collectes. 'CODE DE RÉSULTAT' possibles : `NIVEAU_1_TERMINE_AVEC_10_PIECES_ET_CHAMPIGNON_SECRET`, `CHUTE_MORTELLE_NIVEAU_1_APRES_SECTION_PIPES`.",
+            "Metroid": 
+                "MJ IA, pour Metroid, envisage une exploration 2D à défilement horizontal ou par écrans successifs ('flip-screen'), avec des passages secrets à découvrir (par exemple, un mur d'apparence normale qui devient cliquable et révèle un passage après une certaine action). Le joueur (emoji 👩‍🚀 ou 🤖) pourrait avoir une action de 'tir' (lançant un emoji projectile) et une action de 'saut'. Une scène peut impliquer d'explorer plusieurs 'salles' (sections de la page web qui deviennent visibles ou sont mises à jour), de trouver un 'power-up' (emoji spécifique 🔋, 💣) qui modifie l'état du joueur pour le reste de la scène (ex: peut maintenant ouvrir des portes colorées), et de vaincre un mini-boss. 'CODE DE RÉSULTAT' : `SECTEUR_ALPHA_EXPLORE_MISSILES_ACQUIS_MINIBOSS_VAINCU`.",
+            "Harry Potter": 
+                "MJ IA, pour Harry Potter, une scène de création de personnage pourrait d'abord demander le nom via un champ de saisie de texte. Après validation (le nom s'affiche dans la scène), présenter des éléments interactifs pour choisir une maison. Une fois la maison choisie, la scène se conclut et génère un 'CODE DE RÉSULTAT' unique qui combine ces informations, par exemple : `PERSO_CREE_NOM_[valeur_champ_nom]_MAISON_[maison_choisie]`.\n" +
+                "Une scène de cours de sortilège pourrait présenter une description, puis plusieurs tentatives pour réaliser le sort (chaque tentative met à jour le feedback dans la scène via ton script), avant de conclure avec un 'CODE DE RÉSULTAT' comme `SORT_LEVITATION_MAITRISE_APRES_3_ESSAIS` ou `SORT_PATRONUS_ECHOUE_CONCENTRATION_PERDUE`.",
+            "Cyberpunk": 
+                "MJ IA, pour Cyberpunk, une phase d'infiltration pourrait être un jeu où le joueur doit déplacer son emoji 'hacker' (ex: 👤) à travers un labyrinthe de 'lasers' (ex: emojis ligne verticale ou éclair ⚡) sans les toucher, contrôlé par clics ou touches. La scène pourrait avoir plusieurs sections de lasers. Un mini-jeu de 'décodage' au milieu pourrait être un jeu de rapidité pour taper une séquence de caractères affichée dans un champ de texte. Le 'CODE DE RÉSULTAT' final pourrait être `INFILTRATION_REUSSIE_SANS_ALERTE_DATA_RECUPEREE`, `DECODAGE_ECHOUE_SYSTEME_VERROUILLE`.\n" +
+                "Un dialogue peut comporter plusieurs échanges, où chaque choix de réplique modifie la réaction du PNJ (affichée dans la scène), avant d'arriver à une conclusion et un 'CODE DE RÉSULTAT' comme `NEGOCIATION_ARCorp_ACCORD_TROUVE_AVEC_PRIME`.",
+            "Star Wars": 
+                "MJ IA, pour Star Wars / Space Opera, simule un combat spatial simple. Le joueur contrôle un emoji vaisseau (ex: 🚀) avec les touches pour éviter des tirs ennemis (ex: emojis 💥 ou ✨) qui apparaissent et se déplacent. Le joueur peut 'tirer' (ex: en appuyant sur une touche spécifique, ce qui lance un emoji laser ➖). Le but peut être de survivre X secondes ou de 'toucher' Y ennemis (autres emojis vaisseaux 🛸) sur plusieurs vagues. Le 'CODE DE RÉSULTAT' final pourrait être `COMBAT_SPATIAL_VICTOIRE_CONTRE_ESCADRILLE_PIRATE_VAGUE_3`, `VAISSEAU_AVARIE_FUITE_REUSSIE_SYSTEME_XYZ`.",
+            "Détective Noir": 
+                "MJ IA, une scène d'enquête dans un bureau pourrait permettre au joueur d'activer des éléments interactifs pour 'Examiner le bureau', 'Fouiller la bibliothèque', 'Regarder par la fenêtre'. Chaque action révèle des informations textuelles dans la scène et peut débloquer de nouvelles options d'interaction. Par exemple, trouver une clé sur le bureau permettrait d'activer un élément 'Ouvrir le tiroir verrouillé'. Le 'CODE DE RÉSULTAT' final pourrait être `ENQUETE_BUREAU_LETTRE_MENACE_TROUVEE_TIROIR`.",
+            "Occupation Double (télé réalité québécoise)": 
+                "MJ IA, pour Occupation Double, chaque scène doit maximiser l'interaction avec les PNJ (Personnages Non Joueurs) et les dialogues. Utilise les 'Lettres Seed' pour choisir une destination de voyage originale (que tu choisis, pas le joueur) et l'animateur (une personnalité publique réelle).\n" +
+                "**Structure d'une scène type (ex: une journée) :**\n" +
+                "1.  La scène débute par un résumé des événements ou un message de l'animateur. Elle peut proposer au joueur une première interaction (ex: 'Choisir avec qui déjeuner', 'Participer à l'activité proposée').\n" +
+                "2.  **Interactions PNJ :** Les dialogues avec les PNJ (représentés par des emojis et décrits textuellement en se basant sur les 'sosies' de personnalités publiques que tu auras choisis pour eux) doivent offrir plusieurs tours de parole ou choix de répliques. Le joueur peut saisir du texte pour ses réponses, ou choisir parmi des options. La scène se met à jour avec les réponses des PNJ.\n" +
+                "3.  **Activités/Défis :** Intègre des mini-jeux sociaux ou psychologiques simples (ex: un QCM 'Qui a dit quoi?', un vote pour 'le plus stratège', deviner les intentions d'un PNJ). Le résultat de ces mini-jeux modifie l'état de la scène ou les relations (gérées par toi pour la suite).\n" +
+                "4.  **Drama & Twists :** Intègre des événements imprévus, des discussions houleuses entre PNJ (que le joueur peut observer ou dans lesquelles il peut intervenir), des 'twists' de l'animateur.\n" +
+                "5.  **Fin de Scène (ex: fin de journée) :** La scène se conclut après plusieurs interactions. Le 'CODE DE RÉSULTAT' doit encapsuler les actions/choix/saisies clés du joueur durant cette scène. Ex: `OD_JOUR_X_DISCUSSION_AVEC_[PNJ_A]_ACTIVITE_GAGNEE_VOTE_SECRET_POUR_[PNJ_B]_TEXTE_CONFESSIONNAL_[texte_saisi]`.\n" +
+                "**Directives Générales pour toi, MJ IA pour ce thème :**\n" +
+                "- Génère et maintiens la personnalité, l'âge, le métier, la ville et le 'sosie' de chaque PNJ. Fais des rappels périodiques des sosies pour aider le joueur.\n" +
+                "- La scène initiale devrait être le 'tapis rouge' présentant tous les PNJ et permettant au joueur de faire une première impression (et de définir son propre 'sosie' via un champ de texte).\n" +
+                "- Les PNJ doivent tenir compte de l'apparence (basée sur les sosies) dans leurs attirances/interactions.\n" +
+                "- Gère la progression (environ 10 'jours' de jeu), les éliminations (alternance gars/fille privilégiée, votes des PNJ cohérents avec leur stratégie), et la possibilité pour le joueur de prendre le contrôle d'un autre PNJ s'il est éliminé.\n" +
+                "- Révèle les votes secrets après chaque élimination. Affiche périodiquement (ex: via un élément interactif 'Tableau des couples' dans une scène) un récapitulatif des relations connues du joueur.\n" +
+                "- L'action doit être rapide et les dialogues percutants. Fais en sorte que les chances de gagner soient équilibrées.",
+            "Karma et réincarnation": 
+                "MJ IA, pour Karma et réincarnation, chaque scène représente une 'vie' ou une phase significative d'une vie. Le joueur ne choisit pas son nom.\n" +
+                "**Structure d'une scène type (une 'vie') :**\n" +
+                "1.  **Début de vie :** La scène commence par décrire le contexte de la nouvelle incarnation (forme de vie, environnement, époque), basé sur le karma de la vie précédente (géré par toi). Si c'est la toute première scène, demande au joueur de choisir les restrictions de réincarnation (A-H) via des éléments interactifs. Le 'CODE DE RÉSULTAT' de cette première scène sera ce choix (ex: `KARMA_RESTRICTION_HUMAIN_TERRE_SEULEMENT`).\n" +
+                "2.  **Interactions Multiples :** La scène doit proposer environ 5 à 10 interactions clés (décisions, actions) pour cette vie. Chaque interaction est un choix offert au joueur (ex: via des éléments interactifs cliquables, ou parfois un champ de texte pour une action/réponse). La scène se met à jour pour montrer la conséquence immédiate de chaque choix.\n" +
+                "3.  **Impact Karmique (géré par toi) :** Tes descriptions des conséquences doivent refléter indirectement l'impact karmique des choix, sans jamais l'expliciter. Les leçons non apprises ou les traumatismes non guéris peuvent se manifester sous d'autres formes dans les interactions suivantes de la même vie, ou dans les vies futures.\n" +
+                "4.  **Fin de Vie / Fin de Scène :** Après la séquence d'interactions, la scène décrit la fin de cette incarnation. Le 'CODE DE RÉSULTAT' final doit encapsuler les choix majeurs ou la nature globale de cette vie, y compris toute saisie de texte pertinente. Ex: `VIE_INSECTE_DECISIONS_[A-B-A-C-TEXTE_OBSERVATION_FINALE]_MORT_ECRASE` ou `VIE_ARTISAN_CHOIX_HONNETETE_FAMILLE_PAUVRE_MAIS_HEUREUSE_FIN_NATURELLE`.\n" +
+                "**Directives Générales pour toi, MJ IA pour ce thème :**\n" +
+                "- Le nombre d'interactions par 'vie' (scène) doit être limité pour que les cycles soient relativement courts.\n" +
+                "- Les formes de vie peuvent être très exotiques (autres planètes, dimensions, époques) sauf si le joueur a choisi des restrictions."
+        };
+
+        themes.forEach(theme => {
+            const option = document.createElement('option');
+            option.value = theme;
+            option.textContent = theme;
+            themePresetSelect.appendChild(option);
+        });
+
+        function updateSpecialInstructions() {
+            const selectedTheme = themePresetSelect.value;
+            const nombreJoueurs = parseInt(nombreJoueursSelect.value);
+            let newInstructions = "";
+
+            newInstructions += "--- INSTRUCTIONS CRUCIALES POUR L'IA MAÎTRE DU JEU (SCÈNES WEB EXÉCUTÉES SÉPARÉMENT PAR L'UTILISATEUR) ---\n";
+            newInstructions += "Tu es le Maître du Jeu pour 'Les Chroniques du Code-Maître'. L'utilisateur exécutera tes scènes (pages web complètes) séparément.\n";
+            newInstructions += "1.  Ta SEULE réponse sera TOUJOURS un bloc de code source pour une page web auto-suffisante. NE PAS AJOUTER DE TEXTE NARRATIF EN DEHORS DE CE BLOC DE CODE SOURCE.\n";
+            
+            newInstructions += "2.  **CONCEPTION DES SCÈNES ET MINI-JEUX VARIÉS :**\n";
+            newInstructions += "    a.  Chaque scène que tu génères doit être PLUS LONGUE et offrir PLUSIEURS INTERACTIONS ou choix possibles au sein de cette même scène. Une scène ne doit pas se limiter à une seule action et un résultat. Elle doit permettre un mini-déroulement narratif ou ludique interne avant de se conclure.\n";
+            newInstructions += "    b.  SOIS CRÉATIF AVEC LES MÉCANIQUES DE JEU. Ne te limite pas à des QCM ou des saisies de texte. Inspire-toi des jeux vidéo existants, y compris les classiques des époques Nintendo (NES) et Super Nintendo (SNES) :\n";
+            newInstructions += "        - **Mouvement de personnage :** Permets au joueur de déplacer un 'personnage' (représenté par un emoji Unicode) sur une grille (simulée par des éléments de page web structurés et stylisés), une petite carte, ou dans un espace 2D simple. Les contrôles peuvent être via les touches du clavier (flèches, ZQSD/WASD que tu devras spécifier clairement dans la scène) ou des éléments interactifs cliquables sur la page.\n";
+            newInstructions += "        - **Jeux d'adresse :** Défis de timing (activer un élément au bon moment), de précision (viser une cible avec un clic), jeux de rythme simples.\n";
+            newInstructions += "        - **Puzzles simples :** Organisation d'éléments, séquences à trouver, petits casse-têtes logiques ou physiques (simulés).\n";
+            newInstructions += "        - **Jeux de plateforme 2D simples :** Sauts pour atteindre des plateformes, collecte d'objets, évitement d'obstacles simples.\n";
+            newInstructions += "        - **Aventure/RPG vue de dessus :** Déplacement sur grille, interactions avec des PNJ ou des objets via des menus ou des éléments cliquables.\n";
+            newInstructions += "        - **Saisie de texte :** Permets au joueur de saisir du texte pour des réponses à des énigmes, des noms, des commandes spécifiques, etc. Cette saisie doit être capturée pour le 'CODE DE RÉSULTAT' final.\n";
+            newInstructions += "        - **Utilisation d'Emojis comme Sprites :** Utilise abondamment les emojis Unicode pour représenter les personnages, objets, projectiles, décors, etc. Tu styliseras leur apparence (taille, couleur si possible via des conteneurs) et position avec des règles de style CSS.\n";
+            newInstructions += "    c.  **VARIÉTÉ ENTRE LES SCÈNES :** Autant que possible, et lorsque cela sert la narration, efforce-toi de varier le *genre* de mini-jeu ou de mécanique d'interaction principale d'une scène à l'autre. Par exemple, si une scène était un mini-jeu d'adresse de type plateforme, la suivante pourrait être une énigme textuelle, un dialogue à choix multiples avec des conséquences, un jeu de mémoire, ou une phase d'exploration simple. Cette variété aidera à maintenir l'engagement du joueur.\n";
+            newInstructions += "    d.  Le code source de la scène, une fois interprété par un navigateur, doit afficher toute la narration et les éléments interactifs DANS la page de la scène elle-même. Les interactions de l'utilisateur (clics, saisies, pressions de touches) doivent modifier l'état ou l'affichage de la scène SANS la terminer immédiatement, jusqu'à ce que le segment narratif/ludique de la scène soit complet.\n";
+            newInstructions += "    e.  Le code de script que tu fournis DOIT gérer ces interactions multiples et la logique du mini-jeu AU SEIN de la scène.\n";
+
+
+            newInstructions += "3.  **FIN DE SCÈNE ET CODE DE RÉSULTAT :**\n";
+            newInstructions += "    UNIQUEMENT À LA FIN de la séquence d'interactions prévues pour une scène donnée, ton code de script DOIT :\n";
+            newInstructions += "    a.  Générer une variable de script contenant le 'CODE DE RÉSULTAT' unique pour L'ENSEMBLE DES INTERACTIONS SIGNIFICATIVES de cette scène. Si la scène a comporté plusieurs étapes (ex: une saisie de texte par l'utilisateur suivie d'un choix parmi des options), ce 'CODE DE RÉSULTAT' final devrait encapsuler ou représenter les informations clés de ces interactions successives. **De manière cruciale, si la scène a sollicité une saisie de texte de la part de l'utilisateur, cette saisie de texte brute DOIT être incluse dans le 'CODE DE RÉSULTAT' final.** (par exemple, en construisant une chaîne comme `NOM_ENTRE_[valeur_saisie]_ET_ACTION_CHOISIE_[action]_AVEC_REPONSE_ENIGME_[texte_saisi_enigme]`).\n";
+            newInstructions += "    b.  AFFICHER CE 'CODE DE RÉSULTAT' DE MANIÈRE TRÈS VISIBLE ET FACILITER SA COPIE. Pour cela, ton script doit dynamiquement REMPLACER tout le contenu visible de la page. Ce nouveau contenu doit :\n";
+            newInstructions += "        i.  Clairement indiquer que la scène est terminée (par exemple, avec un titre textuel comme 'Fin de la Scène !' ou 'Mini-jeu Terminé!').\n";
+            newInstructions += "        ii. Afficher le texte 'Code Résultat global de la scène :'.\n";
+            newInstructions += "        iii.Présenter la valeur de la variable `leResultatFinal` dans un champ de texte non modifiable et bien visible (par exemple, un champ de saisie de texte stylisé pour être grand, centré, et facile à lire et à sélectionner pour une copie manuelle). Assigne un identifiant unique (par exemple, 'codeResultatPourCopie') à cet élément de champ de texte pour que ton script puisse y accéder.\n";
+            newInstructions += "        iv. Inclure un premier élément interactif cliquable (par exemple, un bouton ou un lien textuel) avec un texte comme 'Copier le Code Résultat'. Lorsque cet élément est activé par l'utilisateur, ton script doit tenter de copier le contenu du champ de texte (celui avec l'identifiant 'codeResultatPourCopie') dans le presse-papiers du système. En cas de succès de la copie, ton script doit afficher une notification éphémère directement sur la page (par exemple, un petit message textuel 'Copié !' qui apparaît brièvement près de l'élément de copie puis disparaît automatiquement après 2-3 secondes). N'utilise PAS de boîtes de dialogue système (comme celles produites par la fonction `alert`) pour cette notification. En cas d'échec de la copie automatique, ton script peut discrètement changer le texte de l'élément de copie en 'Échec copie auto' ou simplement s'assurer que le code reste visible pour une copie manuelle.\n";
+            newInstructions += "        v.  Inclure un second élément interactif cliquable distinct (par exemple, un autre bouton ou lien textuel) avec un texte comme 'Fermer cette Scène'. Lorsque cet élément est activé, il doit exécuter la fonction de script `window.close()` pour fermer la fenêtre ou l'onglet de la scène.\n";
+            newInstructions += "    c.  Cette méthode d'affichage du résultat doit être utilisée pour TOUS les thèmes à la fin d'une séquence d'interactions significative au sein d'une scène.\n";
+
+            newInstructions += "4.  **STRUCTURE DU CODE SOURCE ET OPTIONS AVANCÉES :**\n";
+            newInstructions += "    a.  Au tout début de ton bloc de code source (avant la déclaration de type de document), inclus un commentaire (dans le format approprié pour les fichiers web) listant les 'CODE DE RÉSULTAT' finaux possibles que CETTE scène spécifique pourrait générer. Exemple: ``\n";
+            newInstructions += "    b.  L'utilisateur copiera MANUELLEMENT ce 'CODE DE RÉSULTAT' final (ou via l'élément de copie que tu fournis) depuis la fenêtre de la scène et te le renverra. Tu généreras alors la PROCHAINE scène (page web complète) en conséquence.\n";
+            newInstructions += "    c.  Création de personnage: Si nécessaire, elle peut se dérouler sur une ou plusieurs scènes. Si une seule scène gère toute la création (nom, classe, etc.), le 'CODE DE RÉSULTAT' final doit consolider toutes ces informations. Chaque interaction se conclut par l'affichage d'un 'CODE DE RÉSULTAT' (copiable), en utilisant la méthode globale décrite au point 3.b.\n";
+            newInstructions += "    d.  Ton code doit former un document web complet et autonome, bien formé, avec déclaration de type de document, encodage UTF-8, titre, et styles/scripts incorporés.\n";
+            newInstructions += "    e.  **Graphismes avancés (optionnel) :** Pour des scènes ou des effets visuels plus complexes, si le thème s'y prête et que tu juges cela réalisable, tu peux tenter d'utiliser l'API Canvas 2D (accessible via un élément de la page que tu crées et manipules avec du script) pour des graphismes et animations 2D plus complexes. Des éléments WebGL très simples (également via un élément approprié et son contexte WebGL) peuvent être envisagés pour des effets 3D basiques. Cependant, la priorité reste une scène fonctionnelle et auto-suffisante. Si une approche graphique avancée est trop complexe pour la situation, privilégie des alternatives plus simples basées sur la manipulation d'éléments de page standards et d'emojis.\n";
+            newInstructions += "-----------------------------------------------------------------------------------\n\n";
+
+            if (defaultThemeGameInstructions[selectedTheme]) {
+                newInstructions += `INSTRUCTIONS SPÉCIFIQUES AU THÈME ('${selectedTheme}') pour SCÈNES WEB (exécutées séparément) :\n${defaultThemeGameInstructions[selectedTheme]}\n\n`;
+            } else if (selectedTheme) {
+                 newInstructions += `INSTRUCTIONS SPÉCIFIQUES AU THÈME ('${selectedTheme}') pour SCÈNES WEB (exécutées séparément) :\n(MJ IA, sois créatif pour ce thème. Construis des scènes avec plusieurs interactions internes et des mécaniques de jeu variées inspirées par exemple des jeux NES/SNES (mouvement, adresse, puzzles simples avec emojis, etc.). N'oublie pas d'appliquer la méthode globale d'affichage du 'CODE DE RÉSULTAT' final (incluant les saisies de texte du joueur si pertinent), de copie automatique et de fermeture de scène décrite ci-dessus pour conclure chaque scène.)\n\n`;
+            }
+
+            if (nombreJoueurs > 1) {
+                newInstructions += `GESTION MULTIJOUEURS (${nombreJoueurs} joueurs) AVEC SCÈNES SÉPARÉES:\n`;
+                newInstructions += `Une scène peut impliquer des actions successives de différents joueurs, ou des choix qui affectent le groupe. Le 'CODE DE RÉSULTAT' final doit refléter l'issue de ces interactions collectives ou séquentielles au sein de la scène. Spécifie clairement dans la scène quel joueur doit agir.\n`;
+            }
+            instructionsSpecialesTextarea.value = newInstructions.trim();
+        }
+
+        themePresetSelect.addEventListener('change', updateSpecialInstructions);
+        nombreJoueursSelect.addEventListener('change', updateSpecialInstructions);
+        updateSpecialInstructions(); 
+
+        function genererMasterPrompt() {
+            const selectedThemePreset = themePresetSelect.value;
+            const customTheme = themeManuelInput.value.trim();
+            const tonAventure = tonAventureInput.value.trim() || 'défini par le thème';
+            const styleEcriture = styleEcritureInput.value.trim() || 'clair et immersif';
+            const specificInstructions = instructionsSpecialesTextarea.value.trim(); 
+
+            let univers = "";
+            if (customTheme) univers = customTheme;
+            else if (selectedThemePreset) univers = selectedThemePreset;
+            else { alert("Veuillez sélectionner un thème."); return; }
+
+            let prompt = `Bonjour IA Maître du Jeu. Jouons à "Les Chroniques du Code-Maître" (mode: scène web complète et interactive exécutée séparément par moi).\n`;
+            prompt += `Configuration: Thème=${univers}, Ton=${tonAventure}, Style=${styleEcriture}, Joueurs=${nombreJoueursSelect.value}\n\n`;
+            prompt += `LIS ATTENTIVEMENT ET APPLIQUE SCRUPULEUSEMENT LES INSTRUCTIONS SUIVANTES POUR CHAQUE SCÈNE (PAGE WEB COMPLÈTE) QUE TU GÉNÈRES (ces instructions incluent des directives globales sur la structure, la variété des mini-jeux, la gestion des saisies de texte, et la fin des scènes, ainsi que des spécificités liées au thème choisi) :\n${specificInstructions}\n\n`;
+            
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let randomLetters = Array.from({length: 32}, () => alphabet[Math.floor(Math.random() * alphabet.length)]);
+            prompt += `INSPIRATION (Lettres Seed): ${randomLetters.join(', ')}\nUtilise-les subtilement pour des noms, lieux, concepts UNIQUES à cette aventure.\n\n`;
+            prompt += `Commençons ! Génère la première scène (page web complète et autonome) pour l'univers de ${univers}. Cette scène doit permettre plusieurs interactions et proposer une mécanique de jeu engageante (inspirée par exemple des classiques NES/SNES, pas seulement un QCM) avant de se conclure. Si une phase de création de personnage est nécessaire pour ${nombreJoueursSelect.value} joueur(s), cette première scène doit la gérer de manière interactive et multi-étapes. Si la scène implique une saisie de texte du joueur, assure-toi que cette saisie soit partie intégrante du 'CODE DE RÉSULTAT' final. J'attends ton bloc de code source.`;
+			prompt += `Rappel important: "donnez-moi du vrai HTML, pas des &lt;", c'est pour le code source d'une page web, pas pour afficher directement dans le chat de l'IA.`;			
+
+            masterPromptOutputTextarea.value = prompt;
+            masterPromptContainerDiv.classList.remove('hidden');
+            masterPromptContainerDiv.scrollIntoView({ behavior: 'smooth' });
+            const copyBtn = document.getElementById('copy-master-prompt');
+            copyBtn.textContent = 'Copier le Prompt Initial';
+            copyBtn.disabled = false;
+        }
+
+        async function copyToClipboard(elementId, buttonElement) {
+            const textarea = document.getElementById(elementId);
+            try {
+                await navigator.clipboard.writeText(textarea.value);
+                const originalText = buttonElement.textContent;
+                buttonElement.textContent = 'Copié !';
+                buttonElement.disabled = true;
+                setTimeout(() => {
+                    buttonElement.textContent = originalText;
+                    buttonElement.disabled = false;
+                }, 2000);
+            } catch (err) {
+                console.error('Erreur copie presse-papiers (copie manuelle requise si échec): ', err);
+                const originalText = buttonElement.textContent;
+                buttonElement.textContent = 'Échec Copie Auto';
+                 setTimeout(() => { 
+                    buttonElement.textContent = originalText;
+                    buttonElement.disabled = false;
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>
